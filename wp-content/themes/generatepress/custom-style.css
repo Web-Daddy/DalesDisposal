@@ -1,0 +1,1039 @@
+ @font-face {
+  font-family: 'GothamBold';
+  src: url('fonts/GothamBold.otf')  format('opentype');
+}
+
+@font-face {
+  font-family: 'GothamMedium';
+  src: url('fonts/GothamMedium.otf')  format('opentype');
+}
+
+@font-face {
+  font-family: 'GothamBook';
+  src: url('fonts/GothamBook.otf')  format('opentype');
+}
+html:not(.fl-builder-edit) body.page-template-order-template .site-footer{width: 100% !important;}
+html:not(.fl-builder-edit) body {background-color: transparent !important; font-family: "GothamMedium"; color: #313841;}
+html:not(.fl-builder-edit) body .grid-container {max-width: none !important;}
+html:not(.fl-builder-edit) #page {padding-left: 8%; padding-right: 8%;}
+html:not(.fl-builder-edit) .site-footer {padding-left: 8% !important; padding-right: 8% !important; /*width: 84% !important;*/}
+/* Header */
+
+html:not(.fl-builder-edit) #content {padding: 0; }
+html:not(.fl-builder-edit) .entry-content {margin-top: 0 !important;}
+html:not(.fl-builder-edit) #dales_top_gold_row .fl-row-content-wrap {font-family: 'GothamBold'; min-height: 60px; display: flex; align-items: center; padding-left: 10px; padding-right: 10px;}
+html:not(.fl-builder-edit) #dales_top_gold_row p {margin-bottom: 0; font-size: 14px;}
+html:not(.fl-builder-edit) #dales_top_counter a {border: 4px solid #d69a25; font-family: 'GothamBold'; font-size: 13px; padding-top: 3px;}
+html:not(.fl-builder-edit) #dales_top_counter a {font-size: 18px;}
+html:not(.fl-builder-edit) #dales_top_menu ul {display: flex; justify-content: space-between; width: 550px;}
+html:not(.fl-builder-edit) #dales_top_menu a {font-family: 'GothamMedium'; font-size: 13px; color: #ffffff; text-transform: uppercase; opacity: 1; transition: 0.5s; padding: 10px;}
+html:not(.fl-builder-edit) #dales_top_menu a:hover {opacity: 0.7;}
+html:not(.fl-builder-edit) #dales_top_dark_row .fl-col-group {display: flex; align-items: center; min-height: 65px;}
+html:not(.fl-builder-edit) #dales_mobile_icon_close {display: none;}
+html:not(.fl-builder-edit) #dales_mobile_icon {display: none;}
+html:not(.fl-builder-edit) .dales_mobile_menu_opened #dales_mobile_icon {display: none !important;}
+html:not(.fl-builder-edit) .dales_mobile_menu_opened #dales_mobile_icon_close {display: block !important;}
+html:not(.fl-builder-edit) #dales_main_menu_container .fl-col {width: 100%;}
+html:not(.fl-builder-edit) #dales_main_menu_container .fl-col-group {display: none !important;}
+html:not(.fl-builder-edit) #dales_homepage_banner .fl-row-content-wrap {min-height: 36vw; padding-bottom: 35px;}
+html:not(.fl-builder-edit) #dales_homepage_search_button a {font-family: 'GothamBold'; border: 4px solid #f4c72b !important;}
+#dales_search_form {display: flex; justify-content: center;}
+#dales_search_form .input_zip_code_submit {background: #efe735; color: #313841; border: 4px solid #f4c72b !important; border-radius: 0 50px 50px 0;}
+#dales_search_form .input_zip_code {background: rgba(43, 43, 43, 0.55); border: 4px solid #f4c72b !important; border-radius: 50px 0 0 50px; border-right: 0 !important; color: #ffffff;}
+#dales_search_form .input_zip_code:focus {outline: none !important;}
+.search_zip_code_error_container {height: 24px; text-align: center;display: block;}
+#dales_search_form .input_zip_code::placeholder {color: #ffffff; font-family: 'GothamBold';} 
+.search_zip_code_error_container p{margin-bottom: 0;}
+html:not(.fl-builder-edit) #dales_top_menu .menu-main-menu-container {display: flex; justify-content: center;}
+html:not(.fl-builder-edit) #dales_header_sign_in a {font-family: 'GothamMedium'; font-size: 13px; color: #ffffff; text-transform: uppercase; opacity: 1; transition: 0.5s; padding: 10px;}
+html:not(.fl-builder-edit) #dales_header_sign_in a:hover {opacity: 0.7;}
+html:not(.fl-builder-edit) #dales_button_scroll_to_bottom {position: absolute; left: 0; right: 0; bottom: -35px;}
+html:not(.fl-builder-edit) #dales_button_scroll_to_bottom a {background-image: url(images/button_bot.png); background-repeat: no-repeat; background-color: transparent; width: 70px; height: 70px; font-size: 0; border: 0;}
+html:not(.fl-builder-edit) #dales_sign_in_mobile {display: none;}
+html:not(.fl-builder-edit) #dales_main_menu_container {width: 50%;}
+
+/* Footer */
+html:not(.fl-builder-edit) #dales_bottom_top_row .fl-row-content-wrap {min-height: 70px; display: flex; align-items: center; padding-left: 10px; padding-right: 10px;}
+html:not(.fl-builder-edit) #dales_bottom_top_row p {margin-bottom: 0; font-family: 'GothamMedium'; font-size: 15px;}
+html:not(.fl-builder-edit) #dales_bottom_menus { margin-top: 40px; padding-bottom: 40px; padding-left: 50px; border-left: 1px solid #6f747a;}
+html:not(.fl-builder-edit) #dales_bottom_menus, #dales_bottom_menus a {color: #ffffff; }
+html:not(.fl-builder-edit) #dales_bottom_menus a:hover {color: #f4c72b; }
+html:not(.fl-builder-edit) #dales_bottom_menus h2 {font-family: 'GothamBold'; font-size: 11px; margin-bottom: 10px; }
+html:not(.fl-builder-edit) #dales_bottom_menus a {font-size: 13px; font-family: 'GothamBook';}
+html:not(.fl-builder-edit) #dales_bottom_contacts {margin-top: 10px;}
+html:not(.fl-builder-edit) #dales_bottom_contacts p {margin-bottom: 5px; font-size: 13px; font-family: 'GothamBook';}
+html:not(.fl-builder-edit) #dales_bottom_logo .fl-col-content.fl-node-content {display: flex; justify-content: center;}
+html:not(.fl-builder-edit) #dales_bottom_copyright {border-top: 1px solid #6f747a; padding-top: 20px; }
+html:not(.fl-builder-edit) #dales_bottom_copyright p {font-size: 15px; font-family: 'GothamMedium';}
+html:not(.fl-builder-edit) #dales_bottom_payments {border-top: 1px solid #6f747a; padding-top: 20px;}
+footer {overflow: hidden;}
+
+/* Sidebar */
+html:not(.fl-builder-edit) #dales_sidebar_contacts {font-size: 16px; font-family: 'GothamMedium'; color: #313841;}
+html:not(.fl-builder-edit) #dales_sidebar_contacts span {font-size: 15px; font-family: 'GothamBook'; color: #5e646b !important;}
+
+/* Secondary menu */
+html:not(.fl-builder-edit) #dales_page_title, #dales_secondary_menu {border-bottom: 3px solid #dcdcdc; margin-bottom: 30px; margin-top: 60px;}
+html:not(.fl-builder-edit) #dales_secondary_menu .menu-secondary-menu-container {display: flex; justify-content: flex-end;}
+html:not(.fl-builder-edit) #dales_page_title {font-size: 40px; font-family: 'GothamBook'; color: #313841;}
+html:not(.fl-builder-edit) #dales_page_title p {margin-bottom: 25px;}
+html:not(.fl-builder-edit) #dales_secondary_menu {padding-top: 30px;}
+html:not(.fl-builder-edit) #dales_secondary_menu ul {display: flex; justify-content: space-between; width: 500px; padding-left: 30px;}
+html:not(.fl-builder-edit) #dales_company_content {padding-right: 10%; font-size: 15px; color: #313841; font-family: 'GothamBook';}
+html:not(.fl-builder-edit) #dales_company_content_title {font-size: 24px; font-family: 'GothamBook'; color: #313841;}
+html:not(.fl-builder-edit) #dales_secondary_menu a {color: #313841; font-family: 'GothamBook'; font-size: 13px; }
+html:not(.fl-builder-edit) #dales_secondary_menu a:hover {color: #f4c72b;}
+
+
+
+/* Homepage */
+html:not(.fl-builder-edit) #dales_homepage_banner {color: #ffffff;}
+html:not(.fl-builder-edit) #dales_homepage_banner_text1 p {padding-top: 150px; font-size: 23px; font-family: 'GothamBook'; margin-bottom: 0;}
+html:not(.fl-builder-edit) #dales_homepage_banner_text2 p {font-family: 'GothamMedium'; font-size: 45px; margin-bottom: 35px;}
+
+html:not(.fl-builder-edit) .dales_homepage_banner_col1 {max-width: 250px;}
+html:not(.fl-builder-edit) .dales_homepage_banner_col1 p { font-family: 'GothamBold'; font-size: 18px; margin-bottom: 13px; }
+html:not(.fl-builder-edit) .dales_homepage_banner_col1 p:last-child {margin-bottom: 0;}
+html:not(.fl-builder-edit) .dales_homepage_banner_col1 p span {font-size: 13px; font-family: Helvetica; }
+html:not(.fl-builder-edit) .dales_banner_bot_text_col {padding-left: 3%; padding-right: 3%; border-right: 1px solid #898984;}
+html:not(.fl-builder-edit) .dales_banner_bot_text_col:nth-child(4) {border-right: 0;}
+html:not(.fl-builder-edit) .dales_banner_bot_text_col:nth-child(3) .fl-col-content.fl-node-content {align-items: center;}
+html:not(.fl-builder-edit) .dales_banner_bot_text_col:nth-child(2) .fl-col-content.fl-node-content {align-items: flex-end;}
+html:not(.fl-builder-edit) .dales_homepage_section2_right_text {font-size: 16px; font-family: "GothamBook";}
+html:not(.fl-builder-edit) .dales_homepage_section2_left_button a {border: 4px solid #f4c72b !important; font-size: 14px !important; font-family: 'GothamBold'; margin-bottom: 25px; max-width: 90%;}
+html:not(.fl-builder-edit) #dales_homepage_section2 {padding-top: 80px;}
+html:not(.fl-builder-edit) .dales_homepage_section2_left_text1 p {color: #313841; font-size: 17px; font-family: 'GothamBook'; margin-bottom: 15px;}
+html:not(.fl-builder-edit) .dales_homepage_section2_left_text2 p {color: #313841; font-size: 27px; font-family: 'GothamBold';}
+html:not(.fl-builder-edit) .dales_homepage_section2_left_text3 p {color: #313841; font-size: 12px; font-family: 'GothamMedium';}
+html:not(.fl-builder-edit) #dales_homepage_section3_text1 p {color: #313841; font-size: 28px; font-family: 'GothamMedium'; margin-bottom: 15px; padding-left: 2.2%;}
+html:not(.fl-builder-edit) #dales_homepage_section3_text2 p {color: #313841; font-size: 16px; font-family: 'GothamBook';  padding-left: 2.2%;}
+html:not(.fl-builder-edit) .dales_homepage_section3_tab_text1 p {color: #313841; font-family: 'GothamMedium'; font-size: 26px;}
+html:not(.fl-builder-edit) .dales_homepage_section3_tab_text2 p {color: #2b2b2b; font-family: 'GothamBook'; font-size: 13px;}
+html:not(.fl-builder-edit) .dales_homepage_section3_tab_text3 p {color: #313841; font-family: 'GothamMedium'; font-size: 15px;}
+html:not(.fl-builder-edit) .dales_homepage_section3_tab {border: 4px solid rgba(255, 255, 255, 0); width: 29%; margin-right: 2.16%; margin-left: 2.16%; padding: 15px; position: relative;}
+html:not(.fl-builder-edit) .dales_homepage_section3_tab:hover {border: 4px solid #f4c72b; background: #ffffff;}
+html:not(.fl-builder-edit) .dales_homepage_section3_tab:hover .dales_homepage_section3_tab_text3 a {color: #f4c72b !important; border-bottom: 4px solid #f4c72b;}
+html:not(.fl-builder-edit) .dales_homepage_section3_tab:before {display: block; content: ''; position: absolute; top: -4px; left: 0; right: 0; height: 4px; background: #2b2b2b}
+html:not(.fl-builder-edit) .dales_homepage_section3_tab:hover:before {display: none;}
+/*.dales_homepage_section3_tab:nth-child(2) {border: 4px solid #f4c72b; background: #ffffff;}
+.dales_homepage_section3_tab:nth-child(2):before {display: none;}*/
+html:not(.fl-builder-edit) .dales_homepage_section3_image, .dales_homepage_section3_image_description {max-width: 480px; }
+html:not(.fl-builder-edit) .dales_homepage_section3_image_description .fl-col-content.fl-node-content, .dales_homepage_section3_image .fl-col-content.fl-node-content {border-top: 4px solid #2b2b2b;}
+html:not(.fl-builder-edit) .dales_homepage_section3_image_description .fl-col-content.fl-node-content  {background: #ffffff;}
+html:not(.fl-builder-edit) .dales_homepage_section3_image_description_title p {color: #333333; font-size: 20px; font-family: 'GothamBold'; margin-bottom: 10px;}
+html:not(.fl-builder-edit) .dales_homepage_section3_image_description_text {color: #333333; font-size: 16px; font-family: 'GothamBook'; }
+html:not(.fl-builder-edit) #dales_homepage_section3 .fl-col-group {justify-content: center;}
+html:not(.fl-builder-edit) #dales_top_cart_links {padding-right: 50px;}
+
+
+/* FAQ */
+html:not(.fl-builder-edit) .dales_faq_list_title p {color: #313841; font-size: 18px; font-family: 'GothamBook'; margin-bottom: 10px;}
+html:not(.fl-builder-edit) .dales_faq_list h3 {color: #f4c72b; font-size: 16px; font-family: 'GothamMedium'; padding-left: 20px !important; background-image: url(images/triangle.jpg); background-repeat: no-repeat; background-position: left;}
+html:not(.fl-builder-edit) .dales_faq_list li.uabb-info-list-item {padding-bottom: 10px;}
+html:not(.fl-builder-edit) .dales_faq_answers p {color: #333333; font-size: 15px; font-family: 'GothamBook';}
+html:not(.fl-builder-edit) .dales_faq_answers p strong {color: #333333; font-size: 16px; font-family: 'GothamMedium';}
+html:not(.fl-builder-edit) .dales_faq_answers {padding-bottom: 20px;}
+html:not(.fl-builder-edit) #dales_secondary_menu #menu-secondary-menu .dales_active a {color: #f4c72b;}
+/* ORDER */
+.header_order {margin: 0 auto;}
+.header_order {
+    margin: 0 auto;
+}
+
+.template_order .delivery {
+    display:  flex;
+    align-items:  center;
+    flex-direction:  column;
+}
+.template_order .material_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.template_order .delivery_date {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.line_wrap:before {
+    content: '';
+    display: block;
+    width: calc(100% - 80px);
+    position: absolute;
+    height: 5px;
+    top: 32px;
+    left: 66%;
+    background-image: -moz-linear-gradient(65deg,#f5cc3d,transparent);
+    background-image: -o-linear-gradient(65deg,#f5cc3d,transparent);
+    background-image: linear-gradient(65deg,#f5cc3d,transparent);
+}
+.template_order_content {
+    background-image:  url('./images/bg_order_content.png');
+    background-repeat:  no-repeat;
+    margin-bottom: -100px;
+    position: relative;
+}
+.template_order_content .container {
+    background-color:  unset !important;
+}
+.header_template_order_content {
+    padding-top: 40px;
+    padding-bottom:  140px;
+    text-align:  center;
+    position:  relative;
+}
+
+h5.title_header_template_order_content {
+    font-family:  GothamBook;
+    font-size:  23px;
+    color:  #242424;
+}
+
+h3.title_select_header_template_order_content {
+    font-family:  GothamMedium;
+    font-size: 45px;
+    color:  #313841;
+}
+a.need_help_header_order_content:hover{
+	text-decoration: none;
+	color: #313841 !important;
+}
+a.need_help_header_order_content {
+	text-transform: uppercase;
+    position:  absolute;
+    top: 82px;
+    right: 0;
+    width: 185px;
+    text-align:  center;
+    height: 35px;
+    padding-top: 5px;
+    border-radius:  15px;
+    border: solid 5px #f4c931;
+    background-color:  #fff;
+    font-family:  GothamMedium;
+    font-size:  11px;
+    color:  #313841 !important;
+}
+.line_wrap.line_wrap_active:before {
+    background: #f5cc3d;
+}
+p.text_header_order_content {
+    font-family:  GothamBook;
+    font-size:  23px;
+    color:  #2b2b2b;
+}
+p.delivery_text {
+    font-family:  GothamBold;
+    font-size:  13px;
+    color:  #313841;
+}
+
+p.delivery_text span {
+    color:  #f4c72b;
+    text-decoration: underline;
+}
+p.material_text {
+    font-family:  GothamMedium;
+    opacity:  0.2;
+    font-size: 13px;
+}
+.category_order_content {
+    padding-bottom: 80px;
+}
+.category_block_order {
+    border: solid 3px #313841;
+    padding: 20px;
+    min-height:  190px;
+    position: relative;
+}
+
+h3.title_block_category_order {
+    font-family: GothamMedium;
+    font-size:  26px;
+    color:  #313841;
+}
+
+p.description_block_category_order {
+    font-family:  GothamBook;
+    font-size:  13px;
+    color:  #313841;
+}
+.label_description_block input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-color: #eee;
+    border: solid 4px #f4c72b;
+    border-radius: 20px;
+}
+
+.label_description_block:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+a.btn_submit_order_go {width: 275px;display:  block;margin-left:  auto;text-align: center;height: 40px;padding-top: 9px;border: solid 3px #f4c72b;border-radius: 20px;font-family:  GothamBold;font-size:  13px;color:  #313841 !important;}
+a.btn_submit_order_go:hover{text-decoration: none;color: #313841;}
+.btn_submit_order {
+    text-align:  right;
+    padding-bottom:  40px;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.category_block_order.active .checkmark:after {
+    display: block;
+}
+.category_block_order.active span.checkmark::after {
+    left: 9px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid #313841;
+    border-width: 0 2px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.category_block_order.active {
+    border: solid 3px #f4c72b;
+}
+.category_block_order.active .label_description_block span.checkmark {
+    background-color: #efe735;
+}
+.label_description_block {
+    position: relative;
+    padding-left: 45px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    opacity: 0.2;
+    align-items: center;
+    display: flex;
+    height: 30px;
+    position: absolute;
+    bottom: 30px;
+    margin-bottom: 0;
+}
+.label_description_block span {
+    font-family: GothamMedium;
+    color: #313841;
+    font-size:  15px;
+}
+.title_block_category_order span {
+    color:  #f4c72b;
+}
+.category_block_order.active label.label_description_block {
+    opacity:  1;
+}
+
+.category_block_order.active .label_description_block span {
+    color:  #f4c72b;
+    border-bottom:  solid 4px;
+    line-height:  1.2;
+}
+p.no_weight {
+    position:  absolute;
+    bottom:  0;
+    right: 0;
+    margin-bottom:  0;
+    width:  150px;
+    height:  30px;
+    text-align:  center;
+    background-color:  #313841;
+    color:  #f0e91c;
+    font-family:  GothamMedium;
+    font-size:  11px;
+    padding-top:  9px;
+    text-transform:  uppercase;
+}
+.material_container.active p.material_text{
+	opacity: 1;
+	font-size: 13px;
+}
+.header_template_order_content.two{
+	padding-bottom: 80px;
+}
+
+.block_product_order {
+    margin:  0 auto;
+    border: solid 4px #313841;
+    margin-bottom:  40px;
+    padding-top: 20px;
+    padding-bottom:  20px;
+    padding-left:  30px;
+    padding-right:  30px;
+}
+
+img.img_product_atachment {
+    width:  50%;
+    padding-bottom: 10px;
+    padding-top:  30px;
+}
+
+.block_left_product_order {
+    text-align:  center;
+    position: static !important;
+}
+
+.delivery_block_product_order {
+    width: calc(100% - 40px);
+    height:  15px;
+    border: solid 2px #2b2b2b;
+    margin-left: 20px;
+    margin-right:  20px;
+    margin-bottom: 15px;
+    border-top: none;
+}
+
+.size_product_order {
+    margin-bottom:  0;
+    font-family: GothamMedium;
+    font-size:  11px;
+}
+
+.size_product_order p {
+    margin-bottom: 10px;
+}
+
+.info_product_order {
+    position:  absolute;
+    bottom: -14px;
+    background-color:  #313841;
+    color:  #d8d236;
+    padding: 5px 10px;
+    left: 40px;
+}
+.info_product_order p {
+    margin-bottom:  0;
+    font-family:  GothamMedium;
+    font-size:  11px;
+    text-transform:  uppercase;
+}
+.title_price_top_block_order {
+    display:  flex;
+}
+
+p.price_order_product {
+    margin-left: 35%;
+    font-family:  GothamMedium;
+    font-size:  26px;
+    color:  #313841;
+}
+
+.title_price_top_block_order a.title_product_order {
+    color:  #313841;
+    font-family:  GothamMedium;
+    font-size:  26px;
+}
+.title_price_top_block_order a.title_product_order{
+    color: #313841;
+    text-decoration: none;
+}
+p.price_order_product span {
+    font-size:  12px;
+}
+
+.content_product_order p {
+    font-family:  GothamBook;
+    font-size: 13px;
+}
+
+.footer_content_product_order {
+    position: absolute;
+    bottom:  0;
+    display:  flex;
+    width: calc(100% - 50px);
+}
+
+.block_right_product_order {
+    position:  relative;
+}
+
+label.label_description_block.product_order {
+    position:  relative;
+    left:  0;
+    top: auto;
+    bottom:  0;
+    opacity:  1;
+    height: 40px;
+}
+.product_order span.checkmark{height: 40px;width: 40px;}
+p.rolloff_product_order {
+    margin-bottom:  0;
+    padding: 10px 17px;
+    color:  #efe735;
+    font-family:  GothamMedium;
+    font-size:  11px;
+    text-transform:  uppercase;
+    background-color: #313841;
+    border-radius: 3px;
+    line-height: 1.8;
+    position: absolute;
+    right: 0;
+}
+.select_count_order{display: none;}
+.footer_content_product_order .jq-selectbox.jqselect.select_count_order.option_count_order.disabled{
+    display: none;
+}
+
+.footer_content_product_order .jq-selectbox.jqselect.select_count_order.option_count_order {
+    margin-left: 10%;
+}
+
+.footer_content_product_order .jq-selectbox__trigger {
+    display:  none;
+}
+
+.footer_content_product_order .jq-selectbox__select {
+    border: solid 4px #F4C72A !important;
+    display: flex;
+    padding:  0;
+    width: 42px;
+    border-radius: 50px;
+    height: 40px;
+    text-align:  center;
+    align-items:  center;
+    font-family:  GothamBold;
+    font-size:  18px;
+    background-color:  #fff !important;
+}
+
+.footer_content_product_order .jq-selectbox__dropdown {
+    left: 2px;
+    text-align:  center;
+}
+
+
+.product_order.active span.checkmark {
+    background-color: #fff;
+}
+.product_order.active span.checkmark::after {
+    display: block;
+    left: 13px;
+    top: 7px;
+    width: 7px;
+    height: 15px;
+    border: solid #313841;
+    border-width: 0 2px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.error_message_order_step_three {
+    display: none;
+    opacity: 0;
+    background-color:  #ed1c24;
+    justify-content:  space-between;
+    color:  #fff;
+    padding: 5px 10px;
+    text-align:  center;
+    align-items:  center;
+    margin-bottom: 40px;
+    border-radius: 4px;
+}
+
+p.text_error_message {
+    margin-bottom:  0;
+    font-family:  GothamMedium;
+    font-size:  13px;
+}
+.header_template_order_content.three {
+    padding-bottom:  40px;
+}
+.delivery_black {
+    border-bottom: solid 3px;
+}
+
+.block_left_inner {
+    max-width:  300px;
+}
+
+.title_left_block_date h3 {
+    padding-left:  10px;
+    padding-right:  10px;
+    padding-top:  20px;
+    font-family:  GothamMedium;
+    font-size:  26px;
+    color:  #2b2b2b;
+}
+
+.text_left_block_date p {
+    padding-left:  10px;
+    padding-right:  10px;
+    padding-bottom:  30px;
+    margin-bottom:  0;
+    font-family:  GothamBook;
+    font-size:  13px;
+    color:  #313841;
+}
+.title_datepicker {
+    display:  flex;
+    justify-content:  space-between;
+}
+
+.left_section_title_datepicker {
+    width: 30%;
+}
+
+.right_section_title_datepicker {
+    width: 30%;
+}
+
+.center_section_title_datepicker {width: 40%;display:  flex;justify-content:  center;align-items:  center;}
+
+p.label_deliver_title_datepicker {
+    font-family:  GothamBold;
+    margin-bottom:  0;
+    font-size:  11px;
+    text-transform:  uppercase;
+    color:  #313841;
+    line-height:  1;
+}
+
+.date_deliver_title_datepicker {
+    display:  flex;
+}
+
+.count_date_deliver_title_datepicker {
+    font-family:  GothamMedium;
+    color:  #f4c72b;
+    font-size: 45px;
+    text-align:  center;
+    max-height: 60px;
+    padding-right:  10px;
+}
+
+.text_date_deliver_title_datepicker p {
+    margin-bottom:  0;
+    font-family:  GothamMedium;
+    color:  #313841;
+    font-size: 15px;
+}
+
+p.hidden_text_date {
+    font-size:  11px;
+    color:  #b4b6b8;
+    text-transform:  uppercase;
+}
+
+.text_date_deliver_title_datepicker {
+    display:  flex;
+    flex-direction:  column;
+    justify-content:  center;
+}
+
+.datepicker-here .datepicker-inline .datepicker {
+    width:  100%;
+    background-color:  transparent;
+    border:  unset;
+    border-bottom: solid 4px #d6d7d9;
+    margin-bottom: 20px;
+    border-radius: 0;
+}
+
+nav.datepicker--nav {
+    border-bottom:  solid 4px #d1d2d4;
+    border-top: solid 4px #d1d2d4;
+}
+
+.datepicker--nav-title {
+    font-family:  GothamMedium;
+    font-size: 28px;
+    color:  #313841;
+}
+
+nav .datepicker--nav-title i {
+    color:  #313841;
+}
+
+.datepicker--nav-action {
+    color:  #f4c72b;
+}
+.datepicker--days-names {
+    border-bottom: solid 4px #d6d7d9;
+    padding-top:  30px;
+    padding-bottom: 10px;
+}
+
+.datepicker--content {
+    padding:  0;
+}
+
+div .datepicker--day-name {
+    font-family:  GothamBold;
+    color:  #313841;
+    font-size:  13px;
+}
+.datepicker--cells.datepicker--cells-days div:nth-child(7n){
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.datepicker--cells.datepicker--cells-days div:nth-child(7n+1){
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.datepicker--cells .datepicker--cell.-in-range-{
+    background-color: #f4c72b;
+}
+.datepicker--cells .datepicker--cell.-in-range- span{
+    color: #fff;
+}
+div .datepicker--cell.-in-range-.-focus-{
+    background-color: #f4c72b;
+}
+.datepicker--cell.datepicker--cell-day.-weekend-.-in-range- span {
+    color:  #fff;
+}
+div .datepicker--cell.-range-from- {
+    background-color: #f4c72b;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius:  30px;
+}
+div .datepicker--cell.-range-to- {
+    background-color: #f4c72b;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius:  30px;
+}
+div .-in-range-.datepicker--cell-day.-other-month-, .-in-range-.datepicker--cell-year.-other-decade-{
+    background-color: #f4c72b;
+}
+div .datepicker--cell.datepicker--cell-day.-range-from-.-current-.-selected- {
+    border-top-left-radius:  30px;
+    border-bottom-left-radius:  30px;
+    background: #f4c72b;
+    color: #fff;
+}
+div .datepicker--cell.datepicker--cell-day.-range-to-.-selected- {
+    border-top-right-radius:  30px;
+    border-bottom-right-radius:  30px;
+    background: #f4c72b;
+    color: #fff;
+}
+.datepicker--cell.datepicker--cell-day {
+    margin-bottom:  10px;
+    height:  60px;
+}
+div .datepicker--cell.datepicker--cell-day.-range-from-.-current-.-selected-:before{
+    content: '';
+    display: block;
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 44px;
+    z-index: 10;
+}
+div .datepicker--cell.datepicker--cell-day.-range-from-.-current-.-selected- span{
+    position:  relative;
+    z-index:  50;
+    color:  black;
+}
+div .datepicker--cell.datepicker--cell-day.-range-from-.-selected-:before{
+    content: '';
+    display: block;
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 44px;
+    z-index: 10;
+}
+div .datepicker--cell.datepicker--cell-day.-range-from-.-selected- span{
+    position:  relative;
+    z-index:  50;
+    color:  black;
+}
+div .datepicker--cell.datepicker--cell-day.-range-to-.-selected-:before{
+    content: '';
+    display: block;
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 44px;
+    z-index: 10;
+}
+div .datepicker--cell.datepicker--cell-day.-range-to-.-selected- span {
+    position:  relative;
+    z-index:  50;
+    color:  black;
+}
+.datepicker--cell.datepicker--cell-day span{
+    font-family: GothamBold;
+    color: #313841;
+    font-size: 20px;
+}
+div .datepicker--cell.-disabled- span {
+    font-family:  GothamBook;
+    color:  #959595;
+}
+
+.datepicker--cell.datepicker--cell-day.-weekend- span {
+    color:  #959595;
+    font-family:  GothamBook;
+}
+
+.datepicker--cell.datepicker--cell-day.-range-from-.-selected- {
+    background-color: #f4c72b;
+}
+.text_need_more p {
+    font-family:  GothamMedium;
+    font-size:  12px;
+    color:  #313841;
+}
+
+.text_need_more {
+    margin-bottom:  60px;
+}
+a.btn_submit_order_go.step_3 {
+    max-width:  200px;
+    text-transform: uppercase;
+}
+.go_back_btn {
+    position:  absolute;
+    top: 50px;
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.go_back_btn span {
+    font-family:  GothamMedium;
+    font-size:  11px;
+    color:  #313841;
+}
+/*END ORDER*/
+/* Careers */
+.alert p {
+    margin-bottom:  0;
+}
+form.email_fails {
+    display:  flex;
+    justify-content:  space-between;
+}
+
+.email_fails input[type="submit"] {
+    text-transform: uppercase;
+    width:  200px;
+    text-align: center;
+    height: 35px;
+    padding-top: 3px;
+    border-radius: 15px;
+    border: solid 5px #f4c931;
+    background-color: #fff;
+    font-family: GothamMedium;
+    font-size: 14px;
+    color: #313841 !important;
+}
+.email_fails input[type="submit"]:hover{
+    color: #fff !important;
+}
+.fl-rich-text p{
+    margin-bottom:  30px;
+}
+.optimization_btn input[type="file"] {position:  absolute;visibility:  hidden;top: 0;}
+
+label.optimization_btn {
+    position:  relative;
+}
+.container.careers {
+    padding:  0;
+    margin:  0;
+    display:  flex;
+    justify-content:  space-between;
+}
+form.email_fails{
+    display: flex;
+    justify-content: space-between;
+    width: 83%;
+}
+/* END Careers */
+
+
+
+
+@media (max-width: 1199px){
+    .optimization_btn input[type="file"]{left: 0;}
+    input[type="file"] {margin-bottom:  20px;}
+    form.email_fails{flex-direction: column;text-align: center;align-items: center;}
+	.category_block_order{min-height: 230px;}
+    .info_product_order{left: 10px;}
+    p.price_order_product{margin-left: 10%;}
+    .block_right_product_order {min-height: 190px !important;}
+    .footer_content_product_order{width: calc(100% - 35px);}
+    .content_product_order p{font-size: 11px};
+    p.text_error_message{width: 75%;}
+}
+@media (max-width: 991px){
+    .go_back_btn{position: static;padding-top: 30px;max-width: 150px;}
+    a.btn_submit_order_go.step_2{margin: 0 auto;}
+	p.text_header_order_content{text-align: left;}
+	h3.title_select_header_template_order_content{text-align: left;}
+	h5.title_header_template_order_content{text-align: left;}
+	.header_template_order_content{padding-bottom: 40px;}
+	.category_block_order{min-height: 170px;}
+	.for_tablet_order_blocks{padding-bottom: 20px;margin:0 auto;}
+    .block_left_inner{max-width: none;border-bottom: solid 3px;margin-bottom: 40px;}
+}
+@media (max-width: 899px){
+	html:not(.fl-builder-edit) #dales_top_menu a {font-size: 11px; padding: 7px;}
+	html:not(.fl-builder-edit) #dales_header_sign_in a {font-size: 11px; padding: 3px;}
+	html:not(.fl-builder-edit) #dales_bottom_logo .fl-col-group {flex-direction: column; align-items: center;}
+	html:not(.fl-builder-edit) .dales_homepage_section3_tab_text1 p {font-size: 21px;}
+	html:not(.fl-builder-edit) #dales_page_title {font-size: 30px;}
+	html:not(.fl-builder-edit) #dales_bottom_menus .fl-col {width: 100%;}
+	html:not(.fl-builder-edit) #dales_bottom_menus h2 {border-bottom: 1px solid #ffffff; padding-bottom: 5px; background-image: url(images/arrow-bot.png); background-repeat: no-repeat; background-position: right; background-size: auto 100%;}
+	html:not(.fl-builder-edit) #dales_bottom_menus .dales_footer_mobile_menu_opened h2 {background-image: url(images/arrow-top.png);}
+	html:not(.fl-builder-edit) #dales_bottom_menus .widget_nav_menu {max-height: 25px; transition: 0.5s; overflow: hidden; }
+	html:not(.fl-builder-edit) #dales_bottom_menus .widget_nav_menu.dales_footer_mobile_menu_opened {max-height: 499px; }
+}
+
+
+
+
+@media (max-width: 768px){
+	html:not(.fl-builder-edit) #dales_top_menu a {font-size: 11px;}
+	html:not(.fl-builder-edit) #dales_top_cart_links {padding-right: 10px;}
+	html:not(.fl-builder-edit) #dales_bottom_logo .fl-col-group {flex-direction: column; align-items: center;}
+	html:not(.fl-builder-edit) #dales_bottom_logo .fl-col {width: 100% !important;}
+	html:not(.fl-builder-edit) #dales_bottom_logo .fl-module-content {display: flex; justify-content: center;}
+	html:not(.fl-builder-edit) #dales_bottom_menus {padding-left: 20px;}
+	html:not(.fl-builder-edit) .dales_homepage_section3_image_description, .dales_homepage_section3_image {align-self: center; width: 100%;}
+	html:not(.fl-builder-edit) .dales_homepage_section3_image_description .fl-col-content.fl-node-content {margin-top: 0;}
+	html:not(.fl-builder-edit) #dales_homepage_section3 .fl-col-group {flex-direction: column;}
+	html:not(.fl-builder-edit) #dales_top_menu a {padding: 7px;}
+	html:not(.fl-builder-edit) #dales_header_sign_in a {font-size: 11px; padding: 3px;}
+
+	
+	
+}
+
+@media (max-width: 767px){
+    html:not(.fl-builder-edit) #dales_bottom_top_row .fl-row-content-wrap {
+        margin-top:  0;
+    }
+    html:not(.fl-builder-edit) body.page-id-137 .site-footer{width: 100% !important;}
+    .container.careers .fl-col.fl-node-5b422736aa630.fl-col-small{display: none;}
+    form.email_fails{width: 100%;}
+    .container.careers {width:  100%;max-width:  100%;}
+    .alert.alert-danger{font-size: 14px;} 
+    .alert p{font-size: 14px;}
+    p.text_error_message{width: 90%;}
+    .block_right_product_order{min-height: 160px !important;}
+    .content_product_order p{font-size: 13px;}
+    p.price_order_product{margin-left: 30px; text-align: center;}
+    .title_price_top_block_order a.title_product_order{text-align: center;}
+    .title_price_top_block_order{flex-direction: row;justify-content: center;}
+	a.btn_submit_order_go{margin: 0 auto;}
+	.line_wrap:before{display: none;}
+	.template_order_content{margin-bottom: 0;}
+	.category_order_content{padding-bottom: 40px;}
+	a.need_help_header_order_content {position:  static;display:  block;margin:  0 auto;margin-bottom:  20px;}
+	html:not(.fl-builder-edit) .dales_bottom_divider {width: 4% !important;}
+	html:not(.fl-builder-edit) #dales_bottom_copyright_row {width: 100%;}
+	html:not(.fl-builder-edit) #dales_bottom_copyright {width: 100%;}
+	html:not(.fl-builder-edit) #dales_bottom_payments {width: 100%; padding-bottom: 10px;}
+	html:not(.fl-builder-edit) #dales_bottom_copyright p, #dales_bottom_payments .fl-photo {text-align: center !important;}
+	html:not(.fl-builder-edit) #dales_top_menu ul {flex-direction: column; align-items: center;}
+	html:not(.fl-builder-edit) #dales_top_cart_links .fl-col-group {flex-direction: column;}
+	html:not(.fl-builder-edit) #dales_top_cart_links .fl-col {width: 50%;}
+	html:not(.fl-builder-edit) #dales_top_counter {padding-bottom: 10px;}
+	html:not(.fl-builder-edit) #dales_mobile_icon {display: block;}
+	html:not(.fl-builder-edit) #dales_top_dark_row .fl-col-group {flex-wrap: wrap;}
+	html:not(.fl-builder-edit) #dales_top_logo_container {width: 100%; padding: 10px;}
+	html:not(.fl-builder-edit) #dales_top_cart_links {width: 33.3%; }
+	html:not(.fl-builder-edit) #dales_top_cart_links .fl-col-group {flex-direction: row !important;}
+	html:not(.fl-builder-edit) #dales_main_menu_container { width: 33.3%;}
+	html:not(.fl-builder-edit) #dales_top_counter .uabb-module-content {text-align: center !important;}
+	html:not(.fl-builder-edit) #dales_sidebar_contacts {width: 100%;}
+	html:not(.fl-builder-edit) #dales_company_content {width: 100%; order: 1;}
+	html:not(.fl-builder-edit) .dales_company_content_row .fl-col-group {display: flex; flex-direction: column; padding: 10px;}
+	html:not(.fl-builder-edit) #dales_main_menu_container .fl-col-group {display: flex !important;}
+	html:not(.fl-builder-edit) #dales_homepage_section2 .fl-col {width: 100%; padding: 15px;}
+	html:not(.fl-builder-edit) #dales_homepage_section2 {padding-top: 0;}
+	html:not(.fl-builder-edit) #dales_homepage_section2_right_button_faq {width: 100%; }
+	html:not(.fl-builder-edit) #dales_homepage_section2_right_button_faq .fl-module-content.fl-node-content {margin-top: 0;}
+	html:not(.fl-builder-edit) .dales_homepage_section3_tab {width: 100%; margin-bottom: 15px;}
+	html:not(.fl-builder-edit) .dales_homepage_section3_image .fl-col-content.fl-node-content {margin-top: 0;}
+	html:not(.fl-builder-edit) .dales_banner_bot_text_col {width: 100%; margin-bottom: 40px; }
+	html:not(.fl-builder-edit) .dales_banner_bot_text_col .fl-col-content.fl-node-content {align-items: center !important; text-align: center;} 
+	html:not(.fl-builder-edit) .dales_banner_bot_text_col .fl-col-content.fl-node-content .fl-module { border-bottom: 1px solid #ffffff; padding-bottom: 10px;}
+	html:not(.fl-builder-edit) #dales_homepage_banner .fl-row-content-wrap {padding-bottom: 120px;}
+	html:not(.fl-builder-edit) .site-footer {padding-left: 3% !important; padding-right: 3% !important; width: 94% !important;}
+	html:not(.fl-builder-edit) #page {padding-left: 8%; padding-right: 8%;}
+	html:not(.fl-builder-edit) #dales_main_menu_container .fl-col-group {display: block !important;}
+	html:not(.fl-builder-edit) #dales_sign_in_desktop {display: none;}
+	html:not(.fl-builder-edit) #dales_sign_in_mobile {width: 33.3%;}
+	html:not(.fl-builder-edit) #dales_top_dark_row .fl-col-group {justify-content: center; align-items: flex-start;}
+	html:not(.fl-builder-edit) #dales_sign_in_mobile {display: block;}
+	html:not(.fl-builder-edit) #dales_top_cart_links {padding-top: 12px; }
+	html:not(.fl-builder-edit) #dales_header_sign_in {padding-top: 20px;}
+	html:not(.fl-builder-edit) #dales_header_sign_in .uabb-module-content {text-align: center;}
+	html:not(.fl-builder-edit) #dales_secondary_menu {display: none;}
+	html:not(.fl-builder-edit) #dales_bottom_logo {align-self: flex-start; padding-top: 40px;}
+    html:not(.fl-builder-edit) .site-footer{width: 100% !important;}
+	
+}
+@media (max-width: 575px){
+    div#dales_bottom_top_row .fl-rich-text {margin-top:  20px;margin-bottom:  20px;}
+    html:not(.fl-builder-edit) #dales_company_content{padding-right: 0;}
+    div .datepicker--cell.datepicker--cell-day.-range-from-.-selected-:before{width: 65%;height: 65%;}
+    div .datepicker--cell.datepicker--cell-day.-range-to-.-selected-:before{width: 65%;height: 65%;}
+    .footer_content_product_order .jq-selectbox.jqselect.select_count_order.option_count_order{margin-left: 10px;}
+    .info_product_order{width: calc(100% + 8px);left: -4px;bottom: -27px;}
+    .info_product_order p {font-size: 9px;}
+	h3.title_select_header_template_order_content{font-size: 30px;}
+	p.text_header_order_content{font-size: 20px;}
+	h3.title_block_category_order{font-size: 20px;}
+	p.description_block_category_order{font-size: 11px;}
+	.category_block_order{min-height: 190px;}
+	a.btn_submit_order_go{width: 100%;}
+}
+@media (max-width: 475px){
+    p.text_error_message{font-size: 11px;width: 75%;}
+    .title_datepicker{flex-direction: column;}
+    .left_section_title_datepicker{width: 100%;}
+    .center_section_title_datepicker{width: 100%;}
+    .right_section_title_datepicker{width: 100%;}
+    .datepicker--cell.datepicker--cell-day span{font-size: 16px;}
+    .datepicker--nav-title{font-size: 16px;}
+    .datepicker--cell.datepicker--cell-day{height: 40px;margin-top: 5px;margin-bottom: 5px;}
+    .error_message_order_step_three{margin-bottom: 20px;}
+}
+@media (max-width: 425px){
+    .header_template_order_content.three{padding-top: 20px;padding-bottom: 20px;}
+    p.rolloff_product_order{position: static;width: 100%;text-align: center;}
+    .header_template_order_content.two{padding-bottom: 20px;padding-top: 20px;}
+    .footer_content_product_order .jq-selectbox__select{margin: 0 auto;}
+    .footer_content_product_order{width: 100%; flex-direction: column;position: static;}
+    label.label_description_block.product_order{margin-bottom: 10px;}
+    .footer_content_product_order .jq-selectbox.jqselect.select_count_order.option_count_order{margin-left: 0;margin-bottom: 20px;}
+    .title_price_top_block_order{align-items: center;}
+    .title_price_top_block_order a.title_product_order{font-size: 16px;}
+    p.price_order_product{margin-left: 10px;text-align: center;font-size: 12px;margin-bottom: 0;}
+}
+@media (max-width: 399px){
+    div#dales_bottom_top_row .fl-rich-text {margin-top:  20px;margin-bottom:  20px;}
+    h3.title_select_header_template_order_content{font-size: 26px;}
+    div .datepicker--cell.datepicker--cell-day.-range-to-.-selected-:before{width: 90%;height: 70%;}
+    div .datepicker--cell.datepicker--cell-day.-range-from-.-selected-:before{width: 90%;height: 70%;}
+    .title_left_block_date h3{font-size: 18px;}
+	html:not(.fl-builder-edit) #dales_bottom_logo {width: 60%;}
+	html:not(.fl-builder-edit) #dales_bottom_menus {width: 25%;}
+	html:not(.fl-builder-edit) .site-footer {padding-left: 2% !important; padding-right: 2% !important; width: 96% !important;}
+	html:not(.fl-builder-edit) body.page-id-137 .site-footer{width: 100% !important;}
+    html:not(.fl-builder-edit) #page {padding-left: 8%; padding-right: 8%;}
+	html:not(.fl-builder-edit) #dales_top_menu a {font-size: 10px; padding: 3px;}
+}
