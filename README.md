@@ -16,4 +16,4 @@ Please follow psd document:
 https://drive.google.com/file/d/121ja6KgrQJjxoq1v3SCvkRa6F8nhCS5G/view?usp=sharing
 
 
-After finishing job, please write me in Skype your spent time.
+After finishing job, please write me your spent time.
