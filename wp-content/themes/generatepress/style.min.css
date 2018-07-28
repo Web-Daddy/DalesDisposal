@@ -1349,7 +1349,12 @@ body{
     color: #fff;
     background-color: #3f3f3f !important;
     }
-
+.supportform input:focus {
+    border-color: #f4c72b !important;
+}
+.supportform textarea:focus {
+    border-color: #f4c72b !important;
+}
 container.pum-responsive.pum-responsive-medium {
     margin-left: -15% !important;
     width: 30% !important;
