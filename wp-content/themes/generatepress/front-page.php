@@ -68,25 +68,40 @@ get_header(); ?>
 
 	    endwhile;
 	endif;
+	$tax_args = array(
+		'taxonomy' => 'zip_code',
+		'hide_empty' => false,
+	);
+
+	$zip_codes_tax = get_terms( $tax_args );
+
+	$zip_codes_tax_array = array();
+	foreach ($zip_codes_tax as $zip_code_name) {
+
+		$zip_codes_tax_array[] = substr($zip_code_name->name, 0, 5);
+	}
 
 ?>
 
 <script type="text/javascript">
 	
 	jQuery(document).ready(function($) {
-		var zip_codes = [<?php echo implode(',', $zip_codes_array); ?>];
+		
 		$('#dales_search_form').on('submit', function(e) {
 			e.preventDefault();
-			
-			var input_value = jQuery('.input_zip_code').val();
+			var zip_codes = [<?php echo implode(',', $zip_codes_tax_array); ?>];
+			var input_value = jQuery('.input_zip_code').val().substring(0, 5);
 			var input_index = zip_codes.indexOf(+input_value);
 			console.log(input_index);
 			if(input_index >= 0 ){
 				setCookieDales("dales_order_zip_code", input_value, {"path":"/"});
 				window.location.replace("/order/");
 			} else {
-				jQuery('.search_zip_code_error').html('Wrong zip code!');
+				jQuery('.search_zip_code_error_container').css('display', 'block');
 			}
+		});
+		jQuery(document).on("click", '.search_zip_code_error_close_button', function(){
+			jQuery('.search_zip_code_error_container').css('display', 'none');
 		});
 		function setCookieDales(name, value, options) {
 	  options = options || {};

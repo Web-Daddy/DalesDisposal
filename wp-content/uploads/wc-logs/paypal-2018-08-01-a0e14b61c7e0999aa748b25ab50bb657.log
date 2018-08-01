@@ -1,0 +1,88 @@
+2018-08-01T12:52:28+00:00 INFO Generating payment form for order 340. Notify URL: http://dales.wemes.com.ua/wc-api/WC_Gateway_Paypal/
+2018-08-01T12:52:28+00:00 INFO PayPal Request Args for order 340: Array
+(
+    [cmd] => _cart
+    [business] => akafaustzp@gmail.com
+    [no_note] => 1
+    [currency_code] => GBP
+    [charset] => utf-8
+    [rm] => 1
+    [upload] => 1
+    [return] => http://dales.wemes.com.ua/order-received/340/?key=wc_order_5b61ad0c77e29&utm_nooverride=1
+    [cancel_return] => http://dales.wemes.com.ua/?cancel_order=true&order=wc_order_5b61ad0c77e29&order_id=340&redirect&_wpnonce=e24d9b3c9a
+    [page_style] => 
+    [image_url] => 
+    [paymentaction] => sale
+    [bn] => WPCodelibrary_SP_EC_PRO
+    [invoice] => WC-340
+    [custom] => {"order_id":340,"order_key":"wc_order_5b61ad0c77e29"}
+    [notify_url] => http://dales.wemes.com.ua/wc-api/WC_Gateway_Paypal/
+    [first_name] => ***
+    [last_name] => ***
+    [address1] => ***
+    [address2] => ***
+    [city] => ***
+    [state] => ***
+    [zip] => ***
+    [country] => ***
+    [email] => ***@***
+    [night_phone_b] => ***
+    [address_override] => 0
+    [no_shipping] => 0
+    [tax_cart] => 0.00
+    [item_name_1] => 20 Yard
+    [quantity_1] => 3
+    [amount_1] => 375
+    [item_number_1] => 
+    [item_name_2] => 30 Yard
+    [quantity_2] => 1
+    [amount_2] => 425
+    [item_number_2] => 
+    [item_name_3] => 40 Yard
+    [quantity_3] => 1
+    [amount_3] => 550
+    [item_number_3] => 
+    [item_name_4] => 20 Yard
+    [quantity_4] => 3
+    [amount_4] => 425
+    [item_number_4] => 
+)
+
+2018-08-01T20:32:42+00:00 INFO Generating payment form for order 343. Notify URL: http://dales.wemes.com.ua/wc-api/WC_Gateway_Paypal/
+2018-08-01T20:32:42+00:00 INFO PayPal Request Args for order 343: Array
+(
+    [cmd] => _cart
+    [business] => akafaustzp@gmail.com
+    [no_note] => 1
+    [currency_code] => USD
+    [charset] => utf-8
+    [rm] => 1
+    [upload] => 1
+    [return] => http://dales.wemes.com.ua/order-received/343/?key=wc_order_5b6218ea5e9ae&utm_nooverride=1
+    [cancel_return] => http://dales.wemes.com.ua/?cancel_order=true&order=wc_order_5b6218ea5e9ae&order_id=343&redirect&_wpnonce=b200531190
+    [page_style] => 
+    [image_url] => 
+    [paymentaction] => sale
+    [bn] => WPCodelibrary_SP_EC_PRO
+    [invoice] => WC-343
+    [custom] => {"order_id":343,"order_key":"wc_order_5b6218ea5e9ae"}
+    [notify_url] => http://dales.wemes.com.ua/wc-api/WC_Gateway_Paypal/
+    [first_name] => ***
+    [last_name] => ***
+    [address1] => ***
+    [address2] => ***
+    [city] => ***
+    [state] => ***
+    [zip] => ***
+    [country] => ***
+    [email] => ***@***
+    [night_phone_b] => ***
+    [address_override] => 0
+    [no_shipping] => 0
+    [tax_cart] => 0.00
+    [item_name_1] => 10 Yard
+    [quantity_1] => 1
+    [amount_1] => 300
+    [item_number_1] => 
+)
+

@@ -1,0 +1,44 @@
+2018-08-01T08:47:31+00:00 CRITICAL Uncaught Error: Undefined constant 'n' in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/themes/generatepress/dales_checkout.php:53
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/template-loader.php(74): include()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-blog-header.php(19): require_once('/var/www/wemes/...')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/index.php(17): require('/var/www/wemes/...')
+#3 {main}
+  thrown
+
+2018-08-01T13:19:35+00:00 CRITICAL Uncaught Error: Call to a member function meta_exists() on null in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/class-wc-checkout.php:1090
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce-checkout-manager/includes/checkout-billing.php(73): WC_Checkout->get_value('billing_country')
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/class-wp-hook.php(288): wooccm_checkout_billing_fields(Array)
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/plugin.php(203): WP_Hook->apply_filters(Array, Array)
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/class-wc-countries.php(1258): apply_filters('woocommerce_bil...', Array, 'UA')
+#4 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woo-checkout-field-editor-pro/classes/class-wc-checkout-field-editor.php(147): WC_Countries->get_address_fields('UA', 'billing_')
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woo-ch
+
+2018-08-01T13:19:51+00:00 CRITICAL Uncaught Error: Call to a member function meta_exists() on null in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/class-wc-checkout.php:1090
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce-checkout-manager/includes/checkout-billing.php(73): WC_Checkout->get_value('billing_country')
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/class-wp-hook.php(288): wooccm_checkout_billing_fields(Array)
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/plugin.php(203): WP_Hook->apply_filters(Array, Array)
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/class-wc-countries.php(1258): apply_filters('woocommerce_bil...', Array, 'UA')
+#4 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woo-checkout-field-editor-pro/classes/class-wc-checkout-field-editor.php(147): WC_Countries->get_address_fields('UA', 'billing_')
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woo-ch
+
+2018-08-01T13:20:09+00:00 CRITICAL Uncaught Error: Call to a member function meta_exists() on null in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/class-wc-checkout.php:1090
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce-checkout-manager/includes/checkout-billing.php(73): WC_Checkout->get_value('billing_country')
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/class-wp-hook.php(288): wooccm_checkout_billing_fields(Array)
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/plugin.php(203): WP_Hook->apply_filters(Array, Array)
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/class-wc-countries.php(1258): apply_filters('woocommerce_bil...', Array, 'UA')
+#4 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woo-checkout-field-editor-pro/classes/class-wc-checkout-field-editor.php(147): WC_Countries->get_address_fields('UA', 'billing_')
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woo-ch
+
+2018-08-01T13:20:33+00:00 CRITICAL Uncaught Error: Call to a member function meta_exists() on null in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/class-wc-checkout.php:1090
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce-checkout-manager/includes/checkout-billing.php(73): WC_Checkout->get_value('billing_country')
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/class-wp-hook.php(288): wooccm_checkout_billing_fields(Array)
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/plugin.php(203): WP_Hook->apply_filters(Array, Array)
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/class-wc-countries.php(1258): apply_filters('woocommerce_bil...', Array, 'UA')
+#4 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woo-checkout-field-editor-pro/classes/class-wc-checkout-field-editor.php(147): WC_Countries->get_address_fields('UA', 'billing_')
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woo-ch
+

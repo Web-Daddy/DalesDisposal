@@ -1,0 +1,16 @@
+Compare all of these listed issues with WordPress Twenty Seventeen Theme
+http://develop.crazywebtools.com/2013/01/10/markup-image-alignment/
+http://prntscr.com/hg6uan
+http://prntscr.com/hg729k
+
+Image caption is not good for user.
+    Ex. http://prntscr.com/hdn3b0
+
+Need fix image aligment on page
+    Ex. http://prntscr.com/hdn987
+
+Page data should not dispaly correctly
+    Ex. http://prntscr.com/hdn9hw
+
+Need to fix this page form 
+    Ex. http://prntscr.com/hdnaks

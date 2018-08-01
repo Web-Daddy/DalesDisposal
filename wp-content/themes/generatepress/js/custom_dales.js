@@ -141,7 +141,7 @@ jQuery(document).ready(function($) {
 		if (!$.isEmptyObject(data_range)){
 			data_range = JSON.stringify(data_range);
 			$.cookie('date_range', data_range, {path: '/' });
-			window.location = window.location.origin+'/checkout';
+			window.location = window.location.origin+'/checkout-dales';
 		}else{
 			$('.error_message_order_step_three').css('opacity','1');
 			$('.error_message_order_step_three').css('display','flex');
@@ -157,5 +157,11 @@ jQuery(document).ready(function($) {
 	$('label.optimization_btn .btn').on('click',function(){
 		$('#file_for_upload_email').click();
 	});
+
+
+	// var dales_billing_details_var = jQuery(".woocommerce-billing-fields h3");
+	// var dales_field_var = jQuery('#billing_myfield1c_field');
+	// jQuery(dales_billing_details_var.clone()).insertBefore(dales_field_var);
+	// dales_billing_details_var.remove();
 
 });

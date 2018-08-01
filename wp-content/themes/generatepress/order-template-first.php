@@ -1,5 +1,9 @@
 <?php /* Template Name: Order Template */ ?>
 <?php
+if (!isset($_COOKIE['dales_order_zip_code'])) {
+    header('Location:'.  home_url() );
+    exit;
+}
 get_header(); ?>
 
 <div class="template_order">
@@ -9,7 +13,7 @@ get_header(); ?>
 				<div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12 line_wrap">
 					<div class="delivery">
 						<img class="good_icon_image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/good_icon.png" alt="">
-						<p class="delivery_text">Delivery to <span>48346</span></p>
+						<p class="delivery_text">Delivery to <span><?php echo $_COOKIE['dales_order_zip_code'] ?></span></p>
 					</div>					
 				</div>
 				<div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">

@@ -1,0 +1,461 @@
+[
+  {
+    "elements": [
+      {
+        "id": "activate-and-deactivate-plugin-flexible-checkout-fields-tests;plugin-flexible-checkout-fields--is-active",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Plugin Flexible Checkout Fields  is active",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Before ",
+            "result": {
+              "status": "passed",
+              "duration": 3283714425
+            },
+            "hidden": true,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/common.js:21"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user is logged in to wordPress",
+            "result": {
+              "status": "passed",
+              "duration": 286289400
+            },
+            "line": 5,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/commonResults.js:9"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "i resets the consent to collect data in the database",
+            "result": {
+              "status": "passed",
+              "duration": 30189748
+            },
+            "line": 6,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/wpdesk-helper/wpdeskHelperSettingsSteps.js:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "i open \"menu-plugins\" and activate plugin with slug \"flexible-checkout-fields\"",
+            "result": {
+              "status": "passed",
+              "duration": 3115078186
+            },
+            "line": 9,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/plugins/pluginsSteps.js:9"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "check if plugin with slug \"flexible-checkout-fields\" is Active",
+            "result": {
+              "status": "passed",
+              "duration": 398474236
+            },
+            "line": 10,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/plugins/pluginsSteps.js:13"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1980560690
+            },
+            "hidden": true,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/common.js:35"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@flexible-checkout-fields",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "id": "activate-and-deactivate-plugin-flexible-checkout-fields-tests;plugin-flexible-checkout-fields-is-inactive",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Plugin Flexible Checkout Fields is inactive",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Before ",
+            "result": {
+              "status": "passed",
+              "duration": 842043657
+            },
+            "hidden": true,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/common.js:21"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user is logged in to wordPress",
+            "result": {
+              "status": "passed",
+              "duration": 296743077
+            },
+            "line": 5,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/commonResults.js:9"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "i resets the consent to collect data in the database",
+            "result": {
+              "status": "passed",
+              "duration": 21354170
+            },
+            "line": 6,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/wpdesk-helper/wpdeskHelperSettingsSteps.js:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "i open \"menu-plugins\" and deactivate plugin with slug \"flexible-checkout-fields\"",
+            "result": {
+              "status": "passed",
+              "duration": 984640378
+            },
+            "line": 13,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/plugins/pluginsSteps.js:17"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "check if plugin with slug \"flexible-checkout-fields\" is Inactive",
+            "result": {
+              "status": "passed",
+              "duration": 374999959
+            },
+            "line": 14,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/plugins/pluginsSteps.js:26"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1962207791
+            },
+            "hidden": true,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/common.js:35"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@flexible-checkout-fields",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "activate-and-deactivate-plugin-flexible-checkout-fields-tests",
+    "keyword": "Feature",
+    "line": 2,
+    "name": "Activate and Deactivate plugin Flexible Checkout Fields tests",
+    "tags": [
+      {
+        "name": "@flexible-checkout-fields",
+        "line": 1
+      }
+    ],
+    "uri": "/tmp/tests/test-acceptance/features/tests_scenario/flexible-checkout-fields/activateAndDeactivateFlexibleCheckoutFieldsTests.feature"
+  },
+  {
+    "elements": [
+      {
+        "id": "tracker-message-flexible-checkout-fields-tests;tracker-message-is-visible",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Tracker message is Visible",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Before ",
+            "result": {
+              "status": "passed",
+              "duration": 909727005
+            },
+            "hidden": true,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/common.js:21"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user is logged in to wordPress",
+            "result": {
+              "status": "passed",
+              "duration": 272656206
+            },
+            "line": 5,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/commonResults.js:9"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "i resets the consent to collect data in the database",
+            "result": {
+              "status": "passed",
+              "duration": 924174
+            },
+            "line": 6,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/wpdesk-helper/wpdeskHelperSettingsSteps.js:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "i open \"menu-plugins\" and activate plugin with slug \"flexible-checkout-fields\"",
+            "result": {
+              "status": "passed",
+              "duration": 643624029
+            },
+            "line": 9,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/plugins/pluginsSteps.js:9"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "tracker message type \"short\" visible",
+            "result": {
+              "status": "passed",
+              "duration": 113248328
+            },
+            "line": 10,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/tracker/trackerResults.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "Check if buttons skip and Allow & Continue visible in tracker message",
+            "result": {
+              "status": "passed",
+              "duration": 116471276
+            },
+            "line": 11,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/tracker/trackerResults.js:8"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "But ",
+            "name": "i open \"menu-plugins\" and deactivate plugin with slug \"flexible-checkout-fields\"",
+            "result": {
+              "status": "passed",
+              "duration": 1004683112
+            },
+            "line": 12,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/plugins/pluginsSteps.js:17"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1972064542
+            },
+            "hidden": true,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/common.js:35"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@flexible-checkout-fields",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "id": "tracker-message-flexible-checkout-fields-tests;tracker-long-message-is-visible",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Tracker long message is Visible",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Before ",
+            "result": {
+              "status": "passed",
+              "duration": 861624675
+            },
+            "hidden": true,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/common.js:21"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user is logged in to wordPress",
+            "result": {
+              "status": "passed",
+              "duration": 314466572
+            },
+            "line": 5,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/commonResults.js:9"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "i resets the consent to collect data in the database",
+            "result": {
+              "status": "passed",
+              "duration": 19155908
+            },
+            "line": 6,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/wpdesk-helper/wpdeskHelperSettingsSteps.js:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "i open \"menu-plugins\" and activate plugin with slug \"flexible-checkout-fields\"",
+            "result": {
+              "status": "passed",
+              "duration": 661700804
+            },
+            "line": 15,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/plugins/pluginsSteps.js:9"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "Skip tracker message",
+            "result": {
+              "status": "passed",
+              "duration": 2187069128
+            },
+            "line": 16,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/tracker/trackerMessageSteps.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "i open submenu \"Checkout Fields\" from menu \"toplevel_page_woocommerce\"",
+            "result": {
+              "status": "passed",
+              "duration": 773873472
+            },
+            "line": 17,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/menu/menuSteps.js:19"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "tracker message type \"long\" visible",
+            "result": {
+              "status": "passed",
+              "duration": 104888869
+            },
+            "line": 18,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/tracker/trackerResults.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "i open \"menu-plugins\" and deactivate plugin with slug \"flexible-checkout-fields\"",
+            "result": {
+              "status": "passed",
+              "duration": 1007059580
+            },
+            "line": 19,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/plugins/pluginsSteps.js:17"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1957948426
+            },
+            "hidden": true,
+            "match": {
+              "location": "/tmp/tests/test-acceptance/features/step_definitions/common.js:35"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@flexible-checkout-fields",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "tracker-message-flexible-checkout-fields-tests",
+    "keyword": "Feature",
+    "line": 2,
+    "name": "Tracker message Flexible Checkout Fields tests",
+    "tags": [
+      {
+        "name": "@flexible-checkout-fields",
+        "line": 1
+      }
+    ],
+    "uri": "/tmp/tests/test-acceptance/features/tests_scenario/flexible-checkout-fields/trackerMessageIsVisibleWhenActivatePluginFlexibleCheckoutFieldsTests.feature"
+  }
+]

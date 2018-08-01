@@ -213,3 +213,194 @@ function footag_func( $atts ){
 	 return "foo = ". $atts['foo'];
 }
 add_shortcode('footag', 'footag_func');
+
+
+add_action( 'init', 'custom_taxonomy_zip_code' );
+
+function custom_taxonomy_zip_code()  {
+
+$labels = array(
+
+    'name'                       => 'Zip Codes',
+
+    'singular_name'              => 'Zip Code',
+
+    'menu_name'                  => 'Zip Code',
+
+    'all_items'                  => 'All Zip Codes',
+
+    'parent_item'                => 'Parent Zip Code',
+
+    'parent_item_colon'          => 'Parent Zip Code:',
+
+    'new_item_name'              => 'New Zip Code Name',
+
+    'add_new_item'               => 'Add New Zip Code',
+
+    'edit_item'                  => 'Edit Zip Code',
+
+    'update_item'                => 'Update Zip Code',
+
+    'separate_items_with_commas' => 'Separate Zip Code with commas',
+
+    'search_items'               => 'Search Zip Codes',
+
+    'add_or_remove_items'        => 'Add or remove Zip Codes',
+
+    'choose_from_most_used'      => 'Choose from the most used Zip Codes',
+
+);
+
+$args = array(
+
+    'labels'                     => $labels,
+
+    'hierarchical'               => true,
+
+    'public'                     => true,
+
+    'show_ui'                    => true,
+
+    'show_admin_column'          => false,
+
+    'show_in_nav_menus'          => true,
+
+    'show_tagcloud'              => true,
+
+);
+
+register_taxonomy( 'zip_code', 'product', $args );
+
+register_taxonomy_for_object_type( 'zip_code', 'product' );
+
+}
+
+
+
+// Add Variation Settings
+
+add_action( 'woocommerce_product_after_variable_attributes', 'variation_settings_fields', 10, 3 );
+
+// Save Variation Settings
+
+add_action( 'woocommerce_save_product_variation', 'save_variation_settings_fields', 10, 2 );
+
+/**
+
+ * Create new fields for variations
+
+ *
+
+*/
+
+function variation_settings_fields( $loop, $variation_data, $variation ) {
+
+	// Text Field
+
+	woocommerce_wp_text_input( 
+
+		array( 
+
+			'id'          => 'variation_size[' . $variation->ID . ']', 
+
+			'label'       => __( 'Size', 'woocommerce' ),
+
+			'placeholder' => "18' long x 8' wide x 3' high", 
+
+			'desc_tip'    => 'true',
+
+			'description' => __( 'Enter Container Dimension Here.', 'woocommerce' ),
+
+			'value'       => get_post_meta( $variation->ID, 'variation_size', true )
+
+		)
+
+	);
+
+	// Number Field
+
+	woocommerce_wp_text_input( 
+
+		array( 
+
+			'id'          => 'variation_weight[' . $variation->ID . ']', 
+
+			'label'       => __( 'Weight', 'woocommerce' ),
+
+			'placeholder' => "3 TON WEIGHT LIMIT (6,000 LBS) $47.50 PER TON OVERWEIGHT", 			
+
+			'desc_tip'    => 'Enter Container Weight Here.',
+
+			'description' => __( 'Enter Container Weight Here.', 'woocommerce' ),
+
+			'value'       => get_post_meta( $variation->ID, 'variation_weight', true )
+
+		)
+
+	);
+
+	
+
+}
+
+/**
+
+ * Save new fields for variations
+
+ *
+
+*/
+
+function save_variation_settings_fields( $post_id ) {
+
+	// Text Field
+
+	$variation_size = $_POST['variation_size'][ $post_id ];
+
+	if( ! empty( $variation_size ) ) {
+
+		update_post_meta( $post_id, 'variation_size', esc_attr( $variation_size ) );
+
+	}
+
+	
+
+	// Number Field
+
+	$variation_weight = $_POST['variation_weight'][ $post_id ];
+
+	if( ! empty( $variation_weight ) ) {
+
+		update_post_meta( $post_id, 'variation_weight', esc_attr( $variation_weight ) );
+
+	}
+
+	
+
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'bbloomer_remove_billing_postcode_checkout' );
+ 
+function bbloomer_remove_billing_postcode_checkout( $fields ) {
+  unset($fields['billing']['billing_postcode']);
+  return $fields;
+}
+
+// function woo_add_cart_fee() {
+ 
+//   global $woocommerce;
+
+
+	
+//   $woocommerce->cart->add_fee( __('Price of additional rent', 'woocommerce'), 5 );
+	
+// }
+// add_action( 'woocommerce_cart_calculate_fees', 'woo_add_cart_fee' );
+
+function dales_cart_shortcode_func( $atts ){
+	$dales_cart_count = WC()->cart->get_cart_contents_count();
+	$dales_cart_count_link = '<a href="/checkout-dales/" class="dales_cart_count_link">'.$dales_cart_count.'</a>';
+	return $dales_cart_count_link;
+}
+add_shortcode('dales_cart_shortcode', 'dales_cart_shortcode_func');
+

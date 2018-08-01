@@ -1,5 +1,27 @@
 <?php /* Template Name: Order Template Three */ ?>
 <?php 
+
+if (!isset($_COOKIE['dales_order_zip_code'])) {
+    header('Location:'.  home_url() );
+    exit;
+};
+if (!isset($_COOKIE['slug'])) {
+    header('Location:'.  home_url() .'/order' );
+    exit;
+};
+if (!isset($_COOKIE['form_data'])) {
+    header('Location:'.  home_url() .'/order-2' );
+    exit;
+};
+
+parse_str(stripslashes($_COOKIE['form_data']), $form_data);
+
+global $woocommerce;
+$woocommerce->cart->empty_cart(); 
+foreach ($form_data['product'] as $form_data_post) {
+	$woocommerce->cart->add_to_cart($form_data_post['id'], $form_data_post['count'] );
+} 
+
 get_header();
 ?>
 
@@ -10,7 +32,7 @@ get_header();
 				<div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12 line_wrap line_wrap_active">
 					<div class="delivery">
 						<img class="good_icon_image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/good_icon.png" alt="">
-						<p class="delivery_text">Delivery to <span>48346</span></p>
+						<p class="delivery_text">Delivery to <span><?php echo $_COOKIE['dales_order_zip_code'] ?></span></p>
 					</div>					
 				</div>
 				<div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12 line_wrap">

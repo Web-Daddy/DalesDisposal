@@ -10,3 +10,7 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress
+
+<IfModule pagespeed_module>
+    ModPagespeed off
+</IfModule>

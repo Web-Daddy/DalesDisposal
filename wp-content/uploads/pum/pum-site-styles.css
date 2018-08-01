@@ -1,6 +1,6 @@
 /**
  * Do not touch this file! This file created by PHP
- * Last modifiyed time: Jul 28 2018, 12:19:55
+ * Last modifiyed time: Jul 29 2018, 10:14:53
  */
 
 
@@ -86,10 +86,11 @@
 .pum-theme-245 .pum-container, .pum-theme-default-theme .pum-container { padding: 10px; border-radius: 5px; border: 1px none #000000; box-shadow: 9px 8px 62px -2px rgba( 2, 2, 2, 0.23 ); background-color: rgba( 249, 249, 249, 1.00 ) } 
 .pum-theme-245 .pum-title, .pum-theme-default-theme .pum-title { color: #000000; text-align: left; text-shadow: 0px 0px 0px rgba( 2, 2, 2, 0.00 ); font-family: Sans-Serif; font-size: 40px; line-height: 36px } 
 .pum-theme-245 .pum-content, .pum-theme-default-theme .pum-content { color: #8c8c8c; font-family: inherit } 
-.pum-theme-245 .pum-content + .pum-close, .pum-theme-default-theme .pum-content + .pum-close { height: 42px; width: 69px; left: auto; right: 16px; bottom: auto; top: 16px; padding: 24px; color: #313841; font-family: Comfortaa; font-size: 29px; line-height: 15px; border: 1px none #ffffff; border-radius: 0px; box-shadow: 0px 0px 0px 0px rgba( 2, 2, 2, 0.00 ); text-shadow: 0px 0px 0px rgba( 0, 0, 0, 0.00 ); background-color: rgba( 0, 183, 205, 0.00 ) } 
+.pum-theme-245 .pum-content + .pum-close, .pum-theme-default-theme .pum-content + .pum-close { height: 11px; width: 11px; left: auto; right: 31px; bottom: auto; top: 9px; padding: 24px; color: #313841; font-family: Comfortaa; font-size: 29px; line-height: 15px; border: 1px none #ffffff; border-radius: 0px; box-shadow: 0px 0px 0px 0px rgba( 2, 2, 2, 0.00 ); text-shadow: 0px 0px 0px rgba( 0, 0, 0, 0.00 ); background-color: rgba( 0, 183, 205, 0.00 ) } 
 
 
 
+#pum-269 {z-index: 1999999999}
 #pum-264 {z-index: 1999999999}
 #pum-251 {z-index: 1999999999}
 

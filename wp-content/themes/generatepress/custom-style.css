@@ -18,7 +18,7 @@ html:not(.fl-builder-edit) body .grid-container {max-width: none !important;}
 html:not(.fl-builder-edit) #page {padding-left: 8%; padding-right: 8%;}
 html:not(.fl-builder-edit) .site-footer {padding-left: 8% !important; padding-right: 8% !important; /*width: 84% !important;*/}
 /* Header */
-
+.dales_cart_count_link {border: 4px solid #d69a25; font-family: 'GothamBold'; font-size: 13px; padding-top: 3px;font-size: 18px; display: block; width: 40px; height: 40px; border-radius: 50px; background: #efe735; text-align: center; color: #313841 !important;}
 html:not(.fl-builder-edit) #content {padding: 0; }
 html:not(.fl-builder-edit) .entry-content {margin-top: 0 !important;}
 html:not(.fl-builder-edit) #dales_top_gold_row .fl-row-content-wrap {font-family: 'GothamBold'; min-height: 60px; display: flex; align-items: center; padding-left: 10px; padding-right: 10px;}
@@ -37,13 +37,26 @@ html:not(.fl-builder-edit) #dales_main_menu_container .fl-col {width: 100%;}
 html:not(.fl-builder-edit) #dales_main_menu_container .fl-col-group {display: none !important;}
 html:not(.fl-builder-edit) #dales_homepage_banner .fl-row-content-wrap {min-height: 36vw; padding-bottom: 35px;}
 html:not(.fl-builder-edit) #dales_homepage_search_button a {font-family: 'GothamBold'; border: 4px solid #f4c72b !important;}
+
+
+/* Zip codes */
+#dales_zip_code_html .fl-html {position: relative;}
+.search_zip_code_error_container {display: none; position: absolute; left: 0; right: 0; top: 0;}
+.search_zip_code_error_container p{margin-bottom: 0; color: #313841;}
+.search_zip_code_error_section {background: #ffffff; border-radius: 10px; width: 500px; margin: 0 auto; max-width: 80%; overflow: hidden; display: flex; flex-wrap: wrap;}
+.search_zip_code_error_content {width: calc(100% - 80px);}
+.search_zip_code_error_content_title {font-family: 'GothamMedium'; font-size: 27px; border-bottom: 5px solid #e8e8e8; padding: 40px 40px 25px 40px;}
+.search_zip_code_error_content_description {font-family: 'GothamBook'; font-size: 15px; padding: 25px 40px 55px 40px; line-height: 24px;}
+.search_zip_code_error_close_button {background-image: url(images/x.jpg); background-repeat: no-repeat; width: 30px; background-position: center bottom; height: 25px; margin-top: 35px; margin-left: 25px; margin-right: 25px; cursor: pointer;}
 #dales_search_form {display: flex; justify-content: center;}
 #dales_search_form .input_zip_code_submit {background: #efe735; color: #313841; border: 4px solid #f4c72b !important; border-radius: 0 50px 50px 0;}
 #dales_search_form .input_zip_code {background: rgba(43, 43, 43, 0.55); border: 4px solid #f4c72b !important; border-radius: 50px 0 0 50px; border-right: 0 !important; color: #ffffff;}
 #dales_search_form .input_zip_code:focus {outline: none !important;}
-.search_zip_code_error_container {height: 24px; text-align: center;display: block;}
 #dales_search_form .input_zip_code::placeholder {color: #ffffff; font-family: 'GothamBold';} 
-.search_zip_code_error_container p{margin-bottom: 0;}
+
+
+
+
 html:not(.fl-builder-edit) #dales_top_menu .menu-main-menu-container {display: flex; justify-content: center;}
 html:not(.fl-builder-edit) #dales_header_sign_in a {font-family: 'GothamMedium'; font-size: 13px; color: #ffffff; text-transform: uppercase; opacity: 1; transition: 0.5s; padding: 10px;}
 html:not(.fl-builder-edit) #dales_header_sign_in a:hover {opacity: 0.7;}
@@ -134,6 +147,7 @@ html:not(.fl-builder-edit) .dales_faq_answers p {color: #333333; font-size: 15px
 html:not(.fl-builder-edit) .dales_faq_answers p strong {color: #333333; font-size: 16px; font-family: 'GothamMedium';}
 html:not(.fl-builder-edit) .dales_faq_answers {padding-bottom: 20px;}
 html:not(.fl-builder-edit) #dales_secondary_menu #menu-secondary-menu .dales_active a {color: #f4c72b;}
+
 /* ORDER */
 .header_order {margin: 0 auto;}
 .header_order {
@@ -196,11 +210,11 @@ h3.title_select_header_template_order_content {
     color:  #313841;
 }
 a.need_help_header_order_content:hover{
-	text-decoration: none;
-	color: #313841 !important;
+    text-decoration: none;
+    color: #313841 !important;
 }
 a.need_help_header_order_content {
-	text-transform: uppercase;
+    text-transform: uppercase;
     position:  absolute;
     top: 82px;
     right: 0;
@@ -360,11 +374,11 @@ p.no_weight {
     text-transform:  uppercase;
 }
 .material_container.active p.material_text{
-	opacity: 1;
-	font-size: 13px;
+    opacity: 1;
+    font-size: 13px;
 }
 .header_template_order_content.two{
-	padding-bottom: 80px;
+    padding-bottom: 80px;
 }
 
 .block_product_order {
@@ -862,13 +876,264 @@ form.email_fails{
 /* END Careers */
 
 
+.supportform {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 2.2;
+}
+.supportform input, #wppb-register-user input {
+    background-color: #fff !important;
+    border: 3px solid #313841 !important;
+    border-radius: 4px;
+    height: 40px !important;
+    width: 100%
+}
+
+.supportform textarea,  #wppb-register-user textarea {
+    background-color: #fff !important;
+    border: 3px solid #313841 !important;
+    border-radius: 4px;
+    height: 200px !important;
+    width: 100%
+}
+.supportform label {
+    width: 50%;
+    margin-bottom: 27px;
+}
+
+.supportform label.firstn {
+    width: 24%;
+    float: left;
+    margin-right: 2%;
+}
+
+.supportform label.lastn {
+    width: 24%;
+}
+
+.supportform input.wpcf7-form-control.wpcf7-submit {
+    color: #313841;
+    width: 120px;
+    border: 4px solid #f4c72b !important;
+    border-radius: 30px;
+    height: 45px !important;
+    float: right;
+    margin-right: 50%;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: "Gotham", san-serif;
+    line-height: 1;
+}
+
+.supportform input.wpcf7-form-control.wpcf7-submit:hover {
+    color: #fff;
+    background-color: #3f3f3f !important;
+    }
+.supportform input:focus, #wppb-register-user input:focus {
+    border-color: #f4c72b !important;
+}
+.supportform textarea:focus, #wppb-register-user textarea:focus {
+    border-color: #f4c72b !important;
+}
+container.pum-responsive.pum-responsive-medium {
+    margin-left: -15% !important;
+    width: 30% !important;
+}
+
+    .pum-container.pum-responsive.pum-responsive-medium {
+   margin-left: -15% !important;
+    width: 30% !important;
+}
+
+#pum_popup_title_251 {
+    margin: 30px;
+    font-weight: 500;
+    font-size: 33px;
+    font-family: "Gotham", sans-serif;
+    color: #313841 !important;
+}
+
+#pum_popup_title_264 {
+    margin: 30px;
+    font-weight: 500;
+    font-size: 33px;
+    font-family: "Gotham", sans-serif;
+    color: #313841 !important;
+}
+
+p.popfront {
+    margin: 30px 60px 40px 30px !important;
+    font-family: "Gotham", sans-serif;
+    font-weight: 400;
+    color: #313841;
+}
+
+.ui-widget-content {
+    border: none !important;
+    background: #564040eb !important;
+    color: #fff !important;
+    border-radius: 5px !important;
+    font-size: 12pt !important;
+    font-family: "Gotham", sans-serif !important;
+}
+
+div#pum_popup_title_269 {
+    margin: 20px 0 40px 16px;
+}
+
+.lwa table {
+    font-size: 13px;
+    font-family: "Gotham", san-serif;
+    color: #333;
+    margin: 0 27px 0 20px !important;
+    width: 90% !important;
+}
+
+p.wppb-alert {
+    margin: 0 20px;
+    color: #333;
+}
+
+input#lwa_wp-submit, input.lwa-button-remember, input#register{
+    color: #313841;
+    /*width: 120px;*/
+    border: 4px solid #f4c72b !important;
+    border-radius: 30px;
+    height: 45px !important;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: "Gotham", san-serif;
+    line-height: 1;
+    background-color: #fff;
+}
+
+input#lwa_wp-submit:hover, input.lwa-button-remember:hover, input#register:hover {
+    color: #fff;
+    background-color: #3f3f3f !important;
+    }
+
+.pum-container a {
+    color: #f4c72b !important;
+}
+.wppb-form-field {   
+    padding-bottom: 14px;
+    width: 48%;
+    float: left;
+    margin-left: 2% !important;
+}
+.wppb-form-field label {
+    width: 100% !important;
+}  
+li#wppb-form-element-1, li#wppb-form-element-7 {
+    width: 100%;
+}
+li.wppb-form-field.wppb-send-credentials-checkbox {
+    clear: both;
+}
+input#send_credentials_via_email {
+    height: 13px !important;
+}
+
+
+
+
+
+
+
+/* Checkout */ 
+#billing_myfield1_field span.required {/*display: none*/;}
+.woocommerce-checkout .col-1, .woocommerce-checkout .col-2 {max-width: 100%; width: 100%;}
+.woocommerce-checkout input, .woocommerce-checkout textarea {background-color: #ffffff !important; border: 3px solid #313841 !important;}
+.woocommerce-checkout .woocommerce-additional-fields textarea {height: 180px !important; resize: none;}
+.woocommerce-checkout #billing_myfield9_field label {/*display: none*/;}
+.woocommerce-checkout #customer_details {display: flex !important; flex-direction: column !important;}
+.woocommerce-checkout .woocommerce-additional-fields h3 {/*display: none*/;}
+.woocommerce-checkout .woocommerce-additional-fields .woocommerce-input-wrapper {width: 100%;}
+.woocommerce-checkout #order_review_heading {display: none;}
+#order_review {padding-top: 50px; }
+.woocommerce-checkout #order_review table, .woocommerce-checkout #order_review th, .woocommerce-checkout #order_review tr, .woocommerce-checkout #order_review td {border: 0;}
+.woocommerce-checkout #order_review td, .woocommerce-checkout #order_review th {border-top: 5px solid #eeeeee; padding-top: 25px; padding-bottom: 25px; font-family: "GothamBold";}
+.woocommerce-checkout #order_review td:nth-child(2), .woocommerce-checkout #order_review th:nth-child(2) {text-align: right;}
+
+
+.woocommerce-checkout h1.entry-title {text-align: center; padding: 50px 20px; font-size: 45px; font-family: 'GothamMedium';}
+#billing_myfield1_field {background: #ffffff; border: 4px solid #313841; width: 460px; position: relative; padding-left: 20px; margin-bottom: 0; border-bottom: 0;}
+/*#billing_myfield1_field {display: flex; flex-direction: column-reverse;}*/
+#billing_myfield1_field {font-family: "GothamMedium"; font-size: 13px; color: #313841; }
+#billing_myfield1_field a {color: #f4c72b; text-decoration: underline; display: flex; align-items: flex-end; padding-left: 10px;}
+#billing_myfield1_field span {font-size: 26px;}
+
+
+#billing_myfield3_field {background: #ffffff; border: 4px solid #313841; width: 460px; position: relative; padding-left: 20px; margin-bottom: 0; border-bottom: 0;}
+
+#billing_myfield3_field {font-family: "GothamMedium"; font-size: 13px; color: #313841; }
+#billing_myfield3_field a {color: #f4c72b; text-decoration: underline; display: flex; align-items: flex-end; padding-left: 10px;}
+#billing_myfield3_field span {font-size: 26px;}
+
+
+
+#billing_myfield1_field span.required {/*display: none*/;}
+#billing_myfield1_checkbox {/*display: none*/;}
+#billing_myfield1_field label:before {border: 4px solid #adafb3; content: ""; display: block; width: 40px; height: 40px; border-radius: 50%; bottom: 25px; left: 20px; margin-top:20px; margin-bottom: 25px;}
+.woocommerce-validated#billing_myfield1_field label:before {border: 4px solid #f4c72b; background: #efe735; background-image: url(images/checked.jpg); background-repeat: no-repeat; background-position: center;}
+
+#billing_myfield1c_field label {display: inline-flex;}
+#billing_myfield1c_field label:before {display: block; content: ""; width: 40px; height: 40px; background: #ffffff; border: 3px solid #313841; margin-right: 20px; }
+
+.woocommerce-validated#billing_myfield1c_field label:before {background-image: url(images/checked2.jpg); background-repeat: no-repeat; background-position: center;}
+.dales_checkout_header_info {display: flex; justify-content: space-around; align-items: baseline; text-align: center;}
+.dales_checkout_header_info_col {font-family: 'GothamBold'; font-size: 13px; color: #313841;}
+.dales_checkout_products {padding-top: 20px; padding-bottom: 20px;}
+.dales_checkout_products img {width: 200px; height: auto;}
+.dales_checkout_header_info_col_total {font-size: 30px; font-family: 'GothamMedium';}
+.dales_checkout_content {background-image: url('./images/bg_order_content.png'); background-repeat: no-repeat; background-position: top; background-size: 100% auto;}
+
+/* product images */
+.dales_checkout_products div {display: none;}
+.dales_checkout_products div:first-child {display: block;}
+
+/*#billing_myfield1c_field label input {display: none;}
+#billing_myfield2_field, #billing_myfield3_field {display: none;}*/
+
+
+.woocommerce-checkout .woocommerce-info::before {display: none;}
+.woocommerce-checkout .entry-content .woocommerce {width: 980px; max-width: 80%; margin: 0 auto;}
+.woocommerce-info {background: transparent; border-top: 0; padding-left: 0;}
+.woocommerce-info a {color: #f4c72b;}
+.woocommerce-info a:hover {color: #f4c72b;}
+.woocommerce-checkout .woocommerce-form-login button { border: 4px solid #f4c72b; width: 120px; height: 40px; background-color: #ffffff; border-radius: 25px; margin-right: 40px;}
+.woocommerce-checkout .woocommerce-form-login button:hover {background-color: #ffffff;}
+.woocommerce-form-login .form-row .woocommerce-form__label {display: none !important;}
+.woocommerce-form-login .form-row {display: inline-block;}
+.woocommerce-form-login .lost_password a {color: #313841;}
+.woocommerce-form-login .lost_password {display: inline-block;}
+.woocommerce-checkout .woocommerce-form-login {border: 0 !important; border-top: 4px solid #eeeeee !important; border-bottom: 4px solid #eeeeee !important; padding: 40px 0 !important;}
+#billing_myfield2_field {width: 460px; border: 4px solid #313841; border-top: 0; margin-bottom: 50px;}
+#billing_myfield3_field {background: #ffffff; border: 4px solid #313841; width: 460px; position: relative; padding-left: 20px; margin-bottom: 0; border-bottom: 0;}
+#billing_myfield4_field {border: 4px solid #313841; border-left: 0; border-top: 0; width: 230px;}
+#billing_myfield5_field {border: 4px solid #313841; border-right: 0; border-top: 0; width: 230px; margin-bottom: 50px;}
+.woocommerce-billing-fields__field-wrapper {width: 460px; margin: 0 auto;}
+
+
+/*#billing_myfield2_field label:before {border: 4px solid #adafb3; content: ""; display: block; width: 40px; height: 40px; border-radius: 50%; bottom: 25px; left: 20px; margin-top:20px; margin-bottom: 25px;}
+.woocommerce-validated#billing_myfield2_field label:before {border: 4px solid #f4c72b; background: #efe735; background-image: url(images/checked.jpg); background-repeat: no-repeat; background-position: center;}
+
+
+*/
+
+
+
+
+
+
 
 
 @media (max-width: 1199px){
     .optimization_btn input[type="file"]{left: 0;}
     input[type="file"] {margin-bottom:  20px;}
     form.email_fails{flex-direction: column;text-align: center;align-items: center;}
-	.category_block_order{min-height: 230px;}
+    .category_block_order{min-height: 230px;}
     .info_product_order{left: 10px;}
     p.price_order_product{margin-left: 10%;}
     .block_right_product_order {min-height: 190px !important;}
@@ -879,45 +1144,45 @@ form.email_fails{
 @media (max-width: 991px){
     .go_back_btn{position: static;padding-top: 30px;max-width: 150px;}
     a.btn_submit_order_go.step_2{margin: 0 auto;}
-	p.text_header_order_content{text-align: left;}
-	h3.title_select_header_template_order_content{text-align: left;}
-	h5.title_header_template_order_content{text-align: left;}
-	.header_template_order_content{padding-bottom: 40px;}
-	.category_block_order{min-height: 170px;}
-	.for_tablet_order_blocks{padding-bottom: 20px;margin:0 auto;}
+    p.text_header_order_content{text-align: left;}
+    h3.title_select_header_template_order_content{text-align: left;}
+    h5.title_header_template_order_content{text-align: left;}
+    .header_template_order_content{padding-bottom: 40px;}
+    .category_block_order{min-height: 170px;}
+    .for_tablet_order_blocks{padding-bottom: 20px;margin:0 auto;}
     .block_left_inner{max-width: none;border-bottom: solid 3px;margin-bottom: 40px;}
 }
 @media (max-width: 899px){
-	html:not(.fl-builder-edit) #dales_top_menu a {font-size: 11px; padding: 7px;}
-	html:not(.fl-builder-edit) #dales_header_sign_in a {font-size: 11px; padding: 3px;}
-	html:not(.fl-builder-edit) #dales_bottom_logo .fl-col-group {flex-direction: column; align-items: center;}
-	html:not(.fl-builder-edit) .dales_homepage_section3_tab_text1 p {font-size: 21px;}
-	html:not(.fl-builder-edit) #dales_page_title {font-size: 30px;}
-	html:not(.fl-builder-edit) #dales_bottom_menus .fl-col {width: 100%;}
-	html:not(.fl-builder-edit) #dales_bottom_menus h2 {border-bottom: 1px solid #ffffff; padding-bottom: 5px; background-image: url(images/arrow-bot.png); background-repeat: no-repeat; background-position: right; background-size: auto 100%;}
-	html:not(.fl-builder-edit) #dales_bottom_menus .dales_footer_mobile_menu_opened h2 {background-image: url(images/arrow-top.png);}
-	html:not(.fl-builder-edit) #dales_bottom_menus .widget_nav_menu {max-height: 25px; transition: 0.5s; overflow: hidden; }
-	html:not(.fl-builder-edit) #dales_bottom_menus .widget_nav_menu.dales_footer_mobile_menu_opened {max-height: 499px; }
+    html:not(.fl-builder-edit) #dales_top_menu a {font-size: 11px; padding: 7px;}
+    html:not(.fl-builder-edit) #dales_header_sign_in a {font-size: 11px; padding: 3px;}
+    html:not(.fl-builder-edit) #dales_bottom_logo .fl-col-group {flex-direction: column; align-items: center;}
+    html:not(.fl-builder-edit) .dales_homepage_section3_tab_text1 p {font-size: 21px;}
+    html:not(.fl-builder-edit) #dales_page_title {font-size: 30px;}
+    html:not(.fl-builder-edit) #dales_bottom_menus .fl-col {width: 100%;}
+    html:not(.fl-builder-edit) #dales_bottom_menus h2 {border-bottom: 1px solid #ffffff; padding-bottom: 5px; background-image: url(images/arrow-bot.png); background-repeat: no-repeat; background-position: right; background-size: auto 100%;}
+    html:not(.fl-builder-edit) #dales_bottom_menus .dales_footer_mobile_menu_opened h2 {background-image: url(images/arrow-top.png);}
+    html:not(.fl-builder-edit) #dales_bottom_menus .widget_nav_menu {max-height: 25px; transition: 0.5s; overflow: hidden; }
+    html:not(.fl-builder-edit) #dales_bottom_menus .widget_nav_menu.dales_footer_mobile_menu_opened {max-height: 499px; }
 }
 
 
 
 
 @media (max-width: 768px){
-	html:not(.fl-builder-edit) #dales_top_menu a {font-size: 11px;}
-	html:not(.fl-builder-edit) #dales_top_cart_links {padding-right: 10px;}
-	html:not(.fl-builder-edit) #dales_bottom_logo .fl-col-group {flex-direction: column; align-items: center;}
-	html:not(.fl-builder-edit) #dales_bottom_logo .fl-col {width: 100% !important;}
-	html:not(.fl-builder-edit) #dales_bottom_logo .fl-module-content {display: flex; justify-content: center;}
-	html:not(.fl-builder-edit) #dales_bottom_menus {padding-left: 20px;}
-	html:not(.fl-builder-edit) .dales_homepage_section3_image_description, .dales_homepage_section3_image {align-self: center; width: 100%;}
-	html:not(.fl-builder-edit) .dales_homepage_section3_image_description .fl-col-content.fl-node-content {margin-top: 0;}
-	html:not(.fl-builder-edit) #dales_homepage_section3 .fl-col-group {flex-direction: column;}
-	html:not(.fl-builder-edit) #dales_top_menu a {padding: 7px;}
-	html:not(.fl-builder-edit) #dales_header_sign_in a {font-size: 11px; padding: 3px;}
+    html:not(.fl-builder-edit) #dales_top_menu a {font-size: 11px;}
+    html:not(.fl-builder-edit) #dales_top_cart_links {padding-right: 10px;}
+    html:not(.fl-builder-edit) #dales_bottom_logo .fl-col-group {flex-direction: column; align-items: center;}
+    html:not(.fl-builder-edit) #dales_bottom_logo .fl-col {width: 100% !important;}
+    html:not(.fl-builder-edit) #dales_bottom_logo .fl-module-content {display: flex; justify-content: center;}
+    html:not(.fl-builder-edit) #dales_bottom_menus {padding-left: 20px;}
+    html:not(.fl-builder-edit) .dales_homepage_section3_image_description, .dales_homepage_section3_image {align-self: center; width: 100%;}
+    html:not(.fl-builder-edit) .dales_homepage_section3_image_description .fl-col-content.fl-node-content {margin-top: 0;}
+    html:not(.fl-builder-edit) #dales_homepage_section3 .fl-col-group {flex-direction: column;}
+    html:not(.fl-builder-edit) #dales_top_menu a {padding: 7px;}
+    html:not(.fl-builder-edit) #dales_header_sign_in a {font-size: 11px; padding: 3px;}
 
-	
-	
+    
+    
 }
 
 @media (max-width: 767px){
@@ -936,55 +1201,56 @@ form.email_fails{
     p.price_order_product{margin-left: 30px; text-align: center;}
     .title_price_top_block_order a.title_product_order{text-align: center;}
     .title_price_top_block_order{flex-direction: row;justify-content: center;}
-	a.btn_submit_order_go{margin: 0 auto;}
-	.line_wrap:before{display: none;}
-	.template_order_content{margin-bottom: 0;}
-	.category_order_content{padding-bottom: 40px;}
-	a.need_help_header_order_content {position:  static;display:  block;margin:  0 auto;margin-bottom:  20px;}
-	html:not(.fl-builder-edit) .dales_bottom_divider {width: 4% !important;}
-	html:not(.fl-builder-edit) #dales_bottom_copyright_row {width: 100%;}
-	html:not(.fl-builder-edit) #dales_bottom_copyright {width: 100%;}
-	html:not(.fl-builder-edit) #dales_bottom_payments {width: 100%; padding-bottom: 10px;}
-	html:not(.fl-builder-edit) #dales_bottom_copyright p, #dales_bottom_payments .fl-photo {text-align: center !important;}
-	html:not(.fl-builder-edit) #dales_top_menu ul {flex-direction: column; align-items: center;}
-	html:not(.fl-builder-edit) #dales_top_cart_links .fl-col-group {flex-direction: column;}
-	html:not(.fl-builder-edit) #dales_top_cart_links .fl-col {width: 50%;}
-	html:not(.fl-builder-edit) #dales_top_counter {padding-bottom: 10px;}
-	html:not(.fl-builder-edit) #dales_mobile_icon {display: block;}
-	html:not(.fl-builder-edit) #dales_top_dark_row .fl-col-group {flex-wrap: wrap;}
-	html:not(.fl-builder-edit) #dales_top_logo_container {width: 100%; padding: 10px;}
-	html:not(.fl-builder-edit) #dales_top_cart_links {width: 33.3%; }
-	html:not(.fl-builder-edit) #dales_top_cart_links .fl-col-group {flex-direction: row !important;}
-	html:not(.fl-builder-edit) #dales_main_menu_container { width: 33.3%;}
-	html:not(.fl-builder-edit) #dales_top_counter .uabb-module-content {text-align: center !important;}
-	html:not(.fl-builder-edit) #dales_sidebar_contacts {width: 100%;}
-	html:not(.fl-builder-edit) #dales_company_content {width: 100%; order: 1;}
-	html:not(.fl-builder-edit) .dales_company_content_row .fl-col-group {display: flex; flex-direction: column; padding: 10px;}
-	html:not(.fl-builder-edit) #dales_main_menu_container .fl-col-group {display: flex !important;}
-	html:not(.fl-builder-edit) #dales_homepage_section2 .fl-col {width: 100%; padding: 15px;}
-	html:not(.fl-builder-edit) #dales_homepage_section2 {padding-top: 0;}
-	html:not(.fl-builder-edit) #dales_homepage_section2_right_button_faq {width: 100%; }
-	html:not(.fl-builder-edit) #dales_homepage_section2_right_button_faq .fl-module-content.fl-node-content {margin-top: 0;}
-	html:not(.fl-builder-edit) .dales_homepage_section3_tab {width: 100%; margin-bottom: 15px;}
-	html:not(.fl-builder-edit) .dales_homepage_section3_image .fl-col-content.fl-node-content {margin-top: 0;}
-	html:not(.fl-builder-edit) .dales_banner_bot_text_col {width: 100%; margin-bottom: 40px; }
-	html:not(.fl-builder-edit) .dales_banner_bot_text_col .fl-col-content.fl-node-content {align-items: center !important; text-align: center;} 
-	html:not(.fl-builder-edit) .dales_banner_bot_text_col .fl-col-content.fl-node-content .fl-module { border-bottom: 1px solid #ffffff; padding-bottom: 10px;}
-	html:not(.fl-builder-edit) #dales_homepage_banner .fl-row-content-wrap {padding-bottom: 120px;}
-	html:not(.fl-builder-edit) .site-footer {padding-left: 3% !important; padding-right: 3% !important; width: 94% !important;}
-	html:not(.fl-builder-edit) #page {padding-left: 8%; padding-right: 8%;}
-	html:not(.fl-builder-edit) #dales_main_menu_container .fl-col-group {display: block !important;}
-	html:not(.fl-builder-edit) #dales_sign_in_desktop {display: none;}
-	html:not(.fl-builder-edit) #dales_sign_in_mobile {width: 33.3%;}
-	html:not(.fl-builder-edit) #dales_top_dark_row .fl-col-group {justify-content: center; align-items: flex-start;}
-	html:not(.fl-builder-edit) #dales_sign_in_mobile {display: block;}
-	html:not(.fl-builder-edit) #dales_top_cart_links {padding-top: 12px; }
-	html:not(.fl-builder-edit) #dales_header_sign_in {padding-top: 20px;}
-	html:not(.fl-builder-edit) #dales_header_sign_in .uabb-module-content {text-align: center;}
-	html:not(.fl-builder-edit) #dales_secondary_menu {display: none;}
-	html:not(.fl-builder-edit) #dales_bottom_logo {align-self: flex-start; padding-top: 40px;}
+    a.btn_submit_order_go{margin: 0 auto;}
+    .line_wrap:before{display: none;}
+    .template_order_content{margin-bottom: 0;}
+    .category_order_content{padding-bottom: 40px;}
+    a.need_help_header_order_content {position:  static;display:  block;margin:  0 auto;margin-bottom:  20px;}
+    html:not(.fl-builder-edit) .dales_bottom_divider {width: 4% !important;}
+    html:not(.fl-builder-edit) #dales_bottom_copyright_row {width: 100%;}
+    html:not(.fl-builder-edit) #dales_bottom_copyright {width: 100%;}
+    html:not(.fl-builder-edit) #dales_bottom_payments {width: 100%; padding-bottom: 10px;}
+    html:not(.fl-builder-edit) #dales_bottom_copyright p, #dales_bottom_payments .fl-photo {text-align: center !important;}
+    html:not(.fl-builder-edit) #dales_top_menu ul {flex-direction: column; align-items: center;}
+    html:not(.fl-builder-edit) #dales_top_cart_links .fl-col-group {flex-direction: column;}
+    html:not(.fl-builder-edit) #dales_top_cart_links .fl-col {width: 50%;}
+    html:not(.fl-builder-edit) #dales_top_counter {padding-bottom: 10px;}
+    html:not(.fl-builder-edit) #dales_mobile_icon {display: block;}
+    html:not(.fl-builder-edit) #dales_top_dark_row .fl-col-group {flex-wrap: wrap;}
+    html:not(.fl-builder-edit) #dales_top_logo_container {width: 100%; padding: 10px;}
+    html:not(.fl-builder-edit) #dales_top_cart_links {width: 33.3%; }
+    html:not(.fl-builder-edit) #dales_top_cart_links .fl-col-group {flex-direction: row !important;}
+    html:not(.fl-builder-edit) #dales_main_menu_container { width: 33.3%;}
+    html:not(.fl-builder-edit) #dales_top_counter .uabb-module-content {text-align: center !important;}
+    html:not(.fl-builder-edit) #dales_sidebar_contacts {width: 100%;}
+    html:not(.fl-builder-edit) #dales_company_content {width: 100%; order: 1;}
+    html:not(.fl-builder-edit) .dales_company_content_row .fl-col-group {display: flex; flex-direction: column; padding: 10px;}
+    html:not(.fl-builder-edit) #dales_main_menu_container .fl-col-group {display: flex !important;}
+    html:not(.fl-builder-edit) #dales_homepage_section2 .fl-col {width: 100%; padding: 15px;}
+    html:not(.fl-builder-edit) #dales_homepage_section2 {padding-top: 0;}
+    html:not(.fl-builder-edit) #dales_homepage_section2_right_button_faq {width: 100%; }
+    html:not(.fl-builder-edit) #dales_homepage_section2_right_button_faq .fl-module-content.fl-node-content {margin-top: 0;}
+    html:not(.fl-builder-edit) .dales_homepage_section3_tab {width: 100%; margin-bottom: 15px;}
+    html:not(.fl-builder-edit) .dales_homepage_section3_image .fl-col-content.fl-node-content {margin-top: 0;}
+    html:not(.fl-builder-edit) .dales_banner_bot_text_col {width: 100%; margin-bottom: 40px; }
+    html:not(.fl-builder-edit) .dales_banner_bot_text_col .fl-col-content.fl-node-content {align-items: center !important; text-align: center;} 
+    html:not(.fl-builder-edit) .dales_banner_bot_text_col .fl-col-content.fl-node-content .fl-module { border-bottom: 1px solid #ffffff; padding-bottom: 10px;}
+    html:not(.fl-builder-edit) #dales_homepage_banner .fl-row-content-wrap {padding-bottom: 120px;}
+    html:not(.fl-builder-edit) .site-footer {padding-left: 3% !important; padding-right: 3% !important; width: 94% !important;}
+    html:not(.fl-builder-edit) #page {padding-left: 8%; padding-right: 8%;}
+    html:not(.fl-builder-edit) #dales_main_menu_container .fl-col-group {display: block !important;}
+    html:not(.fl-builder-edit) #dales_sign_in_desktop {display: none;}
+    html:not(.fl-builder-edit) #dales_sign_in_mobile {width: 33.3%;}
+    html:not(.fl-builder-edit) #dales_top_dark_row .fl-col-group {justify-content: center; align-items: flex-start;}
+    html:not(.fl-builder-edit) #dales_sign_in_mobile {display: block;}
+    html:not(.fl-builder-edit) #dales_top_cart_links {padding-top: 12px; }
+    html:not(.fl-builder-edit) #dales_header_sign_in {padding-top: 20px;}
+    html:not(.fl-builder-edit) #dales_header_sign_in .uabb-module-content {text-align: center;}
+    html:not(.fl-builder-edit) #dales_secondary_menu {display: none;}
+    html:not(.fl-builder-edit) #dales_bottom_logo {align-self: flex-start; padding-top: 40px;}
     html:not(.fl-builder-edit) .site-footer{width: 100% !important;}
-	
+    .pum-container.pum-responsive.pum-responsive-medium {margin-left: -15% !important; width: auto !important;}
+    
 }
 @media (max-width: 575px){
     div#dales_bottom_top_row .fl-rich-text {margin-top:  20px;margin-bottom:  20px;}
@@ -994,12 +1260,12 @@ form.email_fails{
     .footer_content_product_order .jq-selectbox.jqselect.select_count_order.option_count_order{margin-left: 10px;}
     .info_product_order{width: calc(100% + 8px);left: -4px;bottom: -27px;}
     .info_product_order p {font-size: 9px;}
-	h3.title_select_header_template_order_content{font-size: 30px;}
-	p.text_header_order_content{font-size: 20px;}
-	h3.title_block_category_order{font-size: 20px;}
-	p.description_block_category_order{font-size: 11px;}
-	.category_block_order{min-height: 190px;}
-	a.btn_submit_order_go{width: 100%;}
+    h3.title_select_header_template_order_content{font-size: 30px;}
+    p.text_header_order_content{font-size: 20px;}
+    h3.title_block_category_order{font-size: 20px;}
+    p.description_block_category_order{font-size: 11px;}
+    .category_block_order{min-height: 190px;}
+    a.btn_submit_order_go{width: 100%;}
 }
 @media (max-width: 475px){
     p.text_error_message{font-size: 11px;width: 75%;}
@@ -1030,10 +1296,10 @@ form.email_fails{
     div .datepicker--cell.datepicker--cell-day.-range-to-.-selected-:before{width: 90%;height: 70%;}
     div .datepicker--cell.datepicker--cell-day.-range-from-.-selected-:before{width: 90%;height: 70%;}
     .title_left_block_date h3{font-size: 18px;}
-	html:not(.fl-builder-edit) #dales_bottom_logo {width: 60%;}
-	html:not(.fl-builder-edit) #dales_bottom_menus {width: 25%;}
-	html:not(.fl-builder-edit) .site-footer {padding-left: 2% !important; padding-right: 2% !important; width: 96% !important;}
-	html:not(.fl-builder-edit) body.page-id-137 .site-footer{width: 100% !important;}
+    html:not(.fl-builder-edit) #dales_bottom_logo {width: 60%;}
+    html:not(.fl-builder-edit) #dales_bottom_menus {width: 25%;}
+    html:not(.fl-builder-edit) .site-footer {padding-left: 2% !important; padding-right: 2% !important; width: 96% !important;}
+    html:not(.fl-builder-edit) body.page-id-137 .site-footer{width: 100% !important;}
     html:not(.fl-builder-edit) #page {padding-left: 8%; padding-right: 8%;}
-	html:not(.fl-builder-edit) #dales_top_menu a {font-size: 10px; padding: 3px;}
+    html:not(.fl-builder-edit) #dales_top_menu a {font-size: 10px; padding: 3px;}
 }
