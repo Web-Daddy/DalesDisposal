@@ -21,6 +21,8 @@ if (!isset($_COOKIE['date_range'])) {
     header('Location:'.  home_url() .'/delivery-date' );
     exit;
 };
+$rent_time = $_COOKIE['rent_time_range'];
+$additional_rent_price = ceil(($rent_time - 14) / 7) * 25;
 
 get_header(); ?>
 	<div id="primary" <?php generate_content_class();?>>
@@ -174,6 +176,7 @@ get_footer();
 			secondDay = new Date(date_range_cookie.last_date);
 			currentDay2 = currentDay.toString().substring(0, 10);
 			date_element.html(currentDay2);
+
 
 
 		};

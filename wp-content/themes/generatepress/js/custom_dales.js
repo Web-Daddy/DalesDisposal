@@ -74,8 +74,9 @@ jQuery(document).ready(function($) {
 
 /*** DATEPICKER *****/
 	var data_range = {};
-	var monthArr = ['December','January','February','March','April','May','June','July','August','September','October','November'];
+	var monthArr = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 	var weekArr = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];	
+	var rent_time_range = '';
 	$('.datepicker-here').datepicker({
 		range: true,
 		minDate: new Date,
@@ -85,6 +86,7 @@ jQuery(document).ready(function($) {
 			if (date[1]) {
 				var lastDateVal = date[1].getTime();
 				var firstDateVal = date[0].getTime();
+				rent_time_range = ( lastDateVal - firstDateVal) / 86400000;
 				if (lastDateVal - firstDateVal < 1209600000) {
 					instance.clear();
 					$('.error_message_order_step_three').css('opacity','1');
@@ -141,6 +143,7 @@ jQuery(document).ready(function($) {
 		if (!$.isEmptyObject(data_range)){
 			data_range = JSON.stringify(data_range);
 			$.cookie('date_range', data_range, {path: '/' });
+			$.cookie('rent_time_range', rent_time_range, {path: '/' });
 			window.location = window.location.origin+'/checkout-dales';
 		}else{
 			$('.error_message_order_step_three').css('opacity','1');

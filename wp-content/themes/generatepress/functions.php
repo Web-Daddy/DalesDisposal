@@ -386,16 +386,21 @@ function bbloomer_remove_billing_postcode_checkout( $fields ) {
   return $fields;
 }
 
-// function woo_add_cart_fee() {
+function woo_add_cart_fee() {
  
-//   global $woocommerce;
+  global $woocommerce;
+
+$additional_rent_price = 0;
+if (isset($_COOKIE['rent_time_range'])) {
+    $rent_time = $_COOKIE['rent_time_range'];
+	$additional_rent_price = ceil(($rent_time - 14) / 7) * 25;
+};
 
 
+  $woocommerce->cart->add_fee( __('Price of additional rent', 'woocommerce'), $additional_rent_price );
 	
-//   $woocommerce->cart->add_fee( __('Price of additional rent', 'woocommerce'), 5 );
-	
-// }
-// add_action( 'woocommerce_cart_calculate_fees', 'woo_add_cart_fee' );
+}
+add_action( 'woocommerce_cart_calculate_fees', 'woo_add_cart_fee' );
 
 function dales_cart_shortcode_func( $atts ){
 	$dales_cart_count = WC()->cart->get_cart_contents_count();

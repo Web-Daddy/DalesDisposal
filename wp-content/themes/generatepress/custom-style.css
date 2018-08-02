@@ -498,6 +498,23 @@ p.rolloff_product_order {
     position: absolute;
     right: 0;
 }
+
+
+
+p.rolloff_product_order_1 {
+    padding: 10px 17px;
+    color:  #efe735;
+    font-family:  GothamMedium;
+    font-size:  11px;
+    text-transform:  uppercase;
+    background-color: #313841;
+    border-radius: 3px;
+    line-height: 1.8;
+    position: absolute;
+    right: 25px;
+    bottom: 0px;
+    margin: 0 !important;
+}
 .select_count_order{display: none;}
 .footer_content_product_order .jq-selectbox.jqselect.select_count_order.option_count_order.disabled{
     display: none;
