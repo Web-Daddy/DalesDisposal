@@ -159,9 +159,6 @@ jQuery(document).ready(function($) {
 	});
 
 
-	// var dales_billing_details_var = jQuery(".woocommerce-billing-fields h3");
-	// var dales_field_var = jQuery('#billing_myfield1c_field');
-	// jQuery(dales_billing_details_var.clone()).insertBefore(dales_field_var);
-	// dales_billing_details_var.remove();
+
 
 });

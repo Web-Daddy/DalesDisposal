@@ -22,9 +22,6 @@ if (!isset($_COOKIE['date_range'])) {
     exit;
 };
 
-
-
-
 get_header(); ?>
 	<div id="primary" <?php generate_content_class();?>>
 		<main id="main" <?php generate_main_class(); ?>>
@@ -180,6 +177,35 @@ get_footer();
 
 
 		};
+
+		jQuery('.woocommerce-billing-fields__field-wrapper').prepend('<div class="dales_checkout_first_row"></div>');
+		jQuery('.dales_checkout_first_row').append('<div class="dales_checkout_first_row_col1"></div>');
+		jQuery('.dales_checkout_first_row').append('<div class="dales_checkout_first_row_col2"></div>');
+		jQuery('.dales_checkout_first_row_col1').append(jQuery('#billing_myfield1_field'));
+		jQuery('.dales_checkout_first_row_col1').append(jQuery('#billing_myfield2_field'));
+		jQuery('.dales_checkout_first_row_col2').append(jQuery('#billing_myfield3_field'));
+		jQuery('.dales_checkout_first_row_col2').append(jQuery('#billing_myfield4_field'));
+		jQuery('.dales_checkout_first_row_col2').append(jQuery('#billing_myfield5_field'));
+		jQuery('.woocommerce-billing-fields h3:first-child').not('.form-row').insertBefore(jQuery('#billing_myfield6_field'));
+		jQuery('#billing_myfield2_checkbox').click(function(){
+			jQuery(this).parent().toggleClass('dales_checked_checkbox');
+		});
+		jQuery('#billing_myfield4_checkbox').click(function(){
+			jQuery(this).parent().toggleClass('dales_checked_checkbox');
+			if (jQuery('#billing_myfield5_checkbox').parent().hasClass('dales_checked_checkbox')) {
+				jQuery('#billing_myfield5_checkbox').parent().removeClass('dales_checked_checkbox');
+				jQuery('#billing_myfield5_checkbox').prop('checked', false);
+			}
+		});
+		jQuery('#billing_myfield5_checkbox').click(function(){
+			jQuery(this).parent().toggleClass('dales_checked_checkbox');
+			if (jQuery('#billing_myfield4_checkbox').parent().hasClass('dales_checked_checkbox')) {
+				jQuery('#billing_myfield4_checkbox').parent().removeClass('dales_checked_checkbox');
+				jQuery('#billing_myfield4_checkbox').prop('checked', false);
+			}
+		});
+
+
 
 	})
 </script>

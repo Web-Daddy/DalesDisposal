@@ -404,3 +404,26 @@ function dales_cart_shortcode_func( $atts ){
 }
 add_shortcode('dales_cart_shortcode', 'dales_cart_shortcode_func');
 
+
+
+add_action('woocommerce_thankyou', 'cookie_cleaning_after_submit', 10, 1);
+
+function cookie_cleaning_after_submit( $order_id ) {
+	if (isset($_COOKIE['dales_order_zip_code'])) {
+	    unset($_COOKIE['dales_order_zip_code']);
+	    setcookie('dales_order_zip_code', '', time() - 3600, '/'); 
+	};
+	if (isset($_COOKIE['slug'])) {
+	    unset($_COOKIE['slug']);
+	    setcookie('slug', '', time() - 3600, '/'); 
+	};
+	if (isset($_COOKIE['form_data'])) {
+	    unset($_COOKIE['form_data']);
+	    setcookie('form_data', '', time() - 3600, '/'); 
+	};
+	if (isset($_COOKIE['date_range'])) {
+	    unset($_COOKIE['date_range']);
+	    setcookie('date_range', '', time() - 3600, '/'); 
+	};
+
+}

@@ -1042,13 +1042,13 @@ input#send_credentials_via_email {
 
 
 /* Checkout */ 
-#billing_myfield1_field span.required {/*display: none*/;}
-.woocommerce-checkout .col-1, .woocommerce-checkout .col-2 {max-width: 100%; width: 100%;}
+
+.woocommerce-checkout .col-1, .woocommerce-checkout .col-2 {max-width: 100%; width: 100% !important;}
 .woocommerce-checkout input, .woocommerce-checkout textarea {background-color: #ffffff !important; border: 3px solid #313841 !important;}
 .woocommerce-checkout .woocommerce-additional-fields textarea {height: 180px !important; resize: none;}
-.woocommerce-checkout #billing_myfield9_field label {/*display: none*/;}
+
 .woocommerce-checkout #customer_details {display: flex !important; flex-direction: column !important;}
-.woocommerce-checkout .woocommerce-additional-fields h3 {/*display: none*/;}
+
 .woocommerce-checkout .woocommerce-additional-fields .woocommerce-input-wrapper {width: 100%;}
 .woocommerce-checkout #order_review_heading {display: none;}
 #order_review {padding-top: 50px; }
@@ -1058,23 +1058,16 @@ input#send_credentials_via_email {
 
 
 .woocommerce-checkout h1.entry-title {text-align: center; padding: 50px 20px; font-size: 45px; font-family: 'GothamMedium';}
-#billing_myfield1_field {background: #ffffff; border: 4px solid #313841; width: 460px; position: relative; padding-left: 20px; margin-bottom: 0; border-bottom: 0;}
-/*#billing_myfield1_field {display: flex; flex-direction: column-reverse;}*/
-#billing_myfield1_field {font-family: "GothamMedium"; font-size: 13px; color: #313841; }
-#billing_myfield1_field a {color: #f4c72b; text-decoration: underline; display: flex; align-items: flex-end; padding-left: 10px;}
+
+#billing_myfield1_field a {color: #f4c72b; text-decoration: underline; }
 #billing_myfield1_field span {font-size: 26px;}
 
 
-#billing_myfield3_field {background: #ffffff; border: 4px solid #313841; width: 460px; position: relative; padding-left: 20px; margin-bottom: 0; border-bottom: 0;}
 
 #billing_myfield3_field {font-family: "GothamMedium"; font-size: 13px; color: #313841; }
 #billing_myfield3_field a {color: #f4c72b; text-decoration: underline; display: flex; align-items: flex-end; padding-left: 10px;}
 #billing_myfield3_field span {font-size: 26px;}
 
-
-
-#billing_myfield1_field span.required {/*display: none*/;}
-#billing_myfield1_checkbox {/*display: none*/;}
 #billing_myfield1_field label:before {border: 4px solid #adafb3; content: ""; display: block; width: 40px; height: 40px; border-radius: 50%; bottom: 25px; left: 20px; margin-top:20px; margin-bottom: 25px;}
 .woocommerce-validated#billing_myfield1_field label:before {border: 4px solid #f4c72b; background: #efe735; background-image: url(images/checked.jpg); background-repeat: no-repeat; background-position: center;}
 
@@ -1095,6 +1088,11 @@ input#send_credentials_via_email {
 
 /*#billing_myfield1c_field label input {display: none;}
 #billing_myfield2_field, #billing_myfield3_field {display: none;}*/
+.woocommerce-checkout #billing_myfield9_field label {/*display: none*/;}
+.woocommerce-checkout .woocommerce-additional-fields h3 {/*display: none*/;}
+#billing_myfield1_field span.required {/*display: none*/;}
+#billing_myfield1_field span.required {/*display: none*/;}
+#billing_myfield1_checkbox {/*display: none*/;}
 
 
 .woocommerce-checkout .woocommerce-info::before {display: none;}
@@ -1109,18 +1107,29 @@ input#send_credentials_via_email {
 .woocommerce-form-login .lost_password a {color: #313841;}
 .woocommerce-form-login .lost_password {display: inline-block;}
 .woocommerce-checkout .woocommerce-form-login {border: 0 !important; border-top: 4px solid #eeeeee !important; border-bottom: 4px solid #eeeeee !important; padding: 40px 0 !important;}
-#billing_myfield2_field {width: 460px; border: 4px solid #313841; border-top: 0; margin-bottom: 50px;}
-#billing_myfield3_field {background: #ffffff; border: 4px solid #313841; width: 460px; position: relative; padding-left: 20px; margin-bottom: 0; border-bottom: 0;}
-#billing_myfield4_field {border: 4px solid #313841; border-left: 0; border-top: 0; width: 230px;}
-#billing_myfield5_field {border: 4px solid #313841; border-right: 0; border-top: 0; width: 230px; margin-bottom: 50px;}
-.woocommerce-billing-fields__field-wrapper {width: 460px; margin: 0 auto;}
+.woocommerce-billing-fields__field-wrapper {width: 100%; margin: 0 auto;}
+#billing_myfield2_field label:before, #billing_myfield4_field label:before, #billing_myfield5_field label:before {margin-right: 25px; border: 4px solid #adafb3; content: ""; display: block; width: 40px; height: 40px; border-radius: 50%; }
+label.dales_checked_checkbox:before {border: 4px solid #f4c72b !important; background: #efe735; background-image: url(images/checked.jpg); background-repeat: no-repeat; background-position: center;}
+#billing_myfield1_field {font-family: "GothamMedium"; font-size: 13px; color: #313841; line-height: 30px; }
+#billing_myfield3_field {line-height: 30px; }
+.dales_checkout_first_row {display: flex; margin-bottom: 50px;}
+.dales_checkout_first_row_col1 {margin-right: 10px; background: #ffffff; border: 4px solid #313841; width: 460px; display: flex; flex-direction: column; padding: 30px; padding-bottom: 0;}
+.dales_checkout_first_row_col2 {margin-left: 10px; background: #ffffff; border: 4px solid #313841; width: 460px; display: flex; flex-wrap: wrap; padding: 30px;}
+#billing_myfield3_field {width: 100% !important;}
+#billing_myfield4_field {width: 50% !important;}
+#billing_myfield5_field {width: 50% !important;}
+.woocommerce-checkout .form-row-wide {width: 50% !important;}
+.woocommerce-checkout .form-row-first {width: 25% !important;}
+.woocommerce-checkout .form-row-last {width: 25% !important; float: left !important;}
+.woocommerce-checkout textarea {width: 50% !important;}
+.dales_checkout_first_row_col1 .form-row, .dales_checkout_first_row_col2 .form-row {width: 100% !important;}
+.dales_checkout_first_row_col1 h3, .dales_checkout_first_row_col2 h3 {display: block;}
+#billing_myfield2_field label, #billing_myfield4_field label, #billing_myfield5_field label {display: flex; align-items: center;}
+#billing_myfield2_field label input, #billing_myfield4_field label input, #billing_myfield5_field label input {display: none;}
+.dales_checkout_first_row_col2 .dales_checked_checkbox span {color: #f4c72b; text-decoration: underline;}
 
 
-/*#billing_myfield2_field label:before {border: 4px solid #adafb3; content: ""; display: block; width: 40px; height: 40px; border-radius: 50%; bottom: 25px; left: 20px; margin-top:20px; margin-bottom: 25px;}
-.woocommerce-validated#billing_myfield2_field label:before {border: 4px solid #f4c72b; background: #efe735; background-image: url(images/checked.jpg); background-repeat: no-repeat; background-position: center;}
 
-
-*/
 
 
 
