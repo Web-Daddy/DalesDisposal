@@ -1,0 +1,9 @@
+2018-08-03T16:04:26+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function get_term_by(), 1 passed in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/themes/generatepress/order-template-two.php on line 18 and at least 2 expected in /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/taxonomy.php:852
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/themes/generatepress/order-template-two.php(18): get_term_by('contstruction')
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/template-loader.php(74): include('/var/www/wemes/...')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-blog-header.php(19): require_once('/var/www/wemes/...')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/index.php(17): require('/var/www/wemes/...')
+#4 {main}
+  thrown
+

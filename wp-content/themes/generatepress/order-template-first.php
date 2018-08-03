@@ -37,7 +37,7 @@ get_header(); ?>
 		<div class="header_template_order_content">
 			<h5 class="title_header_template_order_content">Step 1</h3>
 			<h3 class="title_select_header_template_order_content">Select A Material</h3>
-			<a href="#" class="need_help_header_order_content">Need Help? Click here</a>
+			<a href="/contact-us/" class="need_help_header_order_content">Need Help? Click here</a>
 			<p class="text_header_order_content">What material will you be depositing into the container? </p>
 		</div>
 		<div class="category_order_content">

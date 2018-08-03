@@ -96,6 +96,12 @@ get_header(); ?>
 							</div>
 						</div>
 						<div class="dales_checkout_content">
+									<div class="go_back_btn checkout_button_back">
+										<a href="/delivery-date/">
+											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/go_back_icon.png" alt="">
+											<span>Go Back</span>
+										</a>
+									</div>
 							<?php
 
 							if ( generate_show_title() ) : ?>
@@ -189,12 +195,16 @@ get_footer();
 		jQuery('.dales_checkout_first_row_col2').append(jQuery('#billing_myfield3_field'));
 		jQuery('.dales_checkout_first_row_col2').append(jQuery('#billing_myfield4_field'));
 		jQuery('.dales_checkout_first_row_col2').append(jQuery('#billing_myfield5_field'));
-		jQuery('.woocommerce-billing-fields h3:first-child').not('.form-row').insertBefore(jQuery('#billing_myfield6_field'));
+		jQuery('.woocommerce-billing-fields h3').not('.form-row').addClass('dales_billing_label').insertBefore(jQuery('#billing_myfield6_field'));
 		jQuery('#billing_myfield2_checkbox').click(function(){
+			jQuery(this).parent().toggleClass('dales_checked_checkbox');
+		});
+		jQuery('#billing_myfield6_checkbox').click(function(){
 			jQuery(this).parent().toggleClass('dales_checked_checkbox');
 		});
 		jQuery('#billing_myfield4_checkbox').click(function(){
 			jQuery(this).parent().toggleClass('dales_checked_checkbox');
+			jQuery('.dales_checkout_first_row_col2').removeClass('dales_checkout_error_confirmation');
 			if (jQuery('#billing_myfield5_checkbox').parent().hasClass('dales_checked_checkbox')) {
 				jQuery('#billing_myfield5_checkbox').parent().removeClass('dales_checked_checkbox');
 				jQuery('#billing_myfield5_checkbox').prop('checked', false);
@@ -202,10 +212,22 @@ get_footer();
 		});
 		jQuery('#billing_myfield5_checkbox').click(function(){
 			jQuery(this).parent().toggleClass('dales_checked_checkbox');
+			jQuery('.dales_checkout_first_row_col2').removeClass('dales_checkout_error_confirmation');
 			if (jQuery('#billing_myfield4_checkbox').parent().hasClass('dales_checked_checkbox')) {
 				jQuery('#billing_myfield4_checkbox').parent().removeClass('dales_checked_checkbox');
 				jQuery('#billing_myfield4_checkbox').prop('checked', false);
 			}
+		});
+
+		jQuery('#place_order').on('click', function(e) {
+    	if ( jQuery('#billing_myfield4_field label').hasClass('dales_checked_checkbox') || jQuery('#billing_myfield5_field label').hasClass('dales_checked_checkbox')) {
+   		} else {
+   			jQuery('.dales_checkout_first_row_col2').addClass('dales_checkout_error_confirmation');
+   			jQuery([document.documentElement, document.body]).animate({
+       			scrollTop: jQuery(".dales_checkout_first_row_col2").offset().top - 100
+   			}, 1000);
+   			e.preventDefault();
+   		}
 		});
 
 

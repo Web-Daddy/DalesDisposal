@@ -63,9 +63,9 @@ get_header(); ?>
 
 		<?php } ?>
 		<form method="POST" class="email_fails" name="email_form_with_php" enctype="multipart/form-data">
-			<label for='uploaded_file'>Select A File To Upload:</label>
+			<!-- <label for='uploaded_file'>Select A File To Upload:</label> -->
 			<label class="optimization_btn">
-				<button class="btn">Upload a file</button>
+				<button class="btn">Upload a resume</button>
 				<input id="file_for_upload_email" type="file" name="uploaded_file" required>
 			</label>
 

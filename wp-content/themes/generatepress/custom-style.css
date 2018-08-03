@@ -18,7 +18,8 @@ html:not(.fl-builder-edit) body .grid-container {max-width: none !important;}
 html:not(.fl-builder-edit) #page {padding-left: 8%; padding-right: 8%;}
 html:not(.fl-builder-edit) .site-footer {padding-left: 8% !important; padding-right: 8% !important; /*width: 84% !important;*/}
 /* Header */
-.dales_cart_count_link {border: 4px solid #d69a25; font-family: 'GothamBold'; font-size: 13px; padding-top: 3px;font-size: 18px; display: block; width: 40px; height: 40px; border-radius: 50px; background: #efe735; text-align: center; color: #313841 !important;}
+.dales_cart_count_link {border: 4px solid #d69a25; font-family: 'GothamBold'; font-size: 13px; padding-top: 3px;font-size: 18px; display: block; width: 40px; height: 40px; border-radius: 50px; background: #efe735; text-align: center; color: #313841 !important; transform: scale(1); transition: 0.5s; }
+.dales_cart_count_link:hover { transform: scale(1.3);}
 html:not(.fl-builder-edit) #content {padding: 0; }
 html:not(.fl-builder-edit) .entry-content {margin-top: 0 !important;}
 html:not(.fl-builder-edit) #dales_top_gold_row .fl-row-content-wrap {font-family: 'GothamBold'; min-height: 60px; display: flex; align-items: center; padding-left: 10px; padding-right: 10px;}
@@ -49,7 +50,8 @@ html:not(.fl-builder-edit) #dales_homepage_search_button a {font-family: 'Gotham
 .search_zip_code_error_content_description {font-family: 'GothamBook'; font-size: 15px; padding: 25px 40px 55px 40px; line-height: 24px;}
 .search_zip_code_error_close_button {background-image: url(images/x.jpg); background-repeat: no-repeat; width: 30px; background-position: center bottom; height: 25px; margin-top: 35px; margin-left: 25px; margin-right: 25px; cursor: pointer;}
 #dales_search_form {display: flex; justify-content: center;}
-#dales_search_form .input_zip_code_submit {background: #efe735; color: #313841; border: 4px solid #f4c72b !important; border-radius: 0 50px 50px 0;}
+#dales_search_form .input_zip_code_submit {background: #efe735; color: #313841; border: 4px solid #f4c72b !important; border-radius: 0 50px 50px 0; opacity: 1; transition: 0.5s;}
+#dales_search_form .input_zip_code_submit:hover {opacity: 0.8;}
 #dales_search_form .input_zip_code {background: rgba(43, 43, 43, 0.55); border: 4px solid #f4c72b !important; border-radius: 50px 0 0 50px; border-right: 0 !important; color: #ffffff;}
 #dales_search_form .input_zip_code:focus {outline: none !important;}
 #dales_search_form .input_zip_code::placeholder {color: #ffffff; font-family: 'GothamBold';} 
@@ -212,6 +214,7 @@ h3.title_select_header_template_order_content {
 a.need_help_header_order_content:hover{
     text-decoration: none;
     color: #313841 !important;
+    background-color: #efe735;
 }
 a.need_help_header_order_content {
     text-transform: uppercase;
@@ -261,6 +264,17 @@ p.material_text {
     min-height:  190px;
     position: relative;
 }
+.category_block_order:hover {
+    border: solid 3px #f4c72b;
+}
+.category_block_order:hover .label_description_block { opacity: 1; }
+
+.category_block_order:hover .label_description_block span {
+    color: #f4c72b;
+    border-bottom: solid 4px;
+}
+
+
 
 h3.title_block_category_order {
     font-family: GothamMedium;
@@ -293,7 +307,7 @@ p.description_block_category_order {
     background-color: #ccc;
 }
 a.btn_submit_order_go {width: 275px;display:  block;margin-left:  auto;text-align: center;height: 40px;padding-top: 9px;border: solid 3px #f4c72b;border-radius: 20px;font-family:  GothamBold;font-size:  13px;color:  #313841 !important;}
-a.btn_submit_order_go:hover{text-decoration: none;color: #313841;}
+a.btn_submit_order_go:hover{text-decoration: none;color: #313841; background-color: #efe735;}
 .btn_submit_order {
     text-align:  right;
     padding-bottom:  40px;
@@ -429,19 +443,22 @@ img.img_product_atachment {
     color:  #d8d236;
     padding: 5px 10px;
     left: 40px;
+    color: #efe735;
 }
 .info_product_order p {
-    margin-bottom:  0;
+    margin-bottom:  0 !important;
     font-family:  GothamMedium;
     font-size:  11px;
     text-transform:  uppercase;
 }
 .title_price_top_block_order {
     display:  flex;
+    justify-content: space-between;
 }
 
 p.price_order_product {
-    margin-left: 35%;
+    margin-left: 20px;
+    margin-right: 20px;
     font-family:  GothamMedium;
     font-size:  26px;
     color:  #313841;
@@ -453,6 +470,15 @@ p.price_order_product {
     font-size:  26px;
 }
 .title_price_top_block_order a.title_product_order{
+    color: #313841;
+    text-decoration: none;
+}
+.title_price_top_block_order p.title_product_order {
+    color:  #313841;
+    font-family:  GothamMedium;
+    font-size:  26px;
+}
+.title_price_top_block_order p.title_product_order{
     color: #313841;
     text-decoration: none;
 }
@@ -850,10 +876,6 @@ a.btn_submit_order_go.step_3 {
 .alert p {
     margin-bottom:  0;
 }
-form.email_fails {
-    display:  flex;
-    justify-content:  space-between;
-}
 
 .email_fails input[type="submit"] {
     text-transform: uppercase;
@@ -868,9 +890,7 @@ form.email_fails {
     font-size: 14px;
     color: #313841 !important;
 }
-.email_fails input[type="submit"]:hover{
-    color: #fff !important;
-}
+
 .fl-rich-text p{
     margin-bottom:  30px;
 }
@@ -887,7 +907,7 @@ label.optimization_btn {
 }
 form.email_fails{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 83%;
 }
 /* END Careers */
@@ -943,10 +963,7 @@ form.email_fails{
     line-height: 1;
 }
 
-.supportform input.wpcf7-form-control.wpcf7-submit:hover {
-    color: #fff;
-    background-color: #3f3f3f !important;
-    }
+
 .supportform input:focus, #wppb-register-user input:focus {
     border-color: #f4c72b !important;
 }
@@ -1026,7 +1043,7 @@ input#lwa_wp-submit, input.lwa-button-remember, input#register{
 }
 
 input#lwa_wp-submit:hover, input.lwa-button-remember:hover, input#register:hover {
-    color: #fff;
+    color: #fff !important;
     background-color: #3f3f3f !important;
     }
 
@@ -1074,7 +1091,7 @@ input#send_credentials_via_email {
 .woocommerce-checkout #order_review td:nth-child(2), .woocommerce-checkout #order_review th:nth-child(2) {text-align: right;}
 
 
-.woocommerce-checkout h1.entry-title {text-align: center; padding: 50px 20px; font-size: 45px; font-family: 'GothamMedium';}
+.woocommerce-checkout h1.entry-title {text-align: center; padding: 0 20px 50px; font-size: 45px; font-family: 'GothamMedium';}
 
 #billing_myfield1_field a {color: #f4c72b; text-decoration: underline; }
 #billing_myfield1_field span {font-size: 26px;}
@@ -1125,13 +1142,17 @@ input#send_credentials_via_email {
 .woocommerce-form-login .lost_password {display: inline-block;}
 .woocommerce-checkout .woocommerce-form-login {border: 0 !important; border-top: 4px solid #eeeeee !important; border-bottom: 4px solid #eeeeee !important; padding: 40px 0 !important;}
 .woocommerce-billing-fields__field-wrapper {width: 100%; margin: 0 auto;}
+#billing_myfield2_field label span, #billing_myfield4_field label span, #billing_myfield5_field label span, #billing_myfield6_field label span {border-bottom: 4px solid rgba(0,0,0,0);}
+#billing_myfield2_field label:hover span, #billing_myfield4_field label:hover span, #billing_myfield5_field label:hover span, #billing_myfield6_field label:hover span { color: #f4c72b; border-bottom: solid 4px; }
+#billing_myfield2_field label:hover:before, #billing_myfield4_field label:hover:before, #billing_myfield5_field label:hover:before {background: #eee;}
 #billing_myfield2_field label:before, #billing_myfield4_field label:before, #billing_myfield5_field label:before {margin-right: 25px; border: 4px solid #adafb3; content: ""; display: block; width: 40px; height: 40px; border-radius: 50%; }
-label.dales_checked_checkbox:before {border: 4px solid #f4c72b !important; background: #efe735; background-image: url(images/checked.jpg); background-repeat: no-repeat; background-position: center;}
+label.dales_checked_checkbox:before {border: 4px solid #f4c72b !important; background: #efe735 !important; background-image: url(images/checked.jpg) !important; background-repeat: no-repeat !important; background-position: center !important;}
 #billing_myfield1_field {font-family: "GothamMedium"; font-size: 13px; color: #313841; line-height: 30px; }
 #billing_myfield3_field {line-height: 30px; }
 .dales_checkout_first_row {display: flex; margin-bottom: 50px;}
 .dales_checkout_first_row_col1 {margin-right: 10px; background: #ffffff; border: 4px solid #313841; width: 460px; display: flex; flex-direction: column; padding: 30px; padding-bottom: 0;}
 .dales_checkout_first_row_col2 {margin-left: 10px; background: #ffffff; border: 4px solid #313841; width: 460px; display: flex; flex-wrap: wrap; padding: 30px;}
+.dales_checkout_first_row_col2.dales_checkout_error_confirmation {border: 4px solid #dc3545;}
 #billing_myfield3_field {width: 100% !important;}
 #billing_myfield4_field {width: 50% !important;}
 #billing_myfield5_field {width: 50% !important;}
@@ -1144,17 +1165,32 @@ label.dales_checked_checkbox:before {border: 4px solid #f4c72b !important; backg
 #billing_myfield2_field label, #billing_myfield4_field label, #billing_myfield5_field label {display: flex; align-items: center;}
 #billing_myfield2_field label input, #billing_myfield4_field label input, #billing_myfield5_field label input {display: none;}
 .dales_checkout_first_row_col2 .dales_checked_checkbox span {color: #f4c72b; text-decoration: underline;}
+.dales_containers_page_title {margin: 0 auto;}
+.dales_containers_page_title h2 {font-size: 24px; font-family: 'GothamBook'; margin-bottom: 50px;}
+.dales_containers_page_link_here {color: #f4c72b !important;}
+.dales_containers_page_link_here:hover {text-decoration: underline !important;}
+#billing_first_name_field {clear: both;}
+.dales_billing_label {display: inline-block;}
+#billing_myfield6_field {display: inline-block; float: right;}
+#billing_myfield6_field input {display: none;}
+#billing_myfield6_field label {display: flex;}
+#billing_myfield6_field label:hover:before {background: #ccc;}
+#billing_myfield6_field label:hover span {}
+#billing_myfield6_field label:before {margin-right: 25px; border: 4px solid #313841; content: ""; display: block; width: 40px; height: 40px;  }
+#dales_header_sign_in {text-align: right;}
+input[type="submit"]:hover {background-color: #efe735 !important; color: #313841 !important;}
 
+.woocommerce-checkout #payment ul.payment_methods li.payment_method_securesubmit img {display: none;}
+.woocommerce-checkout #payment ul.payment_methods li.payment_method_securesubmit > label:after {display: block; content: url(/wp-content/uploads/2018/07/if_Visa-Curved_70599.png);  width: 300px; max-width: 70%; margin-left: 20px;}
+.woocommerce-checkout #payment ul.payment_methods li.payment_method_securesubmit > label {display: flex; overflow: hidden;}
+.checkout_button_back {position: static; margin: 0 auto; max-width: 80%; padding-top: 20px;}
+.checkout_button_back a:hover {text-decoration: none !important;}
+label.label_description_block.product_order.active .select {color: #f4c72b; }
+p.price_order_product {white-space: pre-wrap;}
 
-
-
-
-
-
-
-
-
-
+.woocommerce-account h1.entry-title {text-align: center; padding: 50px;}
+.woocommerce-account .col-1, .woocommerce-account .col-2 {width: 100% !important; max-width: 100% !important; float: none;}
+.woocommerce-error::before, .woocommerce-info::before, .woocommerce-message::before {display: none !important;}
 @media (max-width: 1199px){
     .optimization_btn input[type="file"]{left: 0;}
     input[type="file"] {margin-bottom:  20px;}
@@ -1226,6 +1262,7 @@ label.dales_checked_checkbox:before {border: 4px solid #f4c72b !important; backg
     .content_product_order p{font-size: 13px;}
     p.price_order_product{margin-left: 30px; text-align: center;}
     .title_price_top_block_order a.title_product_order{text-align: center;}
+    .title_price_top_block_order p.title_product_order{text-align: center;}
     .title_price_top_block_order{flex-direction: row;justify-content: center;}
     a.btn_submit_order_go{margin: 0 auto;}
     .line_wrap:before{display: none;}
@@ -1314,6 +1351,7 @@ label.dales_checked_checkbox:before {border: 4px solid #f4c72b !important; backg
     .footer_content_product_order .jq-selectbox.jqselect.select_count_order.option_count_order{margin-left: 0;margin-bottom: 20px;}
     .title_price_top_block_order{align-items: center;}
     .title_price_top_block_order a.title_product_order{font-size: 16px;}
+    .title_price_top_block_order p.title_product_order{font-size: 16px;}
     p.price_order_product{margin-left: 10px;text-align: center;font-size: 12px;margin-bottom: 0;}
 }
 @media (max-width: 399px){
@@ -1328,4 +1366,28 @@ label.dales_checked_checkbox:before {border: 4px solid #f4c72b !important; backg
     html:not(.fl-builder-edit) body.page-id-137 .site-footer{width: 100% !important;}
     html:not(.fl-builder-edit) #page {padding-left: 8%; padding-right: 8%;}
     html:not(.fl-builder-edit) #dales_top_menu a {font-size: 10px; padding: 3px;}
+    html:not(.fl-builder-edit) #dales_bottom_menus a {font-size: 10px;}
+}
+
+
+nav.woocommerce-MyAccount-navigation ul li a {
+   
+    
+    text-indent: 10%;
+    padding: 12px;
+    color: #000 !important;
+}
+
+
+nav.woocommerce-MyAccount-navigation ul li {
+    list-style: none;
+    background-color: #d6af2694;
+     height: 44px;
+    border: 1px solid #fff;
+    padding: 10px;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+
+    /*padding: 50px;*/
 }

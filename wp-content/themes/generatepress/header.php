@@ -9,6 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+if (!isset($_COOKIE['form_data'])) {
+    global $woocommerce;
+	$woocommerce->cart->empty_cart(); 
+};
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>

@@ -60,7 +60,7 @@ get_header();
 		<div class="header_template_order_content three">
 			<h5 class="title_header_template_order_content">Step 3</h5>
 			<h3 class="title_select_header_template_order_content">Delivery Date</h3>
-			<a href="#" class="need_help_header_order_content">Need Help? Click here</a>
+			<a href="/contact-us/" class="need_help_header_order_content">Need Help? Click here</a>
 			<p class="text_header_order_content">All containers rentals have a 14-day rental term</p>
 		</div>
 		<div class="error_message_order_step_three">

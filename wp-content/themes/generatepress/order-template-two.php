@@ -15,17 +15,19 @@ $category_slug = '';
 if(isset($_COOKIE['slug'])){
 	$category_slug = $_COOKIE['slug'];
 }
+$dales_cat_id = get_term_by( 'slug', $category_slug, 'product_cat' );
 get_header();
 $args = array(
 	'post_type'      => 'product',
 	'posts_per_page' => -1,
-	'order'          => 'ASC',
-	'tax_query'      => array(
-        array(
-            'taxonomy' => 'product_cat',
-            'terms'    => $category_slug,
-        )
-    )
+	'order'          => 'DESC',
+	'tax_query' => array(
+                                array(
+                                'taxonomy' => 'product_cat',
+                                'field' => term_id,
+                                'terms' => $dales_cat_id
+                                )
+                            )
 
 );
 
@@ -67,7 +69,7 @@ $posts = get_posts( $args );
 		<div class="header_template_order_content two">
 			<h5 class="title_header_template_order_content">Step 2</h5>
 			<h3 class="title_select_header_template_order_content">Select Container</h3>
-			<a href="#" class="need_help_header_order_content">Need Help? Click here</a>
+			<a href="/contact-us/" class="need_help_header_order_content">Need Help? Click here</a>
 			<p class="text_header_order_content">Select a container size</p>
 		</div>
 		<form action="#" id="product_form">
@@ -81,6 +83,7 @@ $posts = get_posts( $args );
 				$product_price = $product->get_regular_price();
 				$product_content = $post->post_content;
 				$product_selected = find_product_from_coockie($id_product);
+				$dales_product_info = get_field( 'product_type', $post->ID);
 				$qty = '';
 				$checked = '';
 				if ($product_selected && $product_selected['id']) {
@@ -106,8 +109,8 @@ $posts = get_posts( $args );
 							</div>
 							<div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 block_right_product_order" id="<?php echo $id_product; ?>">
 								<div class="title_price_top_block_order">
-									<a href="<?php the_permalink(); ?>" class="title_product_order"><?php the_title(); ?></a>
-									<p class="price_order_product">$<?php echo $product_price; ?> <span>/ 14days</span></p>
+									<p class="title_product_order"><?php the_title(); ?></p>
+									<p class="price_order_product">$<?php echo $product_price; ?> <span>/  14days</span></p>
 								</div>
 								<div class="content_product_order">
 									<p><?php echo $product_content; ?></p>
@@ -125,7 +128,7 @@ $posts = get_posts( $args );
 										<option <?php echo $qty == '4' ? 'selected' : '' ?> class="option_count_order" value="4">4</option>
 										<option <?php echo $qty == '5' ? 'selected' : '' ?> class="option_count_order" value="5">5</option>
 									</select>
-									<p class="rolloff_product_order">Rolloff</p>
+									<p class="rolloff_product_order"><?php echo $dales_product_info; ?></p>
 								</div>
 							</div>
 						</div>

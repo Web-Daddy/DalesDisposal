@@ -101,7 +101,7 @@ jQuery(document).ready(function($) {
 					var number_name_day_current = date[0].getDay();
 					var number_name_day_last = date[1].getDay();
 					var number_name_month_current = date[0].getMonth();
-					var number_name_month_last = date[0].getMonth();
+					var number_name_month_last = date[1].getMonth();
 					$('.count_date_deliver_title_datepicker.current_day').html(count_day_current);
 					$('.count_date_deliver_title_datepicker.last_day').html(count_day_last);
 					$('.hidden_text_date.current_day').html(weekArr[number_name_day_current]);
