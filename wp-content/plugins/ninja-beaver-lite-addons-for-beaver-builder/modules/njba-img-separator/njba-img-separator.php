@@ -1,6 +1,6 @@
 <?php
 /**
- * @class NJBATabsModule
+ * @class NJBAImageSeparator
  */
 class NJBAImageSeparator extends FLBuilderModule {
     /**
@@ -17,8 +17,8 @@ class NJBAImageSeparator extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Image Separator', 'bb-njba'),
             'description'   => __('Use Image as a separator', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Separator Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'separator' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-img-separator/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-img-separator/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -352,6 +352,9 @@ FLBuilder::register_module('NJBAImageSeparator', array(
                             'bottom'     => __('Bottom', 'bb-njba'),
                             'top'        => __('Top', 'bb-njba')
                         ),
+                        'preview'       => array(
+                                'type'      => 'none'
+                        )
                     ),
                     /* Image top bottom size */
                     'gutter'          => array(

@@ -1,10 +1,8 @@
 <?php
-
 /**
  * @class NJBALogoGrideModule
  */
 class NJBALogoGrideModule extends FLBuilderModule {
-
     /**
      * Constructor function for the module. You must pass the
      * name, description, dir and url in an array to the parent class.
@@ -16,15 +14,14 @@ class NJBALogoGrideModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Logo Grid & Carousel ', 'bb-njba'),
             'description'   => __('Addon to display logos.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Carousel Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'carousel' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-logo-grid-carousel/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-logo-grid-carousel/',
             'editor_export' => true, // Defaults to true and can be omitted.
             'enabled'       => true, // Defaults to true and can be omitted.
             'icon'              => 'slides.svg',
         ));
-
          /**
          * Use these methods to enqueue css and js already
          * registered or to register and enqueue your own.
@@ -34,7 +31,6 @@ class NJBALogoGrideModule extends FLBuilderModule {
         $this->add_css('font-awesome');
         $this->add_js('jquery-bxslider');
     }
-
     /**
      * Use this method to work with settings data before
      * it is saved. You must return the settings object.
@@ -48,9 +44,7 @@ class NJBALogoGrideModule extends FLBuilderModule {
     }
     public function delete()
     {
-
     }
-
    
 }
 /**
@@ -130,6 +124,9 @@ FLBuilder::register_module('NJBALogoGrideModule', array(
                             '3'       => '4',
                             '2'       => '6',
                         ),
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
 					),
                 )
 			),
@@ -205,21 +202,7 @@ FLBuilder::register_module('NJBALogoGrideModule', array(
             'carousel_section'       => array( // Section
                 'title'         => '',
                 'fields'        => array( // Section Fields
-                   /* 'carousel_show'         => array(
-                        'type'          => 'select',
-                        'label'         => __('Carousel', 'bb-njba'),
-                        'default'       => '0',
-                        'options'       => array(
-                            '1'             => __('Yes', 'bb-njba'),
-                            '0'             => __('No', 'bb-njba')
-                        ),
-                        'toggle'        => array(
-                            '1'         => array(
-                                'fields'        => array('min_slides', 'move_slides', 'max_slides', 'slide_width', 'slide_margin')
-                            )
-                        )
-                    ),*/
-                    'max_slides'         => array(
+                   'max_slides'         => array(
                         'type'          => 'njba-simplify',
                         'label'         => __('Maximum Slides'),
                         'default'       => array(
@@ -229,17 +212,7 @@ FLBuilder::register_module('NJBALogoGrideModule', array(
                         ),
                         'size'          => '5', 
                     ),
-                 /*  'slide_width'         => array(
-                        'type'          => 'njba-simplify',
-                        'label'         => __('Slides Width ', 'bb-njba'),
-                        'default'       => array(
-                                    'desktop' => '350',
-                                    'medium'  => '330',
-                                    'small'   => '320',
-                        ),
-                        'size'          => '5', 
-                    ),*/
-                     'slide_margin'         => array(
+                    'slide_margin'         => array(
                         'type'          => 'njba-simplify',
                         'label'         => __('Slides Margin ', 'bb-njba'),
                         'default'       => array(
@@ -634,12 +607,6 @@ FLBuilder::register_module('NJBALogoGrideModule', array(
                                 ),
                             )
                         ),
-                        'preview'       => array(
-                            'type'      => 'css',
-                            'selector'  => '.njba-out-side',
-                            'property'  => 'padding',
-                            'unit'      => 'px'
-                        )
                     ),
                     'col_inner_padding'      => array(
                         'type'              => 'njba-multinumber',
@@ -735,6 +702,9 @@ FLBuilder::register_module('NJBALogoGrideModule', array(
                             'h4'      => __('H4', 'bb-njba'),
                             'h5'      => __('H5', 'bb-njba'),
                             'h6'      => __('H6', 'bb-njba'),
+                        ),
+                        'preview'   => array(
+                            'type'      => 'none'
                         )
                     ),
                     'title_alignment'         => array(
@@ -811,8 +781,6 @@ FLBuilder::register_module('NJBALogoGrideModule', array(
         )
     )
 ));
-
-
 /**
  * Register a settings form to use in the "form" field type above.
  */
@@ -827,7 +795,10 @@ FLBuilder::register_settings_form('njba_logospanel_form', array(
                     'fields'     => array(
                         'logo_title'     => array(
                             'type'          => 'text',
-                            'label'         => __('Title', 'bb-njba')
+                            'label'         => __('Title', 'bb-njba'),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                         'logo'     => array(
                             'type'          => 'photo',
@@ -861,4 +832,3 @@ FLBuilder::register_settings_form('njba_logospanel_form', array(
 		)
 	)
 ));
-

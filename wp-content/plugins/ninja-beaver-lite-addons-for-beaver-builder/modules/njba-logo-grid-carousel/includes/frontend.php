@@ -22,7 +22,7 @@
 								                    <a href="<?php echo $logos->url;?>" target="<?php echo $logos->link_target;?>">
 								                <?php endif;?>
 								                <?php if($logos->logo != ''){ ?>
-								                       <img class="njba-image-responsive" src="<?php echo $logos->logo_src;?>" alt="<?php echo $logos->logo_title;?>">
+								                       <img class="njba-logo-image-responsive" src="<?php echo $logos->logo_src;?>" alt="<?php echo $logos->logo_title;?>">
 								                <?php  } ?>
 								                <?php if($settings->show_logo_title == 'yes'): ?>
 								                        <div class="njba-title-wrapper">
@@ -44,3 +44,5 @@
 			</div><!--njba-logo-grid-carousel-wrapper-->
 		</div><!--njba-logo-grid-carousel-body-->
 	</div><!--njba-logo-grid-carousel-main-->
+    
+	

@@ -1,0 +1,8 @@
+2018-08-08T20:28:08+00:00 CRITICAL Uncaught HpsArgumentException: Get needs a transactionId in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce-securesubmit-gateway/classes/includes/src/Abstractions/HpsBuilderAbstract.php:99
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce-securesubmit-gateway/classes/includes/src/Abstractions/HpsBuilderAbstract.php(38): HpsBuilderAbstract->validate()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce-securesubmit-gateway/classes/includes/src/Services/Fluent/Gateway/Credit/HpsCreditServiceGetBuilder.php(30): HpsBuilderAbstract->execute()
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce-securesubmit-gateway/classes/class-wc-gateway-securesubmit.php(319): HpsCreditServiceGetBuilder->execute()
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce-securesubmit-gateway/classes/class-wc-gateway-securesubmit.php(220): WC_Gateway_SecureSubmit->isTransactionActiveOnGateway(476)
+
+

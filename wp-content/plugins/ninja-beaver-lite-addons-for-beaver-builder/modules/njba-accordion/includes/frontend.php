@@ -6,7 +6,9 @@
 				<?php if(isset($settings->items[$i]->accordion_font_icon) )  {   ?>
 					<i class="njba-accordion-icon <?php echo $settings->items[$i]->accordion_font_icon; ?>"></i>
 				<?php } ?>
-				<?php if(isset($settings->items[$i]->label) )  { echo $settings->items[ $i ]->label; }?>
+				<?php if(isset($settings->items[$i]->label) )  { ?>
+					<div class="njba-accordion-button-label-selector"> <?php echo $settings->items[ $i ]->label; ?> </div>
+				<?php } ?>
 			</span>
 			<?php if( isset($settings->accordion_open_icon) ) { ?>
 				<span class="njba-accordion-button-icon njba-accordion-open <?php echo $settings->accordion_open_icon; ?>"></span>

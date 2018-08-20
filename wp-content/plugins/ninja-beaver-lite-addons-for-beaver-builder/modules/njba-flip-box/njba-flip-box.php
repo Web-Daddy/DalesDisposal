@@ -12,8 +12,8 @@ class NJBAFlipBoxModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Flip Box', 'bb-njba'),
             'description'   => __('Flip Box', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-flip-box/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-flip-box/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -133,6 +133,12 @@ FLBuilder::register_settings_form('njba_flip_box_icon_form_field', array(
                             'description' => 'px',
                             'maxlength'   => '3',
                             'size'        => '5',
+                            'preview'      => array(
+                                'type'         => 'css',
+                                'selector'     => '.njba-icon-img',
+                                'property'     => 'border',
+                                'unit'         => 'px'
+                            )
                         ),
                         'icon_img_border_radius_njba'      => array(
                             'type'              => 'njba-multinumber',
@@ -147,20 +153,44 @@ FLBuilder::register_settings_form('njba_flip_box_icon_form_field', array(
                             ),
                             'options'           => array(
                                 'topleft'               => array(
-                                    'placeholder'       => __('Top', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-up'
+                                    'placeholder'       => __('Top Left', 'bb-njba'),
+                                    'icon'              => 'fa-long-arrow-up',
+                                    'preview'      => array(
+                                        'type'         => 'css',
+                                        'selector'     => '.njba-icon-img',
+                                        'property'     => 'border-top-left-radius',
+                                        'unit'         => 'px'
+                                    )
                                 ),
                                 'topright'            => array(
-                                    'placeholder'       => __('Right', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-right'
+                                    'placeholder'       => __('Top Right', 'bb-njba'),
+                                    'icon'              => 'fa-long-arrow-right',
+                                    'preview'      => array(
+                                        'type'         => 'css',
+                                        'selector'     => '.njba-icon-img',
+                                        'property'     => 'border-top-right-radius',
+                                        'unit'         => 'px'
+                                    )
                                 ),
                                 'bottomleft'            => array(
-                                    'placeholder'       => __('Bottom', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-down'
+                                    'placeholder'       => __('Bottom Left', 'bb-njba'),
+                                    'icon'              => 'fa-long-arrow-down',
+                                    'preview'      => array(
+                                        'type'         => 'css',
+                                        'selector'     => '.njba-icon-img',
+                                        'property'     => 'border-bottom-left-radius',
+                                        'unit'         => 'px'
+                                    )
                                 ),
                                 'bottomright'            => array(
-                                    'placeholder'       => __('Left', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-left'
+                                    'placeholder'       => __('Bottom Right', 'bb-njba'),
+                                    'icon'              => 'fa-long-arrow-left',
+                                    'preview'      => array(
+                                        'type'         => 'css',
+                                        'selector'     => '.njba-icon-img',
+                                        'property'     => 'border-bottom-right-radius',
+                                        'unit'         => 'px'
+                                    )
                                 )
                                 
                             )
@@ -175,6 +205,11 @@ FLBuilder::register_settings_form('njba_flip_box_icon_form_field', array(
                                 'dotted'  => __('Dotted', 'bb-njba'),
                                 'dashed'  => __('Dashed', 'bb-njba'),
                                 'double'  => __('Double', 'bb-njba'),
+                            ),
+                            'preview'      => array(
+                                'type'         => 'css',
+                                'selector'     => '.njba-icon-img',
+                                'property'     => 'border-style',
                             )
                         ),
                         'img_icon_border_color' => array( 
@@ -182,6 +217,11 @@ FLBuilder::register_settings_form('njba_flip_box_icon_form_field', array(
                             'label'      => __('Color', 'bb-njba'),
                             'default'    => 'ffffff',
                             'show_reset' => true,
+                            'preview'      => array(
+                                'type'         => 'css',
+                                'selector'     => '.njba-icon-img',
+                                'property'     => 'border-color',
+                            )
                         ),
                         /* Background Color Dependent on Icon Style **/
                         'img_icon_bg_color' => array( 
@@ -189,6 +229,11 @@ FLBuilder::register_settings_form('njba_flip_box_icon_form_field', array(
                             'label'         => __('Background Color', 'bb-njba'),
                             'default'    => '',
                             'show_reset' => true,
+                            'preview'      => array(
+                                'type'         => 'css',
+                                'selector'     => '.njba-icon-img',
+                                'property'     => 'background'
+                            )
                         ),
                         'img_icon_bg_color_opc' => array( 
                             'type'        => 'text',
@@ -211,19 +256,43 @@ FLBuilder::register_settings_form('njba_flip_box_icon_form_field', array(
                             'options'           => array(
                                 'top'               => array(
                                     'placeholder'       => __('Top', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-up'
+                                    'icon'              => 'fa-long-arrow-up',
+                                    'preview'           => array(
+                                        'type'              => 'css',
+                                        'selector'          => '.njba-icon-img i',
+                                        'property'          => 'padding-top',
+                                        'unit'              => 'px'
+                                    )
                                 ),
                                 'right'            => array(
                                     'placeholder'       => __('Right', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-right'
+                                    'icon'              => 'fa-long-arrow-right',
+                                    'preview'           => array(
+                                        'type'              => 'css',
+                                        'selector'          => '.njba-icon-img i',
+                                        'property'          => 'padding-right',
+                                        'unit'              => 'px'
+                                    ),
                                 ),
                                 'bottom'            => array(
                                     'placeholder'       => __('Bottom', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-down'
+                                    'icon'              => 'fa-long-arrow-down',
+                                    'preview'           => array(
+                                        'type'              => 'css',
+                                        'selector'          => '.njba-icon-img i',
+                                        'property'          => 'padding-bottom',
+                                        'unit'              => 'px'
+                                    ),
                                 ),
                                 'left'            => array(
                                     'placeholder'       => __('Left', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-left'
+                                    'icon'              => 'fa-long-arrow-left',
+                                    'preview'           => array(
+                                        'type'              => 'css',
+                                        'selector'          => '.njba-icon-img i',
+                                        'property'          => 'padding-left',
+                                        'unit'              => 'px'
+                                    ),
                                 )
                                 
                             )
@@ -241,19 +310,43 @@ FLBuilder::register_settings_form('njba_flip_box_icon_form_field', array(
                             'options'           => array(
                                 'top'               => array(
                                     'placeholder'       => __('Top', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-up'
+                                    'icon'              => 'fa-long-arrow-up',
+                                    'preview'           => array(
+                                        'type'              => 'css',
+                                        'selector'          => '.njba-icon-img i',
+                                        'property'          => 'margin-top',
+                                        'unit'              => 'px'
+                                    )
                                 ),
                                 'right'            => array(
                                     'placeholder'       => __('Right', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-right'
+                                    'icon'              => 'fa-long-arrow-right',
+                                    'preview'           => array(
+                                        'type'              => 'css',
+                                        'selector'          => '.njba-icon-img i',
+                                        'property'          => 'margin-right',
+                                        'unit'              => 'px'
+                                    ),
                                 ),
                                 'bottom'            => array(
                                     'placeholder'       => __('Bottom', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-down'
+                                    'icon'              => 'fa-long-arrow-down',
+                                    'preview'           => array(
+                                        'type'              => 'css',
+                                        'selector'          => '.njba-icon-img i',
+                                        'property'          => 'margin-bottom',
+                                        'unit'              => 'px'
+                                    ),
                                 ),
                                 'left'            => array(
                                     'placeholder'       => __('Left', 'bb-njba'),
-                                    'icon'              => 'fa-long-arrow-left'
+                                    'icon'              => 'fa-long-arrow-left',
+                                    'preview'           => array(
+                                        'type'              => 'css',
+                                        'selector'          => '.njba-icon-img i',
+                                        'property'          => 'margin-left',
+                                        'unit'              => 'px'
+                                    ),
                                 )
                                 
                             )
@@ -270,6 +363,11 @@ FLBuilder::register_settings_form('njba_flip_box_icon_form_field', array(
                             'label'      => __('Icon Color', 'bb-njba'),
                             'default'    => '000000',
                             'show_reset' => true,
+                            'preview'      => array(
+                                'type'         => 'css',
+                                'selector'     => '.njba-icon-img i',
+                                'property'     => 'color',
+                            )
                         ),
                     )
                 )
@@ -290,9 +388,8 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'type'      => 'text',
                         'label'     => 'Text',
                         'default'   => __('SUBMIT', 'bb-njba'),
-                        'preview'       => array(
-                            'type'          => 'text',
-                            'selector'      => ''
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     
@@ -319,8 +416,8 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                             '_self'     =>  __('Same Window', 'bb-njba'),   
                             '_blank'    =>  __('New Window', 'bb-njba'),   
                         ),
-                        'preview'   => array(
-                            'type'      => 'none'
+                        'preview'       => array(
+                            'type'          => 'none'
                         )
                     )
                 )
@@ -408,25 +505,41 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'type' => 'color',
                         'label' => __('Background Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => 'dfdfdf'
+                        'default' => 'dfdfdf',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'background'
+                        )
                     ),
                     'button_background_hover_color' => array(
                         'type' => 'color',
                         'label' => __('Background Hover Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '000000'
+                        'default' => '000000',
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'button_text_color' => array(
                         'type' => 'color',
                         'label' => __('Text Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '404040'
+                        'default' => '404040',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'color'
+                        )
                     ),
                     'button_text_hover_color' => array(
                         'type' => 'color',
                         'label' => __('Text Hover Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => 'ffffff'
+                        'default' => 'ffffff',
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'button_border_style'      => array(
                         'type'      => 'select',
@@ -452,6 +565,11 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                             'double' => array(
                                 'fields' => array('button_border_width','button_border_color','button_border_hover_color')
                             ),
+                        ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'border-style'
                         )
                     ),
                     'button_border_width' => array(
@@ -459,34 +577,63 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'label' => __('Border Width','bb-njba'),
                         'default' => '1',
                         'size' => '5',
-                        'description'       => _x( 'px', 'Value unit for spacer width. Such as: "10 px"', 'bb-njba' )
+                        'description'       => _x( 'px', 'Value unit for spacer width. Such as: "10 px"', 'bb-njba' ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'border-width'
+                        )
                     ),
                     'button_border_radius'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Border Radius', 'bb-njba'),
                         'description'       => 'px',
                         'default'           => array(
-                            'top'          => 0,
-                            'right'         => 0,
-                            'bottom'       => 0,
-                            'left'      => 0
+                            'top-left'          => 0,
+                            'top-right'         => 0,
+                            'bottom-left'       => 0,
+                            'bottom-right'      => 0
                         ),
                         'options'           => array(
-                            'top'               => array(
-                                'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                            'top-left'               => array(
+                                'placeholder'       => __('Top Left', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'border-top-left-radius',
+                                    'unit'              => 'px'
+                                )
                             ),
-                            'right'            => array(
-                                'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                            'top-right'            => array(
+                                'placeholder'       => __('Top Right', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'border-top-right-radius',
+                                    'unit'              => 'px'
+                                ),
                             ),
-                            'bottom'            => array(
-                                'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                            'bottom-left'            => array(
+                                'placeholder'       => __('Bottom Left', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'border-bottom-left-radius',
+                                    'unit'              => 'px'
+                                ),
                             ),
-                            'left'            => array(
-                                'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                            'bottom-right'            => array(
+                                'placeholder'       => __('Bottom Right', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'border-bottom-right-radius',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -495,13 +642,21 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'type' => 'color',
                         'label' => __('Border Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '000000'
+                        'default' => '000000',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'border-color'
+                        )
                     ),
                     'button_border_hover_color' => array(
                         'type' => 'color',
                         'label' => __('Border Hover Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '000000'
+                        'default' => '000000',
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'button_box_shadow'      => array(
                         'type'              => 'njba-multinumber',
@@ -530,14 +685,18 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa fa-circle'
                             )
-                            
-                        )
+                        ),
                     ),
                     'button_box_shadow_color' => array(
                         'type' => 'color',
                         'label' => __('Box Shadow Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => 'ffffff'
+                        'default' => 'ffffff',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'box-shadow'
+                        )
                     ),
                     'button_padding'      => array(
                         'type'              => 'njba-multinumber',
@@ -552,19 +711,43 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'padding-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'padding-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'padding-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'padding-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -574,27 +757,51 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'label'             => __('Button Margin', 'bb-njba'),
                         'description'       => 'px',
                         'default'           => array(
-                            'top'          => 10,
+                            'top'          => 0,
                             'right'         => 0,
-                            'bottom'       => 10,
+                            'bottom'       => 0,
                             'left'      => 0
                         ),
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'margin-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'margin-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'margin-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'margin-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -608,7 +815,12 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'type' => 'color',
                         'label' => __('Icon Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '000000'
+                        'default' => '000000',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn i',
+                            'property'     => 'color'
+                        )
                     ),
                     'icon_hover_color' => array(
                         'type' => 'color',
@@ -629,19 +841,43 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'padding-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'padding-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'padding-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'padding-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -659,19 +895,43 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'margin-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'margin-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'margin-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'margin-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -686,7 +946,12 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'label' => __('Transition delay','bb-njba'),
                         'default' => 0.3,
                         'size' => '5',
-                        'description' => 's'
+                        'description' => 's',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn i',
+                            'property'     => 'transition'
+                        )
                     ),
                 ) 
             ),      
@@ -718,13 +983,23 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                         'type' => 'text',
                         'label' => __('Custom Width','bb-njba'),
                         'default' => 200,
-                        'size' => 10
+                        'size' => 10,
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'width'
+                        )
                     ),
                     'custom_height' => array(
                         'type' => 'text',
                         'label' => __('Custom Height','bb-njba'),
                         'default' => 45,
-                        'size' => 10
+                        'size' => 10,
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'min-height'
+                        )
                     ),
                     'alignment' => array(
                         'type' => 'select',
@@ -734,6 +1009,11 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                             'left' => __('Left','bb-njba'),
                             'center' => __('Center','bb-njba'),
                             'right' => __('Right','bb-njba')
+                        ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main',
+                            'property'     => 'text-align'
                         )   
                     )
                 ) 
@@ -766,7 +1046,13 @@ FLBuilder::register_settings_form('njba_button_form_field', array(
                             'desktop' => '18',
                             'medium' => '14',
                             'small' => '12'
-                        )
+                        ),
+                        'preview'           => array(
+                            'type'              => 'css',
+                            'selector'          => '.njba-btn-main a.njba-btn',
+                            'property'          => 'font-size',
+                            'unit'              => 'px'
+                        ),
                     )
                 )
             ),
@@ -803,12 +1089,15 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'type'          => 'form',
                         'label'         => __('Icon Settings', 'bb-njba'),
                         'form'          => 'njba_flip_box_icon_form_field', // ID of a registered form.
-                        'preview_text'  => 'icon', // ID of a field to use for the preview text.
+                    //    'preview_text'  => 'icon', // ID of a field to use for the preview text.
                     ),
                     'title_front'     => array(
                         'type'          => 'text',
                         'label'         => __('Title on Front', 'bb-njba'),
                         'default'       => __( "Hover Me!", "bb-njba"),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'desc_front'     => array(
                         'type'          => 'editor',
@@ -816,6 +1105,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'rows'          => 10,
                         'label'         => '',
                         'default'       => __('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.','bb-njba'),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                 )
             ),     
@@ -859,6 +1151,11 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'right center'      => __( 'Right Center', 'bb-njba' ),
                             'right bottom'      => __( 'Right Bottom', 'bb-njba' ),
                         ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-front',
+                            'property'     => 'background-position',
+                        )
                     ),
                     'front_bg_image_repeat'     => array(
                         'type'          => 'select',
@@ -868,6 +1165,11 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'repeat'       => 'Repeat',
                             'no-repeat'        => 'No Repeat',
                         ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-front',
+                            'property'     => 'background-repeat',
+                        )
                     ),
                     'front_bg_image_display'     => array(
                         'type'          => 'select',
@@ -878,12 +1180,22 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'cover'     => __('Cover','bb-njba'),
                             'contain'   => __('Contain','bb-njba'),
                         ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-front',
+                            'property'     => 'background-size',
+                        )
                     ),
                     'front_background_color'    => array( 
                         'type'       => 'color',
                         'label'      => __('Background Color', 'bb-njba'),
                         'default'    => 'ffffff',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-front',
+                            'property'     => 'background-color'
+                        )
                     ),
                     'front_background_color_opc'    => array( 
                         'type'        => 'text',
@@ -929,6 +1241,11 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                                 'fields' => array( 'front_border_size', 'front_border_color' )
                             ),
                         ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-front',
+                            'property'     => 'border-style'
+                        )
                     ),
                     'front_border_size'    => array(
                         'type'          => 'text',
@@ -939,7 +1256,7 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'default'       => '1',
                         'preview'         => array(
                             'type'             => 'css',
-                            'selector'         => '.bb-njba-front',
+                            'selector'         => '.njba-front',
                             'property'         => 'border-width',
                             'unit'             => 'px'
                         )
@@ -949,6 +1266,11 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'label'      => __('Border Color', 'bb-njba'),
                         'default'    => 'dbdbdb',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-front',
+                            'property'     => 'border-color'
+                        )
                     ),
                 )
             ),       
@@ -963,7 +1285,10 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                     'title_back'     => array(
                         'type'          => 'text',
                         'label'         => __('Title on Back', 'bb-njba'),
-                        'default'       => __('Cool Right!','bb-njba')
+                        'default'       => __('Cool Right!','bb-njba'),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'desc_back'     => array(
                         'type'          => 'editor',
@@ -971,6 +1296,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'rows'          => 10,
                         'label'         => '',
                         'default'       => __('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s','bb-njba'),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),                 
                 )
             ),
@@ -1014,6 +1342,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'right center'      => __( 'Right Center', 'bb-njba' ),
                             'right bottom'      => __( 'Right Bottom', 'bb-njba' ),
                         ),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'back_bg_image_repeat'     => array(
                         'type'          => 'select',
@@ -1023,6 +1354,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'repeat'       => 'Repeat',
                             'no-repeat'        => 'No Repeat',
                         ),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'back_bg_image_display'     => array(
                         'type'          => 'select',
@@ -1033,12 +1367,18 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'cover'     => __('Cover','bb-njba'),
                             'contain'   => __('Contain','bb-njba'),
                         ),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'back_background_color'    => array( 
                         'type'       => 'color',
                         'label'      => __('Background Color', 'bb-njba'),
                         'default'    => '',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'back_background_color_opc'    => array( 
                         'type'        => 'text',
@@ -1084,6 +1424,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                                 'fields' => array( 'back_border_size', 'back_border_color' )
                             ),
                         ),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'back_border_size'    => array(
                         'type'          => 'text',
@@ -1092,11 +1435,8 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'class'         => '',
                         'default'       => '1',
                         'description'   => 'px',
-                        'preview'         => array(
-                            'type'             => 'css',
-                            'selector'         => '.bb-njba-back',
-                            'property'         => 'border-width',
-                            'unit'             => 'px'
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'back_border_color' => array( 
@@ -1104,6 +1444,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'label'      => __('Border Color', 'bb-njba'),
                         'default'    => 'dbdbdb',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                 )
             ),
@@ -1167,19 +1510,43 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-flip-box-section',
+                                    'property'          => 'padding-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-flip-box-section',
+                                    'property'          => 'padding-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-flip-box-section',
+                                    'property'          => 'padding-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-flip-box-section',
+                                    'property'          => 'padding-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -1189,7 +1556,13 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'label'       => __('Box Border Radius', 'bb-njba'),
                         'default'     => '0',
                         'maxlength'   => '3',
-                        'size'        => '5'
+                        'size'        => '5',
+                        'preview'           => array(
+                            'type'              => 'css',
+                            'selector'          => '.njba-flip-box .njba-face',
+                            'property'          => 'border-radius',
+                            'unit'              => 'px'
+                        ),
                     ),
                 )
             ),
@@ -1212,6 +1585,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'h4'      =>  __('H4', 'bb-njba'),
                             'h5'      =>  __('H5', 'bb-njba'),
                             'h6'      =>  __('H6', 'bb-njba')
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'front_title_typography_font_family'       => array(
@@ -1221,10 +1597,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'family'        => 'Default',
                             'weight'        => 'Default'
                         ),
-                        'preview'   => array(
-                            'type'      => 'font',
-                            'selector'  => '.bb-njba-face-text-title'
-                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'front_title_typography_font_size'     => array(
                         'type'          => 'njba-simplify',
@@ -1233,6 +1608,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'desktop'       => '28',
                             'medium'        => '22',
                             'small'         => '18',
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'front_title_typography_line_height'    => array(
@@ -1242,6 +1620,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'desktop'       => '36',
                             'medium'        => '28',
                             'small'         => '22',
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'front_title_typography_color'        => array( 
@@ -1249,6 +1630,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'label'         => __('Front Title Color', 'bb-njba'),
                         'default'    => '000000',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'front_title_typography_margin'      => array(
                         'type'              => 'njba-multinumber',
@@ -1264,34 +1648,30 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-top',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-right',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-bottom',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-left',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             )
                         )
                     ),
@@ -1307,10 +1687,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'family'        => 'Default',
                             'weight'        => 'Default'
                         ),
-                        'preview'   => array(
-                            'type'      => 'font',
-                            'selector'  => '.bb-njba-flip-box-section-content'
-                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'front_desc_typography_font_size'     => array(
                         'type'          => 'njba-simplify',
@@ -1319,6 +1698,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'desktop'       => '14',
                             'medium'        => '13',
                             'small'         => '12',
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'front_desc_typography_line_height'    => array(
@@ -1328,6 +1710,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'desktop'       => '20',
                             'medium'        => '18',
                             'small'         => '16',
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'front_desc_typography_color'        => array( 
@@ -1335,6 +1720,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'label'         => __('Front Description Color', 'bb-njba'),
                         'default'    => '000000',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'front_desc_typography_margin'      => array(
                         'type'              => 'njba-multinumber',
@@ -1350,34 +1738,30 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-top',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-right',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-bottom',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-left',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             )
                         )
                     ),
@@ -1397,6 +1781,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'h4'      =>  __('H4', 'bb-njba'),
                             'h5'      =>  __('H5', 'bb-njba'),
                             'h6'      =>  __('H6', 'bb-njba')
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'back_title_typography_font_family'       => array(
@@ -1406,10 +1793,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'family'        => 'Default',
                             'weight'        => 'Default'
                         ),
-                        'preview'   => array(
-                            'type'      => 'font',
-                            'selector'  => '.bb-njba-back-text-title'
-                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'back_title_typography_font_size'     => array(
                         'type'          => 'njba-simplify',
@@ -1418,6 +1804,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'desktop'       => '28',
                             'medium'        => '22',
                             'small'         => '18',
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'back_title_typography_line_height'    => array(
@@ -1427,6 +1816,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'desktop'       => '36',
                             'medium'        => '28',
                             'small'         => '22',
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'back_title_typography_color'        => array( 
@@ -1434,6 +1826,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'label'         => __('Back Title Color', 'bb-njba'),
                         'default'    => '000000',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'back_title_typography_margin'      => array(
                         'type'              => 'njba-multinumber',
@@ -1449,34 +1844,30 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-top',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-right',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-bottom',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-left',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             )
                         )
                     ),
@@ -1492,10 +1883,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'family'        => 'Default',
                             'weight'        => 'Default'
                         ),
-                        'preview'   => array(
-                            'type'      => 'font',
-                            'selector'  => '.bb-njba-back-flip-box-section-content'
-                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'back_desc_typography_font_size'     => array(
                         'type'          => 'njba-simplify',
@@ -1504,6 +1894,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'desktop'       => '14',
                             'medium'        => '13',
                             'small'         => '12',
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'back_desc_typography_line_height'    => array(
@@ -1513,6 +1906,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'desktop'       => '20',
                             'medium'        => '18',
                             'small'         => '16',
+                        ),
+                        'preview'      => array(
+                            'type'         => 'none'
                         )
                     ),
                     'back_desc_typography_color'        => array( 
@@ -1520,6 +1916,9 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                         'label'         => __('Back Description Color', 'bb-njba'),
                         'default'    => '000000',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'back_desc_typography_margin'      => array(
                         'type'              => 'njba-multinumber',
@@ -1535,34 +1934,29 @@ FLBuilder::register_module('NJBAFlipBoxModule', array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-top',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-right',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-bottom',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-left',
-                                ),
+                                'preview'      => array(
+                                    'type'         => 'none'
+                                )
                             )
                         )
                     ),

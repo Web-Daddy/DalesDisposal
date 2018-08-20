@@ -14,8 +14,8 @@ class NJBAQuoteBoxModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Quote Box', 'bb-njba'),
             'description'   => __('Addon to display quote box.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-quote-box/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-quote-box/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -32,7 +32,7 @@ class NJBAQuoteBoxModule extends FLBuilderModule {
 		
     }
      // For Post Image
-    public function njba_profile_image() {
+    public function profile_image() {
         $photo =$this->settings->photo;
         echo '<div class="njba-quote-image">';
             if($photo != ''){ 
@@ -43,36 +43,36 @@ class NJBAQuoteBoxModule extends FLBuilderModule {
         echo '</div>';
     }
     // For Name
-    public function njba_profile_name() {
+    public function profile_name() {
         $name =$this->settings->name;
         
             if( $name != '' ) {
-                echo '<h2>'.$name.'</h2>';
+                echo '<h2 class="name-selector">'.$name.'</h2>';
             } 
             
     }
     // For Designation
-    public function njba_profile_designation() {
+    public function profile_designation() {
         $profile =$this->settings->profile;
         
             if( $profile != '' ) {
-                echo '<h3>'.$profile.'</h3>';
+                echo '<h3 class="designation-selector">'.$profile.'</h3>';
             } 
     }
     
     // For Profile Content
-    public function njba_profile_content() {
+    public function profile_content() {
         $content =$this->settings->content;
         if( $content != '' ) {
             echo '<h4>'.$content.'</h4>';
         } 
     }
-    public function njba_right_quotesign(){
+    public function right_quotesign(){
         echo '<div class="njba-quote-icon-two">
                 <i class="fa fa-quote-right"></i>
               </div>';
     }
-    public function njba_left_quotesign(){
+    public function left_quotesign(){
         echo '<div class="njba-quote-icon">
                 <i class="fa fa-quote-left"></i>
               </div>';
@@ -177,11 +177,17 @@ FLBuilder::register_module('NJBAQuoteBoxModule', array(
                     ),
 					'name'     => array(
                         'type'          => 'text',
-                        'label'         => __('Name', 'bb-njba')
+                        'label'         => __('Name', 'bb-njba'),
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
                     ),
                     'profile'     => array(
                         'type'          => 'text',
-                        'label'         => __('Profile', 'bb-njba')
+                        'label'         => __('Profile', 'bb-njba'),
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
                     ),
                     'photo'     => array(
                         'type'          => 'photo',
@@ -196,6 +202,9 @@ FLBuilder::register_module('NJBAQuoteBoxModule', array(
                     'content'     => array(
                         'type'          => 'editor',
                         'rows'         => '5',
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
                     ),
                 )
             ),

@@ -11,8 +11,8 @@ class NJBASeparatorModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Separator', 'bb-njba'),
             'description'   => __('Addon to display Separator.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Separator Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'separator' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-separator/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-separator/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -46,7 +46,7 @@ class NJBASeparatorModule extends FLBuilderModule {
     public function delete()
     {
     }
-    public function njba_icon_module($sep_type){
+    public function icon_module($sep_type){
         $html = '';
         if($sep_type == 'separator_icon') :
             $html .= '<div class="njba-divider-content njba-divider">';
@@ -117,8 +117,8 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                             'separator_text'        => array(
                                 'fields'        => array('separator_text_select','separator_text_font_size','separator_text_font_color')
                             )
-                        )
-                    ),
+                        ),
+                   ),
                     'icon_position'    => array(
                         'type'          => 'select',
                         'default'       => 'center',
@@ -127,7 +127,7 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                             'left'                      => __('Left', 'bb-njba'),
                             'center'                      => __('Center', 'bb-njba'),
                             'right'                     => __('Right', 'bb-njba')
-                        )
+                        ),
                     ),
                     'separator_normal_width'          => array(
                         'type'          => 'text',
@@ -138,7 +138,7 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                         'description'   => _x( '%', 'Value unit for Separator Width. Such as: "50%"', 'bb-njba' ),
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-heading-icon',
+                            'selector'      => '.njba-icon',
                             'property'      => 'width',
                             'unit'          => '%'
                         )
@@ -156,7 +156,7 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                         'description'   => _x( 'px', 'Value unit for font size. Such as: "14 px"', 'bb-njba' ),
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-divider-content',
+                            'selector'      => '.njba-divider-content h5 i',
                             'property'      => 'font-size',
                             'unit'          => 'px'
                         )
@@ -168,7 +168,7 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                         'show_reset'    => true,
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-divider-content',
+                            'selector'      => '.njba-divider-content h5 i',
                             'property'      => 'color'
                         )
                     ),
@@ -181,7 +181,11 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                         'type'            => 'text',
                         'label'           => __('Separator Text', 'bb-njba'),
                         'default'         => 'Example',
-                        'help'            => __('Use a unique small word to highlight this Heading.','bb-njba')
+                        'help'            => __('Use a unique small word to highlight this Heading.','bb-njba'),
+                        'preview'       => array(
+                            'type'          => 'text',
+                            'selector'      => '.njba-divider h5'
+                        )
                     ),
                     'separator_text_font_size'    => array(
                         'type'          => 'text',
@@ -192,7 +196,7 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                         'description'   => _x( 'px', 'Value unit for font size. Such as: "14 px"', 'bb-njba' ),
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-divider-content',
+                            'selector'      => '.njba-divider-content h5',
                             'property'      => 'font-size',
                             'unit'          => 'px'
                         )
@@ -204,7 +208,7 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                         'show_reset'    => true,
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-divider-content',
+                            'selector'      => '.njba-divider-content h5',
                             'property'      => 'color'
                         )
                     ),
@@ -217,7 +221,7 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                         'description'   => 'px',
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-heading-separator-line',
+                            'selector'      => '.njba-separator-line > span',
                             'property'      => 'border-top',
                             'unit'          => 'px'
                         )
@@ -233,6 +237,11 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                             'dashed'  => __('Dashed', 'bb-njba'),
                             'double'  => __('Double', 'bb-njba'),
                         ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-separator-line > span',
+                            'property'     => 'border-top-style'
+                        )
                     ),
                     'separator_border_color'    => array(
                         'type'          => 'color',
@@ -241,7 +250,7 @@ FLBuilder::register_module('NJBASeparatorModule', array(
                         'show_reset'    => true,
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-heading-separator-line',
+                            'selector'      => '.njba-separator-line > span',
                             'property'      => 'border-color',
                         )
                     )

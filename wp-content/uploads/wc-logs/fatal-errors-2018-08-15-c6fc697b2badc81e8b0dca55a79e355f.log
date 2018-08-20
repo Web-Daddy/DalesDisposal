@@ -1,0 +1,32 @@
+2018-08-15T11:27:06+00:00 CRITICAL Uncaught Error: Using $this when not in object context in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/themes/generatepress/order-template-two.php:101
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/template-loader.php(74): include()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-blog-header.php(19): require_once('/var/www/wemes/...')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/index.php(17): require('/var/www/wemes/...')
+#3 {main}
+  thrown
+
+2018-08-15T11:28:10+00:00 CRITICAL Uncaught Error: Using $this when not in object context in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/themes/generatepress/order-template-two.php:101
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/template-loader.php(74): include()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-blog-header.php(19): require_once('/var/www/wemes/...')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/index.php(17): require('/var/www/wemes/...')
+#3 {main}
+  thrown
+
+2018-08-15T11:31:32+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/themes/generatepress/order-template-two.php:104
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/template-loader.php(74): include()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-blog-header.php(19): require_once('/var/www/wemes/...')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/index.php(17): require('/var/www/wemes/...')
+#3 {main}
+  thrown
+
+2018-08-15T11:32:17+00:00 CRITICAL Uncaught Error: Call to a member function get_regular_price() on array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/themes/generatepress/order-template-two.php:105
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/template-loader.php(74): include()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-blog-header.php(19): require_once('/var/www/wemes/...')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/index.php(17): require('/var/www/wemes/...')
+#3 {main}
+  thrown
+

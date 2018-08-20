@@ -11,8 +11,8 @@ class NJBASpacerModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Spacer', 'bb-njba'),
             'description'   => __('Addon for leave some space.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-spacer/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-spacer/',
             'editor_export' => true, // Defaults to true and can be omitted.

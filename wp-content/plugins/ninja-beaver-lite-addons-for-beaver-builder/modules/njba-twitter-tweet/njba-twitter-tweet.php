@@ -13,9 +13,9 @@ class NJBATwitterTweetModule extends FLBuilderModule {
 		parent::__construct(array(
 			'name'          => __( 'Twitter Embedded Tweet', 'bb-njba' ),
 			'description'   => __( 'A module to embed twitter tweet.', 'bb-njba' ),
-			'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Social Modules - NJBA', 'bb-njba'),
-            'dir'           	=> NJBA_MODULE_DIR . 'modules/njba-twitter-tweet/',
+			'group'         	=> njba_get_modules_group(),
+			'category'			=> njba_get_modules_cat( 'social' ),
+			'dir'           	=> NJBA_MODULE_DIR . 'modules/njba-twitter-tweet/',
 			'url'           	=> NJBA_MODULE_URL . 'modules/njba-twitter-tweet/',
 			'editor_export' 	=> true, // Defaults to true and can be omitted.
 			'enabled'       	=> true, // Defaults to true and can be omitted.

@@ -16,10 +16,16 @@
 					?>
 				</div>
 			<?php } ?>
-			<?php if ( 'show' == $settings->show_name ) : ?>
-				<div class="njba-form-field njba-name-field">
-					<input type="text" name="njba-subscribe-form-name" placeholder="<?php echo $settings->input_name_placeholder; ?>" />
-					<div class="njba-form-error-message"><?php esc_html_e( 'Please enter your name.', 'bb-njba' ); ?></div>
+			<?php if ( 'show' == $settings->show_fname ) : ?>
+				<div class="njba-form-field njba-fname-field">
+					<input type="text" name="njba-subscribe-form-fname" placeholder="<?php echo $settings->input_fname_placeholder; ?>" />
+					<div class="njba-form-error-message"><?php esc_html_e( 'Please enter your First Name.', 'bb-njba' ); ?></div>
+				</div>
+			<?php endif; ?>
+			<?php if ( 'show' == $settings->show_lname ) : ?>
+				<div class="njba-form-field njba-lname-field">
+					<input type="text" name="njba-subscribe-form-lname" placeholder="<?php echo $settings->input_lname_placeholder; ?>" />
+					<div class="njba-form-error-message"><?php esc_html_e( 'Please enter your Last Name.', 'bb-njba' ); ?></div>
 				</div>
 			<?php endif; ?>
 			<div class="njba-form-field njba-email-field">

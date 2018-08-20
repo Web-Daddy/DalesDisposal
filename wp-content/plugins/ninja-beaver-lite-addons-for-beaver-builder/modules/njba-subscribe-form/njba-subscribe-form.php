@@ -1,28 +1,23 @@
 <?php
-
 class NJBASubscribeFormModule extends FLBuilderModule {
-
 	public function __construct()
 	{
 		parent::__construct( array(
 			'name'          	=> __( 'Subscribe Form', 'bb-njba' ),
 			'description'   	=> __( 'Adds a simple subscribe form to your layout.', 'bb-njba' ),
-			'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Form Style Modules - NJBA', 'bb-njba'),
+			'group'         => njba_get_modules_group(),
+			'category'		=> njba_get_modules_cat( 'form_style' ),
             'dir'           	=> NJBA_MODULE_DIR . 'modules/njba-subscribe-form/',
             'url'           	=> NJBA_MODULE_URL . 'modules/njba-subscribe-form/',
 			'editor_export' 	=> false,
-			'partial_refresh'	=> true,
-			'icon'              => 'editor-table.svg',
+			'partial_refresh'	=> true
 		));
-
 		add_action( 'wp_ajax_fl_builder_subscribe_form_submit', array( $this, 'submit' ) );
 		add_action( 'wp_ajax_nopriv_fl_builder_subscribe_form_submit', array( $this, 'submit' ) );
-
 		$this->add_js( 'jquery-cookie', $this->url . 'js/jquery.cookie.min.js', array('jquery') );
 		$this->add_js('njba-subscribe-form', NJBA_MODULE_URL . 'modules/njba-subscribe-form/js/frontend.js');
+		
 	}
-
 	/**
 	 * Called via AJAX to submit the subscribe form.
 	 *
@@ -31,7 +26,8 @@ class NJBASubscribeFormModule extends FLBuilderModule {
 	 */
 	public function submit()
 	{
-		$name       		= isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : false;
+		$fname       		= isset( $_POST['fname'] ) ? sanitize_text_field( $_POST['fname'] ) : false;
+		$lname       		= isset( $_POST['lname'] ) ? sanitize_text_field( $_POST['lname'] ) : false;
 		$email      		= isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : false;
 		$node_id    		= isset( $_POST['node_id'] ) ? sanitize_text_field( $_POST['node_id'] ) : false;
 		$template_id    	= isset( $_POST['template_id'] ) ? sanitize_text_field( $_POST['template_id'] ) : false;
@@ -42,9 +38,7 @@ class NJBASubscribeFormModule extends FLBuilderModule {
 			'message'   		=> false,
 			'url'       		=> false
 		);
-
 		if ( $email && $node_id ) {
-
 			// Get the module settings.
 			if ( $template_id ) {
 				$post_id  = FLBuilderModel::get_node_template_post_id( $template_id );
@@ -55,20 +49,16 @@ class NJBASubscribeFormModule extends FLBuilderModule {
 				$module   = FLBuilderModel::get_module( $node_id );
 				$settings = $module->settings;
 			}
-
 			// Subscribe.
 			$instance = FLBuilderServices::get_service_instance( $settings->service );
-			$response = $instance->subscribe( $settings, $email, $name );
-
+			$response = $instance->subscribe( $settings, $email, $fname, $lname );
 			// Check for an error from the service.
 			if ( $response['error'] ) {
 				$result['error'] = $response['error'];
 			}
 			// Setup the success data.
 			else {
-
 				$result['action'] = $settings->success_action;
-
 				if ( 'message' == $settings->success_action ) {
 					$result['message']  = $settings->success_message;
 				}
@@ -80,13 +70,10 @@ class NJBASubscribeFormModule extends FLBuilderModule {
 		else {
 			$result['error'] = __( 'There was an error subscribing. Please try again.', 'bb-njba' );
 		}
-
 		echo json_encode( $result );
-
 		die();
 	}
 }
-
 /**
  * Register the module and its form settings.
  */
@@ -123,10 +110,11 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						'label'         => __('Custom Title', 'bb-njba'),
 						'default'       => 'SEND US A MESSAGE',
 						'description'   => '',
-						'preview'       => array(
-							'type'      => 'text',
-							'selector'  => ''
-						)
+						'preview'      => array(
+                            'type'         => 'text',
+                            'selector'     => '.njba-heading-title',
+                            'property'     => 'title'
+                        )
 					),
 					'custom_description'    => array(
 						'type'              => 'textarea',
@@ -134,10 +122,11 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						'default'           => 'Create a stylish Subscribe form that people would love to fill.',
 						'placeholder'       => '',
 						'rows'              => '6',
-						'preview'           => array(
-							'type'          => 'text',
-							'selector'      => ''
-						)
+						'preview'      => array(
+                            'type'         => 'text',
+                            'selector'     => '.njba-heading-sub-title',
+                            'property'     => 'sub-title'
+                        )
 					)
 				)
 			),
@@ -166,7 +155,7 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						),
 						'hide'	=> array(
 							'compact'	=> array(
-								'fields'	=> array('input_name_width', 'input_email_width')
+								'fields'	=> array('input_fname_width', 'input_lname_width', 'input_email_width')
 							)
 						)
 					),
@@ -180,13 +169,20 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						),
 						'toggle'	=> array(
 							'custom'	=> array(
-								'fields'	=> array('input_name_width', 'input_email_width')
+								'fields'	=> array('input_fname_width', 'input_lname_width', 'input_email_width')
 							)
 						)
 					),
-					'input_name_width' 	=> array(
+					'input_fname_width' 	=> array(
                         'type'          	=> 'text',
-                        'label'         	=> __('Name Field Width', 'bb-njba'),
+                        'label'         	=> __('First Name Field Width', 'bb-njba'),
+                        'description'   	=> '%',
+                        'size'         		=> 5,
+                        'default'       	=> '',
+                    ),
+					'input_lname_width' 	=> array(
+                        'type'          	=> 'text',
+                        'label'         	=> __('Last Name Field Width', 'bb-njba'),
                         'description'   	=> '%',
                         'size'         		=> 5,
                         'default'       	=> '',
@@ -205,9 +201,9 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         'size'         => 5,
                         'default'       => 1,
                     ),
-					'show_name'     => array(
+					'show_fname'     => array(
 						'type'          => 'select',
-						'label'         => __( 'Name Field', 'bb-njba' ),
+						'label'         => __( 'First Name Field', 'bb-njba' ),
 						'default'       => 'show',
 						'options'       => array(
 							'show'          => __( 'Show', 'bb-njba' ),
@@ -215,15 +211,35 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						),
 						'toggle'		=> array(
 							'show'			=> array(
-								'fields'		=> array('input_name_placeholder')
+								'fields'		=> array('input_fname_placeholder')
 							)
 						)
 					),
-					'input_name_placeholder' 	=> array(
+					'input_fname_placeholder' 	=> array(
                         'type'          	=> 'text',
-                        'label'         	=> __('Name Field Placeholder Text', 'bb-njba'),
+                        'label'         	=> __('First Name Field Placeholder Text', 'bb-njba'),
                         'description'   	=> '',
-                        'default'       	=> __('Name', 'bb-njba'),
+                        'default'       	=> __('First Name', 'bb-njba'),
+                    ),
+					'show_lname'     => array(
+						'type'          => 'select',
+						'label'         => __( 'Last Name Field', 'bb-njba' ),
+						'default'       => 'show',
+						'options'       => array(
+							'show'          => __( 'Show', 'bb-njba' ),
+							'hide'          => __( 'Hide', 'bb-njba' ),
+						),
+						'toggle'		=> array(
+							'show'			=> array(
+								'fields'		=> array('input_lname_placeholder')
+							)
+						)
+					),
+					'input_lname_placeholder' 	=> array(
+                        'type'          	=> 'text',
+                        'label'         	=> __('Last Name Field Placeholder Text', 'bb-njba'),
+                        'description'   	=> '',
+                        'default'       	=> __('Last Name', 'bb-njba'),
                     ),
 					'input_email_placeholder' 	=> array(
                         'type'          	=> 'text',
@@ -252,7 +268,7 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						),
 						'preview'       => array(
 							'type'      => 'css',
-							'selector'  => '',
+							'selector'  => '.njba-heading-title',
 							'property'  => 'text-align'
 						)
 					),
@@ -263,49 +279,36 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						'show_reset'    => true,
 						'preview'       => array(
 							'type'      => 'css',
-							'selector'  => '.njba-form-title .njba-heading-title',
+							'selector'  => '.njba-heading-title',
 							'property'  => 'color'
 						)
 					),
 					 'title_margin'      => array(
 					 	'type'              => 'njba-multinumber',
 					 	'label'             => __('Margin', 'bb-njba'),
-					 	'options'           => array(
+					 	'description'       => 'px',
+					 	'default'   => array(
+                            'top'   => 10,
+                            'bottom'   => 10,
+                            'left'   => 10,
+                            'right'   => 10,
+                        ), 
+                        'options'           => array(
 					 		'top'               => array(
 					 			'placeholder'       => __('Top', 'bb-njba'),
 					 			'icon'              => 'fa-long-arrow-up',
-					 			'description'       => 'px',
-					 			'preview'           => array(
-					 				'selector'          => '.njba-form-title .njba-heading-title',
-					 				'property'          => 'margin-top',
-					 			),
 					 		),
 					 		'bottom'            => array(
 					 			'placeholder'       => __('Bottom', 'bb-njba'),
 					 			'icon'              => 'fa-long-arrow-down',
-					 			'description'       => 'px',
-					 			'preview'           => array(
-					 				'selector'          => '.njba-form-title .njba-heading-title',
-					 				'property'          => 'margin-bottom',
-					 			),
 					 		),
 					 		'left'            => array(
 					 			'placeholder'       => __('Left', 'bb-njba'),
 					 			'icon'              => 'fa-long-arrow-left',
-					 			'description'       => 'px',
-					 			'preview'           => array(
-					 				'selector'          => '.njba-form-title .njba-heading-title',
-					 				'property'          => 'margin-left',
-					 			),
 					 		),
 					 		'right'            => array(
 					 			'placeholder'       => __('Right', 'bb-njba'),
 					 			'icon'              => 'fa-long-arrow-right',
-					 			'description'       => 'px',
-					 			'preview'           => array(
-					 				'selector'          => '.njba-form-title .njba-heading-title',
-					 				'property'          => 'margin-right',
-					 			),
 					 		)
 					 	)
 					),
@@ -317,8 +320,8 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						),
 						'label'         => __('Font', 'bb-njba'),
 						'preview'         => array(
-							'type'            => 'font',
-							'selector'        => '.njba-form-title .njba-heading-title'
+							'type'            => 'css',
+							'selector'        => '.njba-heading-title'
 						)
 					),
 					'title_font_size'   => array(
@@ -332,7 +335,6 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         )
                     ),
 					'title_line_height'   => array(
-
                         'type'          => 'njba-simplify',
                         'size'          => '5',
                         'label'         => __('Line Height', 'bb-njba'),
@@ -358,7 +360,7 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						),
 						'preview'       => array(
 							'type'      => 'css',
-							'selector'  => '',
+							'selector'  => '.njba-heading-sub-title',
 							'property'  => 'text-align'
 						)
 					),
@@ -369,14 +371,15 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						'show_reset'    => true,
 						'preview'       => array(
 							'type'      => 'css',
-							'selector'  => '.njba-form-title .njba-heading-sub-title',
+							'selector'  => '.njba-heading-sub-title',
 							'property'  => 'color'
 						)
 					),
 					 'description_margin'      => array(
 					 	'type'              => 'njba-multinumber',
 					 	'label'             => __('Margin', 'bb-njba'),
-					 	 'default'           => array(
+					 	'description'       => 'px',
+					 	'default'           => array(
 					 	 	'top'          => '',
 					 	 	'bottom'       => 40,
 					 	 	'left'         => '',
@@ -386,38 +389,18 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 					 	 	'top'               => array(
 					 	 		'placeholder'       => __('Top', 'bb-njba'),
 					 	 		'icon'              => 'fa-long-arrow-up',
-					 	 		'description'       => 'px',
-					 	 		'preview'           => array(
-					 	 			'selector'          => '.njba-form-title .njba-heading-sub-title',
-					 	 			'property'          => 'margin-top',
-					 	 		),
 					 	 	),
 					 	 	'bottom'            => array(
 					 	 		'placeholder'       => __('Bottom', 'bb-njba'),
 					 	 		'icon'              => 'fa-long-arrow-down',
-					 	 		'description'       => 'px',
-					 	 		'preview'           => array(
-					 	 			'selector'          => '.njba-form-title .njba-heading-sub-title',
-					 	 			'property'          => 'margin-bottom',
-					 	 		),
 					 	 	),
 					 	 	'left'            => array(
 					 	 		'placeholder'       => __('Left', 'bb-njba'),
 					 	 		'icon'              => 'fa-long-arrow-left',
-					 	 		'description'       => 'px',
-					 	 		'preview'           => array(
-					 	 			'selector'          => '.njba-form-title .njba-heading-sub-title',
-					 	 			'property'          => 'margin-left',
-					 	 		),
 					 	 	),
 					 	 	'right'            => array(
 					 	 		'placeholder'       => __('Right', 'bb-njba'),
 					 	 		'icon'              => 'fa-long-arrow-right',
-					 	 		'description'       => 'px',
-					 	 		'preview'           => array(
-					 	 			'selector'          => '.njba-form-title .njba-heading-sub-title',
-					 	 			'property'          => 'margin-right',
-					 	 		),
 					 	 	)
 					 	 )
 					),
@@ -429,8 +412,8 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						),
 						'label'         => __('Font', 'bb-njba'),
 						'preview'         => array(
-							'type'            => 'font',
-							'selector'        => '.njba-form-title .njba-heading-sub-title'
+							'type'            => 'css',
+							'selector'        => ' .njba-heading-sub-title'
 						)
 					),
 					'description_font_size'   => array(
@@ -502,6 +485,7 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 	                        'type'             => 'css',
 	                        'selector'         => '.njba-subscribe-form',
 	                        'property'         => 'opacity',
+	                        'unit'				=> '%',
 	                    )
 	                ),
 	                'form_bg_image'     => array(
@@ -611,31 +595,28 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                     'form_shadow'	=> array(
 						'type'          => 'njba-multinumber',
 						'label'         => __('Box Shadow', 'bb-njba'),
+						'description'       => 'px',
 						'default'       => array(
 							'vertical'		=> 0,
 							'horizontal'	=> 0,
-							'blur'			=> 10,
-							'spread'		=> 5
+							'blur'			=> 0,
+							'spread'		=> 0
 						),
 						'options'	=> array(
 							'vertical'			=> array(
 								'placeholder'		=> __('Vertical', 'bb-njba'),
-								'tooltip'			=> __('Vertical', 'bb-njba'),
 								'icon'				=> 'fa-arrows-v'
 							),
 							'horizontal'		=> array(
 								'placeholder'		=> __('Horizontal', 'bb-njba'),
-								'tooltip'			=> __('Horizontal', 'bb-njba'),
 								'icon'				=> 'fa-arrows-h'
 							),
 							'blur'				=> array(
 								'placeholder'		=> __('Blur', 'bb-njba'),
-								'tooltip'			=> __('Blur', 'bb-njba'),
 								'icon'				=> 'fa-circle-o'
 							),
 							'spread'			=> array(
 								'placeholder'		=> __('Spread', 'bb-njba'),
-								'tooltip'			=> __('Spread', 'bb-njba'),
 								'icon'				=> 'fa-paint-brush'
 							),
 						)
@@ -675,48 +656,20 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         ),
                         'options' 		=> array(
                             'top' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Top', 'bb-njba'),
-                                'tooltip'       => __('Top', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-up',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form',
-                                    'property'  => 'padding-top',
-                                    'unit'      => 'px'
-                                )
                             ),
                             'bottom' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Bottom', 'bb-njba'),
-                                'tooltip'       => __('Bottom', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-down',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form',
-                                    'property'  => 'padding-bottom',
-                                    'unit'      => 'px'
-                                )
                             ),
                             'left' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Left', 'bb-njba'),
-                                'tooltip'       => __('Left', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-left',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form',
-                                    'property'  => 'padding-left',
-                                    'unit'      => 'px'
-                                )
                             ),
                             'right' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Right', 'bb-njba'),
-                                'tooltip'       => __('Right', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-right',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form',
-                                    'property'  => 'padding-right',
-                                    'unit'      => 'px'
-                                )
                             ),
                         ),
                     )
@@ -762,6 +715,7 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                             'type'             => 'css',
                             'selector'         => '.njba-subscribe-form textarea, .njba-subscribe-form input[type=text], .njba-subscribe-form input[type=tel], .njba-subscribe-form input[type=email]',
                             'property'         => 'opacity',
+                            'unit'				=> '%',
                         )
                     ),
                 )
@@ -792,48 +746,20 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         ),
 						'options' 		=> array(
                             'top' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Top', 'bb-njba'),
-                                'tooltip'       => __('Top', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-up',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form input[type=text], .njba-subscribe-form input[type=email]',
-                                    'property'  => 'border-top-width',
-                                    'unit'      => 'px'
-                                )
                             ),
                             'bottom' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Bottom', 'bb-njba'),
-                                'tooltip'       => __('Bottom', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-down',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form input[type=text], .njba-subscribe-form input[type=email]',
-                                    'property'  => 'border-bottom-width',
-                                    'unit'      => 'px'
-                                )
                             ),
                             'left' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Left', 'bb-njba'),
-                                'tooltip'       => __('Left', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-left',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form input[type=text], .njba-subscribe-form input[type=email]',
-                                    'property'  => 'border-left-width',
-                                    'unit'      => 'px'
-                                )
                             ),
                             'right' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Right', 'bb-njba'),
-                                'tooltip'       => __('Right', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-right',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form input[type=text], .njba-subscribe-form input[type=email]',
-                                    'property'  => 'border-right-width',
-                                    'unit'      => 'px'
-                                )
                             ),
                         ),
                     ),
@@ -922,48 +848,20 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         ),
                         'options' 		=> array(
                             'top' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Top', 'bb-njba'),
-                                'tooltip'       => __('Top', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-up',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form textarea, .njba-subscribe-form input[type=text], .njba-subscribe-form input[type=tel], .njba-subscribe-form input[type=email]',
-                                    'property'  => 'padding-top',
-                                    'unit'      => 'px'
-                                )
                             ),
                             'bottom' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Bottom', 'bb-njba'),
-                                'tooltip'       => __('Bottom', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-down',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form textarea, .njba-subscribe-form input[type=text], .njba-subscribe-form input[type=tel], .njba-subscribe-form input[type=email]',
-                                    'property'  => 'padding-bottom',
-                                    'unit'      => 'px'
-                                )
                             ),
                             'left' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Left', 'bb-njba'),
-                                'tooltip'       => __('Left', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-left',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form textarea, .njba-subscribe-form input[type=text], .njba-subscribe-form input[type=tel], .njba-subscribe-form input[type=email]',
-                                    'property'  => 'padding-left',
-                                    'unit'      => 'px'
-                                )
                             ),
                             'right' => array(
-                                'maxlength' => 3,
                                 'placeholder'   => __('Right', 'bb-njba'),
-                                'tooltip'       => __('Right', 'bb-njba'),
                                 'icon'		=> 'fa-long-arrow-right',
-                                'preview'       => array(
-                                    'selector'  => '.njba-subscribe-form textarea, .njba-subscribe-form input[type=text], .njba-subscribe-form input[type=tel], .njba-subscribe-form input[type=email]',
-                                    'property'  => 'padding-right',
-                                    'unit'      => 'px'
-                                )
                             ),
                         ),
                     ),
@@ -1019,10 +917,11 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         'type'      => 'text',
                         'label'     => 'Text',
                         'default'   => __('Subscribe', 'bb-njba'),
-                        'preview'       => array(
-							'type'          => 'text',
-							'selector'      => ''
-						)
+                        'preview'      => array(
+                            'type'         => 'text',
+                            'selector'     => '.njba-button-text',
+                            'property'     => 'button-text'
+                        )
 					),
 					'buttton_icon_select'       => array(
 	                    'type'          => 'select',
@@ -1070,7 +969,13 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						'type'          => 'color',
 						'label'         => __( 'Background Color', 'bb-njba' ),
 						'default'       => '3074b0',
-						'show_reset'    => true
+						'show_reset'    => true,
+						'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'background-color'
+                        )
+
 					),
 					'button_background_hover_color' => array(
 						'type'          => 'color',
@@ -1100,7 +1005,12 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
 						'type'          => 'color',
 						'label'         => __( 'Border Color', 'bb-njba' ),
 						'default'       => '',
-						'show_reset'    => true
+						'show_reset'    => true,
+						'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'border-color'
+                        )
 					),
 					'button_border_hover_color' => array(
 						'type'          => 'color',
@@ -1160,10 +1070,10 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         'label'             => __('Margin', 'bb-njba'),
                         'description'       => 'px',
                         'default'           => array(
-                            'top'          => 0,
-                            'right'         => 0,
-                            'bottom'       => 0,
-                            'left'      => 0
+                            'top'          => 10,
+                            'right'         => 10,
+                            'bottom'       => 10,
+                            'left'      => 10
                         ),
                         'options'           => array(
                             'top'               => array(
@@ -1186,7 +1096,6 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         )
                     )
                 )
-
             ),
             'btn_style'     => array(
 				'title'         => __( 'Style', 'bb-njba' ),
@@ -1363,10 +1272,10 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         'label'             => __('Button Margin', 'bb-njba'),
                         'description'       => 'px',
                         'default'           => array(
-                            'top'          => 0,
-                            'right'         => 0,
-                            'bottom'       => 0,
-                            'left'      => 0
+                            'top'          => 10,
+                            'right'         => 10,
+                            'bottom'       => 10,
+                            'left'      => 10
                         ),
                         'options'           => array(
                             'top'               => array(
@@ -1449,7 +1358,7 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                             'weight' => 'Default'
                         ),
                         'preview'         => array(
-                            'type'            => 'font',
+                            'type'            => 'none',
                             'selector'        => '.njba-btn-main a.njba-btn'
                         )
                     ),
@@ -1576,7 +1485,7 @@ FLBuilder::register_module( 'NJBASubscribeFormModule', array(
                         ),
                         'label'         => __('Font', 'bb-njba'),
                         'preview'         => array(
-                            'type'            => 'font',
+                            'type'            => 'none',
                             'selector'        => '.njba-subscribe-form textarea, .njba-subscribe-form input[type=text], .njba-subscribe-form input[type=tel], .njba-subscribe-form input[type=email]',
                         )
                     ),

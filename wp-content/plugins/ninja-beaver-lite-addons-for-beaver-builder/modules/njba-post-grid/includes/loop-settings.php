@@ -62,7 +62,10 @@ FLBuilderModel::default_settings($settings, array(
 	FLBuilder::render_settings_field('no_results_message', array(
 		'type' 			=> 'text',
 		'label'			=> __('No Results Message', 'bb-njba'),
-		'default'		=> __('No Posts Found.', 'bb-njba')
+		'default'		=> __('No Posts Found.', 'bb-njba'),
+		'preview'   => array(
+                            'type'      => 'none'
+                        )
 	), $settings);
 	?>
 	</table>

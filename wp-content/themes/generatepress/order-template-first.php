@@ -7,13 +7,21 @@ if (!isset($_COOKIE['dales_order_zip_code'])) {
 get_header(); ?>
 
 <div class="template_order">
+	<div class="dales_order_cancel_button_container">
+		<div class="dales_order_cancel_button">
+			<a href="#" id="dales_order_cancel_button_link"><span>&#10006;</span> CANCEL</a>
+		</div>
+	</div>
 	<div class="container">
 		<div class="col-12 col-xl-8 col-lg-8 col-md-8 col-sm-12 header_order">
 			<div class="row">
 				<div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12 line_wrap">
 					<div class="delivery">
 						<img class="good_icon_image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/good_icon.png" alt="">
-						<p class="delivery_text">Delivery to <span><?php echo $_COOKIE['dales_order_zip_code'] ?></span></p>
+						<div class="delivery_zip_code_container">
+							<p class="delivery_text">Delivery to <span><?php echo $_COOKIE['dales_order_zip_code'] ?></span></p>
+							<a href="#" class="open_zip_code_search"><img src="/wp-content/uploads/2018/07/hint.png"><span>You can change ZIP code right now by clicking here</span></a>
+						</div>
 					</div>					
 				</div>
 				<div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -83,4 +91,76 @@ get_header(); ?>
 		</div>
 	</div>
 </div>
+<?php
+
+	$tax_args = array(
+		'taxonomy' => 'zip_code',
+		'hide_empty' => false,
+	);
+
+	$zip_codes_tax = get_terms( $tax_args );
+
+	$zip_codes_tax_array = array();
+	foreach ($zip_codes_tax as $zip_code_name) {
+
+		$zip_codes_tax_array[] = substr($zip_code_name->name, 0, 5);
+	}
+
+?>
+
+<script type="text/javascript">
+	
+	jQuery(document).ready(function($) {
+		
+
+		$('#dales_search_form').on('submit', function(e) {
+			e.preventDefault();
+			var zip_codes = [<?php echo implode(',', $zip_codes_tax_array); ?>];
+			var input_value = jQuery('.input_zip_code').val().substring(0, 5);
+			var input_index = zip_codes.indexOf(+input_value);
+			if(input_index >= 0 ){
+				setCookieDales("dales_order_zip_code", input_value, {"path":"/"});
+				jQuery('.pum-close.popmake-close').click();
+				jQuery('.delivery_text span').html(input_value);
+				// window.location.replace("/order-2/");
+			} else {
+				jQuery('.search_zip_code_error_container').css('display', 'block');
+			}
+		});
+		jQuery(document).on("click", '.search_zip_code_error_close_button', function(){
+			jQuery('.search_zip_code_error_container').css('display', 'none');
+		});
+		function setCookieDales(name, value, options) {
+	  options = options || {};
+
+	  var expires = options.expires;
+
+	  if (typeof expires == "number" && expires) {
+	    var d = new Date();
+	    d.setTime(d.getTime() + expires * 1000);
+	    expires = options.expires = d;
+	  }
+	  if (expires && expires.toUTCString) {
+	    options.expires = expires.toUTCString();
+	  }
+
+	  value = encodeURIComponent(value);
+
+	  var updatedCookie = name + "=" + value;
+
+	  for (var propName in options) {
+	    updatedCookie += "; " + propName;
+	    var propValue = options[propName];
+	    if (propValue !== true) {
+	      updatedCookie += "=" + propValue;
+	    }
+	  }
+
+	  document.cookie = updatedCookie;
+	};
+ 
+	});
+</script>
+
+
 <?php get_footer(); ?>

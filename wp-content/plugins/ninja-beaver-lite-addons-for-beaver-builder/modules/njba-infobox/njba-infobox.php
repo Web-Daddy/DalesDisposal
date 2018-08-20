@@ -11,8 +11,8 @@ class NJBAInfoBoxModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Infobox', 'bb-njba'),
             'description'   => __('Addon to display Infobox.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-infobox/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-infobox/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -56,15 +56,17 @@ FLBuilder::register_module('NJBAInfoBoxModule', array(
                     'heading_prefix'          => array(
                         'type'          => 'text',
                         'label'         => __('Title Prefix','bb-njba'),
-                        'help'          => __('The small text appear above the title. You can leave it empty if not required.','bb-njba')
+                        'help'          => __('The small text appear above the title. You can leave it empty if not required.','bb-njba'),
+                        'preview'       => array(
+                            'type'          => 'refresh',
+                        )
                     ),
                     'title'         => array(
                         'type'          => 'text',
                         'label'         => __('Title', 'bb-njba'),
                         'default'       => __('Info Box','bb-njba'),
                         'preview'       => array(
-                            'type'          => 'text',
-                            'selector'      => '.bb-njba-infobox-title'
+                            'type'          => 'refresh',
                         )
                     ),
                 )
@@ -78,6 +80,9 @@ FLBuilder::register_module('NJBAInfoBoxModule', array(
                         'media_buttons' => false,
                         'rows'          => 6,
                         'default'       => __('Enter description text here.','bb-njba'),
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
                     ),
                 )
             )
@@ -184,6 +189,9 @@ FLBuilder::register_module('NJBAInfoBoxModule', array(
                                 'fields'     => array( )
                             )
                         ),
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
                     ),
                     'img_icon_border_width' => array(
                         'type'        => 'text',
@@ -703,26 +711,26 @@ FLBuilder::register_module('NJBAInfoBoxModule', array(
                         'label'             => __('Border Radius', 'bb-njba'),
                         'description'       => 'px',
                         'default'           => array(
-                            'top'          => 0,
-                            'right'         => 0,
-                            'bottom'       => 0,
-                            'left'      => 0
+                            'top-left'          => 0,
+                            'top-right'         => 0,
+                            'bottom-left'       => 0,
+                            'bottom-right'      => 0
                         ),
                         'options'           => array(
-                            'top'               => array(
-                                'placeholder'       => __('Top', 'bb-njba'),
+                            'top-left'               => array(
+                                'placeholder'       => __('Top Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up'
                             ),
-                            'right'            => array(
-                                'placeholder'       => __('Right', 'bb-njba'),
+                            'top-right'            => array(
+                                'placeholder'       => __('Top Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right'
                             ),
-                            'bottom'            => array(
-                                'placeholder'       => __('Bottom', 'bb-njba'),
+                            'bottom-left'            => array(
+                                'placeholder'       => __('Bottom Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down'
                             ),
-                            'left'            => array(
-                                'placeholder'       => __('Left', 'bb-njba'),
+                            'bottom-right'            => array(
+                                'placeholder'       => __('Bottom Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left'
                             )
                             
@@ -876,6 +884,9 @@ FLBuilder::register_module('NJBAInfoBoxModule', array(
                             'h4'      => __('H4', 'bb-njba'),
                             'h5'      => __('H5', 'bb-njba'),
                             'h6'      => __('H6', 'bb-njba')
+                        ),
+                        'preview'   => array(
+                            'type'      => 'none'
                         )
                     ),
                     'prefix_font_family'       => array(
@@ -930,6 +941,9 @@ FLBuilder::register_module('NJBAInfoBoxModule', array(
                             'h4'      => __('H4', 'bb-njba'),
                             'h5'      => __('H5', 'bb-njba'),
                             'h6'      => __('H6', 'bb-njba')
+                        ),
+                        'preview'   => array(
+                            'type'      => 'none'
                         )
                     ),
                     'title_font_family'       => array(

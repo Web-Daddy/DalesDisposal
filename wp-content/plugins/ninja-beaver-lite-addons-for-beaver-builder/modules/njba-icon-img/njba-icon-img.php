@@ -11,8 +11,8 @@ class NJBAIconImgModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Icon / Image', 'bb-njba'),
             'description'   => __('Addon for icon and image.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-icon-img/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-icon-img/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -63,11 +63,11 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                         'toggle'        => array(
                             'icon'          => array(
                                 'fields'    => array( 'overall_alignment_img_icon' ),
-                                'sections'   => array( 'icon_basic',  'icon_style', 'icon_colors', 'common_style', 'image_icon_link' )
+                                'sections'   => array( 'icon_basic',  'icon_style', 'icon_colors', 'common_style' )
                             ),
                             'photo'         => array(
                                 'fields'    => array( 'overall_alignment_img_icon' ),
-                                'sections'   => array( 'img_basic', 'img_style', 'common_style', 'image_icon_link' )
+                                'sections'   => array( 'img_basic', 'img_style', 'common_style' )
                             )
                         ),
                     ),
@@ -79,6 +79,11 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                             'left'          => __( 'Left', 'bb-njba' ),
                             'center'          => __('Center', 'bb-njba'),
                             'right'          => __('Right', 'bb-njba'),
+                        ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-icon-img',
+                            'property'     => 'text-align'
                         )
                     )
                 ),
@@ -137,45 +142,6 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                     )
                 )
             ),
-            /* Link Setting */
-            'image_icon_link'     => array( // Section
-                'title'         => __('Link','bb-njba'), // Section Title
-                'fields'        => array( // Section Fields
-                    'show_image_icon_link'       => array(
-                        'type'          => 'select',
-                        'label'         => __('Image / Icon Link', 'bb-njba'),
-                        'default'       => 'no',
-                        'options'       => array(
-                            'no'             => __('No', 'bb-njba'),
-                            'yes'            => __('Yes', 'bb-njba')
-                        ),
-                        'toggle'        => array(
-                            'yes'      => array(
-                                'fields'      => array( 'url', 'link_target' ),
-                            ),
-                        ),
-                    ),
-                    'url'     => array(
-                        'type'          => 'link',
-                        'label'         => __('Link', 'fl-builder'),
-                        'placeholder'   => 'http://www.example.com',
-                        
-                    ),
-                    'link_target'   => array(
-                        'type'          => 'select',
-                        'label'         =>  __('Link Target', 'bb-njba'),
-                        'default'       =>  __('_self', 'bb-njba'),
-                        'placeholder'   => 'www.example.com',
-                        'options'   => array(
-                            '_self'     =>  __('Same Window', 'bb-njba'),   
-                            '_blank'    =>  __('New Window', 'bb-njba'),   
-                        ),
-                        'preview'   => array(
-                            'type'      => 'none'
-                        )
-                    )
-                )
-            ),
             'img_icon_style'     =>  array(
                 'title'         => 'Border of Image / Icon',
                 'fields'        => array(
@@ -200,6 +166,12 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                         'description' => 'px',
                         'maxlength'   => '3',
                         'size'        => '5',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-icon-img',
+                            'property'     => 'border',
+                            'unit'         => 'px'
+                        )
                     ),
                     'icon_img_border_radius_njba'      => array(
                         'type'              => 'njba-multinumber',
@@ -214,20 +186,44 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                         ),
                         'options'           => array(
                             'topleft'               => array(
-                                'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'placeholder'       => __('Top Left', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'      => array(
+                                    'type'         => 'css',
+                                    'selector'     => '.njba-icon-img',
+                                    'property'     => 'border-top-left-radius',
+                                    'unit'         => 'px'
+                                )
                             ),
                             'topright'            => array(
-                                'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'placeholder'       => __('Top Right', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'      => array(
+                                    'type'         => 'css',
+                                    'selector'     => '.njba-icon-img',
+                                    'property'     => 'border-top-right-radius',
+                                    'unit'         => 'px'
+                                )
                             ),
                             'bottomleft'            => array(
-                                'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'placeholder'       => __('Bottom Left', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'      => array(
+                                    'type'         => 'css',
+                                    'selector'     => '.njba-icon-img',
+                                    'property'     => 'border-bottom-left-radius',
+                                    'unit'         => 'px'
+                                )
                             ),
                             'bottomright'            => array(
-                                'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'placeholder'       => __('Bottom Right', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'      => array(
+                                    'type'         => 'css',
+                                    'selector'     => '.njba-icon-img',
+                                    'property'     => 'border-bottom-right-radius',
+                                    'unit'         => 'px'
+                                )
                             )
                             
                         )
@@ -242,6 +238,11 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                             'dotted'  => __('Dotted', 'bb-njba'),
                             'dashed'  => __('Dashed', 'bb-njba'),
                             'double'  => __('Double', 'bb-njba'),
+                        ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-icon-img',
+                            'property'     => 'border-style',
                         )
                     ),
                     'img_icon_border_color' => array( 
@@ -249,6 +250,11 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                         'label'      => __('Border Color', 'bb-njba'),
                         'default'    => 'ffffff',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-icon-img',
+                            'property'     => 'border-color',
+                        )
                     ),
                     'img_icon_border_hover_color' => array( 
                         'type'       => 'color',
@@ -267,6 +273,11 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                         'label'      => __('Icon Color', 'bb-njba'),
                         'default'    => '',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-icon-img i',
+                            'property'     => 'color',
+                        )
                     ),
                     'icon_hover_color' => array( 
                         'type'       => 'color',
@@ -303,19 +314,43 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-icon-img i',
+                                    'property'          => 'padding-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-icon-img i',
+                                    'property'          => 'padding-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-icon-img i',
+                                    'property'          => 'padding-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-icon-img i',
+                                    'property'          => 'padding-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -333,19 +368,43 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-icon-img i',
+                                    'property'          => 'margin-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-icon-img i',
+                                    'property'          => 'margin-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-icon-img i',
+                                    'property'          => 'margin-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-icon-img i',
+                                    'property'          => 'margin-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -356,6 +415,11 @@ FLBuilder::register_module('NJBAIconImgModule', array(
                         'label'         => __('Background Color', 'bb-njba'),
                         'default'    => '',
                         'show_reset' => true,
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-icon-img',
+                            'property'     => 'background'
+                        )
                     ),
                     'img_icon_bg_color_opc' => array( 
                         'type'        => 'text',

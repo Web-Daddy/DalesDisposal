@@ -69,12 +69,15 @@ function dales_register_scripts() {
 	wp_enqueue_style( 'jquery-formstyler', get_template_directory_uri() . '/css/jquery.formstyler.css');
 	wp_enqueue_style( 'jquery-themeformstyler', get_template_directory_uri() . '/css/jquery.formstyler.theme.css');
 	wp_enqueue_style( 'datepicker-style', get_template_directory_uri() . '/css/datepicker.min.css');
+	wp_enqueue_script( 'mask_script', get_template_directory_uri() . '/js/jquery_mask.js' );
 	wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/js/custom_dales.js' );
+	wp_localize_script( 'custom-script', 'wp_links', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+
 	wp_enqueue_script( 'jquery-cookie', get_template_directory_uri() . '/js/jquery.cookie.js' , array('jquery') );
 	wp_enqueue_script( 'jquery-formstyler', get_template_directory_uri() . '/js/jquery.formstyler.min.js' , array('jquery') );
 	wp_enqueue_script( 'datepicker-script', get_template_directory_uri() . '/js/datepicker.js' );
 	wp_enqueue_script( 'datepicker-script-eng', get_template_directory_uri() . '/js/datepicker.en.js' );
-
+	
 }
 
 add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
@@ -141,7 +144,7 @@ function file_upload_email_function(){
 	$success = false;
 	$form_error = new WP_Error;
 	$data = $_POST;
-	$email = get_field('email_admin');
+	$email = get_option('admin_email');
 	if (empty($data)) {
         return $form_error;
     }
@@ -152,13 +155,13 @@ function file_upload_email_function(){
 	$type_of_uploaded_file = substr($name_of_uploaded_file, strrpos($name_of_uploaded_file, '.') + 1);
 	$size_of_uploaded_file = $_FILES["uploaded_file"]["size"]/1024;
 	//Settings
-	$max_allowed_file_size = 100; // size in KB
+	$max_allowed_file_size = 1000; // size in KB
 	$allowed_extensions = array("pdf", "jpg", "jpeg", "doc", "docx");
-
+	// Allowed types also are configured in custom-dales.js
 	//Validations
 	if($size_of_uploaded_file > $max_allowed_file_size )
 	{
-	  $form_error->add('not_valid_weight_file', "Not a valid file weight. The maximum weight is 100 KB.");
+	  $form_error->add('not_valid_weight_file', "Not a valid file weight. The maximum weight is 1000 KB.");
 	}
 
 	//------ Validate the file extension -----
@@ -173,7 +176,7 @@ function file_upload_email_function(){
 
 	if(!$allowed_ext)
 	{
-		$form_error->add('not_valid_type_file', "The uploaded file is not supported file type. The correct type files are : pdf, jpg, doc,docx");
+		$form_error->add('not_valid_type_file', "The uploaded file is not supported file type. The correct type files are : pdf, jpg, doc, docx");
 	}
 
 	if ($form_error->get_error_code()) {
@@ -191,9 +194,9 @@ function file_upload_email_function(){
 		$file_path = $upload_folder . "/" . $_FILES['uploaded_file']['name'];
 		$is_file_uploaded = move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $file_path);
 		if ($is_file_uploaded) {
-			$headers = 'From: My Name <noreply@dales.wemes.com.ua>' . "\r\n";
-			$is_mail_sended = wp_mail( $email, 'Theme', $_FILES['uploaded_file']['name'], $headers, $file_path);
-
+			$headers = 'From: Dales <noreply@dales.wemes.com.ua>' . "\r\n";
+			$is_mail_sended = wp_mail( $email, 'Submitted resume', 'Here is uploaded resume from website ' . $_FILES['uploaded_file']['name'], $headers, $file_path);
+			@unlink($file_path);
 			if ($is_mail_sended) {
 				echo "<div class='alert alert-success'><p><strong>Success!</strong> File was successfully sent.</p></div>";
 			} else {
@@ -204,15 +207,11 @@ function file_upload_email_function(){
 	}
 }
 
-function debug ($data) {
+function debug_data ($data) {
 	echo "<pre>";
 	print_r($data);
 	echo "</pre>";
 }
-function footag_func( $atts ){
-	 return "foo = ". $atts['foo'];
-}
-add_shortcode('footag', 'footag_func');
 
 
 add_action( 'init', 'custom_taxonomy_zip_code' );
@@ -405,31 +404,303 @@ add_action( 'woocommerce_cart_calculate_fees', 'woo_add_cart_fee' );
 
 function dales_cart_shortcode_func( $atts ){
 	$dales_cart_count = WC()->cart->get_cart_contents_count();
-	$dales_cart_count_link = '<a href="/checkout-dales/" class="dales_cart_count_link">'.$dales_cart_count.'</a>';
+	if ( $dales_cart_count == 0 ){ 
+		$dales_cart_count_link = '<a href="#" class="dales_cart_count_link">'.$dales_cart_count.'</a>';
+	} else {
+		$dales_cart_count_link = '<a href="/checkout-dales/" class="dales_cart_count_link">'.$dales_cart_count.'</a>';
+	}
+	
 	return $dales_cart_count_link;
 }
 add_shortcode('dales_cart_shortcode', 'dales_cart_shortcode_func');
 
+add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
 
 
-// add_action('woocommerce_thankyou', 'cookie_cleaning_after_submit', 10, 1);
 
-// function cookie_cleaning_after_submit( $order_id ) {
-// 	if (isset($_COOKIE['dales_order_zip_code'])) {
-// 	    unset($_COOKIE['dales_order_zip_code']);
-// 	    setcookie('dales_order_zip_code', '', time() - 3600, '/'); 
-// 	};
-// 	if (isset($_COOKIE['slug'])) {
-// 	    unset($_COOKIE['slug']);
-// 	    setcookie('slug', '', time() - 3600, '/'); 
-// 	};
-// 	if (isset($_COOKIE['form_data'])) {
-// 	    unset($_COOKIE['form_data']);
-// 	    setcookie('form_data', '', time() - 3600, '/'); 
-// 	};
-// 	if (isset($_COOKIE['date_range'])) {
-// 	    unset($_COOKIE['date_range']);
-// 	    setcookie('date_range', '', time() - 3600, '/'); 
-// 	};
+//remove Order Notes Field
+add_filter( 'woocommerce_checkout_fields' , 'remove_order_notes' );
 
+function remove_order_notes( $fields ) {
+     unset($fields['order']['order_comments']);
+     return $fields;
+}
+
+/**
+ * Disable the emoji's
+ */
+function disable_emojis() {
+ remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+ remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+ remove_action( 'wp_print_styles', 'print_emoji_styles' );
+ remove_action( 'admin_print_styles', 'print_emoji_styles' ); 
+ remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+ remove_filter( 'comment_text_rss', 'wp_staticize_emoji' ); 
+ remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+ add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+ add_filter( 'wp_resource_hints', 'disable_emojis_remove_dns_prefetch', 10, 2 );
+}
+add_action( 'init', 'disable_emojis' );
+
+/**
+ * Filter function used to remove the tinymce emoji plugin.
+ * 
+ * @param array $plugins 
+ * @return array Difference betwen the two arrays
+ */
+function disable_emojis_tinymce( $plugins ) {
+ if ( is_array( $plugins ) ) {
+ return array_diff( $plugins, array( 'wpemoji' ) );
+ } else {
+ return array();
+ }
+}
+
+/**
+ * Remove emoji CDN hostname from DNS prefetching hints.
+ *
+ * @param array $urls URLs to print for resource hints.
+ * @param string $relation_type The relation type the URLs are printed for.
+ * @return array Difference betwen the two arrays.
+ */
+function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
+ if ( 'dns-prefetch' == $relation_type ) {
+ /** This filter is documented in wp-includes/formatting.php */
+ $emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+
+$urls = array_diff( $urls, array( $emoji_svg_url ) );
+ }
+
+return $urls;
+}
+
+
+add_action( 'woocommerce_payment_complete', 'so_payment_complete' );
+function so_payment_complete( $order_id ){
+	setcookie( "dales_order_complete", "order status is complete", time() + (86400 * 30), "/");
+	if (isset($_COOKIE['dales_order_zip_code'])) {
+	    unset($_COOKIE['dales_order_zip_code']);
+	    setcookie('dales_order_zip_code', '', time() - 3600, '/'); 
+	};
+	if (isset($_COOKIE['slug'])) {
+	    unset($_COOKIE['slug']);
+	    setcookie('slug', '', time() - 3600, '/'); 
+	};
+	if (isset($_COOKIE['form_data'])) {
+	    unset($_COOKIE['form_data']);
+	   	setcookie('form_data', '', time() - 3600, '/'); 
+	};
+	if (isset($_COOKIE['date_range'])) {
+	    unset($_COOKIE['date_range']);
+	    setcookie('date_range', '', time() - 3600, '/'); 
+	};
+	return false;
+}
+
+add_action('wp_ajax_clearcart', 'clearcart');
+add_action('wp_ajax_nopriv_clearcart', 'clearcart');
+
+function clearcart (){
+	if (isset($_COOKIE['dales_order_zip_code'])) {
+	    unset($_COOKIE['dales_order_zip_code']);
+	    setcookie('dales_order_zip_code', '', time() - 3600, '/'); 
+	};
+	if (isset($_COOKIE['slug'])) {
+	    unset($_COOKIE['slug']);
+	    setcookie('slug', '', time() - 3600, '/'); 
+	};
+	if (isset($_COOKIE['form_data'])) {
+	    unset($_COOKIE['form_data']);
+	   	setcookie('form_data', '', time() - 3600, '/'); 
+	};
+	if (isset($_COOKIE['date_range'])) {
+	    unset($_COOKIE['date_range']);
+	    setcookie('date_range', '', time() - 3600, '/'); 
+	};
+    global $woocommerce;
+    $woocommerce->cart->empty_cart();
+    wp_send_json(['status'=> 'done', 'home_url'=> home_url('/')], 200);
+}
+
+
+function cloudways_custom_checkout_fields($fields){
+	if (isset($_COOKIE['date_range'])) {
+		$date = $_COOKIE['date_range'];
+		$date = stripcslashes($date);
+		$date = json_decode($date);
+		$dales_current_date = date("m/d/Y", strtotime($date->current_date));
+		$dales_last_date = date("m/d/Y", strtotime($date->last_date));
+	};
+	if (isset($_COOKIE['dales_order_zip_code'])) {
+	    $dales_zip_code = $_COOKIE['dales_order_zip_code'];
+	};
+$fields['cloudways_extra_fields'] = array(
+            'dales_zip_code' => array(
+		        'label'     => __('ZIP code', 'woocommerce'),
+		        'placeholder'   => _x('ZIP code', 'placeholder', 'woocommerce'),
+		        'required'  => false,
+		        'class'     => array('form-row-wide dales_zip_code_checkout_filed'),
+		        'clear'       => true,
+		        'type'        => 'text',
+		        'default' 	=> $dales_zip_code,
+		        'custom_attributes'	=> array('readonly'=>'readonly')
+                ),
+            'dales_current_date' => array(
+		        'label'     => __('Deliver on', 'woocommerce'),
+		        'placeholder'   => _x('First date', 'placeholder', 'woocommerce'),
+		        'required'  => false,
+		        'class'     => array('form-row-wide dales_current_date_checkout_filed'),
+		        'clear'       => true,
+		        'type'        => 'text',
+		        'default' 	=> $dales_current_date,
+		        'custom_attributes'	=> array('readonly'=>'readonly')
+                ),
+            'dales_last_date' => array(
+		        'label'     => __('Return on', 'woocommerce'),
+		        'placeholder'   => _x('Last date', 'placeholder', 'woocommerce'),
+		        'required'  => false,
+		        'class'     => array('form-row-wide dales_last_date_checkout_filed'),
+		        'clear'       => true,
+		        'type'        => 'text',
+		        'default' 	=> $dales_last_date,
+		        'custom_attributes'	=> array('readonly'=>'readonly')
+                )
+            );
+
+     return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields', 'cloudways_custom_checkout_fields' );
+
+function cloudways_extra_checkout_fields(){
+
+   $checkout = WC()->checkout(); ?>
+
+    <div class="extra-fields" style="display: none;">
+    <h3><?php  _e( 'Rent Information' ); ?></h3> 
+
+    <?php
+        foreach ( $checkout->checkout_fields['cloudways_extra_fields'] as $key => $field ) : ?>
+
+            <?php  woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
+
+        <?php  endforeach; ?>
+    </div>
+
+<?php  }
+add_action( 'woocommerce_checkout_after_customer_details' ,'cloudways_extra_checkout_fields' );
+
+
+
+function cloudways_save_extra_checkout_fields( $order_id, $posted ){
+    // don't forget appropriate sanitization if you are using a different field type
+    if( isset( $posted['dales_zip_code'] ) ) {
+        update_post_meta( $order_id, '_dales_zip_code', sanitize_text_field( $posted['dales_zip_code'] ) );
+    }
+    if( isset( $posted['dales_current_date'] ) ) {
+        update_post_meta( $order_id, '_dales_current_date', sanitize_text_field( $posted['dales_current_date'] ) );
+    }
+    if( isset( $posted['dales_last_date'] ) ) {
+        update_post_meta( $order_id, '_dales_last_date', sanitize_text_field( $posted['dales_last_date'] ) );
+    }
+
+}
+add_action( 'woocommerce_checkout_update_order_meta', 'cloudways_save_extra_checkout_fields', 10, 2 );
+
+
+function cloudways_display_order_data( $order_id ){  ?>
+    <h2><?php _e( 'Additional Information' ); ?></h2>
+    <table class="shop_table shop_table_responsive additional_info">
+        <tbody>
+            <tr>
+                <th><?php _e( 'ZIP Code' ); ?></th>
+                <td><?php echo get_post_meta( $order_id, '_dales_zip_code', true ); ?></td>
+            </tr>
+            <tr>
+                <th><?php _e( 'Deliver on' ); ?></th>
+                <td><?php echo get_post_meta( $order_id, '_dales_current_date', true ); ?></td>
+            </tr>
+            <tr>
+                <th><?php _e( 'Return on' ); ?></th>
+                <td><?php echo get_post_meta( $order_id, '_dales_last_date', true ); ?></td>
+            </tr>
+        </tbody>
+    </table>
+<?php }
+// add_action( 'woocommerce_thankyou', 'cloudways_display_order_data', 20 );
+add_action( 'woocommerce_view_order', 'cloudways_display_order_data', 20 );
+
+
+function cloudways_display_order_data_in_admin( $order ){  ?>
+    <div class="order_data_column">
+
+        <h4><?php _e( 'Additional Information', 'woocommerce' ); ?><a href="#" class="edit_address"><?php _e( 'Edit', 'woocommerce' ); ?></a></h4>
+        <div class="address">
+        <?php
+        	echo '<p><strong>' . __( 'ZIP Code' ) . ':</strong>' . get_post_meta( $order->id, '_dales_zip_code', true ) . '</p>';
+            echo '<p><strong>' . __( 'Deliver on' ) . ':</strong>' . get_post_meta( $order->id, '_dales_current_date', true ) . '</p>';
+            echo '<p><strong>' . __( 'Return on' ) . ':</strong>' . get_post_meta( $order->id, '_dales_last_date', true ) . '</p>'; ?>
+        </div>
+        <div class="edit_address">
+        	<?php woocommerce_wp_text_input( array( 'id' => '_dales_zip_code', 'label' => __( 'ZIP Code' ), 'wrapper_class' => '_billing_company_field' ) ); ?>
+            <?php woocommerce_wp_text_input( array( 'id' => '_dales_current_date', 'label' => __( 'Deliver on' ), 'wrapper_class' => '_billing_company_field' ) ); ?>
+            <?php woocommerce_wp_text_input( array( 'id' => '_dales_last_date', 'label' => __( 'Return on' ), 'wrapper_class' => '_billing_company_field' ) ); ?>
+        </div>
+    </div>
+<?php }
+add_action( 'woocommerce_admin_order_data_after_order_details', 'cloudways_display_order_data_in_admin' );
+
+
+function cloudways_save_extra_details( $post_id, $post ){
+	update_post_meta( $post_id, '_dales_zip_code', wc_clean( $_POST[ '_dales_zip_code' ] ) );
+    update_post_meta( $post_id, '_dales_current_date', wc_clean( $_POST[ '_dales_current_date' ] ) );
+    update_post_meta( $post_id, '_dales_last_date', wc_clean( $_POST[ '_dales_last_date' ] ) );
+}
+add_action( 'woocommerce_process_shop_order_meta', 'cloudways_save_extra_details', 45, 2 );
+
+
+function cloudways_email_order_meta_fields( $fields, $sent_to_admin, $order ) {
+    $fields['dales_field1'] = array(
+                'label' => __( 'ZIP Code' ),
+                'value' => get_post_meta( $order->id, '_dales_zip_code', true ),
+            );
+    $fields['dales_field2'] = array(
+                'label' => __( 'Deliver on' ),
+                'value' => get_post_meta( $order->id, '_dales_current_date', true ),
+            );
+    $fields['dales_field3'] = array(
+                'label' => __( 'Return on' ),
+                'value' => get_post_meta( $order->id, '_dales_last_date', true ),
+            );
+    return $fields;
+}
+add_filter('woocommerce_email_order_meta_fields', 'cloudways_email_order_meta_fields', 10, 3 );
+
+// function cloudways_show_email_order_meta( $order, $sent_to_admin, $plain_text ) {
+// 	$dales_zip_code = get_post_meta( $order->id, '_dales_zip_code', true );
+//     $dales_current_date = get_post_meta( $order->id, '_dales_current_date', true );
+//     $dales_last_date = get_post_meta( $order->id, '_dales_last_date', true );
+//     if( $plain_text ){
+//         echo 'The value for some field is ' . $dales_current_date . ' while the value of another field is ' . $dales_last_date;
+//     } else {
+//         echo '<p>The value for <strong>input text field</strong> is ' . $dales_current_date. ' while the value of <strong>drop down</strong> is ' . $dales_last_date . '</p>';
+//     }
 // }
+// add_action('woocommerce_email_customer_details', 'cloudways_show_email_order_meta', 30, 3 );
+
+
+function CM_woocommerce_account_menu_items_callback($items) {
+    unset( $items['downloads'] );
+    unset( $items['bookings'] );
+    return $items;
+}
+add_filter('woocommerce_account_menu_items', 'CM_woocommerce_account_menu_items_callback', 10, 1);
+
+
+function auto_login_new_user( $user_id ) {
+    wp_set_current_user($user_id);
+    wp_set_auth_cookie($user_id);
+    wp_redirect( home_url() );
+}
+
+

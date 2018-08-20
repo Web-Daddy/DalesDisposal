@@ -11,8 +11,8 @@ class NjbaFBButtonModule extends FLBuilderModule {
 		parent::__construct(array(
 			'name'          	=> __('Facebook Button', 'bb-njba'),
 			'description'   	=> __('A module for fetch facebook button.', 'bb-njba'),
-			'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Social Modules - NJBA', 'bb-njba'),
+			'group'         => njba_get_modules_group(),
+			'category'		=> njba_get_modules_cat( 'social' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-facebook-button/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-facebook-button/',
             'editor_export' => true, // Defaults to true and can be omitted.

@@ -2,8 +2,8 @@
 Contributors: njba,kirit-dholakiya
 Tags: beaver addons, beaver builder, beaver builder add ons, beaver builder addon, beaver builder free, Ninja beaver addon
 Requires at least: 4.0
-Tested up to: 4.9.6
-Stable tag: 1.7
+Tested up to: 4.9.7
+Stable tag: 1.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,9 +16,17 @@ There are 40 modules (in lite version) easy to use, drag & drop, sections will s
 
 
 
-We will offer 53+ modules in pro version. And we currently working on more modules and improvement in existing modules. We also planning to provide page templates and row/section templates in pro version.
+We will offer 53+ modules in pro version. And we currently working on more modules and improvement in existing modules. We provide page templates and row/section templates in pro version. You can also try our woocommerce modules and woocommerce themer features. For more detail visit our <a href="https://www.woobeaveraddons.com/" target="_blank">woo beaver addons</a> site.
 
-
+<b>Woo Beaver Addons Features</b>
+<ul>
+<li>Single Product Module - You can show single product with short description, add to cart button and price on any pages/post.</li>
+<li>Add To Cart Module - You can add any product add to cart button anywhere on site.</li>
+<li>Product Grid/Carousel - You can show latest product, best sale product, Features Products in grid mode or carousel mode with nice styles.</li>
+<li>Cart Module - You can style the cart page</li>
+<li>Checkout Module - You can style the checkout page</li>
+<li>Woo Beaver Layout (woocommerce themer) - Using this option, you can create templates for single product or category product pages. For more info, <a href="https://www.woobeaveraddons.com/" target="_blank">please check our site.</a></li>
+</ul>
 
 
 
@@ -35,6 +43,14 @@ We will offer 53+ modules in pro version. And we currently working on more modul
 <li>Call To Action <a href="https://www.ninjabeaveraddon.com/modules/advanced-call-to-action/" target="_blank">demo</a></li> 
 
 <li>Contact Form <a href="https://www.ninjabeaveraddon.com/modules/contact/" target="_blank">demo</a></li>
+
+<li>Facebook Button </li>
+
+<li>Facebook Comments </li>
+
+<li>Facebook Embed </li>
+
+<li>Facebook Page </li>
 
 <li>Flip Box <a href="https://www.ninjabeaveraddon.com/modules/flip-box/" target="_blank">demo</a></li>
 
@@ -74,8 +90,6 @@ We will offer 53+ modules in pro version. And we currently working on more modul
 
 <li>Quote Box <a href="https://www.ninjabeaveraddon.com/modules/quote-box/" target="_blank">demo</a></li>
 
-<li>Row Separator <a href="https://www.ninjabeaveraddon.com/modules/row-separator/" target="_blank">demo</a></li>
-
 <li>Separator <a href="https://www.ninjabeaveraddon.com/modules/separator/" target="_blank">demo</a></li>
 
 <li>Slider <a href="https://www.ninjabeaveraddon.com/modules/slider/" target="_blank">demo</a></li>
@@ -91,14 +105,6 @@ We will offer 53+ modules in pro version. And we currently working on more modul
 <li>Teams <a href="https://www.ninjabeaveraddon.com/modules/teams/" target="_blank">demo</a></li> 
 
 <li>Testimonials <a href="https://www.ninjabeaveraddon.com/modules/testimonials/" target="_blank">demo</a></li>
-
-<li>Facebook Button </li>
-
-<li>Facebook Comments </li>
-
-<li>Facebook Embed </li>
-
-<li>Facebook Page </li>
 
 <li>Twitter Button </li>
 
@@ -224,19 +230,13 @@ Ninja Beaver Addons for beaver builder works like any standard Wordpress plugin,
 2. Click install, once installed, activate and you're done!
 
 
-
 = Manual Installation =
 
 1. Use ftp to uploading the files to your server at wp-content/plugins.
 
 2. Go to plugin page and activate plugin.
 
-
-
 Once installed and active plugin, navigate to the settings page at Settings > Page Builder > Modules.
-
-
-
 
 
 == Screenshots ==
@@ -251,6 +251,12 @@ Once installed and active plugin, navigate to the settings page at Settings > Pa
 
 
 == Changelog ==
+
+=1.9=
+- Bug Fixing.
+
+= 1.8 =
+* Few Enhancement
 
 = 1.7 =
 * Few Enhancement

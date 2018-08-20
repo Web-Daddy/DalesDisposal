@@ -1,1 +1,2 @@
-<div class="njba-spacer-preview njba-spacer"></div>
+<div class="njba-spacer-preview njba-spacer">
+</div>

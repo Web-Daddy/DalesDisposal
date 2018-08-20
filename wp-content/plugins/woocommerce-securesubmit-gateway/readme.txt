@@ -35,9 +35,15 @@ Get your Certification (Dev/Sandbox) Api Keys by creating an account on https://
 3. A view of the Manage Cards section
 
 == Changelog ==
+= 1.11.25 =
+* Fix button on cart page to remove applied gift card
+
+= 1.11.24 =
+* Correct totals when gift cards are used
 
 = 1.11.23 =
 * Script tags updated to opt out Cloudflare Rocket loader
+* Add support for verify-only checkouts
 
 = 1.11.22 =
 * Subscription renewal verification order note updated

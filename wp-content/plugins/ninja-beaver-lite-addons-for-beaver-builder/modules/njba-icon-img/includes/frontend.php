@@ -1,7 +1,7 @@
-<?php if($settings->image_type != 'none') : ?>
+<?php if($settings->image_type != 'none' && !empty($settings->image_type)) : ?>
 <div class="njba-icon-img-main <?php echo "position_".$settings->overall_alignment_img_icon; ?>">
-    <?php if($settings->show_image_icon_link != 'no') : ?>
-        <?php if($settings->url != '') : ?>
+    <?php if(!empty($settings->show_image_icon_link) && $settings->show_image_icon_link != 'no') : ?>
+        <?php if($settings->url != '' && !empty($settings->url)) : ?>
             <a href="<?php echo $settings->url;?>" target="<?php echo $settings->link_target;?>" >
         <?php endif; ?>
     <?php endif; ?>
@@ -19,8 +19,8 @@
                         <i class="<?php echo $settings->icon; ?>" aria-hidden="true"></i>
                     <?php } ?>
                 </div>
-    <?php if($settings->show_image_icon_link != 'no') : ?>
-        <?php if($settings->url != '') : ?>
+    <?php if(!empty($settings->show_image_icon_link) && $settings->show_image_icon_link != 'no') : ?>
+        <?php if($settings->url != ''  && !empty($settings->url)) : ?>
             </a>
         <?php endif; ?>
     <?php endif; ?>

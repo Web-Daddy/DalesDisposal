@@ -14,8 +14,8 @@ class NJBAImagePanelsModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Image Panels', 'bb-njba'),
             'description'   => __('Create beautiful images panels.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-image-panels/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-image-panels/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -139,7 +139,10 @@ FLBuilder::register_settings_form('njba_image_panels_form', array(
                     'fields'     => array(
                         'title'     => array(
                             'type'          => 'text',
-                            'label'         => __('Title', 'bb-njba')
+                            'label'         => __('Title', 'bb-njba'),
+                            'preview'       => array(
+                                'type'          => 'none'
+                            )
                         ),
                         'photo'     => array(
                             'type'          => 'photo',
@@ -196,6 +199,9 @@ FLBuilder::register_settings_form('njba_image_panels_form', array(
                         'link'  => array(
                             'type'      => 'link',
                             'label'     => __('Link', 'bb-njba'),
+                            'preview'       => array(
+                                'type'          => 'none'
+                            )
                         ),
                         'link_target'   => array(
                             'type'      => 'select',
@@ -205,6 +211,9 @@ FLBuilder::register_settings_form('njba_image_panels_form', array(
                                 '_self' => __('Same Window', 'bb-njba'),
                                 '_blank' => __('New Window', 'bb-njba'),
                             ),
+                            'preview'       => array(
+                                'type'          => 'none'
+                            )
                         ),
                     ),
                 ),

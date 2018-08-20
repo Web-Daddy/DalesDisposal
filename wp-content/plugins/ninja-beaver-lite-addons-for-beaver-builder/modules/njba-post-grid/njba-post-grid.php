@@ -14,8 +14,8 @@ class NJBAPostGridModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Post Grid', 'bb-njba'),
             'description'   => __('Addon to display post.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-post-grid/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-post-grid/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -159,6 +159,9 @@ FLBuilder::register_module('NJBAPostGridModule', array(
                             '5'       => '5',
                             '2'       => '6',
                         ),
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
                     ),
                     'posts_per_page' => array(
                         'type'          => 'text',
@@ -292,6 +295,9 @@ FLBuilder::register_module('NJBAPostGridModule', array(
                         'type'          => 'text',
                         'label'         => __('More Link Text', 'bb-njba'),
                         'default'       => __('More', 'bb-njba'),
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
                     ),
                 )
             ),
@@ -575,6 +581,9 @@ FLBuilder::register_module('NJBAPostGridModule', array(
                             'div'     => __('Div', 'bb-njba'),
                             'p'       => __('p', 'bb-njba'),
                             'span'    => __('span', 'bb-njba'),
+                        ),
+                        'preview'   => array(
+                            'type'      => 'none'
                         )
                     ),
                     'post_title_alignment'         => array(

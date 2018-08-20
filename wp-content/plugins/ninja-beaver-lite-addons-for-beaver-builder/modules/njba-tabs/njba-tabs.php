@@ -14,8 +14,8 @@ class NJBATabsModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Tabs', 'bb-njba'),
             'description'   => __('Addon to display tabs.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-tabs/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-tabs/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -263,52 +263,29 @@ FLBuilder::register_module('NJBATabsModule', array(
                      'header_border_width'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Header Border', 'bb-njba'),
+                        'description'       => 'px',
                         'default'   => array(
-                            'top'   => '',
+                            'top'   => 1,
                             'bottom'   => 1,
                             'left'   => 1,
-                            'right'   => '',
+                            'right'   => 1,
                         ),    
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label.njba-tab-active .njba-tab-label-inner',
-                                    'property'          => 'margin-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label.njba-tab-active .njba-tab-label-inner',
-                                    'property'          => 'margin-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label.njba-tab-active .njba-tab-label-inner',
-                                    'property'          => 'margin-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label.njba-tab-active .njba-tab-label-inner',
-                                    'property'          => 'margin-right',
-                                ),
                             )
                         )
                     ),
@@ -395,8 +372,9 @@ FLBuilder::register_module('NJBATabsModule', array(
                     'box_border_width'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Content Border', 'bb-njba'),
+                        'description'       => 'px',
                         'default'   => array(
-                            'top'   => '',
+                            'top'   => 1,
                             'bottom'   => 1,
                             'left'   => 1,
                             'right'   => 1,
@@ -405,42 +383,18 @@ FLBuilder::register_module('NJBATabsModule', array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '',
-                                    'property'          => 'margin-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '',
-                                    'property'          => 'margin-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '',
-                                    'property'          => 'margin-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '',
-                                    'property'          => 'margin-right',
-                                ),
                             )
                         )
                     ),
@@ -492,6 +446,7 @@ FLBuilder::register_module('NJBATabsModule', array(
                     'content_shadow'        => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Box Shadow', 'bb-njba'),
+                        'description'       => 'px',
                         'default'           => array(
                             'vertical'          => 0,
                             'horizontal'        => 0,
@@ -501,22 +456,18 @@ FLBuilder::register_module('NJBATabsModule', array(
                         'options'           => array(
                             'vertical'          => array(
                                 'placeholder'       => __('Vertical', 'bb-njba'),
-                                'tooltip'           => __('Vertical', 'bb-njba'),
                                 'icon'              => 'fa-arrows-v'
                             ),
                             'horizontal'        => array(
                                 'placeholder'       => __('Horizontal', 'bb-njba'),
-                                'tooltip'           => __('Horizontal', 'bb-njba'),
                                 'icon'              => 'fa-arrows-h'
                             ),
                             'blur'              => array(
                                 'placeholder'       => __('Blur', 'bb-njba'),
-                                'tooltip'           => __('Blur', 'bb-njba'),
                                 'icon'              => 'fa-circle-o'
                             ),
                             'spread'            => array(
                                 'placeholder'       => __('Spread', 'bb-njba'),
-                                'tooltip'           => __('Spread', 'bb-njba'),
                                 'icon'              => 'fa-paint-brush'
                             ),
                         )
@@ -536,88 +487,58 @@ FLBuilder::register_module('NJBATabsModule', array(
                     'content_box_padding'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Padding', 'bb-njba'),
+                        'description'       => 'px',
+                        'default'           => array(
+                            'top'          => 10,
+                            'bottom'        => 10,
+                            'left'              => 10,
+                            'right'            => 10
+                        ),
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-panel-content',
-                                    'property'          => 'padding-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-panel-content',
-                                    'property'          => 'padding-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-panel-content',
-                                    'property'          => 'padding-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-panel-content',
-                                    'property'          => 'padding-right',
-                                ),
                             )
                         )
                     ),
                     'content_margin'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Margin', 'bb-njba'),
+                        'description'       => 'px',
+                        'default'           => array(
+                            'top'          => 10,
+                            'bottom'        => 10,
+                            'left'              => 10,
+                            'right'            => 10
+                        ),
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-panel-content',
-                                    'property'          => 'margin-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-panel-content',
-                                    'property'          => 'margin-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-panel-content',
-                                    'property'          => 'margin-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-panel-content',
-                                    'property'          => 'margin-right',
-                                ),
                             )
                         )
                     ),
@@ -670,98 +591,58 @@ FLBuilder::register_module('NJBATabsModule', array(
                     'tab_box_padding'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Title Padding', 'bb-njba'),
-                         'default'   => array(
+                        'description'       => 'px',
+                        'default'   => array(
                             'top'   => 10,
                             'bottom'   => 10,
-                            'left'   => 25,
-                            'right'   => 25,
+                            'left'   => 10,
+                            'right'   => 10,
                         ),    
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label .njba-tab-label-inner',
-                                    'property'          => 'padding-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label .njba-tab-label-inner',
-                                    'property'          => 'padding-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label .njba-tab-label-inner',
-                                    'property'          => 'padding-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label .njba-tab-label-inner',
-                                    'property'          => 'padding-right',
-                                ),
                             )
                         )
                     ),
                      'title_active_border'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Active Border', 'bb-njba'),
+                        'description'       => 'px',
+                        'default'   => array(
+                            'top'   => 1,
+                            'bottom'   => 1,
+                            'left'   => 1,
+                            'right'   => 1,
+                        ),    
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label.njba-tab-active .njba-tab-label-inner',
-                                    'property'          => 'margin-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label.njba-tab-active .njba-tab-label-inner',
-                                    'property'          => 'margin-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label.njba-tab-active .njba-tab-label-inner',
-                                    'property'          => 'margin-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label.njba-tab-active .njba-tab-label-inner',
-                                    'property'          => 'margin-right',
-                                ),
                             )
                         )
                     ),
@@ -813,7 +694,8 @@ FLBuilder::register_module('NJBATabsModule', array(
                     'tab_border'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Border', 'bb-njba'),
-                       'default'   => array(
+                        'description'       => 'px',
+                        'default'   => array(
                             'top'   => 1,
                             'bottom'   => '',
                             'left'   => '',
@@ -823,42 +705,18 @@ FLBuilder::register_module('NJBATabsModule', array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label .njba-tab-label-inner',
-                                    'property'          => 'margin-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label .njba-tab-label-inner',
-                                    'property'          => 'margin-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label .njba-tab-label-inner',
-                                    'property'          => 'margin-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label .njba-tab-label-inner',
-                                    'property'          => 'margin-right',
-                                ),
                             )
                         )
                     ),
@@ -910,6 +768,7 @@ FLBuilder::register_module('NJBATabsModule', array(
                     'box_shadow'        => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Box Shadow', 'bb-njba'),
+                        'description'       => 'px',
                         'default'           => array(
                             'vertical'          => 0,
                             'horizontal'        => 0,
@@ -919,22 +778,18 @@ FLBuilder::register_module('NJBATabsModule', array(
                         'options'           => array(
                             'vertical'          => array(
                                 'placeholder'       => __('Vertical', 'bb-njba'),
-                                'tooltip'           => __('Vertical', 'bb-njba'),
                                 'icon'              => 'fa-arrows-v'
                             ),
                             'horizontal'        => array(
                                 'placeholder'       => __('Horizontal', 'bb-njba'),
-                                'tooltip'           => __('Horizontal', 'bb-njba'),
                                 'icon'              => 'fa-arrows-h'
                             ),
                             'blur'              => array(
                                 'placeholder'       => __('Blur', 'bb-njba'),
-                                'tooltip'           => __('Blur', 'bb-njba'),
                                 'icon'              => 'fa-circle-o'
                             ),
                             'spread'            => array(
                                 'placeholder'       => __('Spread', 'bb-njba'),
-                                'tooltip'           => __('Spread', 'bb-njba'),
                                 'icon'              => 'fa-paint-brush'
                             ),
                         )
@@ -1040,42 +895,29 @@ FLBuilder::register_module('NJBATabsModule', array(
                     'title_margin'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Tab Spacing', 'bb-njba'),
+                        'description'       => 'px',
+                        'default'   => array(
+                            'top'   => 10,
+                            'bottom'   => 10,
+                            'left'   => 10,
+                            'right'   => 10,
+                        ),     
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label',
-                                    'property'          => 'margin-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label',
-                                    'property'          => 'margin-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label',
-                                    'property'          => 'margin-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs-label',
-                                    'property'          => 'margin-right',
-                                ),
                             )
                         )
                     ),
@@ -1088,6 +930,7 @@ FLBuilder::register_module('NJBATabsModule', array(
                     'title_shadow'        => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Tab Box Shadow', 'bb-njba'),
+                        'description'       => 'px',
                         'default'           => array(
                             'vertical'          => 0,
                             'horizontal'        => 0,
@@ -1097,22 +940,18 @@ FLBuilder::register_module('NJBATabsModule', array(
                         'options'           => array(
                             'vertical'          => array(
                                 'placeholder'       => __('Vertical', 'bb-njba'),
-                                'tooltip'           => __('Vertical', 'bb-njba'),
                                 'icon'              => 'fa-arrows-v'
                             ),
                             'horizontal'        => array(
                                 'placeholder'       => __('Horizontal', 'bb-njba'),
-                                'tooltip'           => __('Horizontal', 'bb-njba'),
                                 'icon'              => 'fa-arrows-h'
                             ),
                             'blur'              => array(
                                 'placeholder'       => __('Blur', 'bb-njba'),
-                                'tooltip'           => __('Blur', 'bb-njba'),
                                 'icon'              => 'fa-circle-o'
                             ),
                             'spread'            => array(
                                 'placeholder'       => __('Spread', 'bb-njba'),
-                                'tooltip'           => __('Spread', 'bb-njba'),
                                 'icon'              => 'fa-paint-brush'
                             ),
                         )
@@ -1132,88 +971,59 @@ FLBuilder::register_module('NJBATabsModule', array(
                     'tab_padding'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Tab Header Padding', 'bb-njba'),
+                        'description'       => 'px',
+                        'default'           => array(
+                            'top'          => 10,
+                            'bottom'        => 10,
+                            'left'              => 10,
+                            'right'            => 10
+                        ),
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-nav',
-                                    'property'          => 'padding-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
                                 'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-nav',
-                                    'property'          => 'padding-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-nav',
-                                    'property'          => 'padding-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'default'           => '40',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-nav',
-                                    'property'          => 'padding-right',
-                                ),
                             )
                         )
                     ),
                      'header_margin'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Tab Header Margin', 'bb-njba'),
+                        'description'       => 'px',
+                        'default'           => array(
+                            'top'          => 10,
+                            'bottom'        => 10,
+                            'left'              => 10,
+                            'right'            => 10
+                        ),
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-nav',
-                                    'property'          => 'margin-top',
-                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-nav',
-                                    'property'          => 'margin-bottom',
-                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-nav',
-                                    'property'          => 'margin-left',
-                                ),
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                                'description'       => 'px',
-                                'preview'           => array(
-                                    'selector'          => '.njba-tabs .njba-tabs-nav',
-                                    'property'          => 'margin-right',
-                                ),
                             )
                         )
                     ),
@@ -1319,7 +1129,10 @@ FLBuilder::register_settings_form('item_form', array(
 						),
 						'label'         => array(
 							'type'          => 'text',
-							'label'         => __('Title', 'bb-njba')
+							'label'         => __('Title', 'bb-njba'),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
 						),
 					)
 				),
@@ -1328,7 +1141,10 @@ FLBuilder::register_settings_form('item_form', array(
 					'fields'        => array(
 						'content'       => array(
 							'type'          => 'editor',
-							'label'         => ''
+							'label'         => '',
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
 						)
 					)
 				)

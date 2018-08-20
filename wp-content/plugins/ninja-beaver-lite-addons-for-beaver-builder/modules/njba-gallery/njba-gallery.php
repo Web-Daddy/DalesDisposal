@@ -14,11 +14,12 @@ class NJBAGalleryModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Gallery', 'bb-njba'),
             'description'   => __('Addon to display Image Carousel.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-gallery/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-gallery/',
             'icon'              => 'format-gallery.svg',
+            
         ));
         /**
          * Use these methods to enqueue css and js already
@@ -134,7 +135,6 @@ FLBuilder::register_module('NJBAGalleryModule', array(
                         'type'          => 'color',
                         'label'         => __('Hover Background', 'bb-njba'),
                         'show_reset'    => true,
-                                
                         'preview'       => array(
                             'type'          => 'css',
                             'selector'      => '.njba-image-box-overlay',

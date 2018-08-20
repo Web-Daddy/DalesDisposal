@@ -14,8 +14,8 @@ class NJBAImageHoverTwoModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Image Hover 2', 'bb-njba'),
             'description'   => __('Addon to display image hover 2.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-image-hover-two/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-image-hover-two/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -75,11 +75,64 @@ FLBuilder::register_module('NJBAImageHoverTwoModule', array(
 			'general'       => array( // Section
 				'title'         => '', // Section Title
 				'fields'        => array( // Section Fields
+                    'style'         => array(
+                        'type'          => 'select',
+                        'label'         => __('Photo Style', 'bb-njba'),
+                        'default'       => 'simple',
+                        'options'       => array(
+                            '1'             => __('Style 1', 'bb-njba'),
+                            '2'             => __('Style 2', 'bb-njba'),
+                            '3'             => __('Style 3', 'bb-njba'),
+                            '4'             => __('Style 4', 'bb-njba'),
+                            '5'             => __('Style 5', 'bb-njba'),
+                            
+                        ),
+                        'toggle' => array(
+                            '1' => array(
+                                'sections' => array('caption', 'sub_caption'  ),
+                                'fields' => array('caption', 'sub_caption','margin1', 'caption_alignment', 'sub_caption_alignment', 'caption_padding', 'sub_caption_padding', 'background_color', 'background_color_opacity', 'background_hover_color', 'background_hover_color_opacity')
+                            ),
+                            '2' => array(
+                                'sections' => array( 'caption' ),
+                                'fields' => array('caption','padding1', 'caption_alignment', 'sub_caption_alignment', 'caption_padding', 'background_color', 'background_color_opacity', 'background_hover_color', 'background_hover_color_opacity')
+                            ),
+                            '3' => array(
+                               'sections' => array('caption', 'sub_caption'),
+                                'fields' => array('caption', 'sub_caption','caption_margin', 'caption_alignment', 'sub_caption_alignment', 'sub_caption_margin', 'background_blur')
+                            ),
+                            '4' => array(
+                                'sections' => array('border_hover_style_section','caption', 'sub_caption'),
+                                'fields' => array('caption', 'sub_caption')
+                            ),
+                            '5' => array(
+                                'sections' => array('caption', 'sub_caption'  ),
+                                'fields' => array('caption', 'sub_caption','caption_alignment', 'sub_caption_alignment', 'background_hover_color', 'background_hover_color_opacity')
+                            )
+                            
+                        ),
+                        'preview'       => array(
+                            'type'          => 'none'
+                        )
+                    ),
 					'photo'         => array(
 						'type'          => 'photo',
 						'label'         => __('Photo', 'bb-njba'),
 						'show_remove'	=> true,
 					),
+                    'caption'       => array(
+                        'type'          => 'text',
+                        'label'         => __('Main Caption', 'bb-njba'),
+                        'preview'       => array(
+                            'type'          => 'none'
+                        )
+                    ),
+                    'sub_caption'       => array(
+                        'type'          => 'text',
+                        'label'         => __('Sub Caption', 'bb-njba'),
+                        'preview'       => array(
+                            'type'          => 'none'
+                        )
+                    ),
 					'link_type'     => array(
                         'type'          => 'select',
                         'label'         => __('Link Type', 'bb-njba'),
@@ -117,47 +170,7 @@ FLBuilder::register_module('NJBAImageHoverTwoModule', array(
                             'type'            => 'none'
                         )
                     ),
-                    'style'         => array(
-                        'type'          => 'select',
-                        'label'         => __('Photo Style', 'bb-njba'),
-                        'default'       => 'simple',
-                        'options'       => array(
-                            '1'        => __('1', 'bb-njba'),
-                            '2'          => __('2', 'bb-njba'),
-                            '3'         => __('3', 'bb-njba'),
-                            '4'     => __('4', 'bb-njba'),
-                            '5'      => __('5', 'bb-njba'),
-                            
-                        ),
-                        'toggle' => array(
-                            '1' => array(
-                                'tabs' => array('caption', 'sub_caption'),
-                                'sections' => array(  ),
-                                'fields' => array('margin1', 'caption_alignment', 'sub_caption_alignment', 'caption_padding', 'sub_caption_padding', 'background_color', 'background_color_opacity', 'background_hover_color', 'background_hover_color_opacity')
-                            ),
-                            '2' => array(
-                                'tabs' => array('caption'),
-                                'sections' => array(  ),
-                                'fields' => array('padding1', 'caption_alignment', 'sub_caption_alignment', 'caption_padding', 'background_color', 'background_color_opacity', 'background_hover_color', 'background_hover_color_opacity')
-                            ),
-                            '3' => array(
-                                'tabs' => array('caption', 'sub_caption'),
-                                'sections' => array(),
-                                'fields' => array('caption_margin', 'caption_alignment', 'sub_caption_alignment', 'sub_caption_margin', 'background_blur')
-                            ),
-                            '4' => array(
-                                'tabs' => array('caption', 'sub_caption'),
-                                'sections' => array('border_hover_style_section'),
-                                'fields' => array()
-                            ),
-                            '5' => array(
-                                'tabs' => array('caption', 'sub_caption'),
-                                'sections' => array(  ),
-                                'fields' => array('caption_alignment', 'sub_caption_alignment', 'background_hover_color', 'background_hover_color_opacity')
-                            )
-                            
-                        ),
-                    ),
+                    
                     'transition' => array(
                         'type' => 'text',
                         'label' => __('Transition','bb-njba'),
@@ -170,340 +183,8 @@ FLBuilder::register_module('NJBAImageHoverTwoModule', array(
 			)
 		)
 	),
-	'caption'       => array( // Tab
-        'title'         => __('Caption', 'bb-njba'), // Tab title
-        'sections'      => array( // Tab Sections
-            'caption'       => array(
-                'title'         => __('Caption', 'bb-njba'),
-                'fields'        => array(
-                    'caption'       => array(
-                        'type'          => 'text',
-                        'label'         => __('Caption', 'bb-njba')
-                    ),
-                    'caption_font'          => array(
-                        'type'          => 'font',
-                        'default'       => array(
-                            'family'        => 'Default',
-                            'weight'        => 300
-                        ),
-                        'label'         => __('Caption Font', 'bb-njba'),
-                        'preview'         => array(
-                            'type'            => 'font',
-                            'selector'        => ''
-                        )
-                    ),
-                    'caption_font_size'   => array(
-                        'type'          => 'njba-simplify',
-                        'size'          => '5',
-                        'label'         => __('Caption Font Size', 'bb-njba'),
-                        'default'       => array(
-                            'desktop' => '22',
-                            'medium' => '20',
-                            'small' => '16'
-                        )
-                    ),
-                    'caption_font_color'    => array( 
-                        'type'       => 'color',
-                        'label'      => __('Caption Font Color', 'bb-njba'),
-                        'default'    => '',
-                        'show_reset' => true,
-                    ),
-                    'caption_alignment'    => array(
-                        'type'                      => 'select',
-                        'label'                     => __('Caption Alignment', 'bb-njba'),
-                        'default'                   => 'left',
-                        'options'                   => array(
-                            'left'                  => __('Left', 'bb-njba'),
-                            'center'                => __('Center', 'bb-njba'),
-                            'right'                 => __('Right', 'bb-njba'),
-                        )
-                    ),
-                    'caption_padding'   => array(
-                        'type'          => 'njba-multinumber',
-                        'label'         => __('Caption Padding', 'bb-njba'),
-                        'description'   => '',
-                        'default'       => array(
-                            'top'           => 15,
-                            'right'         => 15,
-                            'bottom'        => 15,
-                            'left'          => 15,
-                        ),
-                        'options'       => array(
-                            'top' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Top', 'bb-njba'),
-                                'tooltip'       => __('Top', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-up',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-top',
-                                    'unit'      => 'px'
-                                )
-                            ),
-                            'bottom' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Bottom', 'bb-njba'),
-                                'tooltip'       => __('Bottom', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-down',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-bottom',
-                                    'unit'      => 'px'
-                                )
-                            ),
-                            'left' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Left', 'bb-njba'),
-                                'tooltip'       => __('Left', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-left',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-left',
-                                    'unit'      => 'px'
-                                )
-                            ),
-                            'right' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Right', 'bb-njba'),
-                                'tooltip'       => __('Right', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-right',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-right',
-                                    'unit'      => 'px'
-                                )
-                            )
-                        )
-                    ),
-                    'caption_margin'   => array(
-                        'type'          => 'njba-multinumber',
-                        'label'         => __('Caption margin', 'bb-njba'),
-                        'description'   => '%',
-                        'default'       => array(
-                            'top'           => 0,
-                            'right'         => 0,
-                            'bottom'        => 0,
-                            'left'          => 0,
-                        ),
-                        'options'       => array(
-                            'top' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Top', 'bb-njba'),
-                                'tooltip'       => __('Top', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-up',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'margin-top',
-                                    'unit'      => '%'
-                                )
-                            ),
-                            'bottom' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Bottom', 'bb-njba'),
-                                'tooltip'       => __('Bottom', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-down',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'margin-bottom',
-                                    'unit'      => '%'
-                                )
-                            ),
-                            'left' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Left', 'bb-njba'),
-                                'tooltip'       => __('Left', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-left',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'margin-left',
-                                    'unit'      => '%'
-                                )
-                            ),
-                            'right' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Right', 'bb-njba'),
-                                'tooltip'       => __('Right', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-right',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'margin-right',
-                                    'unit'      => '%'
-                                )
-                            )
-                        )
-                    ),
-                    
-                )
-            )
-        )
-    ),
-    'sub_caption'       => array( // Tab
-        'title'         => __('Sub Caption', 'bb-njba'), // Tab title
-        'sections'      => array( // Tab Sections
-            'sub_caption'       => array(
-                'title'         => __('Caption', 'bb-njba'),
-                'fields'        => array(
-                    'sub_caption'       => array(
-                        'type'          => 'text',
-                        'label'         => __('Sub Caption', 'bb-njba')
-                    ),
-                    'sub_caption_font'          => array(
-                        'type'          => 'font',
-                        'default'       => array(
-                            'family'        => 'Default',
-                            'weight'        => 300
-                        ),
-                        'label'         => __('Sub Caption Font', 'bb-njba'),
-                        'preview'         => array(
-                            'type'            => 'font',
-                            'selector'        => ''
-                        )
-                    ),
-                    'sub_caption_font_size'   => array(
-                        'type'          => 'njba-simplify',
-                        'size'          => '5',
-                        'label'         => __('Sub Caption Font Size', 'bb-njba'),
-                        'default'       => array(
-                            'desktop' => '18',
-                            'medium' => '16',
-                            'small' => '12'
-                        )
-                    ),
-                    'sub_caption_font_color'    => array( 
-                        'type'       => 'color',
-                        'label'      => __('Sub Caption Font Color', 'bb-njba'),
-                        'default'    => '',
-                        'show_reset' => true,
-                    ),
-                    'sub_caption_alignment'    => array(
-                        'type'                      => 'select',
-                        'label'                     => __('Sub Caption Alignment', 'bb-njba'),
-                        'default'                   => 'left',
-                        'options'                   => array(
-                            'left'                  => __('Left', 'bb-njba'),
-                            'center'                => __('Center', 'bb-njba'),
-                            'right'                 => __('Right', 'bb-njba'),
-                        )
-                    ),
-                    'sub_caption_padding'   => array(
-                        'type'          => 'njba-multinumber',
-                        'label'         => __('Sub Caption Padding', 'bb-njba'),
-                        'description'   => '',
-                        'default'       => array(
-                            'top'           => 15,
-                            'right'         => 15,
-                            'bottom'        => 15,
-                            'left'          => 15,
-                        ),
-                        'options'       => array(
-                            'top' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Top', 'bb-njba'),
-                                'tooltip'       => __('Top', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-up',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-top',
-                                    'unit'      => 'px'
-                                )
-                            ),
-                            'bottom' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Bottom', 'bb-njba'),
-                                'tooltip'       => __('Bottom', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-down',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-bottom',
-                                    'unit'      => 'px'
-                                )
-                            ),
-                            'left' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Left', 'bb-njba'),
-                                'tooltip'       => __('Left', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-left',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-left',
-                                    'unit'      => 'px'
-                                )
-                            ),
-                            'right' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Right', 'bb-njba'),
-                                'tooltip'       => __('Right', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-right',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-right',
-                                    'unit'      => 'px'
-                                )
-                            )
-                        )
-                    ),
-                    'sub_caption_margin'   => array(
-                        'type'          => 'njba-multinumber',
-                        'label'         => __('Sub Caption margin', 'bb-njba'),
-                        'description'   => '%',
-                        'default'       => array(
-                            'top'           => 0,
-                            'right'         => 0,
-                            'bottom'        => 0,
-                            'left'          => 0,
-                        ),
-                        'options'       => array(
-                            'top' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Top', 'bb-njba'),
-                                'tooltip'       => __('Top', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-up',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'margin-top',
-                                    'unit'      => '%'
-                                )
-                            ),
-                            'bottom' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Bottom', 'bb-njba'),
-                                'tooltip'       => __('Bottom', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-down',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'margin-bottom',
-                                    'unit'      => '%'
-                                )
-                            ),
-                            'left' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Left', 'bb-njba'),
-                                'tooltip'       => __('Left', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-left',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'margin-left',
-                                    'unit'      => '%'
-                                )
-                            ),
-                            'right' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Right', 'bb-njba'),
-                                'tooltip'       => __('Right', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-right',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'margin-right',
-                                    'unit'      => '%'
-                                )
-                            )
-                        )
-                    ),
-                    
-                )
-            )
-        )
-    ),
+	
+   
     'box' => array(
         'title' => __('Box Style','bb-njba'),
         'sections' => array(
@@ -595,13 +276,8 @@ FLBuilder::register_module('NJBAImageHoverTwoModule', array(
                         'default' => 'ffffff'
                     )
                 )
-            )
-        )
-    ),
-    'border' => array(
-        'title' => __('Border Style','bb-njba'),
-        'sections' => array(
-            'border_style_section' => array(
+            ),
+             'border_style_section' => array(
                 'title' => __('Border','bb-njba'),
                 'fields' => array(
                     'box_border_style'      => array(
@@ -628,6 +304,9 @@ FLBuilder::register_module('NJBAImageHoverTwoModule', array(
                             'double' => array(
                                 'fields' => array()
                             ),
+                        ),
+                        'preview'       => array(
+                            'type'          => 'none'
                         )
                     ),
                     'box_border_width' => array(
@@ -664,7 +343,6 @@ FLBuilder::register_module('NJBAImageHoverTwoModule', array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left'
                             )
-                            
                         )
                     ),
                     'border_color'    => array( 
@@ -681,7 +359,7 @@ FLBuilder::register_module('NJBAImageHoverTwoModule', array(
                     )
                 )
             ),
-            'border_hover_style_section' => array(
+             'border_hover_style_section' => array(
                 'title' => __(' Hover Border','bb-njba'),
                 'fields' => array(
                     'box_Hover_border_style'      => array(
@@ -708,6 +386,9 @@ FLBuilder::register_module('NJBAImageHoverTwoModule', array(
                             'double' => array(
                                 'fields' => array()
                             ),
+                        ),
+                        'preview'       => array(
+                            'type'          => 'none'
                         )
                     ),
                     'box_hover_border_width' => array(
@@ -744,11 +425,214 @@ FLBuilder::register_module('NJBAImageHoverTwoModule', array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left'
                             )
-                            
                         )
                     )
                 )
             )
         )
-    )
+    ),
+    'caption'       => array( // Tab
+        'title'         => __('Typography', 'bb-njba'), // Tab title
+        'sections'      => array( // Tab Sections
+            'caption'       => array(
+                'title'         => __('Main Caption', 'bb-njba'),
+                'fields'        => array(
+                    
+                    'caption_font'          => array(
+                        'type'          => 'font',
+                        'default'       => array(
+                            'family'        => 'Default',
+                            'weight'        => 300
+                        ),
+                        'label'         => __('Font', 'bb-njba'),
+                        'preview'         => array(
+                            'type'            => 'font',
+                            'selector'        => ''
+                        )
+                    ),
+                    'caption_font_size'   => array(
+                        'type'          => 'njba-simplify',
+                        'size'          => '5',
+                        'label'         => __('Font Size', 'bb-njba'),
+                        'default'       => array(
+                            'desktop' => '22',
+                            'medium' => '20',
+                            'small' => '16'
+                        )
+                    ),
+                    'caption_font_color'    => array( 
+                        'type'       => 'color',
+                        'label'      => __('Font Color', 'bb-njba'),
+                        'default'    => '',
+                        'show_reset' => true,
+                    ),
+                    'caption_alignment'    => array(
+                        'type'                      => 'select',
+                        'label'                     => __('Alignment', 'bb-njba'),
+                        'default'                   => 'left',
+                        'options'                   => array(
+                            'left'                  => __('Left', 'bb-njba'),
+                            'center'                => __('Center', 'bb-njba'),
+                            'right'                 => __('Right', 'bb-njba'),
+                        )
+                    ),
+                    'caption_padding'   => array(
+                        'type'          => 'njba-multinumber',
+                        'label'         => __('Padding', 'bb-njba'),
+                        'description'   => '',
+                        'default'       => array(
+                            'top'           => 15,
+                            'right'         => 15,
+                            'bottom'        => 15,
+                            'left'          => 15,
+                        ),
+                        'options'       => array(
+                            'top' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Top', 'bb-njba'),
+                                'tooltip'       => __('Top', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-up',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-top',
+                                    'unit'      => 'px'
+                                )
+                            ),
+                            'bottom' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Bottom', 'bb-njba'),
+                                'tooltip'       => __('Bottom', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-down',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-bottom',
+                                    'unit'      => 'px'
+                                )
+                            ),
+                            'left' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Left', 'bb-njba'),
+                                'tooltip'       => __('Left', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-left',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-left',
+                                    'unit'      => 'px'
+                                )
+                            ),
+                            'right' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Right', 'bb-njba'),
+                                'tooltip'       => __('Right', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-right',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-right',
+                                    'unit'      => 'px'
+                                )
+                            )
+                        )
+                    ),
+                )
+            ),
+            'sub_caption'       => array(
+                'title'         => __('Sub Caption', 'bb-njba'),
+                'fields'        => array(
+                    
+                    'sub_caption_font'          => array(
+                        'type'          => 'font',
+                        'default'       => array(
+                            'family'        => 'Default',
+                            'weight'        => 300
+                        ),
+                        'label'         => __('Font', 'bb-njba'),
+                    ),
+                    'sub_caption_font_size'   => array(
+                        'type'          => 'njba-simplify',
+                        'size'          => '5',
+                        'label'         => __('Font Size', 'bb-njba'),
+                        'default'       => array(
+                            'desktop' => '18',
+                            'medium' => '16',
+                            'small' => '12'
+                        )
+                    ),
+                    'sub_caption_font_color'    => array( 
+                        'type'       => 'color',
+                        'label'      => __('Font Color', 'bb-njba'),
+                        'default'    => '',
+                        'show_reset' => true,
+                    ),
+                    'sub_caption_alignment'    => array(
+                        'type'                      => 'select',
+                        'label'                     => __('Alignment', 'bb-njba'),
+                        'default'                   => 'left',
+                        'options'                   => array(
+                            'left'                  => __('Left', 'bb-njba'),
+                            'center'                => __('Center', 'bb-njba'),
+                            'right'                 => __('Right', 'bb-njba'),
+                        )
+                    ),
+                    'sub_caption_padding'   => array(
+                        'type'          => 'njba-multinumber',
+                        'label'         => __('Padding', 'bb-njba'),
+                        'description'   => '',
+                        'default'       => array(
+                            'top'           => 15,
+                            'right'         => 15,
+                            'bottom'        => 15,
+                            'left'          => 15,
+                        ),
+                        'options'       => array(
+                            'top' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Top', 'bb-njba'),
+                                'tooltip'       => __('Top', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-up',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-top',
+                                    'unit'      => 'px'
+                                )
+                            ),
+                            'bottom' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Bottom', 'bb-njba'),
+                                'tooltip'       => __('Bottom', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-down',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-bottom',
+                                    'unit'      => 'px'
+                                )
+                            ),
+                            'left' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Left', 'bb-njba'),
+                                'tooltip'       => __('Left', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-left',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-left',
+                                    'unit'      => 'px'
+                                )
+                            ),
+                            'right' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Right', 'bb-njba'),
+                                'tooltip'       => __('Right', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-right',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-right',
+                                    'unit'      => 'px'
+                                )
+                            )
+                        )
+                    ),
+                    
+                )
+            )
+        )
+    ),
 ));

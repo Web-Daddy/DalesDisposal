@@ -14,8 +14,8 @@ class NjbaButtonModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Button', 'bb-njba'),
             'description'   => __('A module for Button.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-button/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-button/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -23,12 +23,12 @@ class NjbaButtonModule extends FLBuilderModule {
             'icon'              => 'button.svg',
         ));
     }
-    public function njba_button_icon_image(){
+    public function button_icon_image(){
         if($this->settings->button_font_icon && $this->settings->buttton_icon_select == 'font_icon' ) {?>
-            <span><i class="<?php echo $this->settings->button_font_icon;?>"></i></span>
+            <span class="font-icon-preview"><i class="<?php echo $this->settings->button_font_icon;?>"></i></span>
         <?php } ?>
         <?php if($this->settings->button_custom_icon && $this->settings->buttton_icon_select == 'custom_icon' ) {?>
-            <span><img src="<?php echo $this->settings->button_custom_icon_src;?>" /></span>
+            <span class="custom-icon-preview"><img src="<?php echo $this->settings->button_custom_icon_src;?>" /></span>
         <?php }
     }
 }
@@ -48,7 +48,7 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'default'   => __('SUBMIT', 'bb-njba'),
                         'preview'       => array(
 							'type'          => 'text',
-							'selector'      => ''
+							'selector'      => '.njba-button-text'
 						)
 					),
                     
@@ -85,28 +85,28 @@ FLBuilder::register_module('NjbaButtonModule', array(
                 'title'     =>  __('Icon', 'bb-njba'), // Tab title',
                 'fields'    => array(
                     'buttton_icon_select'       => array(
-                    'type'          => 'select',
-                    'label'         => __('Icon Type', 'bb-njba'),
-                    'default'       => 'none',
-                    'options'       => array(
-                        'none'              => __('None', 'bb-njba'),
-                        'font_icon'         => __('Icon', 'bb-njba'),
-                        'custom_icon'       => __('Image', 'bb-njba')
-                    ),
-                    'toggle' => array(
-                        'font_icon'    => array(
-                            'fields'   => array('button_font_icon','button_icon_aligment'),
-                            'sections' => array('icon_section','icon_typography'),
+                        'type'          => 'select',
+                        'label'         => __('Icon Type', 'bb-njba'),
+                        'default'       => 'none',
+                        'options'       => array(
+                            'none'              => __('None', 'bb-njba'),
+                            'font_icon'         => __('Icon', 'bb-njba'),
+                            'custom_icon'       => __('Image', 'bb-njba')
                         ),
-                        'custom_icon'   => array(
-                            'fields'  => array('button_custom_icon','button_icon_aligment'),
-                            'sections' => array(''),
+                        'toggle' => array(
+                            'font_icon'    => array(
+                                'fields'   => array('button_font_icon','button_icon_aligment'),
+                                'sections' => array('icon_section','icon_typography'),
+                                ),
+                            'custom_icon'   => array(
+                                'fields'  => array('button_custom_icon','button_icon_aligment'),
+                                'sections' => array(''),
+                                ),
                         ),
-                    )
                     ),
                     'button_font_icon'          => array(
                         'type'          => 'icon',
-                        'label'         => __('Icon', 'bb-njba')
+                        'label'         => __('Icon', 'bb-njba'),
                     ),
                     'button_custom_icon'     => array(
                         'type'              => 'photo',
@@ -158,31 +158,47 @@ FLBuilder::register_module('NjbaButtonModule', array(
                                 'fields' => array('hover_button_style','button_box_shadow','button_box_shadow_color'),
                                 'sections' => array('transition_section')
                             )
-                        )
+                        ),
                     ),
                     'button_background_color' => array(
                         'type' => 'color',
                         'label' => __('Background Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => 'dfdfdf'
+                        'default' => 'dfdfdf',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'background'
+                        )
                     ),
                     'button_background_hover_color' => array(
                         'type' => 'color',
                         'label' => __('Background Hover Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '000000'
+                        'default' => '000000',
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'button_text_color' => array(
                         'type' => 'color',
                         'label' => __('Text Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '404040'
+                        'default' => '404040',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'color'
+                        )
                     ),
                     'button_text_hover_color' => array(
                         'type' => 'color',
                         'label' => __('Text Hover Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => 'ffffff'
+                        'default' => 'ffffff',
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'button_border_style'      => array(
                         'type'      => 'select',
@@ -208,6 +224,11 @@ FLBuilder::register_module('NjbaButtonModule', array(
                             'double' => array(
                                 'fields' => array('button_border_width','button_border_color','button_border_hover_color')
                             ),
+                        ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'border-style'
                         )
                     ),
                     'button_border_width' => array(
@@ -215,7 +236,12 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'label' => __('Border Width','bb-njba'),
                         'default' => '1',
                         'size' => '5',
-                        'description'       => _x( 'px', 'Value unit for spacer width. Such as: "10 px"', 'bb-njba' )
+                        'description'       => _x( 'px', 'Value unit for spacer width. Such as: "10 px"', 'bb-njba' ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'border-width'
+                        )
                     ),
                     'button_border_radius'      => array(
                         'type'              => 'njba-multinumber',
@@ -230,19 +256,43 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'options'           => array(
                             'top-left'               => array(
                                 'placeholder'       => __('Top Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'border-top-left-radius',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'top-right'            => array(
                                 'placeholder'       => __('Top Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'border-top-right-radius',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom-left'            => array(
                                 'placeholder'       => __('Bottom Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'border-bottom-left-radius',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom-right'            => array(
                                 'placeholder'       => __('Bottom Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'border-bottom-right-radius',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -251,13 +301,21 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'type' => 'color',
                         'label' => __('Border Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '000000'
+                        'default' => '000000',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'border-color'
+                        )
                     ),
                     'button_border_hover_color' => array(
                         'type' => 'color',
                         'label' => __('Border Hover Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '000000'
+                        'default' => '000000',
+                        'preview'      => array(
+                            'type'         => 'none'
+                        )
                     ),
                     'button_box_shadow'      => array(
                         'type'              => 'njba-multinumber',
@@ -286,14 +344,18 @@ FLBuilder::register_module('NjbaButtonModule', array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa fa-circle'
                             )
-                            
-                        )
+                        ),
                     ),
                     'button_box_shadow_color' => array(
                         'type' => 'color',
                         'label' => __('Box Shadow Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => 'ffffff'
+                        'default' => 'ffffff',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'box-shadow'
+                        )
                     ),
                     'button_padding'      => array(
                         'type'              => 'njba-multinumber',
@@ -308,19 +370,43 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'padding-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'padding-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'padding-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'padding-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -338,19 +424,43 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'margin-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'margin-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'margin-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn',
+                                    'property'          => 'margin-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -364,7 +474,12 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'type' => 'color',
                         'label' => __('Icon Color','bb-njba'),
                         'show_reset' => true,
-                        'default' => '000000'
+                        'default' => '000000',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn i',
+                            'property'     => 'color'
+                        )
                     ),
                     'icon_hover_color' => array(
                         'type' => 'color',
@@ -385,19 +500,43 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'padding-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'padding-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'padding-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'padding-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -415,19 +554,43 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up'
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'margin-top',
+                                    'unit'              => 'px'
+                                )
                             ),
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right'
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'margin-right',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down'
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'margin-bottom',
+                                    'unit'              => 'px'
+                                ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left'
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'type'              => 'css',
+                                    'selector'          => '.njba-btn-main a.njba-btn i',
+                                    'property'          => 'margin-left',
+                                    'unit'              => 'px'
+                                ),
                             )
                             
                         )
@@ -442,7 +605,12 @@ FLBuilder::register_module('NjbaButtonModule', array(
                         'label' => __('Transition delay','bb-njba'),
                         'default' => 0.3,
                         'size' => '5',
-                        'description' => 's'
+                        'description' => 's',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn i',
+                            'property'     => 'transition'
+                        )
                     ),
                 ) 
             ),      
@@ -468,19 +636,29 @@ FLBuilder::register_module('NjbaButtonModule', array(
                             'custom' => array(
                                 'fields' => array('custom_width','custom_height','alignment')
                             )
-                        )
+                        ),
                     ),
                     'custom_width' => array(
                         'type' => 'text',
                         'label' => __('Custom Width','bb-njba'),
                         'default' => 200,
-                        'size' => 10
+                        'size' => 10,
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'width'
+                        )
                     ),
                     'custom_height' => array(
                         'type' => 'text',
                         'label' => __('Custom Height','bb-njba'),
                         'default' => 45,
-                        'size' => 10
+                        'size' => 10,
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main a.njba-btn',
+                            'property'     => 'min-height'
+                        )
                     ),
                     'alignment' => array(
                         'type' => 'select',
@@ -490,6 +668,11 @@ FLBuilder::register_module('NjbaButtonModule', array(
                             'left' => __('Left','bb-njba'),
                             'center' => __('Center','bb-njba'),
                             'right' => __('Right','bb-njba')
+                        ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-btn-main',
+                            'property'     => 'text-align'
                         )   
                     )
                 ) 
@@ -522,7 +705,13 @@ FLBuilder::register_module('NjbaButtonModule', array(
                             'desktop' => '18',
                             'medium' => '16',
                             'small' => ''
-                        )
+                        ),
+                        'preview'           => array(
+                            'type'              => 'css',
+                            'selector'          => '.njba-btn-main a.njba-btn',
+                            'property'          => 'font-size',
+                            'unit'              => 'px'
+                        ),
                     )
                 )
             ),
@@ -537,7 +726,7 @@ FLBuilder::register_module('NjbaButtonModule', array(
                             'desktop' => '18',
                             'medium' => '16',
                             'small' => ''
-                        )
+                        ),
                     )
                 )
             )     

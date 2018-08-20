@@ -11,8 +11,8 @@ class NJBAInfoListModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Info List', 'bb-njba'),
             'description'   => __('Addon for display information as list.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-infolist/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-infolist/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -175,6 +175,9 @@ FLBuilder::register_module('NJBAInfoListModule', array(
                             'h4'      => __('H4', 'bb-njba'),
                             'h5'      => __('H5', 'bb-njba'),
                             'h6'      => __('H6', 'bb-njba')
+                        ),
+                        'preview'   => array(
+                            'type'      => 'none'
                         )
                     ),
                     'title_font_family'       => array(
@@ -185,9 +188,8 @@ FLBuilder::register_module('NJBAInfoListModule', array(
                             'weight'        => 'Default'
                         ),
                         'preview'   => array(
-                            'type'      => 'font',
-                            'selector'  => '.bb-njba-infobox-title'
-                        ),
+                            'type'      => 'none'
+                        )
                     ),
                     'title_font_size'     => array(
                         'type'          => 'njba-simplify',
@@ -230,7 +232,9 @@ FLBuilder::register_module('NJBAInfoListModule', array(
                                 'placeholder'       => __('10', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down'
                             )
-                            
+                        ),
+                        'preview'   => array(
+                            'type'      => 'none'
                         )
                     ),
                     'heading_padding'      => array(
@@ -260,8 +264,7 @@ FLBuilder::register_module('NJBAInfoListModule', array(
                                 'placeholder'       => __('20', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left'
                             )
-                            
-                        )
+                        ),
                     )
                 )
             ),
@@ -352,9 +355,8 @@ FLBuilder::register_settings_form('njba_info_list_form', array(
                             'type'          => 'text',
                             'label'         => __('Title', 'bb-njba'),
                             'default'       => __('Info Box','bb-njba'),
-                            'preview'       => array(
-                                'type'          => 'text',
-                                'selector'      => '.bb-njba-infobox-title'
+                            'preview'   => array(
+                                'type'      => 'none'
                             )
                         ),
                     )
@@ -368,6 +370,9 @@ FLBuilder::register_settings_form('njba_info_list_form', array(
                             'media_buttons' => false,
                             'rows'          => 6,
                             'default'       => __('Enter description text here.','bb-njba'),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                     )
                 )

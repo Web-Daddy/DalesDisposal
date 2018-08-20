@@ -2,7 +2,7 @@
 		margin: 0;
 		padding: 0;
 	}
-	.fl-node-<?php echo $id; ?> .njba-pricing-table-main .njba-pricing-inner-heading div.price-heading {
+	.fl-node-<?php echo $id; ?> .njba-pricing-table-main .njba-pricing-inner-heading h1 {
 		<?php if( $settings->heading_font['family'] != 'Default' ) { ?><?php FLBuilderFonts::font_css( $settings->heading_font ); ?><?php } ?>
 		<?php if( $settings->heading_font_size ) { ?>font-size: <?php echo $settings->heading_font_size; ?>px;<?php } ?>
 		<?php if( $settings->price_box_layout == '1' || $settings->price_box_layout == '2' || $settings->price_box_layout == '3' ): ?>
@@ -162,7 +162,7 @@ endfor;
 			}
 		<?php endif; ?>
 	<?php endif; ?>
-	.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-1 .njba-pricing-column-<?php echo $i; ?>	 .njba-pricing-inner-heading div.price-heading {
+	.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-1 .njba-pricing-column-<?php echo $i; ?>	 .njba-pricing-inner-heading h1 {
 		<?php if( $box_content->heading_color ) { ?>color: #<?php echo $box_content->heading_color; ?>;<?php } ?>
 	}
 	.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-1 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading h2 {
@@ -263,7 +263,7 @@ endfor;
 		<?php //print_r($box_content);
 			//die();
 		endif; ?>
-		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-2 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading div.price-heading {
+		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-2 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading h1 {
 			<?php if( $box_content->heading_color ) { ?>color: #<?php echo $box_content->heading_color; ?>;<?php } ?>
 		}
 		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-2 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading h2 {
@@ -355,7 +355,7 @@ endfor;
 		<?php //print_r($box_content);
 			//die();
 		endif; ?>
-		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-3 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading div.price-heading{
+		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-3 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading h1 {
 			<?php if( $box_content->heading_color ) { ?>color: #<?php echo $box_content->heading_color; ?>;<?php } ?>
 		}
 		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-3 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading h2 {
@@ -393,7 +393,7 @@ endfor;
 		text-align: center;
 		transition:all 0.3s;
 	}
-	.fl-node-<?php echo $id; ?> .layout-4 .njba-pricing-inner-heading div.price-heading{
+	.fl-node-<?php echo $id; ?> .layout-4 .njba-pricing-inner-heading h1{
 		border-bottom : 1px solid #bfbebe;
 	}
 	.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-4 .njba-pricing-inner:hover {
@@ -457,7 +457,7 @@ endfor;
 		<?php //print_r($box_content);
 			//die();
 		endif; ?>
-		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-4 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading .price-heading {
+		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-4 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading h1 {
 			<?php if( $box_content->heading_color ) { ?>color: #<?php echo $box_content->heading_color; ?>;<?php } ?>
 		}
 		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-4 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading h2 {
@@ -580,7 +580,7 @@ endfor;
 		<?php //print_r($box_content);
 			//die();
 		endif; ?>
-		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-5 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading .price-heading {
+		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-5 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading h1 {
 			<?php if( $box_content->heading_color ) { ?>color: #<?php echo $box_content->heading_color; ?>;<?php } ?>
 		}
 		.fl-node-<?php echo $id; ?> .njba-pricing-table-main.layout-5 .njba-pricing-column-<?php echo $i; ?> .njba-pricing-inner-heading h2 {

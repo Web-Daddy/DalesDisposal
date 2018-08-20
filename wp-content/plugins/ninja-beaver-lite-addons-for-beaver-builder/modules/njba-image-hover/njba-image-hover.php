@@ -14,8 +14,8 @@ class NJBAImageHoverModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Image Hover', 'bb-njba'),
             'description'   => __('Addon to display image hover.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-image-hover/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-image-hover/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -105,6 +105,9 @@ class NJBAImageHoverModule extends FLBuilderModule {
             if(!empty($this->settings->photo)) :
                 $html .= '<img src="'.$this->settings->photo_src.'" class="njba-image-responsive" >';
             endif;
+            if(!empty($this->settings->photo_url)) :
+                $html .= '<img src="'.$this->settings->photo_url.'" class="njba-image-responsive" >';
+            endif;
             $html .= '<div class="njba-box-border-line">';
             if($style_type =='1' || $style_type =='3') :
                 $html .= '<div class="njba-box-line njba-box-line-top"></div>';
@@ -121,10 +124,10 @@ class NJBAImageHoverModule extends FLBuilderModule {
             $html .= '<div class="njba-image-box-content">';
             if($style_type =='1' && !empty($this->settings->caption)) :
                 $caption = $this->settings->caption[0];
-                $html .= '<h1><span>'.ucfirst($caption).'</span>'.substr($this->settings->caption,1).'</h1>';
+                $html .= '<h1 class="caption-selector"><span>'.ucfirst($caption).'</span>'.substr($this->settings->caption,1).'</h1>';
             endif;
             if(($style_type =='2' || $style_type =='3' || $style_type =='4' || $style_type =='5') && ( !empty($this->settings->caption ))) :   
-                $html .= '<h1>'.$this->settings->caption.'</h1>';
+                $html .= '<h1 class="caption-selector">'.$this->settings->caption.'</h1>';
             endif;
             $html .= '</div>';
             $html .= '</div>';
@@ -145,6 +148,39 @@ FLBuilder::register_module('NJBAImageHoverModule', array(
             'general'       => array( // Section
                 'title'         => '', // Section Title
                 'fields'        => array( // Section Fields
+                    'style'         => array(
+                        'type'          => 'select',
+                        'label'         => __('Photo Style', 'bb-njba'),
+                        'default'       => '1',
+                        'options'       => array(
+                            '1'        => __('Style 1', 'bb-njba'),
+                            '2'          => __('Style 2', 'bb-njba'),
+                            '3'         => __('Style 3', 'bb-njba'),
+                            '4'     => __('Style 4', 'bb-njba'),
+                            '5'      => __('Style 5', 'bb-njba'),
+                            
+                        ),
+                        'toggle' => array(
+                            '1' => array(
+                                'fields' => array( 'heading_font', 'caption_padding', 'first_font_size', 'first_font_color', 'font_size', 'font_color',  'inside_primary_border_color', 'inside_secondary_border_color', 'hover_color', 'content_box_margin1', 'hover_opacity', 'transition' )
+                            ),
+                            '2' => array(
+                                'fields' => array( 'heading_font', 'caption_padding', 'font_size', 'font_color', 'inside_primary_border', 'inside_primary_border_color', 'inside_secondary_border', 'inside_secondary_border_color', 'hover_color', 'content_box_margin1', 'hover_opacity', 'transition' )
+                            ),
+                            '3' => array(
+                                'fields' => array( 'heading_font', 'caption_padding', 'font_size', 'font_color', 'hover_color', 'hover_opacity', 'transition', 'before_padding', 'after_padding' )
+                            ),
+                            '4' => array(
+                                'fields' => array( 'hover_effect', 'heading_font', 'caption_padding', 'font_size', 'font_color', 'hover_color', 'hover_opacity', 'transition' )
+                            ),
+                            '5' => array(
+                                'fields' => array( 'heading_font', 'caption_padding', 'font_size', 'font_color', 'hover_color', 'hover_opacity', 'transition', 'rotate', 'rotate_hover', 'scale' )
+                            )
+                        ),
+                        'preview'       => array(
+                            'type'          => 'none'
+                        )
+                    ),
                     'photo_source'  => array(
                         'type'          => 'select',
                         'label'         => __('Photo Source', 'bb-njba'),
@@ -171,18 +207,54 @@ FLBuilder::register_module('NJBAImageHoverModule', array(
                         'type'          => 'text',
                         'label'         => __('Photo URL', 'bb-njba'),
                         'placeholder'   => 'http://www.example.com/my-photo.jpg',
-                    )
-                )
-            ),
-            'caption'       => array(
-                'title'         => __('Caption', 'bb-njba'),
-                'fields'        => array(
-                    'caption'       => array(
+                        'preview'       => array(
+                            'type'          => 'none'
+                        )
+                    ),
+                     'caption'       => array(
                         'type'          => 'text',
-                        'label'         => __('Caption', 'bb-njba')
-                    )
+                        'label'         => __('Caption', 'bb-njba'),
+                        'preview'       => array(
+                            'type'          => 'none'
+                        )
+                    ),
+                      'hover_effect'       => array(
+                        'type'          => 'select',
+                        'label'         => __('Effect', 'bb-njba'),
+                        'options'       => array(
+                            '1'       => __('Hover Bottom To Top', 'bb-njba'),
+                            '2'       => __('Hover Top To Bottom', 'bb-njba'),
+                            '3'         => __('Hover Left To Right', 'bb-njba'),
+                            '4'         => __('Hover Right To Left', 'bb-njba')
+                        ),
+                        'preview'       => array(
+                            'type'          => 'none'
+                        )
+                    ),
+                    'rotate' => array(
+                        'type' => 'text',
+                        'label' => __('Rotate','bb-njba'),
+                        'default' => -45,
+                        'size' => '3',
+                        'description' => 'deg'
+                    ),
+                    'rotate_hover' => array(
+                        'type' => 'text',
+                        'label' => __('After Hover Rotate','bb-njba'),
+                        'default' => 0,
+                        'size' => '3',
+                        'description' => 'deg'
+                    ),
+                    'scale' => array(
+                        'type' => 'text',
+                        'label' => __('Scale','bb-njba'),
+                        'default' => 1.1,
+                        'size' => '2',
+                        'description' => ''
+                    ),
                 )
             ),
+           
             'link'          => array(
                 'title'         => __('Link', 'bb-njba'),
                 'fields'        => array(
@@ -228,73 +300,11 @@ FLBuilder::register_module('NJBAImageHoverModule', array(
         )
     ),
     'style'       => array( // Tab
-        'title'         => __('Style', 'bb-njba'), // Tab title
+        'title'         => __('Typography', 'bb-njba'), // Tab title
         'sections'      => array( // Tab Sections
             'general'       => array( // Section
                 'title'         => '', // Section Title
                 'fields'        => array( // Section Fields
-                    'style'         => array(
-                        'type'          => 'select',
-                        'label'         => __('Photo Style', 'bb-njba'),
-                        'default'       => 'Style-1',
-                        'options'       => array(
-                            '1'        => __('Style-1', 'bb-njba'),
-                            '2'          => __('Style-2', 'bb-njba'),
-                            '3'         => __('Style-3', 'bb-njba'),
-                            '4'     => __('Style-4', 'bb-njba'),
-                            '5'      => __('Style-5', 'bb-njba'),
-                            
-                        ),
-                        'toggle' => array(
-                            '1' => array(
-                                'fields' => array( 'heading_font', 'caption_padding', 'first_font_size', 'first_font_color', 'font_size', 'font_color',  'inside_primary_border_color', 'inside_secondary_border_color', 'hover_color', 'content_box_margin1', 'hover_opacity', 'transition' )
-                            ),
-                            '2' => array(
-                                'fields' => array( 'heading_font', 'caption_padding', 'font_size', 'font_color', 'inside_primary_border', 'inside_primary_border_color', 'inside_secondary_border', 'inside_secondary_border_color', 'hover_color', 'content_box_margin1', 'hover_opacity', 'transition' )
-                            ),
-                            '3' => array(
-                                'fields' => array( 'heading_font', 'caption_padding', 'font_size', 'font_color', 'hover_color', 'hover_opacity', 'transition', 'before_padding', 'after_padding' )
-                            ),
-                            '4' => array(
-                                'fields' => array( 'hover_effect', 'heading_font', 'caption_padding', 'font_size', 'font_color', 'hover_color', 'hover_opacity', 'transition' )
-                            ),
-                            '5' => array(
-                                'fields' => array( 'heading_font', 'caption_padding', 'font_size', 'font_color', 'hover_color', 'hover_opacity', 'transition', 'rotate', 'rotate_hover', 'scale' )
-                            )
-                        )
-                    ),
-                    'hover_effect'       => array(
-                        'type'          => 'select',
-                        'label'         => __('Effect', 'bb-njba'),
-                        'options'       => array(
-                            '1'       => __('Hover Bottom To Top', 'bb-njba'),
-                            '2'       => __('Hover Top To Bottom', 'bb-njba'),
-                            '3'         => __('Hover Left To Right', 'bb-njba'),
-                            '4'         => __('Hover Right To Left', 'bb-njba')
-                            
-                        )
-                    ),
-                    'rotate' => array(
-                        'type' => 'text',
-                        'label' => __('Rotate','bb-njba'),
-                        'default' => -45,
-                        'size' => '3',
-                        'description' => 'deg'
-                    ),
-                    'rotate_hover' => array(
-                        'type' => 'text',
-                        'label' => __('After Hover Rotate','bb-njba'),
-                        'default' => 0,
-                        'size' => '3',
-                        'description' => 'deg'
-                    ),
-                    'scale' => array(
-                        'type' => 'text',
-                        'label' => __('Scale','bb-njba'),
-                        'default' => 1.1,
-                        'size' => '2',
-                        'description' => ''
-                    ),
                     'heading_font'          => array(
                         'type'          => 'font',
                         'default'       => array(
@@ -302,9 +312,8 @@ FLBuilder::register_module('NJBAImageHoverModule', array(
                             'weight'        => 300
                         ),
                         'label'         => __('Font', 'bb-njba'),
-                        'preview'         => array(
-                            'type'            => 'font',
-                            'selector'        => '.njba-testimonials-heading'
+                        'preview'       => array(
+                            'type'          => 'none'
                         )
                     ),
                    'first_font_size'   => array(

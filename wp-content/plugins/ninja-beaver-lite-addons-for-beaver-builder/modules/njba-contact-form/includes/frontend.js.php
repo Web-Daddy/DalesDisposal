@@ -11,4 +11,4 @@
 			msg_required: '<?php echo $settings->msg_required; ?>'
 		});
 	});
-})(jQuery);
+})(jQuery); 

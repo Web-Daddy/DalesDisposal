@@ -211,4 +211,4 @@
 </form>
 <?php if($settings->success_action == 'show_message') : ?>  
   <span class="njba-success-msg njba-text-editor" style="display:none;"><?php echo $settings->success_message; ?></span>
-<?php endif; ?>
+<?php endif; ?> 

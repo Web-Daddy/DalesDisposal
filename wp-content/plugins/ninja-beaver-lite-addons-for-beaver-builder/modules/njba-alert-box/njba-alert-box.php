@@ -1,6 +1,6 @@
 <?php
 /**
- * @class NJBATabsModule
+ * @class NJBAAlertboxModule
  */
 class NJBAAlertboxModule extends FLBuilderModule {
     /**
@@ -14,8 +14,8 @@ class NJBAAlertboxModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Alert Box', 'bb-njba'),
             'description'   => __('Addon to display notifications.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-alert-box/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-alert-box/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -73,7 +73,7 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                             'default'         => 'Success!',
                             'preview'         => array(
                                 'type'            => 'text',
-                                'selector'        => ''
+                                'selector'        => '.alert-title'
                             )
                     ),
                     'sub_title'  => array(
@@ -81,8 +81,8 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                         'label' => __('Sub Title', 'bb-njba'),
                         'default'         => 'well done! You successfully read this important alert message.',
                         'preview'   => array(
-                            'type'  => 'textarea',
-                            'selector'  => ''
+                            'type'  => 'text',
+                            'selector'  => '.alert-subtitle'
                         ),
                     ),
                 ),
@@ -118,6 +118,11 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                             'dashed'  => __('Dashed', 'bb-njba'),
                             'double'  => __('Double', 'bb-njba'),
                         ),
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.alert-box-main',
+                            'property'     => 'border-style'
+                        )
                     ),
                     'box_border_width'  => array(
                         'type'      => 'text',
@@ -155,6 +160,7 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                             'type'          => 'css',
                             'rules'     => array(
                                 array(
+                                    'type'          => 'css',
                                     'selector'      => '.alert-box-main',
                                     'property'      => 'border-radius',
                                     'unit'          => 'px'
@@ -178,8 +184,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'default'           => '',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main',
                                     'property'          => 'padding-top',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'bottom'            => array(
@@ -188,8 +196,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'default'           => '',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main',
                                     'property'          => 'padding-bottom',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'left'            => array(
@@ -198,8 +208,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'default'           => '',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main',
                                     'property'          => 'padding-left',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'right'            => array(
@@ -208,8 +220,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'default'           => '',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main',
                                     'property'          => 'padding-right',
+                                    'unit'              => 'px'
                                 ),
                             )
                         )
@@ -230,8 +244,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'default'           => '',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main',
                                     'property'          => 'margin-top',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'bottom'            => array(
@@ -240,8 +256,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'default'           => '',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main',
                                     'property'          => 'margin-bottom',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'left'            => array(
@@ -250,8 +268,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'default'           => '',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main',
                                     'property'          => 'margin-left',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'right'            => array(
@@ -260,8 +280,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'default'           => '',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main',
                                     'property'          => 'margin-right',
+                                    'unit'              => 'px'
                                 ),
                             )
                         )
@@ -302,6 +324,11 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                         'label'      => __('Icon Color', 'bb-njba'),
                         'default'    => 'ffffff',
                         'show_reset' => true,
+                        'preview'           => array(
+                            'type'              => 'color',
+                            'selector'          => '.alert-box-main .njba-alertbox-icon span',
+                            'property'          => 'color'
+                        ),
                     ),
                     'icon_margin'      => array(
                         'type'              => 'njba-multinumber',
@@ -318,8 +345,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-up',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main .njba-alertbox-icon',
                                     'property'          => 'margin-top',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'bottom'            => array(
@@ -327,8 +356,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-down',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main .njba-alertbox-icon',
                                     'property'          => 'margin-bottom',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'left'            => array(
@@ -336,8 +367,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-left',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main .njba-alertbox-icon',
                                     'property'          => 'margin-left',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'right'            => array(
@@ -345,8 +378,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-right',                               
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.alert-box-main .njba-alertbox-icon',
                                     'property'          => 'margin-right',
+                                    'unit'              => 'px'
                                 ),
                             )
                         )
@@ -381,31 +416,34 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-title',
                                     'property'          => 'padding-top',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                                
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-title',
                                     'property'          => 'padding-bottom',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-left',
-                               
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-title',
                                     'property'          => 'padding-left',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'right'            => array(
@@ -414,8 +452,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-title',
                                     'property'          => 'padding-right',
+                                    'unit'              => 'px'
                                 ),
                             )
                         )
@@ -435,8 +475,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-up',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-title',
                                     'property'          => 'margin-top',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'bottom'            => array(
@@ -444,8 +486,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-down',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-title',
                                     'property'          => 'margin-bottom',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'left'            => array(
@@ -453,8 +497,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-left',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-title',
                                     'property'          => 'margin-left',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'right'            => array(
@@ -462,8 +508,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-right',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-title',
                                     'property'          => 'margin-right',
+                                    'unit'              => 'px'
                                 ),
                             )
                         )
@@ -499,8 +547,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-up',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-subtitle',
                                     'property'          => 'padding-top',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'bottom'            => array(
@@ -508,8 +558,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-down',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-subtitle',
                                     'property'          => 'padding-bottom',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'left'            => array(
@@ -517,8 +569,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-left',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-subtitle',
                                     'property'          => 'padding-left',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'right'            => array(
@@ -526,8 +580,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-right',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-subtitle',
                                     'property'          => 'padding-right',
+                                    'unit'              => 'px'
                                 ),
                             )
                         )
@@ -547,8 +603,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-up',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-subtitle',
                                     'property'          => 'margin-top',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'bottom'            => array(
@@ -556,8 +614,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-down',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-subtitle',
                                     'property'          => 'margin-bottom',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'left'            => array(
@@ -565,8 +625,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-left',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-subtitle',
                                     'property'          => 'margin-left',
+                                    'unit'              => 'px'
                                 ),
                             ),
                             'right'            => array(
@@ -574,8 +636,10 @@ FLBuilder::register_module('NJBAAlertboxModule', array(
                                 'icon'              => 'fa-long-arrow-right',
                                 'description'       => 'px',
                                 'preview'           => array(
+                                    'type'              => 'css',
                                     'selector'          => '.njba-alert-content .alert-subtitle',
                                     'property'          => 'margin-right',
+                                    'unit'              => 'px'
                                 ),
                             )
                         )

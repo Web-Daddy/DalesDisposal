@@ -65,12 +65,13 @@ get_header(); ?>
 		<form method="POST" class="email_fails" name="email_form_with_php" enctype="multipart/form-data">
 			<!-- <label for='uploaded_file'>Select A File To Upload:</label> -->
 			<label class="optimization_btn">
-				<button class="btn">Upload a resume</button>
-				<input id="file_for_upload_email" type="file" name="uploaded_file" required>
+				<button class="btn" type="button">Upload a resume</button>
+				<input id="file_for_upload_email" type="file" name="uploaded_file">
 			</label>
 
 			<input type="submit" value="Submit" name='submit'>
 		</form>
 		<div class="fl-col fl-node-5b422736aa630 fl-col-small"></div>
+		<div class="dales_upload_file_name_container"><p class="dales_upload_file_name"></p></div>
 	</div>
 <?php get_footer(); ?>

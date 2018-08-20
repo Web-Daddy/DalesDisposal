@@ -1,23 +1,17 @@
+<?php
 get_header();
-<!-- $args = array(
-	'post_type'      => 'product',
-	'posts_per_page' => -1,
-	'order'          => 'ASC'
-);
-
-$posts = get_posts( $args ); -->
 
 
-$dales_cat_id = get_term_by( 'slug', 'contstruction', 'product_cat' );
+$dales_cat_id = get_term_by( 'slug', 'household-waste', 'product_cat' );
 
 $args = array(
 	'post_type'      => 'product',
 	'posts_per_page' => -1,
-	'order'          => 'ASC',
+	'order'          => 'DESC',
 	'tax_query' => array(
                                 array(
                                 'taxonomy' => 'product_cat',
-                                'field' => term_id,
+                                'field' => 'term_id',
                                 'terms' => $dales_cat_id
                                 )
                             )

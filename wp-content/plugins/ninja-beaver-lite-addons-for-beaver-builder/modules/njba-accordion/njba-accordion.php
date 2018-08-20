@@ -1,20 +1,18 @@
 <?php
-
 /**
  * @class NjbaAccordionModule
  */
 class NjbaAccordionModule extends FLBuilderModule {
-
 	/**
 	 * @method __construct
 	 */
 	public function __construct()
 	{
 		parent::__construct(array(
-			'name'          	=> __('Accordion', 'bb-njba'),
+			'name'          	=> __('Advanced Accordion', 'bb-njba'),
 			'description'   	=> __('Display a collapsible accordion of items.', 'bb-njba'),
-			'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+			'group'         => njba_get_modules_group(),
+			'category'		=> njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-accordion/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-accordion/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -22,10 +20,8 @@ class NjbaAccordionModule extends FLBuilderModule {
 			'partial_refresh'	=> true,
 			'icon'				=> 'layout.svg',
 		));
-
 	}
 }
-
 /**
  * Register the module and its form settings.
  */
@@ -72,9 +68,13 @@ FLBuilder::register_module('NjbaAccordionModule', array(
 							'left'    => __('Left', 'bb-njba'),
 							'center'    => __('Center', 'bb-njba'),
 							'right'    => __('Right', 'bb-njba')
-						)
+						),
+						'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-accordion-item .njba-accordion-button .njba-accordion-button-label',
+                            'property'     => 'text-align'
+                        )
 					),
-
 				)
 			),
 			'responsive_toggle_icons'	=> array(
@@ -117,11 +117,6 @@ FLBuilder::register_module('NjbaAccordionModule', array(
 						'label'         => __('Icon Active/Hover Color', 'bb-njba'),
 						'default'       => 'ffffff',
 						'show_reset' => true,
-						'preview'	=> array(
-							'type'	=> 'css',
-							'selector'	=> '.njba-accordion-item .njba-accordion-button-icon',
-							'property'	=> 'color'
-						)
 					)
 				)
 			)
@@ -191,25 +186,45 @@ FLBuilder::register_module('NjbaAccordionModule', array(
 						'type'      => 'color',
                         'label'     => __('Background Color', 'bb-njba'),
 						'show_reset' => true,
-                        'default'   => '50cdf1'						
+                        'default'   => '50cdf1',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-accordion-item .njba-accordion-button',
+                            'property'     => 'background-color'
+                        )						
                     ),
 					'label_bg_active_color'  => array(
 						'type'          => 'color',
 						'label'         => __('Background Active/Hover Color', 'bb-njba'),
 						'default'       => '474747',
-						'show_reset'	=> true
+						'show_reset'	=> true,
+						'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-accordion-item .njba-accordion-button:hover, .njba-accordion-item.njba-accordion-item-active .njba-accordion-button',
+                            'property'     => 'background-color'
+                        )
 					),
 					'label_text_color'      => array(
 						'type'      => 'color',
                         'label'     => __('Text Color', 'bb-njba'),
 						'show_reset' => true,
-                        'default'   => 'ffffff'
+                        'default'   => 'ffffff',
+                        'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-accordion-item .njba-accordion-icon',
+                            'property'     => 'color'
+                        )
                     ),
 					'label_text_active_color'  => array(
 						'type'          => 'color',
 						'label'         => __('Text Active/Hover Color', 'bb-njba'),
 						'default'       => 'ffffff',
-						'show_reset'	=> true
+						'show_reset'	=> true,
+						'preview'      => array(
+                            'type'         => 'css',
+                            'selector'     => '.njba-accordion-item .njba-accordion-button:hover .njba-accordion-icon, .njba-accordion-item.njba-accordion-item-active .njba-accordion-icon',
+                            'property'     => 'color'
+                        )
 					),
 					'label_border_style'   => array(
 						'type'          => 'select',
@@ -593,7 +608,6 @@ FLBuilder::register_module('NjbaAccordionModule', array(
 		)
 	),
 ));
-
 /**
  * Register a settings form to use in the "form" field type above.
  */
@@ -614,7 +628,11 @@ FLBuilder::register_settings_form('njba_accordion_items_form', array(
 						'label'         => array(
 							'type'          => 'text',
 							'default'		=> 'Item',
-							'label'         => __('Label', 'bb-njba')
+							'label'         => __('Label', 'bb-njba'),
+							'preview'       => array(
+								'type'          => 'text',
+								'selector'      => '.njba-accordion-button-label-selector'
+							)
 						)
 					)
 				),

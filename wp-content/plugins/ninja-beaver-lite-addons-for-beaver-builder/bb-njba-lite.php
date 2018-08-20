@@ -3,7 +3,7 @@
  * Plugin Name: Ninja Beaver Lite Addons for Beaver Builder
  * Plugin URI: https://www.ninjabeaveraddon.com
  * Description: A set of custom, improvement, impressive lite modules for Beaver Builder.
- * Version: 1.7
+ * Version: 1.9
  * Author: Ninja Team 
  * Author URI: https://www.ninjabeaveraddon.com
  * Copyright: (c) 2018 Ninja Beaver Lite Addons
@@ -13,9 +13,9 @@ if ( !function_exists("njba_lite_version_activation"))
 {
 	function njba_lite_version_activation() {
 			
-			add_option('njba_lite_version_versions', '1.7' );
+			add_option('njba_lite_version_versions', '1.9' );
 			add_option('njba_extensions_lists', '' );
-	        update_option('njba_lite_version_versions', '1.7' );
+	        update_option('njba_lite_version_versions', '1.9' );
 	}
 }
 if ( !function_exists("njba_lite_version_deactivation"))
@@ -28,7 +28,7 @@ if ( !function_exists("njba_lite_version_deactivation"))
 register_activation_hook( __FILE__,  'njba_lite_version_activation' );
 register_deactivation_hook( __FILE__, 'njba_lite_version_deactivation' );
 $njba_cat = esc_html__( 'NJBA Module', 'bb-njba' );
-$versions = '1.7';
+$versions = '1.9';
 	
 	if( !defined( 'NJBA_MODULE_DIR' ) ) {
 		define( 'NJBA_MODULE_DIR', plugin_dir_path( __FILE__ ) );
@@ -47,6 +47,57 @@ $versions = '1.7';
 	}
 if( !class_exists( "BB_NJBA_Addon" ) && class_exists( 'FLBuilder' )) {
 	
+	function njba_get_modules_group()
+	{
+		$njba    = array();
+		$njba_builder_label = '';
+		if( is_array($njba) ) {
+			$njba_builder_label = ( array_key_exists( 'njba-builder-label' , $njba ) ) ? $njba['njba-builder-label' ] : esc_html__( 'NJBA Modules', 'bb-njba' );
+		}
+		if( $njba_builder_label == ''){
+			$njba_builder_label = esc_html__( 'NJBA Modules', 'bb-njba' );
+			return $njba_builder_label;
+		}
+		else{
+			return $njba_builder_label;
+		}
+	}
+	function njba_get_modules_cat($category = '')
+	{
+		$njba    = array();
+		$njba_builder_cat = '';
+		if( is_array($njba) ) {
+			$njba_builder_cat = ( array_key_exists( 'njba-builder-category' , $njba ) ) ? $njba['njba-builder-category' ] : esc_html__( 'NJBA', 'bb-njba' );
+		}
+		if( $njba_builder_cat == '')
+		{
+		 	$njba_builder_cat = esc_html__( 'NJBA', 'bb-njba' );
+		}
+		$default = 'default';
+		$new = 'new';
+		$cats = array(
+			'social'	=> sprintf(__('Social Modules - %s', 'bb-njba'), $njba_builder_cat),
+			'carousel'		=> sprintf(__('Carousel Modules - %s', 'bb-njba'), $njba_builder_cat),
+			'content'		=> sprintf(__('Content Modules - %s', 'bb-njba'), $njba_builder_cat),
+			'creative'		=> sprintf(__('Creative Modules - %s', 'bb-njba'), $njba_builder_cat),
+			'form_style'	=> sprintf(__('Form Style Modules - %s', 'bb-njba'), $njba_builder_cat),
+			'separator'	=> sprintf(__('Separator Modules - %s', 'bb-njba'), $njba_builder_cat),
+			// 'default'	=> sprintf(__('NJBA Modules - %s', 'bb-njba'), $njba_builder_cat),
+			// 'new'	=> sprintf(__('%s - %s', 'bb-njba'), $category, $njba_builder_cat),
+		);
+		if ( empty( $category ) ) {
+			return $cats/*[$default]*/;
+		}
+
+		if ( isset( $cats[$category] ) ) {
+			return $cats[$category];
+		} else {
+			return $category;
+		}
+
+		
+	}
+
 	class BB_NJBA_Addon {
 		public function __construct()
 	    {
@@ -61,9 +112,9 @@ if( !class_exists( "BB_NJBA_Addon" ) && class_exists( 'FLBuilder' )) {
 		function njba_load_modules() {
 			if ( class_exists( 'FLBuilder' ) ) {
 				$njba_options = get_option('njba_options');
-				// if( !array_key_exists('facebook_app_id', $njba_options)){
-				// 	$njba_options['facebook_app_id'] = '';
-				// }
+				if( !array_key_exists('facebook_app_id', $njba_options)){
+					$njba_options['facebook_app_id'] = '';
+				}
 				if($njba_options == ''){
 						$njba_admin_option_data = array('google_static_map_api_key'   => '', 
 									                     'enable_row_sep' => '',
@@ -76,42 +127,43 @@ if( !class_exists( "BB_NJBA_Addon" ) && class_exists( 'FLBuilder' )) {
 					    	require_once 'includes/row.php';
 					}
 				/* admin settings*/
-					require_once 'classes/class-admin-settings.php';
+				require_once 'classes/class-admin-settings.php';
+
 				/*class fields*/
 			    require_once 'classes/class-module-fields.php';
-			    require_once 'modules/njba-alert-box/njba-alert-box.php';
+			    require_once 'modules/njba-accordion/njba-accordion.php';
+		    	require_once 'modules/njba-alert-box/njba-alert-box.php';
 			    require_once 'modules/njba-advance-cta/njba-advance-cta.php';
+		        require_once 'modules/njba-contact-form/njba-contact-form.php';
 			    require_once 'modules/njba-button/njba-button.php';
 			    require_once 'modules/njba-flip-box/njba-flip-box.php';
 			    require_once 'modules/njba-gallery/njba-gallery.php';
 			    require_once 'modules/njba-heading/njba-heading.php';
-			    require_once 'modules/njba-highlight-box/njba-highlight-box.php';
-			    require_once 'modules/njba-infobox-two/njba-infobox-two.php';
-			   	require_once 'modules/njba-infobox/njba-infobox.php';
-			    require_once 'modules/njba-image-hover/njba-image-hover.php';
-			    require_once 'modules/njba-infolist/njba-infolist.php';
 			    require_once 'modules/njba-icon-img/njba-icon-img.php';
+			    require_once 'modules/njba-highlight-box/njba-highlight-box.php';
+			    require_once 'modules/njba-image-hover/njba-image-hover.php';
 			    require_once 'modules/njba-image-hover-two/njba-image-hover-two.php';
-			    require_once 'modules/njba-img-separator/njba-img-separator.php';
 			    require_once 'modules/njba-image-panels/njba-image-panels.php';
+			    require_once 'modules/njba-img-separator/njba-img-separator.php';
+			    require_once 'modules/njba-infolist/njba-infolist.php';
+			  	require_once 'modules/njba-infobox/njba-infobox.php';
+			    require_once 'modules/njba-infobox-two/njba-infobox-two.php';
+		     	require_once 'modules/njba-logo-grid-carousel/njba-logo-grid-carousel.php';
 			    require_once 'modules/njba-opening-hours/njba-opening-hours.php';
 			    require_once 'modules/njba-post-grid/njba-post-grid.php';
 				require_once 'modules/njba-post-list/njba-post-list.php';
-			    require_once 'modules/njba-quote-box/njba-quote-box.php';	    	    
-			    require_once 'modules/njba-social-share/njba-social-share.php';
+			    require_once 'modules/njba-price-box/njba-price-box.php';
+		  	    require_once 'modules/njba-quote-box/njba-quote-box.php';	    	    
 			    require_once 'modules/njba-separator/njba-separator.php';
+			   	require_once 'modules/njba-slider/njba-slider.php';
+			    require_once 'modules/njba-social-share/njba-social-share.php';
 			    require_once 'modules/njba-spacer/njba-spacer.php';
-			   	require_once 'modules/njba-static-map/njba-static-map.php';
-			    require_once 'modules/njba-slider/njba-slider.php';
+			    require_once 'modules/njba-static-map/njba-static-map.php';
+			    require_once 'modules/njba-subscribe-form/njba-subscribe-form.php';
+			    require_once 'modules/njba-tabs/njba-tabs.php';
 			    require_once 'modules/njba-teams/njba-teams.php';
 			    require_once 'modules/njba-testimonials/njba-testimonials.php';
-			    require_once 'modules/njba-tabs/njba-tabs.php';
-		      	require_once 'modules/njba-logo-grid-carousel/njba-logo-grid-carousel.php';
-		        require_once 'modules/njba-price-box/njba-price-box.php';
-		        require_once 'modules/njba-accordion/njba-accordion.php';
-		        require_once 'modules/njba-subscribe-form/njba-subscribe-form.php';
-		        require_once 'modules/njba-contact-form/njba-contact-form.php';
-		        require_once 'modules/njba-facebook-button/njba-facebook-button.php';
+			    require_once 'modules/njba-facebook-button/njba-facebook-button.php';
 		        require_once 'modules/njba-facebook-comments/njba-facebook-comments.php';
 			    require_once 'modules/njba-facebook-embed/njba-facebook-embed.php';
 			    require_once 'modules/njba-facebook-page/njba-facebook-page.php';
@@ -161,11 +213,12 @@ if( !class_exists( "BB_NJBA_Addon" ) && class_exists( 'FLBuilder' )) {
 		}
 	}
 	new BB_NJBA_Addon();
-	add_action( 'admin_notices', 'woo_njba_admin_warning' );
-	add_action( 'network_admin_notices', 'woo_njba_admin_warning' );
-	function woo_njba_admin_warning() {
+	add_action( 'admin_notices', 'woo_njba_admin_notice' );
+	add_action( 'network_admin_notices', 'woo_njba_admin_notice' );
+	function woo_njba_admin_notice() {
 		global $pagenow;
-		if ( $pagenow == 'index.php' ) {
+
+		if(empty(get_option( 'woo-njba-notice-dismissed' ))){
 			$url = admin_url( 'index.php' );
 			$learn_more = "https://www.woobeaveraddons.com/";
 			$documentation = "https://www.woobeaveraddons.com/category/docs/";
@@ -177,6 +230,32 @@ if( !class_exists( "BB_NJBA_Addon" ) && class_exists( 'FLBuilder' )) {
 		    echo '</p></div></div>';
 		}
   	}
+
+  	add_action('admin_footer','woo_njba_admin_notice_script');
+  	function woo_njba_admin_notice_script(){
+
+  		if(empty(get_option( 'woo-njba-notice-dismissed' ))){
+  		?>
+  		<script type="text/javascript">
+  		jQuery(document).on( 'click', '.woo-info .notice-dismiss', function() {
+		    jQuery.ajax({
+		        url: ajaxurl,
+		        data: {
+		            action: 'dismiss_woo_njba'
+		        }
+		    })
+
+		})
+		</script>
+  		<?php
+  		}
+  	}
+  	add_action( 'wp_ajax_dismiss_woo_njba', 'set_dismiss_woo_njba_option' );
+	function set_dismiss_woo_njba_option() {
+		update_option( 'woo-njba-notice-dismissed','yes');
+		echo 'success';
+		exit();
+	}
 }
 else
 {

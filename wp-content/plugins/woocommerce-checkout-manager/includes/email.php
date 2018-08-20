@@ -215,74 +215,81 @@ function wooccm_order_receipt_checkout_details( $order, $sent_to_admin, $plain_t
 				if( !empty( $options[$name.'_buttons'] ) ) {
 					foreach( $options[$name.'_buttons'] as $btn ) {
 
-						if( !in_array( $btn['cow'], $array ) ) {
-							if(
-								( get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) !== '' ) && 
-								!empty( $btn['label'] ) && 
-								empty( $btn['deny_receipt'] ) && 
-								$btn['type'] !== 'heading' && 
-								$btn['type'] !== 'multiselect' && 
-								$btn['type'] !== 'wooccmupload' && 
-								$btn['type'] !== 'multicheckbox'
-							) {
-								echo '
-<p>
-	<strong>'.wooccm_wpml_string($btn['label']).':</strong> '.nl2br( get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) ).'
-</p>';
-							} elseif (
-								!empty( $btn['label'] ) && 
-								empty( $btn['deny_receipt'] ) && 
-								$btn['type'] == 'heading' && 
-								$btn['type'] !== 'multiselect' && 
-								$btn['type'] !== 'wooccmupload' && 
-								$btn['type'] !== 'multicheckbox'
-							) {
-								echo '
-<h2>' .wooccm_wpml_string($btn['label']). '</h2>';
-							} elseif (
-								( get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) !== '' ) && 
-								!empty( $btn['label'] ) && 
-								empty( $btn['deny_receipt'] ) && 
-								$btn['type'] !== 'heading' && 
-								$btn['type'] !== 'wooccmupload' && 
-								(
-									$btn['type'] == 'multiselect' || $btn['type'] == 'multicheckbox'
-								)
-							) {
-								$value = get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true );
-								$strings = maybe_unserialize( $value );
-								echo '
-<p>
-	<strong>'.wooccm_wpml_string($btn['label']).':</strong> ';
-								if( !empty( $strings ) ) {
-									if( is_array( $strings ) ) {
-										$iww = 0;
-										$len = count( $strings );
-										foreach( $strings as $key ) {
-											if( $iww == $len - 1 ) {
-												echo $key;
-											} else {
-												echo $key.', ';
-											}
-											$iww++;
-										}
-									} else {
-										echo $strings;
-									}
-								} else {
-									echo '-';
+
+
+						if( ($btn['cow'] != 'myfield1') && ($btn['cow'] != 'myfield2') && ($btn['cow'] != 'myfield3') && ($btn['cow'] != 'myfield6') && ($btn['cow'] != 'myfield11')){
+							if( !in_array( $btn['cow'], $array ) ) {
+								if(
+									( get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) !== '' ) && 
+									!empty( $btn['label'] ) && 
+									empty( $btn['deny_receipt'] ) && 
+									$btn['type'] !== 'heading' && 
+									$btn['type'] !== 'multiselect' && 
+									$btn['type'] !== 'wooccmupload' && 
+									$btn['type'] !== 'multicheckbox'
+								) {
+									echo '
+										<p>
+											<strong>'.wooccm_wpml_string($btn['label']).':</strong> '.nl2br( get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) ).'
+										</p>';
+								} elseif (
+									!empty( $btn['label'] ) && 
+									empty( $btn['deny_receipt'] ) && 
+									$btn['type'] == 'heading' && 
+									$btn['type'] !== 'multiselect' && 
+									$btn['type'] !== 'wooccmupload' && 
+									$btn['type'] !== 'multicheckbox'
+								) {
+									echo '
+									<h2 class="dales_heading">' .wooccm_wpml_string($btn['label']). '</h2>';
+								} elseif (
+									( get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) !== '' ) && 
+									!empty( $btn['label'] ) && 
+									empty( $btn['deny_receipt'] ) && 
+									$btn['type'] !== 'heading' && 
+									$btn['type'] !== 'wooccmupload' && 
+									(
+										$btn['type'] == 'multiselect' || $btn['type'] == 'multicheckbox'
+									)
+								) {
+									$value = get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true );
+									$strings = maybe_unserialize( $value );
+									echo '
+									<p>
+										<strong>'.wooccm_wpml_string($btn['label']).':</strong> ';
+																	if( !empty( $strings ) ) {
+																		if( is_array( $strings ) ) {
+																			$iww = 0;
+																			$len = count( $strings );
+																			foreach( $strings as $key ) {
+																				if( $iww == $len - 1 ) {
+																					echo $key;
+																				} else {
+																					echo $key.', ';
+																				}
+																				$iww++;
+																			}
+																		} else {
+																			echo $strings;
+																		}
+																	} else {
+																		echo '-';
+																	}
+																	echo '
+									</p>';
+								} elseif( $btn['type'] == 'wooccmupload' ) {
+									$info = explode( "||", get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) );
+									$btn['label'] = ( !empty( $btn['force_title2'] ) ? $btn['force_title2'] : $btn['label'] );
+									echo '
+										<p>
+											<strong>'.wooccm_wpml_string( trim( $btn['label'] ) ).':</strong> '.$info[0].'
+										</p>';
 								}
-								echo '
-</p>';
-							} elseif( $btn['type'] == 'wooccmupload' ) {
-								$info = explode( "||", get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) );
-								$btn['label'] = ( !empty( $btn['force_title2'] ) ? $btn['force_title2'] : $btn['label'] );
-								echo '
-<p>
-	<strong>'.wooccm_wpml_string( trim( $btn['label'] ) ).':</strong> '.$info[0].'
-</p>';
 							}
 						}
+
+
+
 
 					}
 				}
@@ -310,35 +317,35 @@ function wooccm_order_receipt_checkout_details( $order, $sent_to_admin, $plain_t
 						$value = get_post_meta( $order_id , $btn['cow'], true );
 						$strings = maybe_unserialize( $value );
 						echo '
-<p>
-	<strong>'.wooccm_wpml_string($btn['label']).':</strong> ';
-						if( !empty( $strings ) ) {
-							if( is_array( $strings ) ) {
-								$iww = 0;
-								$len = count( $strings );
-								foreach( $strings as $key ) {
-									if( $iww == $len - 1 ) {
-										echo $key;
-									} else {
-										echo $key.', ';
-									}
-									$iww++;
-								}
-							} else {
-								echo $strings;
-							}
-						} else {
-							echo '-';
-						}
-						echo '
-</p>';
+							<p>
+								<strong>'.wooccm_wpml_string($btn['label']).':</strong> ';
+													if( !empty( $strings ) ) {
+														if( is_array( $strings ) ) {
+															$iww = 0;
+															$len = count( $strings );
+															foreach( $strings as $key ) {
+																if( $iww == $len - 1 ) {
+																	echo $key;
+																} else {
+																	echo $key.', ';
+																}
+																$iww++;
+															}
+														} else {
+															echo $strings;
+														}
+													} else {
+														echo '-';
+													}
+													echo '
+							</p>';
 					} elseif( $btn['type'] == 'wooccmupload' ) {
 						$info = explode( "||", get_post_meta( $order_id , $btn['cow'], true ) );
 						$btn['label'] = ( !empty( $btn['force_title2'] ) ? $btn['force_title2'] : $btn['label'] );
 						echo '
-<p>
-	<strong>'.wooccm_wpml_string( trim( $btn['label'] ) ).':</strong> '.$info[0].'
-</p>';
+							<p>
+								<strong>'.wooccm_wpml_string( trim( $btn['label'] ) ).':</strong> '.$info[0].'
+							</p>';
 					}
 
 				}
@@ -352,24 +359,24 @@ function wooccm_order_receipt_checkout_details( $order, $sent_to_admin, $plain_t
 			$options['checkness']['time_stamp'] = ( isset( $options['checkness']['time_stamp'] ) ? $options['checkness']['time_stamp'] : false );
 			if( $options['checkness']['time_stamp'] == true ) {
 				echo '
-<p>
-	<strong>'.$options['checkness']['time_stamp_title'].':</strong> ' . $date . '
-</p>';
+					<p>
+						<strong>'.$options['checkness']['time_stamp_title'].':</strong> ' . $date . '
+					</p>';
 			}
 			if( method_exists( $order, 'get_payment_method_title' ) ) {
 				if( $order->get_payment_method_title() && isset( $options['checkness']['payment_method_t'] ) && $options['checkness']['payment_method_t'] == true ) {
 				echo '
-<p>
-	<strong>'.$options['checkness']['payment_method_d'].':</strong> ' . $order->get_payment_method_title() . '
-</p>';
+					<p>
+						<strong>'.$options['checkness']['payment_method_d'].':</strong> ' . $order->get_payment_method_title() . '
+					</p>';
 				}
 			}
 			if( method_exists( $order, 'get_shipping_method' ) ) {
 				if( $order->get_shipping_method() && isset( $options['checkness']['shipping_method_t'] ) && $options['checkness']['shipping_method_t'] == true ) {
 				echo '
-<p>
-	<strong>'.$options['checkness']['shipping_method_d'].':</strong> ' . $order->get_shipping_method() . '
-</p>';
+					<p>
+						<strong>'.$options['checkness']['shipping_method_d'].':</strong> ' . $order->get_shipping_method() . '
+					</p>';
 				}
 			}
 			break;

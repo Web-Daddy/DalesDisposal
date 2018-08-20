@@ -13,9 +13,9 @@ class NJBATwitterTimelineModule extends FLBuilderModule {
 		parent::__construct(array(
 			'name'          => __( 'Twitter Embedded Timeline', 'bb-njba' ),
 			'description'   => __( 'A module to embed twitter timeline.', 'bb-njba' ),
-			'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Social Modules - NJBA', 'bb-njba'),
-            'dir'           	=> NJBA_MODULE_DIR . 'modules/njba-twitter-timeline/',
+			'group'         	=> njba_get_modules_group(),
+			'category'			=> njba_get_modules_cat( 'social' ),
+			'dir'           	=> NJBA_MODULE_DIR . 'modules/njba-twitter-timeline/',
 			'url'           	=> NJBA_MODULE_URL . 'modules/njba-twitter-timeline/',
 			'editor_export' 	=> true, // Defaults to true and can be omitted.
 			'enabled'       	=> true, // Defaults to true and can be omitted.

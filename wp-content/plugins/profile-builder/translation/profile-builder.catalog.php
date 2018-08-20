@@ -512,6 +512,16 @@
 <?php __("** only available in the %1$sPro version%2$s.", "profile-builder"); ?>
 <?php __("Quick Feedback", "profile-builder"); ?>
 <?php __("Because we care about our clients, please leave us feedback on why you are no longer using our plugin.", "profile-builder"); ?>
+<?php __("Lacking certain features", "profile-builder"); ?>
+<?php __("What feature would you like to see?", "profile-builder"); ?>
+<?php __("Hard to use", "profile-builder"); ?>
+<?php __("How can we improve our user experience ?", "profile-builder"); ?>
+<?php __("Unsatisfactory support", "profile-builder"); ?>
+<?php __("Poor Documentation", "profile-builder"); ?>
+<?php __("Tell us what you couldn't find", "profile-builder"); ?>
+<?php __("Other", "profile-builder"); ?>
+<?php __("Please tell us more", "profile-builder"); ?>
+<?php __("Submit & Deactivate", "profile-builder"); ?>
 <?php __("Skip and Deactivate", "profile-builder"); ?>
 <?php __("Submit and Deactivate", "profile-builder"); ?>
 <?php __("Admin Bar", "profile-builder"); ?>
@@ -1316,7 +1326,7 @@
 <?php __("Select a user role.", "profile-builder"); ?>
 <?php __("User Role based Redirects", "profile-builder"); ?>
 <?php __("Global Redirects", "profile-builder"); ?>
-<?php __("Login ( wp_login.php )", "profile-builder"); ?>
+<?php __("Login ( wp-login.php )", "profile-builder"); ?>
 <?php __("Register ( wp-login.php?action=register )", "profile-builder"); ?>
 <?php __("Lost Password ( wp-login.php?action=lostpassword )", "profile-builder"); ?>
 <?php __("Author Archive ( http://sitename.com/author/admin )", "profile-builder"); ?>

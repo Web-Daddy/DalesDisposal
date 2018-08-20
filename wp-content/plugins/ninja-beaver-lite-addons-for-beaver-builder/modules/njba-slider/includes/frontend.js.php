@@ -19,10 +19,11 @@
 									mode : '<?php echo $settings->transition; ?>',
 									speed : <?php echo $settings->speed * 1000;  ?>,
 									infiniteLoop : <?php echo $settings->loop;  ?>,
-								<?php if($settings->dots == 1){ ?>
-									pager : <?php echo $settings->dots;  ?>,
+
+								<?php if($settings->dot == '1'){ ?>
+									pager : <?php echo $settings->dot;  ?>,
 								
-								<?php }else if($settings->dots == 2){ ?>
+								<?php }else if($settings->dot == '2'){ ?>
 									pagerCustom: '#bx-pager-<?php echo $module->node; ?>',
 								<?php }else {?>
 									 pager : false,

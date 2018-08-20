@@ -14,8 +14,8 @@ class NJBAHighlightBoxModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Highlight Box', 'bb-njba'),
             'description'   => __('Addon to display Highlight Box.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-highlight-box/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-highlight-box/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -142,11 +142,78 @@ class NJBAHighlightBoxModule extends FLBuilderModule {
 }
 FLBuilder::register_module('NJBAHighlightBoxModule', array(
     'highlight_box'       => array( // Tab
-        'title'         => __('Box', 'bb-njba'), // Tab title
+        'title'         => __('General', 'bb-njba'), // Tab title
         'sections'      => array( // Tab Sections
             'select'        => array (
                 'title'         => __('Select', 'bb-njba'),
                 'fields'       => array( // Section Fields
+                    'select'  => array(
+                        'type'          => 'select',
+                        'label'         => __('Select Title', 'bb-njba'),
+                        'default'       => 'photo',
+                        'options'       => array(
+                            'photo'       => __('Photo', 'bb-njba'),
+                            'text'           => __('Text', 'bb-njba')
+                        ),
+                        'toggle'        => array(
+                            'photo'       => array(
+                                'fields'        => array('photo')
+                            ),
+                            'text'           => array(
+                                'tabs'        => array('text'),
+                                'fields'       => array('main_title','sub_title'),
+                            )
+                        )
+                    ),
+                    'photo'         => array(
+                        'type'          => 'photo',
+                        'label'         => __('Photo', 'bb-njba'),
+                        'show_remove'   => true,
+                    ),
+                    'main_title'        => array(
+                        'type'            => 'text',
+                        'label'           => __('Title', 'bb-njba'),
+                        'default'         => 'NJBA HEADING',
+                        'preview'       => array(
+                            'type'          => 'text',
+                            'selector'      => '.njba-heading-title'
+                        )
+                    ),
+                     'sub_title'        => array(
+                        'type'            => 'editor',
+                        'label'           => __('Sub Title', 'bb-njba'),
+                        'media_buttons' => false,
+                        'rows'          => 6,
+                        'default'       => __('Enter description text here.','bb-njba'),
+                        'preview'       => array(
+                            'type'          => 'text',
+                            'selector'      => '.njba-heading-sub-title'
+                        )
+                    ),
+                    'caption_select'  => array(
+                        'type'          => 'select',
+                        'label'         => __('Caption Show', 'bb-njba'),
+                        'default'       => 'No',
+                        'options'       => array(
+                            'No'       => __('No', 'bb-njba'),
+                            'Yes'           => __('Yes', 'bb-njba')
+                        ),
+                        'toggle'        => array(
+                            'Yes'       => array(
+                                 'sections'        => array('box_caption_field'),
+                                'fields'        => array('caption_title')
+                            ),
+                        )
+                    ),
+                    'caption_title'        => array(
+                        'type'            => 'text',
+                        'label'           => __('Caption Title', 'bb-njba'),
+                        'default'         => 'NJBA HEADING',
+                        'preview'       => array(
+                            'type'          => 'text',
+                            'selector'      => '.njba-heading-title'
+                        )
+                    ),
                     'hover_effect'       => array(
                         'type'          => 'select',
                         'label'         => __('Effect', 'bb-njba'),
@@ -204,49 +271,21 @@ FLBuilder::register_module('NJBAHighlightBoxModule', array(
                             'unit'      => 'sec'
                         )
                     ),
-                    'select'  => array(
-                        'type'          => 'select',
-                        'label'         => __('Select Heading', 'bb-njba'),
-                        'default'       => 'photo',
-                        'options'       => array(
-                            'photo'       => __('Photo', 'bb-njba'),
-                            'text'           => __('Text', 'bb-njba')
-                        ),
-                        'toggle'        => array(
-                            'photo'       => array(
-                                'sections'        => array('photo')
-                            ),
-                            'text'           => array(
-                                'tabs'        => array('text')
-                            )
-                        )
-                    ),
-                    'caption_select'  => array(
-                        'type'          => 'select',
-                        'label'         => __('Caption', 'bb-njba'),
-                        'default'       => 'No',
-                        'options'       => array(
-                            'No'       => __('No', 'bb-njba'),
-                            'Yes'           => __('Yes', 'bb-njba')
-                        ),
-                        'toggle'        => array(
-                            'Yes'       => array(
-                                'sections'        => array('box_caption_field')
-                            )
-                        )
-                    )
+                    
                 )
             ),
-            'photo'       => array( // Section
+           /* 'photo'       => array( // Section
                 'title'         => __('Photo', 'bb-njba'),
                 'fields'        => array( // Section Fields
-                    'photo'         => array(
-                        'type'          => 'photo',
-                        'label'         => __('Photo', 'bb-njba'),
-                        'show_remove'   => true,
-                    )
+                    
                 )
-            ),
+            ),*/
+           /* 'main_title'       => array( // Section
+                'title'         => __('Title', 'bb-njba'),
+                'fields'        => array( // Section Fields
+                    
+                )
+            ),*/
             'box_link_field'          => array(
                 'title'         => __('Link', 'bb-njba'),
                 'fields'        => array(
@@ -271,544 +310,10 @@ FLBuilder::register_module('NJBAHighlightBoxModule', array(
                     )
                 )
             ),
-            'box_caption_field'          => array(
-                'title'         => __('Caption', 'bb-njba'),
-                'fields'        => array(
-                    'caption_title'        => array(
-                        'type'            => 'text',
-                        'label'           => __('Caption', 'bb-njba'),
-                        'default'         => 'NJBA HEADING'
-                    ),
-                    'caption_title_tag'        => array(
-                        'type'            => 'select',
-                        'label'           => __('Caption Tag', 'bb-njba'),
-                        'default'         => 'h1',
-                        'options'         => array(
-                            'h1'      =>  __('H1', 'bb-njba'),
-                            'h2'      =>  __('H2', 'bb-njba'),
-                            'h3'      =>  __('H3', 'bb-njba'),
-                            'h4'      =>  __('H4', 'bb-njba'),
-                            'h5'      =>  __('H5', 'bb-njba'),
-                            'h6'      =>  __('H6', 'bb-njba')
-                        )
-                    ),
-                    'caption_title_alignment'         => array(
-                        'type'                      => 'select',
-                        'default'                   => 'center',
-                        'label'                     => __('Caption Alignment', 'bb-njba'),
-                        'options'                   => array(
-                            'left'                      => __('Left', 'bb-njba'),
-                            'right'                     => __('Right', 'bb-njba'),
-                            'center'                    => __('Center', 'bb-njba'),
-                        ),
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'text-align'
-                        )
-                    ),
-                    'caption_title_font'          => array(
-                        'type'          => 'font',
-                        'default'       => array(
-                            'family'        => 'Default',
-                            'weight'        => 300
-                        ),
-                        'label'         => __('Caption Font', 'bb-njba'),
-                        'preview'         => array(
-                            'type'            => 'font',
-                            'selector'        => '.njba-heading-title'
-                        )
-                    ),
-                    'caption_title_font_size'     => array(
-                        'type'          => 'njba-simplify',
-                        'label'         => __( 'Caption Font Size', 'bb-njba' ),
-                        'default'       => array(
-                            'desktop'       => '28',
-                            'medium'        => '24',
-                            'small'         => '20',
-                        ),
-                        'description'   => _x( 'px', 'Value unit for font size. Such as: "14 px"', 'bb-njba' ),
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'font-size',
-                            'unit'          => 'px'
-                        )
-                    ),
-                    'caption_title_line_height'     => array(
-                        'type'          => 'njba-simplify',
-                        'label'         => __( 'Caption Line Height', 'bb-njba' ),
-                        'default'       => array(
-                            'desktop'       => '30',
-                            'medium'        => '26',
-                            'small'         => '22',
-                        ),
-                        'description'   => _x( 'px', 'Value unit for line height. Such as: "14 px"', 'bb-njba' ),
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'line-height',
-                            'unit'          => 'px'
-                        )
-                    ),
-                    'caption_title_color'    => array(
-                        'type'          => 'color',
-                        'label'         => __('Caption Color', 'bb-njba'),
-                        'default'       => '',
-                        'show_reset'    => true,
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'color',
-                        )
-                    ),
-                    'caption_margin'      => array(
-                        'type'              => 'njba-multinumber',
-                        'label'             => __('Caption Margin', 'bb-njba'),
-                        'description'       => 'px',
-                        'default'           => array(
-                            'top'          => 10,
-                            'right'      => 10,
-                            'bottom'      => 10,
-                            'left'      => 10
-                        ),
-                        'options'           => array(
-                            'top'               => array(
-                                'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-top',
-                                ),
-                            ),
-                            'right'            => array(
-                                'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-right',
-                                ),
-                            ),
-                            'bottom'            => array(
-                                'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-bottom',
-                                ),
-                            ),
-                            'left'            => array(
-                                'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-left',
-                                ),
-                            )
-                        )
-                    )
-                )
-            )
+            
         )
     ),
-    'style'       => array( // Tab
-        'title'         => __('Style', 'bb-njba'), // Tab title
-        'sections'      => array( // Tab Sections
-            'general_colors'       => array( // Section
-                'title'         => __('Box Style', 'bb-njba'), // Section Title
-                'fields'        => array( // Section Fields
-                    'box_bg_color'    => array(
-                        'type'          => 'color',
-                        'label'         => __('Background Color', 'bb-njba'),
-                        'default'       => '',
-                        'show_reset'    => true,
-                        'preview'         => array(
-                            'type'            => 'css',
-                            'selector'        => '.pp-highlight-box-content',
-                            'property'        => 'background-color'
-                        )
-                    ),
-                    'box_bg_opacity' => array(
-                        'type'          => 'text',
-                        'label'         => __('Background Color Opacity', 'bb-njba'),
-                        'default'       => '100',
-                        'description'   => '%',
-                        'maxlength'     => '3',
-                        'size'          => '5',
-                        'placeholder'   => '100'
-                    ),
-                    'box_bg_hover_color'    => array(
-                        'type'          => 'color',
-                        'label'         => __('Hover Background Color', 'bb-njba'),
-                        'default'       => '',
-                        'show_reset'    => true,
-                        'preview'         => array(
-                            'type'            => 'css',
-                            'selector'        => '.pp-highlight-box-content',
-                            'property'        => 'background-color'
-                        )
-                    ),
-                    'box_bg_hover_opacity' => array(
-                        'type'          => 'text',
-                        'label'         => __('Hover Background Color Opacity', 'bb-njba'),
-                        'default'       => '100',
-                        'description'   => '%',
-                        'maxlength'     => '3',
-                        'size'          => '5',
-                        'placeholder'   => '100'
-                    ),
-                    'box_hover_bg_color'    => array(
-                        'type'          => 'color',
-                        'label'         => __('None Hover Background Color', 'bb-njba'),
-                        'default'       => '',
-                        'show_reset'    => true,
-                        'preview'         => array(
-                            'type'            => 'css',
-                            'selector'        => '.pp-highlight-box-content',
-                            'property'        => 'background-color'
-                        )
-                    ),
-                    'box_hover_bg_opacity' => array(
-                        'type'          => 'text',
-                        'label'         => __('None Hover Background Color Opacity', 'bb-njba'),
-                        'default'       => '100',
-                        'description'   => '%',
-                        'maxlength'     => '3',
-                        'size'          => '5',
-                        'placeholder'   => '100'
-                    ),
-                    'padding'   => array(
-                        'type'          => 'njba-multinumber',
-                        'label'         => __('Box Padding', 'bb-njba'),
-                        'description'   => 'px',
-                        'default'       => array(
-                            'top'           => 15,
-                            'right'         => 15,
-                            'bottom'        => 15,
-                            'left'          => 15,
-                        ),
-                        'options'       => array(
-                            'top' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Top', 'bb-njba'),
-                                'tooltip'       => __('Top', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-up',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-top',
-                                    'unit'      => 'px'
-                                )
-                            ),
-                            'bottom' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Bottom', 'bb-njba'),
-                                'tooltip'       => __('Bottom', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-down',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-bottom',
-                                    'unit'      => 'px'
-                                )
-                            ),
-                            'left' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Left', 'bb-njba'),
-                                'tooltip'       => __('Left', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-left',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-left',
-                                    'unit'      => 'px'
-                                )
-                            ),
-                            'right' => array(
-                                'maxlength' => 3,
-                                'placeholder'   => __('Right', 'bb-njba'),
-                                'tooltip'       => __('Right', 'bb-njba'),
-                                'icon'      => 'fa-long-arrow-right',
-                                'preview'       => array(
-                                    'selector'  => '',
-                                    'property'  => 'padding-right',
-                                    'unit'      => 'px'
-                                )
-                            )
-                        )
-                    )
-                )
-            )
-        )
-    ),
-    'text'       => array(
-        'title'         => __('Text', 'bb-njba'),
-        'sections'      => array(
-            'text'       => array( // Section
-                'title'        => __('Title', 'bb-njba'), // Section Title
-                'fields'       => array( // Section Fields
-                    'main_title'        => array(
-                        'type'            => 'text',
-                        'label'           => __('Heading', 'bb-njba'),
-                        'default'         => 'NJBA HEADING'
-                    ),
-                    'main_title_tag'        => array(
-                        'type'            => 'select',
-                        'label'           => __('Title Tag', 'bb-njba'),
-                        'default'         => 'h1',
-                        'options'         => array(
-                            'h1'      =>  __('H1', 'bb-njba'),
-                            'h2'      =>  __('H2', 'bb-njba'),
-                            'h3'      =>  __('H3', 'bb-njba'),
-                            'h4'      =>  __('H4', 'bb-njba'),
-                            'h5'      =>  __('H5', 'bb-njba'),
-                            'h6'      =>  __('H6', 'bb-njba')
-                        )
-                    ),
-                    'heading_title_alignment'         => array(
-                        'type'                      => 'select',
-                        'default'                   => 'center',
-                        'label'                     => __('Alignment', 'bb-njba'),
-                        'options'                   => array(
-                            'left'                      => __('Left', 'bb-njba'),
-                            'right'                     => __('Right', 'bb-njba'),
-                            'center'                    => __('Center', 'bb-njba'),
-                        ),
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'text-align'
-                        )
-                    ),
-                    'heading_title_font'          => array(
-                        'type'          => 'font',
-                        'default'       => array(
-                            'family'        => 'Default',
-                            'weight'        => 300
-                        ),
-                        'label'         => __('Font', 'bb-njba'),
-                        'preview'         => array(
-                            'type'            => 'font',
-                            'selector'        => '.njba-heading-title'
-                        )
-                    ),
-                    'heading_title_font_size'     => array(
-                        'type'          => 'njba-simplify',
-                        'label'         => __( 'Font Size', 'bb-njba' ),
-                        'default'       => array(
-                            'desktop'       => '28',
-                            'medium'        => '24',
-                            'small'         => '20',
-                        ),
-                        'description'   => _x( 'px', 'Value unit for font size. Such as: "14 px"', 'bb-njba' ),
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'font-size',
-                            'unit'          => 'px'
-                        )
-                    ),
-                    'heading_title_line_height'     => array(
-                        'type'          => 'njba-simplify',
-                        'label'         => __( 'Line Height', 'bb-njba' ),
-                        'default'       => array(
-                            'desktop'       => '30',
-                            'medium'        => '26',
-                            'small'         => '22',
-                        ),
-                        'description'   => _x( 'px', 'Value unit for line height. Such as: "14 px"', 'bb-njba' ),
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'line-height',
-                            'unit'          => 'px'
-                        )
-                    ),
-                    'heading_title_color'    => array(
-                        'type'          => 'color',
-                        'label'         => __('Color', 'bb-njba'),
-                        'default'       => '',
-                        'show_reset'    => true,
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'color',
-                        )
-                    ),
-                    'heading_margin'      => array(
-                        'type'              => 'njba-multinumber',
-                        'label'             => __('Margin', 'bb-njba'),
-                        'description'       => 'px',
-                        'default'           => array(
-                            'top'          => 10,
-                            'right'      => 10,
-                            'bottom'      => 10,
-                            'left'      => 10
-                        ),
-                        'options'           => array(
-                            'top'               => array(
-                                'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-top',
-                                ),
-                            ),
-                            'right'            => array(
-                                'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-right',
-                                ),
-                            ),
-                            'bottom'            => array(
-                                'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-bottom',
-                                ),
-                            ),
-                            'left'            => array(
-                                'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-left',
-                                ),
-                            )
-                        )
-                    )
-                )
-            ),
-            'sub_heading'       => array( // Section
-                'title'        => __('Sub Heading', 'bb-njba'), // Section Title
-                'fields'       => array( // Section Fields
-                    'sub_title'        => array(
-                        'type'            => 'editor',
-                        'label'           => __('Sub title', 'bb-njba'),
-                        'media_buttons' => false,
-                        'rows'          => 6,
-                        'default'       => __('Enter description text here.','bb-njba')
-                    ),
-                    'heading_sub_title_alignment'         => array(
-                        'type'                      => 'select',
-                        'default'                   => 'center',
-                        'label'                     => __('Sub Title Alignment', 'bb-njba'),
-                        'options'                   => array(
-                            'left'                      => __('Left', 'bb-njba'),
-                            'right'                     => __('Right', 'bb-njba'),
-                            'center'                    => __('Center', 'bb-njba'),
-                        ),
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-sub-title',
-                            'property'      => 'text-align'
-                        )
-                    ),
-                    'heading_sub_title_font'          => array(
-                        'type'          => 'font',
-                        'default'       => array(
-                            'family'        => 'Default',
-                            'weight'        => 300
-                        ),
-                        'label'         => __('Sub Title Font', 'bb-njba'),
-                        'preview'         => array(
-                            'type'            => 'font',
-                            'selector'        => '.njba-heading-sub-title'
-                        )
-                    ),
-                    'heading_sub_title_font_size'     => array(
-                        'type'          => 'njba-simplify',
-                        'label'         => __( 'Sub Title Font Size', 'bb-njba' ),
-                        'default'       => array(
-                            'desktop'       => '20',
-                            'medium'        => '20',
-                            'small'         => '20',
-                        ),
-                        'description'   => _x( 'px', 'Value unit for font size. Such as: "14 px"', 'bb-njba' ),
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'font-size',
-                            'unit'          => 'px'
-                        )
-                    ),
-                    'heading_sub_title_line_height'     => array(
-                        'type'          => 'njba-simplify',
-                        'label'         => __( 'Sub Title Line Height', 'bb-njba' ),
-                        'default'       => array(
-                            'desktop'       => '20',
-                            'medium'        => '20',
-                            'small'         => '20',
-                        ),
-                        'description'   => _x( 'px', 'Value unit for line height. Such as: "14 px"', 'bb-njba' ),
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-title',
-                            'property'      => 'line-height',
-                            'unit'          => 'px'
-                        )
-                    ),
-                    'heading_sub_title_color'    => array(
-                        'type'          => 'color',
-                        'label'         => __('Sub Title Color', 'bb-njba'),
-                        'default'       => '',
-                        'show_reset'    => true,
-                        'preview'       => array(
-                            'type'          => 'css',
-                            'selector'      => '.njba-heading-sub-title',
-                            'property'      => 'color',
-                        )
-                    ),
-                    'heading_subtitle_margin'      => array(
-                        'type'              => 'njba-multinumber',
-                        'label'             => __('Sub Title Margin', 'bb-njba'),
-                        'description'       => 'px',
-                        'default'           => array(
-                            'top'          => 10,
-                            'right'      => 10,
-                            'bottom'      => 10,
-                            'left'      => 10
-                        ),
-                        'options'           => array(
-                            'top'               => array(
-                                'placeholder'       => __('Top', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-up',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-top',
-                                ),
-                            ),
-                            'right'            => array(
-                                'placeholder'       => __('Right', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-right',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-right',
-                                ),
-                            ),
-                            'bottom'            => array(
-                                'placeholder'       => __('Bottom', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-down',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-bottom',
-                                ),
-                            ),
-                            'left'            => array(
-                                'placeholder'       => __('Left', 'bb-njba'),
-                                'icon'              => 'fa-long-arrow-left',
-                                'preview'           => array(
-                                    'selector'          => '.njba-heading-title',
-                                    'property'          => 'margin-left',
-                                ),
-                            )
-                        )
-                    )
-                )
-            )
-        )
-    ),
-    'icon_image'       => array(
+     'icon_image'       => array(
         'title'         => __('Icon / Image', 'bb-njba'),
         'sections'      => array(
             'type_general'      => array( // Section
@@ -1111,5 +616,522 @@ FLBuilder::register_module('NJBAHighlightBoxModule', array(
                 )
             )
         )
-    )
+    ),
+    'style'       => array( // Tab
+        'title'         => __('Style', 'bb-njba'), // Tab title
+        'sections'      => array( // Tab Sections
+            'general_colors'       => array( // Section
+                'title'         => __('Box Style', 'bb-njba'), // Section Title
+                'fields'        => array( // Section Fields
+                    'box_bg_color'    => array(
+                        'type'          => 'color',
+                        'label'         => __('Background Color', 'bb-njba'),
+                        'default'       => '',
+                        'show_reset'    => true,
+                        'preview'         => array(
+                            'type'            => 'css',
+                            'selector'        => '.njba-highlight-box-main',
+                            'property'        => 'background-color'
+                        )
+                    ),
+                    'box_bg_opacity' => array(
+                        'type'          => 'text',
+                        'label'         => __('Background Color Opacity', 'bb-njba'),
+                        'default'       => '100',
+                        'description'   => '%',
+                        'maxlength'     => '3',
+                        'size'          => '5',
+                        'placeholder'   => '100'
+                    ),
+                    'box_bg_hover_color'    => array(
+                        'type'          => 'color',
+                        'label'         => __('Hover Background Color', 'bb-njba'),
+                        'default'       =>  '#ffffff;',
+                        'show_reset'    => true,
+                        
+                    ),
+                    'box_bg_hover_opacity' => array(
+                        'type'          => 'text',
+                        'label'         => __('Hover Background Color Opacity', 'bb-njba'),
+                        'default'       => '100',
+                        'description'   => '%',
+                        'maxlength'     => '3',
+                        'size'          => '5',
+                        'placeholder'   => '100'
+                    ),
+                    'box_hover_bg_color'    => array(
+                        'type'          => 'color',
+                        'label'         => __('None Hover Background Color', 'bb-njba'),
+                        'default'       => '',
+                        'show_reset'    => true,
+                        'preview'         => array(
+                            'type'            => 'css',
+                            'selector'        => '.pp-highlight-box-content',
+                            'property'        => 'background-color'
+                        )
+                    ),
+                    'box_hover_bg_opacity' => array(
+                        'type'          => 'text',
+                        'label'         => __('None Hover Background Color Opacity', 'bb-njba'),
+                        'default'       => '100',
+                        'description'   => '%',
+                        'maxlength'     => '3',
+                        'size'          => '5',
+                        'placeholder'   => '100'
+                    ),
+                    'padding'   => array(
+                        'type'          => 'njba-multinumber',
+                        'label'         => __('Box Padding', 'bb-njba'),
+                        'description'   => 'px',
+                        'default'       => array(
+                            'top'           => 15,
+                            'right'         => 15,
+                            'bottom'        => 15,
+                            'left'          => 15,
+                        ),
+                        'options'       => array(
+                            'top' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Top', 'bb-njba'),
+                                'tooltip'       => __('Top', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-up',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-top',
+                                    'unit'      => 'px'
+                                )
+                            ),
+                            'bottom' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Bottom', 'bb-njba'),
+                                'tooltip'       => __('Bottom', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-down',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-bottom',
+                                    'unit'      => 'px'
+                                )
+                            ),
+                            'left' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Left', 'bb-njba'),
+                                'tooltip'       => __('Left', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-left',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-left',
+                                    'unit'      => 'px'
+                                )
+                            ),
+                            'right' => array(
+                                'maxlength' => 3,
+                                'placeholder'   => __('Right', 'bb-njba'),
+                                'tooltip'       => __('Right', 'bb-njba'),
+                                'icon'      => 'fa-long-arrow-right',
+                                'preview'       => array(
+                                    'selector'  => '',
+                                    'property'  => 'padding-right',
+                                    'unit'      => 'px'
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    ),
+    'text'       => array(
+        'title'         => __('Typogrphy', 'bb-njba'),
+        'sections'      => array(
+            'text'       => array( // Section
+                'title'        => __('Title', 'bb-njba'), // Section Title
+                'fields'       => array( // Section Fields
+                    
+                    'main_title_tag'        => array(
+                        'type'            => 'select',
+                        'label'           => __('Title Tag', 'bb-njba'),
+                        'default'         => 'h1',
+                        'options'         => array(
+                            'h1'      =>  __('H1', 'bb-njba'),
+                            'h2'      =>  __('H2', 'bb-njba'),
+                            'h3'      =>  __('H3', 'bb-njba'),
+                            'h4'      =>  __('H4', 'bb-njba'),
+                            'h5'      =>  __('H5', 'bb-njba'),
+                            'h6'      =>  __('H6', 'bb-njba')
+                        )
+                    ),
+                    'heading_title_alignment'         => array(
+                        'type'                      => 'select',
+                        'default'                   => 'center',
+                        'label'                     => __('Alignment', 'bb-njba'),
+                        'options'                   => array(
+                            'left'                      => __('Left', 'bb-njba'),
+                            'right'                     => __('Right', 'bb-njba'),
+                            'center'                    => __('Center', 'bb-njba'),
+                        ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-title',
+                            'property'      => 'text-align'
+                        )
+                    ),
+                    'heading_title_font'          => array(
+                        'type'          => 'font',
+                        'default'       => array(
+                            'family'        => 'Default',
+                            'weight'        => 300
+                        ),
+                        'label'         => __('Font', 'bb-njba'),
+                        'preview'         => array(
+                            'type'            => 'font',
+                            'selector'        => '.njba-heading-title'
+                        )
+                    ),
+                    'heading_title_font_size'     => array(
+                        'type'          => 'njba-simplify',
+                        'label'         => __( 'Font Size', 'bb-njba' ),
+                        'default'       => array(
+                            'desktop'       => '28',
+                            'medium'        => '24',
+                            'small'         => '20',
+                        ),
+                        'description'   => _x( 'px', 'Value unit for font size. Such as: "14 px"', 'bb-njba' ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-title',
+                            'property'      => 'font-size',
+                            'unit'          => 'px'
+                        )
+                    ),
+                    'heading_title_line_height'     => array(
+                        'type'          => 'njba-simplify',
+                        'label'         => __( 'Line Height', 'bb-njba' ),
+                        'default'       => array(
+                            'desktop'       => '30',
+                            'medium'        => '26',
+                            'small'         => '22',
+                        ),
+                        'description'   => _x( 'px', 'Value unit for line height. Such as: "14 px"', 'bb-njba' ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-title',
+                            'property'      => 'line-height',
+                            'unit'          => 'px'
+                        )
+                    ),
+                    'heading_title_color'    => array(
+                        'type'          => 'color',
+                        'label'         => __('Color', 'bb-njba'),
+                        'default'       => '',
+                        'show_reset'    => true,
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-title',
+                            'property'      => 'color',
+                        )
+                    ),
+                    'heading_margin'      => array(
+                        'type'              => 'njba-multinumber',
+                        'label'             => __('Margin', 'bb-njba'),
+                        'description'       => 'px',
+                        'default'           => array(
+                            'top'          => 10,
+                            'right'      => 10,
+                            'bottom'      => 10,
+                            'left'      => 10
+                        ),
+                        'options'           => array(
+                            'top'               => array(
+                                'placeholder'       => __('Top', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-top',
+                                ),
+                            ),
+                            'right'            => array(
+                                'placeholder'       => __('Right', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-right',
+                                ),
+                            ),
+                            'bottom'            => array(
+                                'placeholder'       => __('Bottom', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-bottom',
+                                ),
+                            ),
+                            'left'            => array(
+                                'placeholder'       => __('Left', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-left',
+                                ),
+                            )
+                        )
+                    )
+                )
+            ),
+            'sub_heading'       => array( // Section
+                'title'        => __('Sub Title', 'bb-njba'), // Section Title
+                'fields'       => array( // Section Fields
+                   
+                    'heading_sub_title_alignment'         => array(
+                        'type'                      => 'select',
+                        'default'                   => 'center',
+                        'label'                     => __('Alignment', 'bb-njba'),
+                        'options'                   => array(
+                            'left'                      => __('Left', 'bb-njba'),
+                            'right'                     => __('Right', 'bb-njba'),
+                            'center'                    => __('Center', 'bb-njba'),
+                        ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-sub-title',
+                            'property'      => 'text-align'
+                        )
+                    ),
+                    'heading_sub_title_font'          => array(
+                        'type'          => 'font',
+                        'default'       => array(
+                            'family'        => 'Default',
+                            'weight'        => 300
+                        ),
+                        'label'         => __('Font', 'bb-njba'),
+                        'preview'         => array(
+                            'type'            => 'font',
+                            'selector'        => '.njba-heading-sub-title'
+                        )
+                    ),
+                    'heading_sub_title_font_size'     => array(
+                        'type'          => 'njba-simplify',
+                        'label'         => __( 'Font Size', 'bb-njba' ),
+                        'default'       => array(
+                            'desktop'       => '20',
+                            'medium'        => '20',
+                            'small'         => '20',
+                        ),
+                        'description'   => _x( 'px', 'Value unit for font size. Such as: "14 px"', 'bb-njba' ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-sub-title',
+                            'property'      => 'font-size',
+                            'unit'          => 'px'
+                        )
+                    ),
+                    'heading_sub_title_line_height'     => array(
+                        'type'          => 'njba-simplify',
+                        'label'         => __( 'Line Height', 'bb-njba' ),
+                        'default'       => array(
+                            'desktop'       => '20',
+                            'medium'        => '20',
+                            'small'         => '20',
+                        ),
+                        'description'   => _x( 'px', 'Value unit for line height. Such as: "14 px"', 'bb-njba' ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-title',
+                            'property'      => 'line-height',
+                            'unit'          => 'px'
+                        )
+                    ),
+                    'heading_sub_title_color'    => array(
+                        'type'          => 'color',
+                        'label'         => __('Color', 'bb-njba'),
+                        'default'       => '',
+                        'show_reset'    => true,
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-sub-title',
+                            'property'      => 'color',
+                        )
+                    ),
+                    'heading_subtitle_margin'      => array(
+                        'type'              => 'njba-multinumber',
+                        'label'             => __('Margin', 'bb-njba'),
+                        'description'       => 'px',
+                        'default'           => array(
+                            'top'          => 10,
+                            'right'      => 10,
+                            'bottom'      => 10,
+                            'left'      => 10
+                        ),
+                        'options'           => array(
+                            'top'               => array(
+                                'placeholder'       => __('Top', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-top',
+                                ),
+                            ),
+                            'right'            => array(
+                                'placeholder'       => __('Right', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-right',
+                                ),
+                            ),
+                            'bottom'            => array(
+                                'placeholder'       => __('Bottom', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-bottom',
+                                ),
+                            ),
+                            'left'            => array(
+                                'placeholder'       => __('Left', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-left',
+                                ),
+                            )
+                        )
+                    )
+                )
+            ),
+            'box_caption_field'          => array(
+                'title'         => __('Caption', 'bb-njba'),
+                'fields'        => array(
+                   
+                    'caption_title_tag'        => array(
+                        'type'            => 'select',
+                        'label'           => __('Caption Tag', 'bb-njba'),
+                        'default'         => 'h1',
+                        'options'         => array(
+                            'h1'      =>  __('H1', 'bb-njba'),
+                            'h2'      =>  __('H2', 'bb-njba'),
+                            'h3'      =>  __('H3', 'bb-njba'),
+                            'h4'      =>  __('H4', 'bb-njba'),
+                            'h5'      =>  __('H5', 'bb-njba'),
+                            'h6'      =>  __('H6', 'bb-njba')
+                        )
+                    ),
+                    'caption_title_alignment'         => array(
+                        'type'                      => 'select',
+                        'default'                   => 'center',
+                        'label'                     => __('Caption Alignment', 'bb-njba'),
+                        'options'                   => array(
+                            'left'                      => __('Left', 'bb-njba'),
+                            'right'                     => __('Right', 'bb-njba'),
+                            'center'                    => __('Center', 'bb-njba'),
+                        ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-title',
+                            'property'      => 'text-align'
+                        )
+                    ),
+                    'caption_title_font'          => array(
+                        'type'          => 'font',
+                        'default'       => array(
+                            'family'        => 'Default',
+                            'weight'        => 300
+                        ),
+                        'label'         => __('Caption Font', 'bb-njba'),
+                        'preview'         => array(
+                            'type'            => 'font',
+                            'selector'        => '.njba-heading-title'
+                        )
+                    ),
+                    'caption_title_font_size'     => array(
+                        'type'          => 'njba-simplify',
+                        'label'         => __( 'Caption Font Size', 'bb-njba' ),
+                        'default'       => array(
+                            'desktop'       => '28',
+                            'medium'        => '24',
+                            'small'         => '20',
+                        ),
+                        'description'   => _x( 'px', 'Value unit for font size. Such as: "14 px"', 'bb-njba' ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-title',
+                            'property'      => 'font-size',
+                            'unit'          => 'px'
+                        )
+                    ),
+                    'caption_title_line_height'     => array(
+                        'type'          => 'njba-simplify',
+                        'label'         => __( 'Caption Line Height', 'bb-njba' ),
+                        'default'       => array(
+                            'desktop'       => '30',
+                            'medium'        => '26',
+                            'small'         => '22',
+                        ),
+                        'description'   => _x( 'px', 'Value unit for line height. Such as: "14 px"', 'bb-njba' ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-title',
+                            'property'      => 'line-height',
+                            'unit'          => 'px'
+                        )
+                    ),
+                    'caption_title_color'    => array(
+                        'type'          => 'color',
+                        'label'         => __('Caption Color', 'bb-njba'),
+                        'default'       => '',
+                        'show_reset'    => true,
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-heading-title',
+                            'property'      => 'color',
+                        )
+                    ),
+                    'caption_margin'      => array(
+                        'type'              => 'njba-multinumber',
+                        'label'             => __('Caption Margin', 'bb-njba'),
+                        'description'       => 'px',
+                        'default'           => array(
+                            'top'          => 10,
+                            'right'      => 10,
+                            'bottom'      => 10,
+                            'left'      => 10
+                        ),
+                        'options'           => array(
+                            'top'               => array(
+                                'placeholder'       => __('Top', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-up',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-top',
+                                ),
+                            ),
+                            'right'            => array(
+                                'placeholder'       => __('Bottom', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-right',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-right',
+                                ),
+                            ),
+                            'bottom'            => array(
+                                'placeholder'       => __('Bottom', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-down',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-bottom',
+                                ),
+                            ),
+                            'left'            => array(
+                                'placeholder'       => __('Bottom', 'bb-njba'),
+                                'icon'              => 'fa-long-arrow-left',
+                                'preview'           => array(
+                                    'selector'          => '.njba-heading-title',
+                                    'property'          => 'margin-left',
+                                ),
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    ),
 ));

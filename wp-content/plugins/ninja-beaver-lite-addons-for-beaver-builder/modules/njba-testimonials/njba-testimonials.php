@@ -14,8 +14,8 @@ class NJBATestimonialsModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Testimonials', 'bb-njba'),
             'description'   => __('Addon to display testimonials.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Carousel Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'carousel' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-testimonials/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-testimonials/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -34,7 +34,7 @@ class NJBATestimonialsModule extends FLBuilderModule {
 		$this->add_js('jquery-bxslider');
     }
      // For Post Image
-    public function njba_profile_image_render($i) {
+    public function profile_image_render($i) {
         $photo = $this->settings->testimonials[$i]->photo;
        // print_r($photo_src);
         echo '<div class="njba-testimonial-image" itemscope itemprop="image" itemtype="http://schema.org/ImageObject">';
@@ -46,28 +46,28 @@ class NJBATestimonialsModule extends FLBuilderModule {
         echo '</div>';
     }
     // For Name
-    public function njba_profile_name($i) {
+    public function profile_name($i) {
         $title = $this->settings->testimonials[$i]->title;
         if( $title != '' ) {
             echo '<div class="njba-testimonial-title" itemscope itemprop="audience" itemtype="http://schema.org/Audience ">'.$title.'</div>';
         } 
     }
     // For Profile Designation
-    public function njba_profile_designation($i) {
+    public function profile_designation($i) {
         $subtitle = $this->settings->testimonials[$i]->subtitle;
         if( $subtitle != '' ) {
             echo '<div class="njba-testimonial-sub-title">'.$subtitle.'</div>';
         } 
     }
     // For Profile Content
-    public function njba_profile_content($i) {
+    public function profile_content($i) {
         $content = $this->settings->testimonials[$i]->testimonial;
         if( $content != '' ) {
             echo '<div class="njba-testimonial-content">'.$content.'</div>';
         } 
     }
     // For Ratings
-    public function njba_profile_ratings($i) {
+    public function profile_ratings($i) {
         $rate_show = $this->settings->testimonials[$i]->rate_show;
         $profile_rate = $this->settings->testimonials[$i]->profile_rate;
          if( $rate_show != 0 ) { 
@@ -86,7 +86,7 @@ class NJBATestimonialsModule extends FLBuilderModule {
         } 
     }
     // For Left Quote
-    public function njba_left_quotesign(){
+    public function left_quotesign(){
         if($this->settings->show_quote == 'yes'){
             echo '<div class="njba-testimonial-quote-icon">
                     <i class="fa fa-quote-left"></i>
@@ -94,7 +94,7 @@ class NJBATestimonialsModule extends FLBuilderModule {
         }
     }
     // For Right Quote
-    public function njba_right_quotesign(){
+    public function right_quotesign(){
         if($this->settings->show_quote == 'yes'){
             echo '<div class="njba-testimonial-quote-icon-two">
                      <i class="fa fa-quote-right"></i>
@@ -136,10 +136,9 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
 						'type'          => 'text',
 						'default'       => __( 'Testimonials', 'bb-njba' ),
 						'label'         => __('Heading', 'bb-njba'),
-						'preview'       => array(
-							'type'          => 'text',
-							'selector'      => '.njba-testimonials-heading'
-						)
+						'preview'   => array(
+                            'type'      => 'none'
+                        )
 					),
 				)
 			),
@@ -367,15 +366,32 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                         'options'        => array(
                             '1'      => 'layout_1',
                             '2'      => 'layout_2',
-                            '5'      => 'layout_5',
                             '3'      => 'layout_3',
                             '4'      => 'layout_4',
+                            '5'      => 'layout_5',
 							'6'      => 'layout_6',
 							'7'      => 'layout_7',
 							'8'      => 'layout_8',
                             '9'      => 'layout_9',
                         ),
-                    ),
+                        'toggle'    => array(
+                            '3'         => array(
+                                'fields'        => array('show_indicator'),
+                            ),
+                            '7'         => array(
+                                'fields'        => array('show_indicator','show_quote','img_bg_color'),
+                                'sections' => array('quote_style'),
+                            ),
+                            '8'         => array(
+                                'fields'        => array('show_indicator','show_quote','img_bg_color'),
+                                 'sections' => array('quote_style'),
+                            ),
+                            '9'         => array(
+                                'fields' => array('show_quote','quote_sign_bg_color','quote_sign_color','quote_sign_bg_color','quote_boxcontent_rotate','quote_box_rotate'),
+                                'sections' => array('quote_style'),
+                            )
+                        ),
+					),
 				)
 			),
         ),
@@ -537,22 +553,30 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                             ),
                         )
                     ),
-                   
+                    'show_indicator'    => array(
+                        'type'      => 'select',
+                        'default'   => 'yes',
+                        'label'     => __('Show Content Indicator', 'bb-njba'),
+                        'options'   => array(
+                            'yes'    => __('Yes', 'bb-njba'),
+                            'no'    => __('No', 'bb-njba'),
+                        ),
+                    ),
+                    
                     'content_box_padding'      => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Padding', 'bb-njba'),
-                        'default'           => array(
+                         'default'           => array(
                             'top'          => 40,
                             'right'        => 40,
                             'bottom'       => 40,
                             'left'         => 40
                         ),
+                          'description'       => 'px',
                         'options'           => array(
                             'top'               => array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
-                                
-                                'description'       => 'px',
                                 'preview'           => array(
                                     'selector'          => '.njba-profile-name',
                                     'property'          => 'margin-top',
@@ -561,8 +585,6 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                             'bottom'            => array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
-                               
-                                'description'       => 'px',
                                 'preview'           => array(
                                     'selector'          => '.njba-profile-name',
                                     'property'          => 'margin-bottom',
@@ -571,9 +593,7 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                             'left'            => array(
                                 'placeholder'       => __('Left', 'bb-njba'),
                                	'icon'              => 'fa-long-arrow-left',
-                               
-                               	'description'       => 'px',
-                                'preview'           => array(
+                               	'preview'           => array(
                                     'selector'          => '.njba-profile-name',
                                     'property'          => 'margin-left',
                                 ),
@@ -581,8 +601,6 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                              
-                                'description'       => 'px',
                                 'preview'           => array(
                                     'selector'          => '.njba-profile-name',
                                     'property'          => 'margin-right',
@@ -592,7 +610,77 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                     ),
 				),
             ),
-            
+            'quote_style'        => array(
+                'title'     => __('Quote Box', 'bb-njba'),
+                'fields'        => array( // Section Fields
+                    'show_quote'    => array(
+                        'type'      => 'select',
+                        'default'   => 'no',
+                        'label'     => __('Show Quote', 'bb-njba'),
+                        'options'   => array(
+                            'yes'    => __('Yes', 'bb-njba'),
+                            'no'    => __('No', 'bb-njba'),
+                        ),
+                        'toggle'    =>array(
+                            'yes'   =>array(
+                                'fields' => array('quote_sign_color'),
+                            ),
+                            'no'   =>array(
+                                'fields' => array(''),
+                            ),
+                        ),
+                    ),
+                    'quote_sign_color'    => array(
+                        'type'      => 'color',
+                        'label'     => __('Quote Color', 'bb-njba'),
+                        'show_reset'    => true,
+                        'default'       => '',
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-quote-icon i',
+                            'property'      => 'color',
+                        )
+                    ),
+                     'quote_sign_bg_color'    => array(
+                        'type'      => 'color',
+                        'label'     => __('Quote Box Background Color', 'bb-njba'),
+                        'show_reset'    => true,
+                        'default'       => '',
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-quote-icon',
+                            'property'      => 'background-color',
+                        )
+                    ),
+                      'quote_box_rotate'    => array(
+                        'type'          => 'text',
+                        'default'       => '-8',
+                        'maxlength'     => '3',
+                        'size'          => '5',
+                        'label'         => __('Box Rotation', 'bb-njba'),
+                        'description'   => _x( 'deg', 'Value unit for border radius. Such as: "5 deg"', 'bb-njba' ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-quote-box',
+                            'property'      => 'transform',
+                        )
+                    ),
+                    'quote_boxcontent_rotate'    => array(
+                        'type'          => 'text',
+                        'default'       => '8',
+                        'maxlength'     => '3',
+                        'size'          => '5',
+                        'label'         => __('Content Box Rotation', 'bb-njba'),
+                        'description'   => _x( 'deg', 'Value unit for border radius. Such as: "5 deg"', 'bb-njba' ),
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-quote-box-content',
+                            'property'      => 'transform',
+                        )
+                    ),
+                    
+                )
+            ),
             'borders'        => array(
                 'title'     => __('Image Box', 'bb-njba'),
                 'fields'        => array( // Section Fields
@@ -603,20 +691,16 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                         'default'       => 100,
                         'description'   => 'px'
                     ),
-                    'border_width'    => array(
-						'type'          => 'text',
-                        'default'       => '0',
-                        'maxlength'     => '2',
-                        'size'          => '5',
-						'label'         => __('Border Width', 'bb-njba'),
-                        'description'   => 'px',
+                    'img_bg_color'    => array(
+                        'type'          => 'color',
+                        'label'         => __('Background Color', 'bb-njba'),
+                        'show_reset'    => true,
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-testimonials-image img',
-                            'property'      => 'border-width',
-                            'unit'          => 'px'
+                            'selector'      => '.njba-testimonial.layout-7 .njba-testimonial-body-right,.njba-testimonial.layout-8 .njba-testimonial-body-right',
+                            'property'      => 'border-color',
                         )
-					),
+                    ),
                     'image_border_style'      => array(
                         'type'      => 'select',
                         'label'     => __('Border Style', 'bb-njba'),
@@ -628,6 +712,34 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                             'dashed'  => __('Dashed', 'bb-njba'),
                             'double'  => __('Double', 'bb-njba'),
                         ),
+                        'toggle'    => array(
+                            'solid'   =>array(
+                                'fields' => array('border_width','border_color','border_radius'),
+                            ),
+                            'dotted'   =>array(
+                                'fields' => array('border_width','border_color','border_radius'),
+                            ),
+                            'dashed'   =>array(
+                                'fields' => array('border_width','border_color','border_radius'),
+                            ),
+                            'double'   =>array(
+                                'fields' => array('border_width','border_color','border_radius'),
+                            ),
+                        )
+                    ),
+                    'border_width'    => array(
+                        'type'          => 'text',
+                        'default'       => '0',
+                        'maxlength'     => '2',
+                        'size'          => '5',
+                        'label'         => __('Border Width', 'bb-njba'),
+                        'description'   => 'px',
+                        'preview'       => array(
+                            'type'          => 'css',
+                            'selector'      => '.njba-testimonials-image img',
+                            'property'      => 'border-width',
+                            'unit'          => 'px'
+                        )
                     ),
                     'border_color'    => array(
 						'type'          => 'color',
@@ -653,6 +765,7 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                             'unit'          => 'px'
                         )
 					),
+                     
 				)
             ),
 		)
@@ -897,7 +1010,7 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                     'subtitle_margin'   => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Margin', 'bb-njba'),
-                         'default'           => array(
+                        'default'           => array(
                             'top'          => '',
                             'right'        => '',
                             'bottom'       => '',
@@ -1091,7 +1204,7 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                     'content_margin'   => array(
                         'type'              => 'njba-multinumber',
                         'label'             => __('Margin', 'bb-njba'),
-                         'default'           => array(
+                        'default'           => array(
                             'top'          => 20,
                             'right'        => 20,
                             'bottom'       => 20,
@@ -1131,7 +1244,7 @@ FLBuilder::register_module('NJBATestimonialsModule', array(
                             'right'            => array(
                                 'placeholder'       => __('Right', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-right',
-                               
+                              
                                 'description'       => 'px',
                                 'preview'           => array(
                                     'selector'          => '.njba-testimonial-content',
@@ -1159,11 +1272,17 @@ FLBuilder::register_settings_form('njba_testimonials_form', array(
                     'fields'     => array(
                         'title'     => array(
                             'type'          => 'text',
-                            'label'         => __('Name', 'bb-njba')
+                            'label'         => __('Name', 'bb-njba'),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                         'subtitle'     => array(
                             'type'          => 'text',
-                            'label'         => __('Profile', 'bb-njba')
+                            'label'         => __('Profile', 'bb-njba'),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                         'photo'     => array(
                             'type'          => 'photo',

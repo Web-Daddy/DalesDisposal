@@ -25,8 +25,7 @@
     min-height: 150px;
     cursor: pointer;
     outline: 1px solid #eee;
-    background-size: contain;
-    width: 100%;
+        background-size: contain;
 }
 .njba-label.team_layout span {
     display: none;
@@ -46,14 +45,3 @@
 .fl-form-table #fl-field-team_layout td .njba-option-5 {
     background-image: url(../images/layout-5.jpg);
 }
-label.njba-label.njba-option-3.team_layout,
-label.njba-label.njba-option-3.team_layout.selected,
-label.njba-label.njba-option-4.team_layout,
-label.njba-label.njba-option-4.team_layout.selected,
-label.njba-label.njba-option-5.team_layout,
-label.njba-label.njba-option-5.team_layout.selected{
-    cursor: not-allowed;
-}
-.fl-form-table #fl-field-team_layout td label.njba-label.njba-option-3.team_layout.selected,
-.fl-form-table #fl-field-team_layout td label.njba-label.njba-option-4.team_layout.selected,
-.fl-form-table #fl-field-team_layout td label.njba-label.njba-option-5.team_layout.selected{outline: 1px solid #eee;}

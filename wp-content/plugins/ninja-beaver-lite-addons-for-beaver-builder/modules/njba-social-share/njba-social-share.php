@@ -11,14 +11,13 @@ class NJBASocialShareModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Social Share', 'bb-njba'),
             'description'   => __('Addon for Share page content on social media.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-social-share/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-social-share/',
             'editor_export' => true, // Defaults to true and can be omitted.
             'enabled'       => true, // Defaults to true and can be omitted.
             'partial_refresh' => false, // Defaults to false and can be omitted.
-            'icon'              => 'share-alt2.svg',
         ));
     }
     /** 

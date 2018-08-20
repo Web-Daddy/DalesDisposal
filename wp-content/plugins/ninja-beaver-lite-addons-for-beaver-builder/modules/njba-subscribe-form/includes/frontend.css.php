@@ -1,3 +1,4 @@
+
 .fl-node-<?php echo $id; ?>.njba-subscribe-box .njba-subscribe-inner {
 	position: relative;
     float: left;
@@ -86,9 +87,12 @@
 	
 }
 <?php if( $settings->input_custom_width == 'custom' ) { ?>
-	.fl-node-<?php echo $id; ?> .njba-subscribe-form .njba-form-field.njba-name-field {
-		width: <?php echo $settings->input_name_width; ?>%;
+	.fl-node-<?php echo $id; ?> .njba-subscribe-form .njba-form-field.njba-fname-field {
+		width: <?php echo $settings->input_fname_width; ?>%;
 	}
+    .fl-node-<?php echo $id; ?> .njba-subscribe-form .njba-form-field.njba-lname-field {
+        width: <?php echo $settings->input_lname_width; ?>%;
+    }
 	.fl-node-<?php echo $id; ?> .njba-subscribe-form .njba-form-field.njba-email-field {
 		width: <?php echo $settings->input_email_width; ?>%;
 	}
@@ -103,9 +107,12 @@
 	<?php } ?>
 }
 <?php if( $settings->layout == 'compact' ) { ?>
-	.fl-node-<?php echo $id; ?> .njba-subscribe-form-compact .njba-form-field.njba-name-field {
+	.fl-node-<?php echo $id; ?> .njba-subscribe-form-compact .njba-form-field.njba-fname-field {
 		padding-right: <?php echo $settings->inputs_space; ?>%;
 	}
+    .fl-node-<?php echo $id; ?> .njba-subscribe-form-compact .njba-form-field.njba-lname-field {
+        padding-right: <?php echo $settings->inputs_space; ?>%;
+    }
 <?php } ?>
 .fl-node-<?php echo $id; ?> .njba-subscribe-form input[type=text],
 .fl-node-<?php echo $id; ?> .njba-subscribe-form input[type=email] {
@@ -369,7 +376,5 @@
 		<?php if( isset($settings->placeholder_font_size['mobile']) && $settings->placeholder_size == 'custom' ) { ?>
 	    font-size: <?php echo $settings->placeholder_font_size['mobile']; ?>px;
 	    <?php } ?>
-	}
-	
-	
+	}	
 }

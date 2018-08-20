@@ -14,8 +14,8 @@ class NJBAInfoboxTwoModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Infobox 2', 'bb-njba'),
             'description'   => __('Addon to display Infobox with Heading and Sub title.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-infobox-two/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-infobox-two/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -48,7 +48,7 @@ class NJBAInfoboxTwoModule extends FLBuilderModule {
     public function delete()
     {
     }
-    public function njba_icon_module($sep_type){
+    public function icon_module($sep_type){
         if($sep_type == 'icon') :
             $html = '<div class="njba-infobox-two"><i class="'.$this->settings->infobox_two_icon.'" aria-hidden="true"></i></div>';
         endif;
@@ -56,12 +56,12 @@ class NJBAInfoboxTwoModule extends FLBuilderModule {
             $html = '<div class="njba-infobox-two">'.$this->settings->infobox_two_text_select.'</div>';
         endif;
         if($sep_type == 'image') :
-            $src = $this->njba_get_image_src();
+            $src = $this->get_image_src();
             $html = '<div class="njba-infobox-two"><img src="'.$src.'"></div>';
         endif;
         return $html;
     }
-    public function njba_get_image_src()
+    public function get_image_src()
     {
         $src = $this->_get_image_url();
         return $src;
@@ -95,10 +95,9 @@ FLBuilder::register_module('NJBAInfoboxTwoModule', array(
 						'type'            => 'text',
 						'label'           => __('Heading', 'bb-njba'),
 						'default'         => 'Here is your Title.',
-						'preview'         => array(
-							'type'            => 'text',
-							'selector'        => '.njba-heading-title'
-						)
+						'preview'   => array(
+                            'type'      => 'none'
+                        )
 					),
                     'main_title_tag'        => array(
                         'type'            => 'select',
@@ -111,6 +110,9 @@ FLBuilder::register_module('NJBAInfoboxTwoModule', array(
                             'h4'      =>  __('H4', 'bb-njba'),
                             'h5'      =>  __('H5', 'bb-njba'),
                             'h6'      =>  __('H6', 'bb-njba')
+                        ),
+                        'preview'   => array(
+                            'type'      => 'none'
                         )
                     )
 				)
@@ -123,7 +125,10 @@ FLBuilder::register_module('NJBAInfoboxTwoModule', array(
                         'label'           => __('Sub title', 'bb-njba'),
                         'media_buttons' => false,
                         'rows'          => 6,
-                        'default'       => __('Enter description text here.','bb-njba')
+                        'default'       => __('Enter description text here.','bb-njba'),
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
 					)
 				)
 			),
@@ -165,7 +170,10 @@ FLBuilder::register_module('NJBAInfoboxTwoModule', array(
                     'infobox_two_text_select'         => array(
                         'type'            => 'text',
                         'label'           => __('Infobox Text', 'bb-njba'),
-                        'default'         => '01'
+                        'default'         => '01',
+                        'preview'       => array(
+                            'type'          => 'none',
+                        )
                     ),
                     'infobox_two_icon'          => array(
                         'type'          => 'icon',

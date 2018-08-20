@@ -14,11 +14,11 @@ class NJBASliderModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Slider', 'bb-njba'),
             'description'   => __('Addon to display Slider.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Carousel Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'carousel' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-slider/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-slider/',
-            'icon'              => 'slides.svg',
+            'icon'              => 'slides.svg',  
         ));
         /**
          * Use these methods to enqueue css and js already
@@ -167,7 +167,7 @@ FLBuilder::register_module('NJBASliderModule', array(
                         'show_reset'    => true,
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-image-carousel-main .njba-slider-nav a i',
+                            'selector'      => '.njba-slider-main .bx-wrapper .bx-controls-direction a ',
                             'property'      => 'background'
                         )
                     ),
@@ -178,7 +178,7 @@ FLBuilder::register_module('NJBASliderModule', array(
                         'show_reset'    => true,
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-image-carousel-main .njba-slider-nav a i',
+                            'selector'      => '.njba-slider-main .bx-wrapper .bx-controls-direction a i',
                             'property'      => 'color'
                         )
                     ),
@@ -247,7 +247,7 @@ FLBuilder::register_module('NJBASliderModule', array(
                         'show_reset'    => true,
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-image-carousel-main .bx-wranjbaer .bx-pager a',
+                            'selector'      => '.njba-slider-main a.bx-pager-link',
                             'property'      => 'background'
                         )
                     ),
@@ -258,7 +258,7 @@ FLBuilder::register_module('NJBASliderModule', array(
                         'show_reset'    => true,
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-image-carousel-main .bx-wranjbaer .bx-pager a.active',
+                            'selector'      => '.njba-slider-main a.bx-pager-link.active',
                             'property'      => 'background'
                         )
                     ),

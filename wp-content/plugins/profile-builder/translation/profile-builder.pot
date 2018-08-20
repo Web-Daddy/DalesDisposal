@@ -25,7 +25,7 @@ msgstr ""
 msgid "Choose (Single) User Listing to display under bbPress user Profile tab:"
 msgstr ""
 
-#: ../pb-add-on-bbpress/bbpress-page.php:82, ../pb-add-on-bbpress/bbpress-page.php:117, woosync-page.php:80, woosync-page.php:115, ../pb-add-on-campaign-monitor-integration/admin/cmonitor-page.php:552, ../pb-add-on-mailchimp-integration/admin/mailchimp-page.php:233, ../pb-add-on-mailchimp-integration/admin/mailchimp-page.php:308, ../profile-builder-2.0/features/content-restriction/content-restriction.php:133
+#: ../pb-add-on-bbpress/bbpress-page.php:82, ../pb-add-on-bbpress/bbpress-page.php:117, ../pb-add-on-woocommerce/woosync-page.php:80, ../pb-add-on-woocommerce/woosync-page.php:115, ../pb-add-on-campaign-monitor-integration/admin/cmonitor-page.php:552, ../pb-add-on-mailchimp-integration/admin/mailchimp-page.php:233, ../pb-add-on-mailchimp-integration/admin/mailchimp-page.php:308, ../profile-builder-2.0/features/content-restriction/content-restriction.php:133
 msgid "None"
 msgstr ""
 
@@ -37,7 +37,7 @@ msgstr ""
 msgid "Choose Edit Profile form to display under bbPress Profile Edit tab:"
 msgstr ""
 
-#: ../pb-add-on-bbpress/bbpress-page.php:118, ../pb-add-on-buddypress/buddypress-page.php:98, woosync-page.php:116
+#: ../pb-add-on-bbpress/bbpress-page.php:118, ../pb-add-on-buddypress/buddypress-page.php:98, ../pb-add-on-woocommerce/woosync-page.php:116
 msgid "Default Edit Profile"
 msgstr ""
 
@@ -421,11 +421,11 @@ msgstr ""
 msgid "<pre>Title</pre><pre>Type</pre><pre>Meta Name</pre><pre class=\"wppb-mb-head-required\">Required</pre><pre class=\"wppb-mb-head-visibility\"></pre>"
 msgstr ""
 
-#: ../pb-add-on-field-visibility/index.php:222, ../pb-add-on-labels-edit/pble.php:354, ../profile-builder-2.0/admin/manage-fields.php:1238, ../profile-builder-2.0/features/functions.php:751, ../profile-builder-2.0/features/functions.php:758, ../profile-builder-2.0/features/admin-approval/class-admin-approval.php:108, ../profile-builder-2.0/features/roles-editor/roles-editor.php:866, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:183, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:197, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:211, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:225, ../profile-builder-2.0/modules/multiple-forms/multiple-forms.php:406
+#: ../pb-add-on-field-visibility/index.php:222, ../pb-add-on-labels-edit/pble.php:354, ../profile-builder-2.0/admin/manage-fields.php:1238, ../profile-builder-2.0/features/functions.php:763, ../profile-builder-2.0/features/functions.php:770, ../profile-builder-2.0/features/admin-approval/class-admin-approval.php:108, ../profile-builder-2.0/features/roles-editor/roles-editor.php:866, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:183, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:197, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:211, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:225, ../profile-builder-2.0/modules/multiple-forms/multiple-forms.php:406
 msgid "Edit"
 msgstr ""
 
-#: ../pb-add-on-field-visibility/index.php:222, ../profile-builder-2.0/admin/manage-fields.php:1238, ../profile-builder-2.0/features/functions.php:744, ../profile-builder-2.0/features/functions.php:758, ../profile-builder-2.0/features/admin-approval/class-admin-approval.php:113, ../profile-builder-2.0/features/email-confirmation/class-email-confirmation.php:121, ../profile-builder-2.0/features/email-confirmation/class-email-confirmation.php:218, ../profile-builder-2.0/features/roles-editor/roles-editor.php:179, ../profile-builder-2.0/features/roles-editor/roles-editor.php:884, ../profile-builder-2.0/features/roles-editor/roles-editor.php:893, ../profile-builder-2.0/features/roles-editor/roles-editor.php:904, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:183, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:197, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:211, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:225
+#: ../pb-add-on-field-visibility/index.php:222, ../profile-builder-2.0/admin/manage-fields.php:1238, ../profile-builder-2.0/features/functions.php:756, ../profile-builder-2.0/features/functions.php:770, ../profile-builder-2.0/features/admin-approval/class-admin-approval.php:113, ../profile-builder-2.0/features/email-confirmation/class-email-confirmation.php:121, ../profile-builder-2.0/features/email-confirmation/class-email-confirmation.php:218, ../profile-builder-2.0/features/roles-editor/roles-editor.php:179, ../profile-builder-2.0/features/roles-editor/roles-editor.php:884, ../profile-builder-2.0/features/roles-editor/roles-editor.php:893, ../profile-builder-2.0/features/roles-editor/roles-editor.php:904, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:183, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:197, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:211, ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:225
 msgid "Delete"
 msgstr ""
 
@@ -853,7 +853,7 @@ msgstr ""
 msgid "You will be redirected in 5 seconds. If not, click %%."
 msgstr ""
 
-#: ../pb-add-on-social-connect/index.php:390, ../profile-builder-2.0/features/functions.php:1023
+#: ../pb-add-on-social-connect/index.php:390, ../profile-builder-2.0/features/functions.php:1035
 msgid "here"
 msgstr ""
 
@@ -909,179 +909,179 @@ msgstr ""
 msgid "Your account is linked with:"
 msgstr ""
 
-#: billing-fields.php:5, shipping-fields.php:5
+#: ../pb-add-on-woocommerce/billing-fields.php:5, ../pb-add-on-woocommerce/shipping-fields.php:5
 msgid "Country"
 msgstr ""
 
-#: billing-fields.php:6, shipping-fields.php:6, ../profile-builder-2.0/admin/manage-fields.php:245
+#: ../pb-add-on-woocommerce/billing-fields.php:6, ../pb-add-on-woocommerce/shipping-fields.php:6, ../profile-builder-2.0/admin/manage-fields.php:245
 msgid "First Name"
 msgstr ""
 
-#: billing-fields.php:7, shipping-fields.php:7, ../profile-builder-2.0/admin/manage-fields.php:246
+#: ../pb-add-on-woocommerce/billing-fields.php:7, ../pb-add-on-woocommerce/shipping-fields.php:7, ../profile-builder-2.0/admin/manage-fields.php:246
 msgid "Last Name"
 msgstr ""
 
-#: billing-fields.php:8, shipping-fields.php:8
+#: ../pb-add-on-woocommerce/billing-fields.php:8, ../pb-add-on-woocommerce/shipping-fields.php:8
 msgid "Company Name"
 msgstr ""
 
-#: billing-fields.php:9, shipping-fields.php:9
+#: ../pb-add-on-woocommerce/billing-fields.php:9, ../pb-add-on-woocommerce/shipping-fields.php:9
 msgid "Address"
 msgstr ""
 
-#: billing-fields.php:11, shipping-fields.php:11
+#: ../pb-add-on-woocommerce/billing-fields.php:11, ../pb-add-on-woocommerce/shipping-fields.php:11
 msgid "Town / City"
 msgstr ""
 
-#: billing-fields.php:12, shipping-fields.php:12
+#: ../pb-add-on-woocommerce/billing-fields.php:12, ../pb-add-on-woocommerce/shipping-fields.php:12
 msgid "State / County"
 msgstr ""
 
-#: billing-fields.php:13, shipping-fields.php:13
+#: ../pb-add-on-woocommerce/billing-fields.php:13, ../pb-add-on-woocommerce/shipping-fields.php:13
 msgid "Postcode / Zip"
 msgstr ""
 
-#: billing-fields.php:14
+#: ../pb-add-on-woocommerce/billing-fields.php:14
 msgid "Email Address"
 msgstr ""
 
-#: billing-fields.php:15
+#: ../pb-add-on-woocommerce/billing-fields.php:15
 msgid "Phone"
 msgstr ""
 
-#: billing-fields.php:278
+#: ../pb-add-on-woocommerce/billing-fields.php:278
 msgid "Ship to a different address?"
 msgstr ""
 
-#: index.php:160, index.php:729
+#: ../pb-add-on-woocommerce/index.php:160, ../pb-add-on-woocommerce/index.php:729
 msgid "Billing Address"
 msgstr ""
 
-#: index.php:160
+#: ../pb-add-on-woocommerce/index.php:160
 msgid "Displays customer billing fields in front-end. "
 msgstr ""
 
-#: index.php:164, index.php:730
+#: ../pb-add-on-woocommerce/index.php:164, ../pb-add-on-woocommerce/index.php:730
 msgid "Shipping Address"
 msgstr ""
 
-#: index.php:164
+#: ../pb-add-on-woocommerce/index.php:164
 msgid "Displays customer shipping fields in front-end. "
 msgstr ""
 
-#: index.php:239, index.php:258, index.php:355, index.php:358, index.php:785
+#: ../pb-add-on-woocommerce/index.php:239, ../pb-add-on-woocommerce/index.php:258, ../pb-add-on-woocommerce/index.php:355, ../pb-add-on-woocommerce/index.php:358, ../pb-add-on-woocommerce/index.php:785
 msgid "Address line 2"
 msgstr ""
 
-#: index.php:247
+#: ../pb-add-on-woocommerce/index.php:247
 msgid "Billing Fields"
 msgstr ""
 
-#: index.php:247
+#: ../pb-add-on-woocommerce/index.php:247
 msgid "Select which WooCommerce Billing fields to display to the user ( drag and drop to re-order ) and which should be required"
 msgstr ""
 
-#: index.php:248
+#: ../pb-add-on-woocommerce/index.php:248
 msgid "Billing Fields Order"
 msgstr ""
 
-#: index.php:248
+#: ../pb-add-on-woocommerce/index.php:248
 msgid "Save the billing fields order from the billing fields checkboxes"
 msgstr ""
 
-#: index.php:249
+#: ../pb-add-on-woocommerce/index.php:249
 msgid "Billing Fields Name"
 msgstr ""
 
-#: index.php:249
+#: ../pb-add-on-woocommerce/index.php:249
 msgid "Save the billing fields names"
 msgstr ""
 
-#: index.php:266
+#: ../pb-add-on-woocommerce/index.php:266
 msgid "Shipping Fields"
 msgstr ""
 
-#: index.php:266
+#: ../pb-add-on-woocommerce/index.php:266
 msgid "Select which WooCommerce Shipping fields to display to the user ( drag and drop to re-order ) and which should be required"
 msgstr ""
 
-#: index.php:267
+#: ../pb-add-on-woocommerce/index.php:267
 msgid "Shipping Fields Order"
 msgstr ""
 
-#: index.php:267
+#: ../pb-add-on-woocommerce/index.php:267
 msgid "Save the shipping fields order from the billing fields checkboxes"
 msgstr ""
 
-#: index.php:268
+#: ../pb-add-on-woocommerce/index.php:268
 msgid "Shipping Fields Name"
 msgstr ""
 
-#: index.php:268
+#: ../pb-add-on-woocommerce/index.php:268
 msgid "Save the shipping fields names"
 msgstr ""
 
-#: index.php:296
+#: ../pb-add-on-woocommerce/index.php:296
 msgid "Field Name"
 msgstr ""
 
-#: index.php:297, ../profile-builder-2.0/admin/manage-fields.php:203
+#: ../pb-add-on-woocommerce/index.php:297, ../profile-builder-2.0/admin/manage-fields.php:203
 msgid "Required"
 msgstr ""
 
-#: index.php:360
+#: ../pb-add-on-woocommerce/index.php:360
 msgid "Click to edit "
 msgstr ""
 
-#: index.php:384, ../profile-builder-2.0/front-end/default-fields/email/email.php:47
+#: ../pb-add-on-woocommerce/index.php:384, ../profile-builder-2.0/front-end/default-fields/email/email.php:47
 msgid "The email you entered is not a valid email address."
 msgstr ""
 
-#: index.php:642
+#: ../pb-add-on-woocommerce/index.php:642
 msgid "No options available. Please select one country."
 msgstr ""
 
-#: index.php:661, index.php:686
+#: ../pb-add-on-woocommerce/index.php:661, ../pb-add-on-woocommerce/index.php:686
 msgid "Billing "
 msgstr ""
 
-#: index.php:669, index.php:693
+#: ../pb-add-on-woocommerce/index.php:669, ../pb-add-on-woocommerce/index.php:693
 msgid "Shipping "
 msgstr ""
 
-#: index.php:846
+#: ../pb-add-on-woocommerce/index.php:846
 msgid "WooCommerce needs to be installed and activated for Profile Builder - WooCommerce Sync Add-on to work!"
 msgstr ""
 
-#: woo-checkout-field-support.php:65
+#: ../pb-add-on-woocommerce/woo-checkout-field-support.php:69
 msgid "Display on WooCommerce Checkout"
 msgstr ""
 
-#: woo-checkout-field-support.php:65
+#: ../pb-add-on-woocommerce/woo-checkout-field-support.php:69
 msgid "Whether the field should be added to the WooCommerce checkout form or not"
 msgstr ""
 
-#: woosync-page.php:23, woosync-page.php:23, woosync-page.php:70
+#: ../pb-add-on-woocommerce/woosync-page.php:23, ../pb-add-on-woocommerce/woosync-page.php:23, ../pb-add-on-woocommerce/woosync-page.php:70
 msgid "WooCommerce Sync"
 msgstr ""
 
-#: woosync-page.php:76
+#: ../pb-add-on-woocommerce/woosync-page.php:76
 msgid "Choose Register form to display on My Account page:"
 msgstr ""
 
-#: woosync-page.php:81
+#: ../pb-add-on-woocommerce/woosync-page.php:81
 msgid "Default Register"
 msgstr ""
 
-#: woosync-page.php:104
+#: ../pb-add-on-woocommerce/woosync-page.php:104
 msgid "Select which Profile Builder Register form to display on My Account page from WooCommerce. <br/> This will also add the Profile Builder Login form to MyAccount page."
 msgstr ""
 
-#: woosync-page.php:111
+#: ../pb-add-on-woocommerce/woosync-page.php:111
 msgid "Choose Edit Profile form to display on My Account page:"
 msgstr ""
 
-#: woosync-page.php:139
+#: ../pb-add-on-woocommerce/woosync-page.php:139
 msgid "Select which Profile Builder Edit-profile form to display on My Account page from WooCommerce."
 msgstr ""
 
@@ -1165,7 +1165,7 @@ msgstr ""
 msgid "Click to edit"
 msgstr ""
 
-#: ../pb-add-on-campaign-monitor-integration/admin/cmonitor-page.php:451, ../pb-add-on-mailchimp-integration/admin/mailchimp-page.php:171, ../profile-builder-2.0/features/functions.php:737, ../pb-add-on-labels-edit/assets/lib/wck-api/wordpress-creation-kit.php:403, ../profile-builder-2.0/assets/lib/wck-api/wordpress-creation-kit.php:395
+#: ../pb-add-on-campaign-monitor-integration/admin/cmonitor-page.php:451, ../pb-add-on-mailchimp-integration/admin/mailchimp-page.php:171, ../profile-builder-2.0/features/functions.php:749, ../pb-add-on-labels-edit/assets/lib/wck-api/wordpress-creation-kit.php:403, ../profile-builder-2.0/assets/lib/wck-api/wordpress-creation-kit.php:395
 msgid "Cancel"
 msgstr ""
 
@@ -1295,39 +1295,39 @@ msgstr ""
 msgid "The Campaign Monitor API key is either missing or is invalid."
 msgstr ""
 
-#: ../pb-add-on-gdpr-communication-preferences/admin/manage-fields.php:29
+#: admin/manage-fields.php:29
 msgid "Communication Preferences"
 msgstr ""
 
-#: ../pb-add-on-gdpr-communication-preferences/admin/manage-fields.php:29, ../pb-add-on-gdpr-communication-preferences/front-end/gdpr-communication-preferences.php:9, ../profile-builder-2.0/admin/manage-fields.php:250, ../profile-builder-2.0/front-end/recover.php:119, ../profile-builder-2.0/features/admin-approval/class-admin-approval.php:169, ../profile-builder-2.0/features/email-confirmation/class-email-confirmation.php:169, ../profile-builder-2.0/modules/user-listing/userlisting.php:117
+#: admin/manage-fields.php:29, front-end/gdpr-communication-preferences.php:9, ../profile-builder-2.0/admin/manage-fields.php:250, ../profile-builder-2.0/front-end/recover.php:119, ../profile-builder-2.0/features/admin-approval/class-admin-approval.php:169, ../profile-builder-2.0/features/email-confirmation/class-email-confirmation.php:169, ../profile-builder-2.0/modules/user-listing/userlisting.php:117
 msgid "E-mail"
 msgstr ""
 
-#: ../pb-add-on-gdpr-communication-preferences/admin/manage-fields.php:29, ../pb-add-on-gdpr-communication-preferences/front-end/gdpr-communication-preferences.php:9
+#: admin/manage-fields.php:29, front-end/gdpr-communication-preferences.php:9
 msgid "Telephone"
 msgstr ""
 
-#: ../pb-add-on-gdpr-communication-preferences/admin/manage-fields.php:29, ../pb-add-on-gdpr-communication-preferences/front-end/gdpr-communication-preferences.php:9
+#: admin/manage-fields.php:29, front-end/gdpr-communication-preferences.php:9
 msgid "SMS"
 msgstr ""
 
-#: ../pb-add-on-gdpr-communication-preferences/admin/manage-fields.php:29, ../pb-add-on-gdpr-communication-preferences/front-end/gdpr-communication-preferences.php:9
+#: admin/manage-fields.php:29, front-end/gdpr-communication-preferences.php:9
 msgid "Post"
 msgstr ""
 
-#: ../pb-add-on-gdpr-communication-preferences/admin/manage-fields.php:29
+#: admin/manage-fields.php:29
 msgid "Select which communication preferences are available on your site ( drag and drop to re-order )"
 msgstr ""
 
-#: ../pb-add-on-gdpr-communication-preferences/admin/manage-fields.php:30
+#: admin/manage-fields.php:30
 msgid "Communication Preferences Order"
 msgstr ""
 
-#: ../pb-add-on-gdpr-communication-preferences/admin/manage-fields.php:30
+#: admin/manage-fields.php:30
 msgid "Save the communication preferences order"
 msgstr ""
 
-#: ../pb-add-on-gdpr-communication-preferences/front-end/gdpr-communication-preferences.php:44, ../pb-add-on-select2/front-end/select2-field.php:72, ../pb-add-on-select2/front-end/select2-multiple-field.php:86, ../profile-builder-2.0/front-end/extra-fields/avatar/avatar.php:74, ../profile-builder-2.0/front-end/extra-fields/checkbox/checkbox.php:45, ../profile-builder-2.0/front-end/extra-fields/colorpicker/colorpicker.php:45, ../profile-builder-2.0/front-end/extra-fields/datepicker/datepicker.php:40, ../profile-builder-2.0/front-end/extra-fields/input/input.php:30, ../profile-builder-2.0/front-end/extra-fields/input-hidden/input-hidden.php:34, ../profile-builder-2.0/front-end/extra-fields/map/map.php:51, ../profile-builder-2.0/front-end/extra-fields/number/number.php:30, ../profile-builder-2.0/front-end/extra-fields/phone/phone.php:39, ../profile-builder-2.0/front-end/extra-fields/radio/radio.php:44, ../profile-builder-2.0/front-end/extra-fields/select/select.php:51, ../profile-builder-2.0/front-end/extra-fields/select-cpt/select-cpt.php:58, ../profile-builder-2.0/front-end/extra-fields/select-multiple/select-multiple.php:46, ../profile-builder-2.0/front-end/extra-fields/select-timezone/select-timezone.php:49, ../profile-builder-2.0/front-end/extra-fields/textarea/textarea.php:30, ../profile-builder-2.0/front-end/extra-fields/upload/upload.php:70, ../profile-builder-2.0/front-end/extra-fields/wysiwyg/wysiwyg.php:33
+#: front-end/gdpr-communication-preferences.php:44, ../pb-add-on-select2/front-end/select2-field.php:72, ../pb-add-on-select2/front-end/select2-multiple-field.php:86, ../profile-builder-2.0/front-end/extra-fields/avatar/avatar.php:74, ../profile-builder-2.0/front-end/extra-fields/checkbox/checkbox.php:45, ../profile-builder-2.0/front-end/extra-fields/colorpicker/colorpicker.php:45, ../profile-builder-2.0/front-end/extra-fields/datepicker/datepicker.php:40, ../profile-builder-2.0/front-end/extra-fields/input/input.php:30, ../profile-builder-2.0/front-end/extra-fields/input-hidden/input-hidden.php:34, ../profile-builder-2.0/front-end/extra-fields/map/map.php:51, ../profile-builder-2.0/front-end/extra-fields/number/number.php:30, ../profile-builder-2.0/front-end/extra-fields/phone/phone.php:39, ../profile-builder-2.0/front-end/extra-fields/radio/radio.php:44, ../profile-builder-2.0/front-end/extra-fields/select/select.php:51, ../profile-builder-2.0/front-end/extra-fields/select-cpt/select-cpt.php:58, ../profile-builder-2.0/front-end/extra-fields/select-multiple/select-multiple.php:46, ../profile-builder-2.0/front-end/extra-fields/select-timezone/select-timezone.php:49, ../profile-builder-2.0/front-end/extra-fields/textarea/textarea.php:30, ../profile-builder-2.0/front-end/extra-fields/upload/upload.php:70, ../profile-builder-2.0/front-end/extra-fields/wysiwyg/wysiwyg.php:33
 msgid "required"
 msgstr ""
 
@@ -1731,15 +1731,15 @@ msgstr ""
 msgid "Very weak"
 msgstr ""
 
-#: ../profile-builder-2.0/admin/admin-functions.php:137, ../profile-builder-2.0/admin/general-settings.php:279, ../profile-builder-2.0/features/functions.php:571, ../profile-builder-2.0/features/functions.php:595
+#: ../profile-builder-2.0/admin/admin-functions.php:137, ../profile-builder-2.0/admin/general-settings.php:279, ../profile-builder-2.0/features/functions.php:583, ../profile-builder-2.0/features/functions.php:607
 msgid "Weak"
 msgstr ""
 
-#: ../profile-builder-2.0/admin/admin-functions.php:137, ../profile-builder-2.0/admin/general-settings.php:280, ../profile-builder-2.0/features/functions.php:571, ../profile-builder-2.0/features/functions.php:595
+#: ../profile-builder-2.0/admin/admin-functions.php:137, ../profile-builder-2.0/admin/general-settings.php:280, ../profile-builder-2.0/features/functions.php:583, ../profile-builder-2.0/features/functions.php:607
 msgid "Medium"
 msgstr ""
 
-#: ../profile-builder-2.0/admin/admin-functions.php:137, ../profile-builder-2.0/admin/general-settings.php:281, ../profile-builder-2.0/features/functions.php:571, ../profile-builder-2.0/features/functions.php:595
+#: ../profile-builder-2.0/admin/admin-functions.php:137, ../profile-builder-2.0/admin/general-settings.php:281, ../profile-builder-2.0/features/functions.php:583, ../profile-builder-2.0/features/functions.php:607
 msgid "Strong"
 msgstr ""
 
@@ -2067,19 +2067,59 @@ msgstr ""
 msgid "** only available in the %1$sPro version%2$s."
 msgstr ""
 
-#: ../profile-builder-2.0/admin/feedback.php:9
+#: ../profile-builder-2.0/admin/feedback.php:23
 msgid "Quick Feedback"
 msgstr ""
 
-#: ../profile-builder-2.0/admin/feedback.php:11
+#: ../profile-builder-2.0/admin/feedback.php:24
 msgid "Because we care about our clients, please leave us feedback on why you are no longer using our plugin."
 msgstr ""
 
-#: ../profile-builder-2.0/admin/feedback.php:12
+#: ../profile-builder-2.0/admin/feedback.php:30
+msgid "Lacking certain features"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:31
+msgid "What feature would you like to see?"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:35
+msgid "Hard to use"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:36
+msgid "How can we improve our user experience ?"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:40
+msgid "Unsatisfactory support"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:45
+msgid "Poor Documentation"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:46
+msgid "Tell us what you couldn't find"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:50
+msgid "Other"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:51
+msgid "Please tell us more"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:56
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: ../profile-builder-2.0/admin/feedback.php:59
 msgid "Skip and Deactivate"
 msgstr ""
 
-#: ../profile-builder-2.0/admin/feedback.php:83
+#: ../profile-builder-2.0/admin/feedback.php:163
 msgid "Submit and Deactivate"
 msgstr ""
 
@@ -4389,51 +4429,51 @@ msgstr ""
 msgid "I allow the website to collect and store the data I submit through this form."
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:545
+#: ../profile-builder-2.0/features/functions.php:557
 msgid "Strength indicator"
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:571, ../profile-builder-2.0/features/functions.php:595
+#: ../profile-builder-2.0/features/functions.php:583, ../profile-builder-2.0/features/functions.php:607
 msgid "Very Weak"
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:585
+#: ../profile-builder-2.0/features/functions.php:597
 msgid "Minimum length of %d characters."
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:596
+#: ../profile-builder-2.0/features/functions.php:608
 msgid "The password must have a minimum strength of %s."
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:673
+#: ../profile-builder-2.0/features/functions.php:685
 msgid "This field is required"
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:711, ../profile-builder-2.0/front-end/default-fields/recaptcha/recaptcha.php:461, ../profile-builder-2.0/front-end/default-fields/recaptcha/recaptcha.php:470, ../profile-builder-2.0/front-end/default-fields/recaptcha/recaptcha.php:523, ../profile-builder-2.0/front-end/default-fields/recaptcha/recaptcha.php:568
+#: ../profile-builder-2.0/features/functions.php:723, ../profile-builder-2.0/front-end/default-fields/recaptcha/recaptcha.php:461, ../profile-builder-2.0/front-end/default-fields/recaptcha/recaptcha.php:470, ../profile-builder-2.0/front-end/default-fields/recaptcha/recaptcha.php:523, ../profile-builder-2.0/front-end/default-fields/recaptcha/recaptcha.php:568
 msgid "Please enter a (valid) reCAPTCHA value"
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:718
+#: ../profile-builder-2.0/features/functions.php:730
 msgid "Incorrect phone number"
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:730, ../profile-builder-2.0/features/content-restriction/content-restriction.php:159, ../profile-builder-2.0/modules/class-mustache-templates/class-mustache-templates.php:390, ../pb-add-on-labels-edit/assets/lib/wck-api/wordpress-creation-kit.php:402, ../profile-builder-2.0/assets/lib/wck-api/wordpress-creation-kit.php:394
+#: ../profile-builder-2.0/features/functions.php:742, ../profile-builder-2.0/features/content-restriction/content-restriction.php:159, ../profile-builder-2.0/modules/class-mustache-templates/class-mustache-templates.php:390, ../pb-add-on-labels-edit/assets/lib/wck-api/wordpress-creation-kit.php:402, ../profile-builder-2.0/assets/lib/wck-api/wordpress-creation-kit.php:394
 msgid "Save Changes"
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:758, ../pb-add-on-labels-edit/assets/lib/wck-api/wordpress-creation-kit.php:444, ../profile-builder-2.0/assets/lib/wck-api/wordpress-creation-kit.php:436
+#: ../profile-builder-2.0/features/functions.php:770, ../pb-add-on-labels-edit/assets/lib/wck-api/wordpress-creation-kit.php:444, ../profile-builder-2.0/assets/lib/wck-api/wordpress-creation-kit.php:436
 msgid "Content"
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:925
+#: ../profile-builder-2.0/features/functions.php:937
 msgid "<br><br>Also, you will be able to visit your site at "
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:938
+#: ../profile-builder-2.0/features/functions.php:950
 msgid "<br><br>You can visit your site at "
 msgstr ""
 
-#: ../profile-builder-2.0/features/functions.php:1024
+#: ../profile-builder-2.0/features/functions.php:1036
 msgid "You will soon be redirected automatically. If you see this page for more than %1$d seconds, please click %2$s.%3$s"
 msgstr ""
 
@@ -5326,7 +5366,7 @@ msgid "Global Redirects"
 msgstr ""
 
 #: ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:137
-msgid "Login ( wp_login.php )"
+msgid "Login ( wp-login.php )"
 msgstr ""
 
 #: ../profile-builder-2.0/modules/custom-redirects/custom_redirects_admin.php:138

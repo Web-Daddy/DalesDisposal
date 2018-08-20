@@ -536,6 +536,18 @@ function wppb_check_missing_http( $redirectLink ) {
 	return preg_match( '#^(?:[a-z\d]+(?:-+[a-z\d]+)*\.)+[a-z]+(?::\d+)?(?:/|$)#i', $redirectLink );
 }
 
+//function that adds missing http to a link
+function wppb_add_missing_http( $link ){
+	$http = '';
+	if ( wppb_check_missing_http( $link ) ) { //if missing http(s)		
+		$http = 'http';
+		if ((isset($_SERVER["HTTPS"])) && ($_SERVER["HTTPS"] == "on"))
+			$http .= "s";
+		$http .= "://";
+	}
+
+	return $http . $link;
+}
 
 
 //function to output the password strength checker on frontend forms

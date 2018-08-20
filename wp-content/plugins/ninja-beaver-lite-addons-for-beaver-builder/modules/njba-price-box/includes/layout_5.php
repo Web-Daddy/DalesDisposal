@@ -27,8 +27,8 @@
                     </div>
                 <?php } ?>
                 <div class="njba-pricing-inner-heading">
-                    <?php if($box_content->title != '') { ?> <div class="price-heading"><?php echo $box_content->title; ?></div> <?php } else { echo "<h1>&nbsp; </h1>"; } ?>
-                    <?php if($box_content->price != '' || $box_content->duration != '' ) { ?> <h2><?php echo $box_content->price; ?> <span class="duration"><?php echo $box_content->duration; ?></span> </h2> <?php } else { echo "<h2> &nbsp;<span> &nbsp;</span></h2>"; } ?>
+                    <?php if($box_content->title != '') { ?> <h1 class="njba-pricing-inner-heading-title-selector"><?php echo $box_content->title; ?></h1> <?php } else { echo "<h1>&nbsp; </h1>"; } ?>
+                    <?php if($box_content->price != '' || $box_content->duration != '' ) { ?> <h2 class="njba-pricing-inner-heading-price-selector"><?php echo $box_content->price; ?> <span class="duration njba-pricing-inner-heading-duration-selector"><?php echo $box_content->duration; ?></span> </h2> <?php } else { echo "<h2> &nbsp;<span> &nbsp;</span></h2>"; } ?>
                 </div>
                 <div class="njba-pricing-inner-body">
                     <ul>
@@ -36,7 +36,7 @@
                             $total_feature = count($box_content->features);
                             for($j=0; $j < $total_feature; $j++) :
                                 ?>
-                                    <li><?php echo $box_content->features[$j]; ?></li>
+                                    <li class="njba-pricing-inner-body-features-selector"><?php echo $box_content->features[$j]; ?></li>
                                 <?php
                             endfor;
                         ?>

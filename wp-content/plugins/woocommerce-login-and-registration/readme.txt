@@ -3,8 +3,8 @@
 Contributors: phoeniixx
 Tags: phoeniixx, woocommerce, woocommerce plugins, login, signup, register,signin plugin, page header, shortcode,woocommerce login / signup lite,woocommerce login signup,woocommerce login,woocommerce signup , popup , login / sign up popup , show placeholder , hide placeholder , registration fields , custom registration fields , lightbox popup style , dropdown popup style , popup exit effect , popup entrance effect , popup layout. 
 Requires at least: 4.0
-Tested up to: 4.8
-Stable tag: 1.6.3
+Tested up to: 4.9
+Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,9 @@ Here is our premium wordpress theme
 6. This screenshot shows the popup for Register form.
 
 == Changelog ==
+
+= 1.6.4 - 07/08/2018 =
+* compatible with latest version of woocommerce
 
 = 1.6.3 - 09/06/2018 =
 * Fixed warnings

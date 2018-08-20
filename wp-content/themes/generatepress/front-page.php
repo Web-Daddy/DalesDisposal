@@ -61,13 +61,6 @@ get_header(); ?>
 
 	generate_construct_sidebars();
 
-	$zip_codes_array = array();
-	if( have_rows('zip_codes') ):
-    while ( have_rows('zip_codes') ) : the_row();
-        $zip_codes_array[] = get_sub_field('zip_code');
-
-	    endwhile;
-	endif;
 	$tax_args = array(
 		'taxonomy' => 'zip_code',
 		'hide_empty' => false,
@@ -77,7 +70,6 @@ get_header(); ?>
 
 	$zip_codes_tax_array = array();
 	foreach ($zip_codes_tax as $zip_code_name) {
-
 		$zip_codes_tax_array[] = substr($zip_code_name->name, 0, 5);
 	}
 
@@ -89,10 +81,9 @@ get_header(); ?>
 		
 		$('#dales_search_form').on('submit', function(e) {
 			e.preventDefault();
-			var zip_codes = [<?php echo implode(',', $zip_codes_tax_array); ?>];
+			var zip_codes = [<?php echo implode(",", $zip_codes_tax_array); ?>];
 			var input_value = jQuery('.input_zip_code').val().substring(0, 5);
 			var input_index = zip_codes.indexOf(+input_value);
-			console.log(input_index);
 			if(input_index >= 0 ){
 				setCookieDales("dales_order_zip_code", input_value, {"path":"/"});
 				window.location.replace("/order/");

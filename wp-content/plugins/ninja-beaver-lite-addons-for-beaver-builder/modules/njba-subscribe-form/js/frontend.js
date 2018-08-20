@@ -27,28 +27,29 @@
 				nodeId      	= this.form.closest( '.fl-module' ).data( 'node' ),
 				buttonText  	= this.button.find( 'a.njba-btn' ).text(),
 				waitText    	= this.button.closest( '.njba-form-button' ).data( 'wait-text' ),
-				name        	= this.form.find( 'input[name=njba-subscribe-form-name]' ),
+				fname        	= this.form.find( 'input[name=njba-subscribe-form-fname]' ),
+				lname        	= this.form.find( 'input[name=njba-subscribe-form-lname]' ),
 				email       	= this.form.find( 'input[name=njba-subscribe-form-email]' ),
 				re          	= /\S+@\S+\.\S+/,
 				valid       	= true;
 				/*console.log(buttonText); */
 			e.preventDefault();
-			name.on('focus', this._removeErrorClass);
+			fname.on('focus', this._removeErrorClass);
+			lname.on('focus', this._removeErrorClass);
 			email.on('focus', this._removeErrorClass);
 			if ( this.button.hasClass( 'njba-form-button-disabled' ) ) {
 				return; // Already submitting
 			}
-			if ( name.length > 0 && name.val() == '' ) {
-				name.addClass( 'njba-form-error' );
-				name.siblings( '.njba-form-error-message' ).show();
+			if ( fname.length > 0 && fname.val() == '' ) {
+				fname.addClass( 'njba-form-error' );
+				fname.siblings( '.njba-form-error-message' ).show();
 				valid = false;
 			}
-			/*if ( '' == email.val() || ! re.test( email.val() ) ) {
-				email.addClass( 'njba-form-error' );
-				email.siblings( '.njba-form-error-message' ).show();
+			if ( lname.length > 0 && lname.val() == '' ) {
+				lname.addClass( 'njba-form-error' );
+				lname.siblings( '.njba-form-error-message' ).show();
 				valid = false;
 			}
-			*/
 			if( email.val() !=''){
 				if ( ! re.test( email.val() ) ) {
 					email.addClass( 'njba-form-error' );
@@ -68,7 +69,8 @@
 				this.button.addClass( 'njba-form-button-disabled' );
 				$.post( FLBuilderLayoutConfig.paths.wpAjaxUrl, {
 					action  			: 'fl_builder_subscribe_form_submit',
-					name    			: name.val(),
+					fname    			: fname.val(),
+					lname    			: lname.val(),
 					email   			: email.val(),
 					post_id 			: postId,
 					template_id 		: templateId,

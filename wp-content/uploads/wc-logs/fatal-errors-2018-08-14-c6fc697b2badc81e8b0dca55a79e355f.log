@@ -1,0 +1,90 @@
+2018-08-14T13:44:51+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66) : eval()'d code:5
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66): eval()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcode.class.php(287): WINP_SnippetShortcode->html(Array, '')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcodes.php(97): Wbcr_FactoryShortcodes324_Shortcode->render(Array, '')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(319): Wbcr_FactoryShortcodes324_ShortcodeManager->__call('shortcode_WINP_...', Array)
+#4 [internal function]: do_shortcode_tag(Array)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(wbcr_p...', 'do_shortcode_ta...', '<div class="fl-...')
+#6
+
+2018-08-14T13:46:45+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66) : eval()'d code:22
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66): eval()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcode.class.php(287): WINP_SnippetShortcode->html(Array, '')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcodes.php(97): Wbcr_FactoryShortcodes324_Shortcode->render(Array, '')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(319): Wbcr_FactoryShortcodes324_ShortcodeManager->__call('shortcode_WINP_...', Array)
+#4 [internal function]: do_shortcode_tag(Array)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(wbcr_p...', 'do_shortcode_ta...', '<div class="fl-...')
+#
+
+2018-08-14T13:48:31+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66) : eval()'d code:7
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66): eval()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcode.class.php(287): WINP_SnippetShortcode->html(Array, '')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcodes.php(97): Wbcr_FactoryShortcodes324_Shortcode->render(Array, '')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(319): Wbcr_FactoryShortcodes324_ShortcodeManager->__call('shortcode_WINP_...', Array)
+#4 [internal function]: do_shortcode_tag(Array)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(wbcr_p...', 'do_shortcode_ta...', '<div class="fl-...')
+#6
+
+2018-08-14T13:49:29+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66) : eval()'d code:7
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66): eval()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcode.class.php(287): WINP_SnippetShortcode->html(Array, '')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcodes.php(97): Wbcr_FactoryShortcodes324_Shortcode->render(Array, '')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(319): Wbcr_FactoryShortcodes324_ShortcodeManager->__call('shortcode_WINP_...', Array)
+#4 [internal function]: do_shortcode_tag(Array)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(wbcr_p...', 'do_shortcode_ta...', '<div class="fl-...')
+#6
+
+2018-08-14T13:49:32+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66) : eval()'d code:7
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66): eval()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcode.class.php(287): WINP_SnippetShortcode->html(Array, '')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcodes.php(97): Wbcr_FactoryShortcodes324_Shortcode->render(Array, '')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(319): Wbcr_FactoryShortcodes324_ShortcodeManager->__call('shortcode_WINP_...', Array)
+#4 [internal function]: do_shortcode_tag(Array)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(wbcr_p...', 'do_shortcode_ta...', '<div class="fl-...')
+#6
+
+2018-08-14T13:50:11+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66) : eval()'d code:7
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66): eval()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcode.class.php(287): WINP_SnippetShortcode->html(Array, '')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcodes.php(97): Wbcr_FactoryShortcodes324_Shortcode->render(Array, '')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(319): Wbcr_FactoryShortcodes324_ShortcodeManager->__call('shortcode_WINP_...', Array)
+#4 [internal function]: do_shortcode_tag(Array)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(wbcr_p...', 'do_shortcode_ta...', '<div class="fl-...')
+#6
+
+2018-08-14T13:50:52+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66) : eval()'d code:7
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66): eval()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcode.class.php(287): WINP_SnippetShortcode->html(Array, '')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcodes.php(97): Wbcr_FactoryShortcodes324_Shortcode->render(Array, '')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(319): Wbcr_FactoryShortcodes324_ShortcodeManager->__call('shortcode_WINP_...', Array)
+#4 [internal function]: do_shortcode_tag(Array)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(wbcr_p...', 'do_shortcode_ta...', '<div class="fl-...')
+#6
+
+2018-08-14T13:51:37+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66) : eval()'d code:7
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66): eval()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcode.class.php(287): WINP_SnippetShortcode->html(Array, '')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcodes.php(97): Wbcr_FactoryShortcodes324_Shortcode->render(Array, '')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(319): Wbcr_FactoryShortcodes324_ShortcodeManager->__call('shortcode_WINP_...', Array)
+#4 [internal function]: do_shortcode_tag(Array)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(wbcr_p...', 'do_shortcode_ta...', '<div class="fl-...')
+#6
+
+2018-08-14T13:51:40+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66) : eval()'d code:7
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/includes/shortcodes.php(66): eval()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcode.class.php(287): WINP_SnippetShortcode->html(Array, '')
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/insert-php/libs/factory/shortcodes/shortcodes.php(97): Wbcr_FactoryShortcodes324_Shortcode->render(Array, '')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(319): Wbcr_FactoryShortcodes324_ShortcodeManager->__call('shortcode_WINP_...', Array)
+#4 [internal function]: do_shortcode_tag(Array)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(wbcr_p...', 'do_shortcode_ta...', '<div class="fl-...')
+#6
+

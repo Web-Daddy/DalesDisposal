@@ -1,10 +1,8 @@
 <?php
-
 /**
  * @class NJBATeamsModule
  */
 class NJBAPriceBoxModule extends FLBuilderModule {
-
     /**
      * Constructor function for the module. You must pass the
      * name, description, dir and url in an array to the parent class.
@@ -16,15 +14,14 @@ class NJBAPriceBoxModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Price Box', 'bb-njba'),
             'description'   => __('Addon to display Price Box.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-price-box/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-price-box/',
             'editor_export' => true, // Defaults to true and can be omitted.
             'enabled'       => true, // Defaults to true and can be omitted.
             'icon'              => 'editor-table.svg',
         ));
-
         /**
          * Use these methods to enqueue css and js already
          * registered or to register and enqueue your own.
@@ -34,7 +31,6 @@ class NJBAPriceBoxModule extends FLBuilderModule {
 		$this->add_css('njba-price-box-fields', NJBA_MODULE_URL . 'modules/njba-price-box/css/fields.css');
 		
     }
-
     /**
      * Use this method to work with settings data before
      * it is saved. You must return the settings object.
@@ -46,7 +42,6 @@ class NJBAPriceBoxModule extends FLBuilderModule {
     {
         return $settings;
     }
-
     /**
      * This method will be called by the builder
      * right before the module is deleted.
@@ -55,9 +50,7 @@ class NJBAPriceBoxModule extends FLBuilderModule {
      */
     public function delete()
     {
-
     }
-
     public function icon_module($box_content){
         $html = '';
         if($box_content->featured_item == 'feau_icon') :
@@ -75,14 +68,12 @@ class NJBAPriceBoxModule extends FLBuilderModule {
         endif;
         if($box_content->featured_item == 'feau_text') :
             $html .= '<div class="njba-text">';
-                $html .= '<span>'.$box_content->select_feau_text.'</span>';
+                $html .= '<span class="select-feau-text-selector">'.$box_content->select_feau_text.'</span>';
             $html .= '</div>';
         endif;
         return $html;
     }
-
     public function price_box_body_btn($box_content){
-
         $btn_settings = array(
             //Button text         
             'button_text'   => $box_content->button_text,
@@ -90,24 +81,17 @@ class NJBAPriceBoxModule extends FLBuilderModule {
             'link'      => $box_content->link,
             'link_target'       => $box_content->link_target,
         );
-
         return FLBuilder::render_module_html('njba-button', $btn_settings);
-
-
         /*$html = '';
         $html .= '<a href="'.$box_content->btn_link.'" class="njba-purchase" target="'.$box_content->btn_link_target.'">';           
             $html .= '<span class="mkdf-btn-text">'.$box_content->btn_text.'</span>';
         $html .= '</a>';
-
         return $html;*/
     }
-
     public function space_bw_btn_pro(){
         return FLBuilder::render_module_html('njba-spacer', '');
     }
-
 }
-
 /**
  * Register the module and its form settings.
  */
@@ -183,7 +167,7 @@ FLBuilder::register_module('NJBAPriceBoxModule', array(
                         'description'   => _x( 'px', 'Value unit for font size. Such as: "14 px"', 'bb-njba' ),
                         'preview'       => array(
                             'type'          => 'css',
-                            'selector'      => '.njba-pricing-inner-heading .price-heading',
+                            'selector'      => '.njba-pricing-inner-heading h1',
                             'property'      => 'font-size',
                             'unit'          => 'px'
                         )
@@ -197,7 +181,7 @@ FLBuilder::register_module('NJBAPriceBoxModule', array(
                         'label'         => __('Font', 'bb-njba'),
                         'preview'         => array(
                             'type'            => 'font',
-                            'selector'        => '.njba-pricing-inner-heading .price-heading'
+                            'selector'        => '.njba-pricing-inner-heading h1'
                         )
                     ),
                     'heading_margintb'      => array(
@@ -213,7 +197,7 @@ FLBuilder::register_module('NJBAPriceBoxModule', array(
                                 'placeholder'       => __('Top', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-up',
                                 'preview'           => array(
-                                    'selector'          => '.njba-pricing-inner-heading .price-heading',
+                                    'selector'          => '.njba-pricing-inner-heading h1',
                                     'property'          => 'margin-top',
                                 ),
                             ),
@@ -221,7 +205,7 @@ FLBuilder::register_module('NJBAPriceBoxModule', array(
                                 'placeholder'       => __('Bottom', 'bb-njba'),
                                 'icon'              => 'fa-long-arrow-down',
                                 'preview'           => array(
-                                    'selector'          => '.njba-pricing-inner-heading .price-heading',
+                                    'selector'          => '.njba-pricing-inner-heading h1',
                                     'property'          => 'margin-bottom',
                                 ),
                             )
@@ -594,8 +578,6 @@ FLBuilder::register_module('NJBAPriceBoxModule', array(
         )
     )
 ));
-
-
 /**
  * Register a settings form to use in the "form" field type above.
  */
@@ -660,7 +642,10 @@ FLBuilder::register_settings_form('njba_pricebox_form', array(
                             'type'            => 'text',
                             'label'           => __('Featured Text', 'bb-njba'),
                             'default'         => 'Popular',
-                            'help'            => __('Use a unique small word to highlight this Box.','bb-njba')
+                            'help'            => __('Use a unique small word to highlight this Box.','bb-njba'),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                     )
                 ),
@@ -670,18 +655,27 @@ FLBuilder::register_settings_form('njba_pricebox_form', array(
                         'title'          => array(
                             'type'          => 'text',
                             'label'         => __('Title Text', 'bb-njba'),
-                            'default'   => __( 'Consultation Pack', 'bb-njba' )
+                            'default'   => __( 'Consultation Pack', 'bb-njba' ),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                         'price'          => array(
                             'type'          => 'text',
                             'label'         => __('Price Value', 'bb-njba'),
-                            'default'       => __( '$99', 'bb-njba' )
+                            'default'       => __( '$99', 'bb-njba' ),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                         'duration'          => array(
                             'type'          => 'text',
                             'label'         => __('Duration', 'bb-njba'),
                             'default'       => __( '/ Hour', 'bb-njba' ),
-                            'placeholder'   => __( '/ Hour', 'bb-njba' )
+                            'placeholder'   => __( '/ Hour', 'bb-njba' ),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                     ),
                 ),
@@ -693,7 +687,10 @@ FLBuilder::register_settings_form('njba_pricebox_form', array(
                             'label'         => '',
                             'default'       => __( 'Feature 1', 'bb-njba' ),
                             'placeholder'   => __( 'One feature per line.', 'bb-njba' ),
-                            'multiple'      => true
+                            'multiple'      => true,
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         )
                     )
                 ),
@@ -723,9 +720,8 @@ FLBuilder::register_settings_form('njba_pricebox_form', array(
                             'type'      => 'text',
                             'label'     => 'Text',
                             'default'   => __('GET STARTED', 'bb-njba'),
-                            'preview'       => array(
-                                'type'          => 'text',
-                                'selector'      => 'a.njba-btn'
+                            'preview'   => array(
+                                'type'      => 'none'
                             )
                         ),
                         'link'     => array(

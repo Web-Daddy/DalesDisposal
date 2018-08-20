@@ -11,8 +11,8 @@ class NJBAStaticMapModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Google Static Map', 'bb-njba'),
             'description'   => __('Addon to display Google Static map.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Creative Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'creative' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-static-map/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-static-map/',
             'editor_export' => true, // Defaults to true and can be omitted.

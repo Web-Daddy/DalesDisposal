@@ -12,8 +12,8 @@ class NJBAOpeningHoursModule extends FLBuilderModule {
 		parent::__construct(array(
 			'name'          	=> __('Opening Hours', 'bb-njba'),
 			'description'   	=> __('Addon to display Office Opening Hours.', 'bb-njba'),
-			'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Content Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'content' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-opening-hours/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-opening-hours/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -361,15 +361,24 @@ FLBuilder::register_settings_form('timelistform', array(
                     'fields'     => array(
                         'day'     => array(
                             'type'          => 'text',
-                            'label'         => __('Day Name', 'bb-njba')
+                            'label'         => __('Day Name', 'bb-njba'),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
 	                    'time'     => array(
 	                        'type'          => 'text',
 	                        'label'         => __('Time 1', 'bb-njba'),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
 	                    ),
 	                    'time_2'     => array(
 	                        'type'          => 'text',
 	                        'label'         => __('Time 2', 'bb-njba'),
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
 	                    ),
 	                    'time_separator'       => array(
 	                        'type'          => 'select',

@@ -13,9 +13,9 @@ class NJBATwitterButtonsModule extends FLBuilderModule {
 		parent::__construct(array(
 			'name'          => __( 'Twitter Buttons', 'bb-njba' ),
 			'description'   => __( 'A module to embed twitter buttons.', 'bb-njba' ),
-			'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Social Modules - NJBA', 'bb-njba'),
-            'dir'           	=> NJBA_MODULE_DIR . 'modules/njba-twitter-buttons/',
+			'group'         	=> njba_get_modules_group(),
+			'category'			=> njba_get_modules_cat( 'social' ),
+			'dir'           	=> NJBA_MODULE_DIR . 'modules/njba-twitter-buttons/',
 			'url'           	=> NJBA_MODULE_URL . 'modules/njba-twitter-buttons/',
 			'editor_export' 	=> true, // Defaults to true and can be omitted.
 			'enabled'       	=> true, // Defaults to true and can be omitted.

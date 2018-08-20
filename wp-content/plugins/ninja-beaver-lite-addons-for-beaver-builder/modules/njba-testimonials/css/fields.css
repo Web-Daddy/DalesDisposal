@@ -26,7 +26,6 @@
     cursor: pointer;
     outline: 1px solid #eee;
     background-size: contain;
-    width: 100%;
 }
 .njba-label.testimonial_layout span {
     display: none;
@@ -58,23 +57,3 @@
 .fl-form-table #fl-field-testimonial_layout td .njba-option-9 {
     background-image: url(../images/layout-9.jpg);
 }
-label.njba-label.njba-option-3.testimonial_layout,
-label.njba-label.njba-option-3.testimonial_layout.selected,
-label.njba-label.njba-option-4.testimonial_layout,
-label.njba-label.njba-option-4.testimonial_layout.selected,
-label.njba-label.njba-option-6.testimonial_layout,
-label.njba-label.njba-option-6.testimonial_layout.selected,
-label.njba-label.njba-option-7.testimonial_layout,
-label.njba-label.njba-option-7.testimonial_layout.selected,
-label.njba-label.njba-option-8.testimonial_layout,
-label.njba-label.njba-option-8.testimonial_layout.selected,
-label.njba-label.njba-option-9.testimonial_layout,
-label.njba-label.njba-option-9.testimonial_layout.selected{
-    cursor: not-allowed;
-}
-.fl-form-table #fl-field-testimonial_layout td label.njba-label.njba-option-3.testimonial_layout.selected,
-.fl-form-table #fl-field-testimonial_layout td label.njba-label.njba-option-4.testimonial_layout.selected,
-.fl-form-table #fl-field-testimonial_layout td label.njba-label.njba-option-6.testimonial_layout.selected,
-.fl-form-table #fl-field-testimonial_layout td label.njba-label.njba-option-7.testimonial_layout.selected,
-.fl-form-table #fl-field-testimonial_layout td label.njba-label.njba-option-8.testimonial_layout.selected,
-.fl-form-table #fl-field-testimonial_layout td label.njba-label.njba-option-9.testimonial_layout.selected {outline: 1px solid #eee;}

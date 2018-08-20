@@ -65,3 +65,8 @@ $ids = ( $settings->photos );
 				
 		</div><!--njba-gallery-body-->
 	</div><!--njba-gallery-main-->
+    
+	
+	
+	
+												

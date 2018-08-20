@@ -11,9 +11,9 @@ class NjbaFBEmbedModule extends FLBuilderModule {
 		parent::__construct(array(
 			'name'          	=> __( 'Facebook Embed', 'bb-njba' ),
 			'description'   	=> __( 'A module to embed facebook post.', 'bb-njba' ),
-			'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Social Modules - NJBA', 'bb-njba'),
-            'dir'           	=> NJBA_MODULE_DIR . 'modules/njba-facebook-embed/',
+			'group'         	=> njba_get_modules_group(),
+			'category'			=> njba_get_modules_cat( 'social' ),
+			'dir'           	=> NJBA_MODULE_DIR . 'modules/njba-facebook-embed/',
 			'url'           	=> NJBA_MODULE_URL . 'modules/njba-facebook-embed/',
 			'editor_export' 	=> true, // Defaults to true and can be omitted.
 			'enabled'       	=> true, // Defaults to true and can be omitted.

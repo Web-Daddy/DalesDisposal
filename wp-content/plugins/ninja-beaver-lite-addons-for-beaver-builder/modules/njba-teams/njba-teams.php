@@ -14,8 +14,8 @@ class NJBATeamsModule extends FLBuilderModule {
         parent::__construct(array(
             'name'          => __('Teams', 'bb-njba'),
             'description'   => __('Addon to display Teams.', 'bb-njba'),
-            'group'         => __('NJBA Module', 'bb-njba'),
-            'category'      => __('Carousel Modules - NJBA', 'bb-njba'),
+            'group'         => njba_get_modules_group(),
+            'category'      => njba_get_modules_cat( 'carousel' ),
             'dir'           => NJBA_MODULE_DIR . 'modules/njba-teams/',
             'url'           => NJBA_MODULE_URL . 'modules/njba-teams/',
             'editor_export' => true, // Defaults to true and can be omitted.
@@ -33,7 +33,7 @@ class NJBATeamsModule extends FLBuilderModule {
         $this->add_css('njba-teams-frontend', NJBA_MODULE_URL . 'modules/njba-teams/css/frontend.css');
     }
     // For Post Image
-    public function njba_image_render($i) {
+    public function image_render($i) {
          
         $photo = $this->settings->teams[$i]->photo;
         if($photo != ''){ 
@@ -43,28 +43,28 @@ class NJBATeamsModule extends FLBuilderModule {
         } 
     }
     // For Name,Designation,Bio
-    public function njba_short_bio($i) {
+    public function short_bio($i) {
         $teams = $this->settings->teams[$i];
         $team_layout = $this->settings->team_layout;
         if( $teams->name ) { 
             if($teams->url != '' && $team_layout != '1' && $team_layout != '3' && $team_layout != '4'){
                 echo '<a href="'.$teams->url.'"  target="'.$teams->link_target.'">';
             }
-                    echo '<h4>'.$teams->name.'</h4>';
+                    echo '<h4 class="njba-team-name-selector">'.$teams->name.'</h4>';
                     
             if($teams->url != '' && $team_layout != '1' && $team_layout != '3' && $team_layout != '4'){
                 echo '</a>';
             }
         }
         if( $teams->designation ) {
-            echo '<h5>'.$teams->designation.'</h5>';
+            echo '<h5 class="njba-team-designation-selector">'.$teams->designation.'</h5>';
         }
         if( $teams->member_description != '' && $team_layout != '3' && $team_layout != '4' && $team_layout != '5' ) {
             echo '<p>'.$teams->member_description.'</p>';
         }
     }
     // For Social Media
-    public function njba_social_media($i) {
+    public function social_media($i) {
         $teams = $this->settings->teams[$i];
         $team_layout = $this->settings->team_layout;
         $effect = array();
@@ -124,7 +124,7 @@ class NJBATeamsModule extends FLBuilderModule {
         
     }
     // for Button Render
-    public function njba_button_render($i){
+    public function button_render($i){
         $teams = $this->settings->teams[$i];
        
         if( $teams->url_text != '' &&  $teams->url != ''){
@@ -208,6 +208,9 @@ FLBuilder::register_module('NJBATeamsModule', array(
                             '4'       => '3',
                             '3'       => '4',
                         ),
+                        'preview'   => array(
+                            'type'      => 'none'
+                        )
                     ),
                     
                 )
@@ -571,10 +574,10 @@ FLBuilder::register_module('NJBATeamsModule', array(
                         'label'             => __('Box Shadow', 'bb-njba'),
                         'description'       => 'px',
                         'default'           => array(
-                            'left_right'         => 0,
+                            'left_right'          => 0,
                             'top_bottom'         => 0,
-                            'blur'               => 0,
-                            'spread'             => 0
+                            'blur'       => 0,
+                            'spread'      => 0
                         ),
                         'options'           => array(
                             'left_right'               => array(
@@ -1096,10 +1099,10 @@ FLBuilder::register_module('NJBATeamsModule', array(
                         'label'             => __('Box Shadow', 'bb-njba'),
                         'description'       => 'px',
                         'default'           => array(
-                            'left_right'        => 0,
-                            'top_bottom'        => 0,
-                            'blur'              => 0,
-                            'spread'            => 0
+                            'left_right'          => 0,
+                            'top_bottom'         => 0,
+                            'blur'       => 0,
+                            'spread'      => 0
                         ),
                         'options'           => array(
                             'left_right'               => array(
@@ -1133,7 +1136,7 @@ FLBuilder::register_module('NJBATeamsModule', array(
                         'description'       => 'px',
                         'default'           => array(
                             'top'          => 10,
-                            'right'        => 20,
+                            'right'         => 20,
                             'bottom'       => 10,
                             'left'         => 20
                         ),
@@ -1258,11 +1261,17 @@ FLBuilder::register_settings_form('njba_teampanel_form', array(
                             'type'          => 'text',
                             'label'         => __('Name', 'bb-njba'),
                             'default'       => 'Name',
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                         'designation'     => array(
                             'type'          => 'text',
                             'label'         => __('Designation', 'bb-njba'),
                             'default'       => 'Designation',
+                            'preview'   => array(
+                                'type'      => 'none'
+                            )
                         ),
                         'photo'     => array(
                             'type'          => 'photo',
@@ -1282,10 +1291,9 @@ FLBuilder::register_settings_form('njba_teampanel_form', array(
 	                        'type'          => 'text',
 	                        'label'         => __('Link Text', 'fl-builder'),
 	                        'default'   	=> 'Read More',
-	                        'preview'         => array(
-	                            'type'             => 'text',
-	                            'selector'         => '.njba-read-more',
-	                        )
+	                        'preview'   => array(
+                                'type'      => 'none'
+                            )
 	                    ),
 	                    'link_target'    => array(
 	                        	'type'          => 'select',
@@ -1307,10 +1315,9 @@ FLBuilder::register_settings_form('njba_teampanel_form', array(
 	                        'media_buttons' => false,
 	                        'default'       => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s. ',
 	                        'rows'          => 8,
-	                        'preview'         => array(
-	                            'type'             => 'text',
-	                            'selector'         => '.njba-member-description'
-	                        )
+	                        'preview'   => array(
+                                'type'      => 'none'
+                            )
 	                    ),
                     ),
                 ),
@@ -1321,21 +1328,33 @@ FLBuilder::register_settings_form('njba_teampanel_form', array(
 								'type'          => 'text',
 								'label'         => __('Facebook URL', 'bb-njba'),
                                 'default'       => '#',
+                                'preview'   => array(
+                                    'type'      => 'none'
+                                )
 						),
 	                    'twitter_url'          => array(
 								'type'          => 'text',
 								'label'         => __('Twitter URL', 'bb-njba'),
                                 'default'       => '#',
+                                'preview'   => array(
+                                    'type'      => 'none'
+                                )
 						),
 	                    'googleplus_url'          => array(
 								'type'          => 'text',
 								'label'         => __('Google Plus URL', 'bb-njba'),
                                 'default'       => '#',
+                                'preview'   => array(
+                                    'type'      => 'none'
+                                )
 						),
 	                    'linkedin_url'          => array(
 								'type'          => 'text',
 								'label'         => __('Linkedin URL', 'bb-njba'),
                                 'default'       => '#',
+                                'preview'   => array(
+                                    'type'      => 'none'
+                                )
 						),
 	                    'social_link_target'	=> array(
 								'type'          => 'select',
@@ -1344,7 +1363,10 @@ FLBuilder::register_settings_form('njba_teampanel_form', array(
 								'options'       => array(
 									'_self' 		=> __('Same Window', 'bb-njba'),
 									'_blank'    	=> __('New Window', 'bb-njba')
-								)
+								),
+                                'preview'   => array(
+                                    'type'      => 'none'
+                                )
 						)
 					 ),
                 ),
