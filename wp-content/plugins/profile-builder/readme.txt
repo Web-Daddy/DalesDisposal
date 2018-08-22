@@ -3,8 +3,8 @@ Contributors: cozmoslabs, reflectionmedia, sareiodata, adispiac, madalin.ungurea
 Donate link: http://www.cozmoslabs.com/wordpress-profile-builder/
 Tags: user registration, user profile, user registration form, user fields, extra user fields, edit profile, user custom fields, front-end login, front-end edit profile, front-end user registration, email confirmation, login form, content restriction, restrict content
 Requires at least: 3.1
-Tested up to: 4.9.7
-Stable tag: 2.8.7
+Tested up to: 4.9.8
+Stable tag: 2.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,6 +166,10 @@ This plugin adds/removes user fields in the front-end. Both default and extra pr
 12. Role Editor
 
 == Changelog ==
+= 2.8.8 =
+* We no longer allow users to login with username is is set to login with email. added 'wppb_allow_login_with_username_when_is_set_to_email' filter to still allow it
+* Small css changes
+
 = 2.8.7 =
 * Secupress plugin compatiblity when activating "Move the login and admin pages"
 * Fixed issue with content restriction and url redirect if url was missing 'http'

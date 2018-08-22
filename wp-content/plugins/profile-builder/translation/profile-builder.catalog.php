@@ -517,10 +517,10 @@
 <?php __("Hard to use", "profile-builder"); ?>
 <?php __("How can we improve our user experience ?", "profile-builder"); ?>
 <?php __("Unsatisfactory support", "profile-builder"); ?>
-<?php __("Poor Documentation", "profile-builder"); ?>
-<?php __("Tell us what you couldn't find", "profile-builder"); ?>
 <?php __("Other", "profile-builder"); ?>
 <?php __("Please tell us more", "profile-builder"); ?>
+<?php __("Poor Documentation", "profile-builder"); ?>
+<?php __("Tell us what you couldn't find", "profile-builder"); ?>
 <?php __("Submit & Deactivate", "profile-builder"); ?>
 <?php __("Skip and Deactivate", "profile-builder"); ?>
 <?php __("Submit and Deactivate", "profile-builder"); ?>

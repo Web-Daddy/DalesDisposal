@@ -29,9 +29,11 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 	<td class="woocommerce-table__product-name product-name">
 		<?php
 			$is_visible        = $product && $product->is_visible();
+			$dales_product_name =  get_the_title( $item->get_product_id() );
 			// $product_permalink = apply_filters( 'woocommerce_order_item_permalink', $is_visible ? $product->get_permalink( $item ) : '', $item, $order );
 
-			echo apply_filters( 'woocommerce_order_item_name', $product_permalink ? sprintf( '<a href="%s">%s</a>', $product_permalink, $item->get_name() ) : $item->get_name(), $item, $is_visible );
+			echo apply_filters( 'woocommerce_order_item_name', $product_permalink ? sprintf( '<a href="%s">%s</a>', $product_permalink, $item->get_name() ) : $dales_product_name, $item, $is_visible );
+
 			echo apply_filters( 'woocommerce_order_item_quantity_html', ' <strong class="product-quantity">' . sprintf( '&times; %s', $item->get_quantity() ) . '</strong>', $item );
 
 			do_action( 'woocommerce_order_item_meta_start', $item_id, $item, $order, false );

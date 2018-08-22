@@ -69,14 +69,18 @@ function dales_register_scripts() {
 	wp_enqueue_style( 'jquery-formstyler', get_template_directory_uri() . '/css/jquery.formstyler.css');
 	wp_enqueue_style( 'jquery-themeformstyler', get_template_directory_uri() . '/css/jquery.formstyler.theme.css');
 	wp_enqueue_style( 'datepicker-style', get_template_directory_uri() . '/css/datepicker.min.css');
+	wp_enqueue_style( 'owl_carousel-style', get_template_directory_uri() . '/owl_carousel/owl.carousel.min.css');
+	wp_enqueue_style( 'owl_carousel_theme-style', get_template_directory_uri() . '/owl_carousel/owl.theme.default.min.css');
+
+
 	wp_enqueue_script( 'mask_script', get_template_directory_uri() . '/js/jquery_mask.js' );
 	wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/js/custom_dales.js' );
 	wp_localize_script( 'custom-script', 'wp_links', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-
 	wp_enqueue_script( 'jquery-cookie', get_template_directory_uri() . '/js/jquery.cookie.js' , array('jquery') );
 	wp_enqueue_script( 'jquery-formstyler', get_template_directory_uri() . '/js/jquery.formstyler.min.js' , array('jquery') );
 	wp_enqueue_script( 'datepicker-script', get_template_directory_uri() . '/js/datepicker.js' );
 	wp_enqueue_script( 'datepicker-script-eng', get_template_directory_uri() . '/js/datepicker.en.js' );
+	wp_enqueue_script( 'owl_carousel-script', get_template_directory_uri() . '/owl_carousel/owl.carousel.min.js' );
 	
 }
 
@@ -695,12 +699,4 @@ function CM_woocommerce_account_menu_items_callback($items) {
     return $items;
 }
 add_filter('woocommerce_account_menu_items', 'CM_woocommerce_account_menu_items_callback', 10, 1);
-
-
-function auto_login_new_user( $user_id ) {
-    wp_set_current_user($user_id);
-    wp_set_auth_cookie($user_id);
-    wp_redirect( home_url() );
-}
-
 

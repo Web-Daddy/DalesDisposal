@@ -219,7 +219,21 @@ function wooccm_order_receipt_checkout_details( $order, $sent_to_admin, $plain_t
 
 						if( ($btn['cow'] != 'myfield1') && ($btn['cow'] != 'myfield2') && ($btn['cow'] != 'myfield3') && ($btn['cow'] != 'myfield6') && ($btn['cow'] != 'myfield11')){
 							if( !in_array( $btn['cow'], $array ) ) {
-								if(
+								if (
+									( get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) !== '' ) && 
+									!empty( $btn['label'] ) && 
+									empty( $btn['deny_receipt'] ) && 
+									$btn['type'] !== 'heading' && 
+									$btn['type'] !== 'multiselect' && 
+									$btn['type'] !== 'wooccmupload' && 
+									$btn['type'] !== 'multicheckbox' &&
+									( ($btn['cow'] === 'myfield4') || ($btn['cow'] === 'myfield5') )
+								) {
+									echo '
+										<p>
+											<strong>Property type: '.wooccm_wpml_string($btn['label']).'</strong> 
+										</p>';
+								} elseif (
 									( get_post_meta( $order_id , sprintf( '_%s_%s', $name, $btn['cow'] ), true ) !== '' ) && 
 									!empty( $btn['label'] ) && 
 									empty( $btn['deny_receipt'] ) && 

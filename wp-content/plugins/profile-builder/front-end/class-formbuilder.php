@@ -337,11 +337,13 @@ class Profile_Builder_Form_Creator{
                         // CHECK FOR REDIRECT
                         $redirect = $this->wppb_get_redirect( 'register', 'after_registration', $account_name, $user_role );
 
-                        if( $this->args['login_after_register'] == 'Yes' ) {
-                            $redirect = $this->wppb_log_in_user( $this->args['redirect_url'], $redirect );
+                        if( 1 == 1 ) {
+                            $redirect = $this->wppb_log_in_user( home_url(), $redirect );
+
                         }
 
 						echo $form_message_tpl_start . $wppb_register_success_message  . $form_message_tpl_end . $redirect;
+
 						//action hook after registration success
 	                    do_action( 'wppb_register_success', $_REQUEST, $this->args['form_name'], $user_id );
                         return;

@@ -82,7 +82,7 @@ get_header(); ?>
 										</div>
 									</div>
 									<div class="dales_checkout_header_info_col">
-										<div class="dales_checkout_products">
+										<div class="dales_checkout_products owl-carousel">
 											<?php 
 											parse_str(stripslashes($_COOKIE['form_data']), $form_data);
 											foreach ($form_data['product'] as $form_data_post) {

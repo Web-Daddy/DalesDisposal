@@ -1,5 +1,12 @@
 
 jQuery(document).ready(function($) {
+	$('.owl-carousel').owlCarousel({
+	    loop:true,
+	    items:1,
+	    dots:true,
+	    autoplay:true,
+	    autoplayTimeout:5000
+	})
 	if (jQuery(window).width() < 768) {
 		jQuery("#dales_top_menu").hide();
 		jQuery(".dales_mobile_menu_class").click(function() { 
@@ -73,40 +80,33 @@ jQuery(document).ready(function($) {
 	})
 
 /*** DATEPICKER *****/
-	var dales_current_weeks_dp,
-		dales_current_dp_attr,
-		dales_day_data,
-		dales_month_data,
-		dales_current_dp_attr_month,
-		dales_two_weeks_index = 0;
+	var dales_two_weeks_once = 1;
+	console.log(dales_two_weeks_once);
 	jQuery(document).on("click", ".datepicker--cell-day", function (e) {
-		dales_two_weeks_index = 0;
-		var datepicker = jQuery('.datepicker-here').datepicker().data('datepicker');
-		if (datepicker.selectedDates[1])  {
-			return;
-		}
-		dales_current_dp_attr = jQuery( this ).attr('data-date');
-		dales_current_dp_attr_month = jQuery( this ).attr('data-month');
-		dales_current_weeks_dp = (+dales_current_dp_attr) + 14;
-		setTimeout(function(){
-			jQuery( '.datepicker--cell-day' ).each(function( ) { 
-				dales_day_data = jQuery( this ).attr('data-date');
-				dales_month_data = jQuery( this ).attr('data-month');
-				if (dales_month_data == dales_current_dp_attr_month) {
-					if ( (+dales_day_data >= +dales_current_dp_attr) && (+dales_day_data <= +dales_current_weeks_dp) && (dales_two_weeks_index <= 14) ) {
-						dales_two_weeks_index++;
-						jQuery( this ).addClass('dales_two_weeks');
-						console.log('logic_day',dales_day_data);
-						console.log('index', dales_two_weeks_index);
-					}
-				} else if ( (dales_month_data > dales_current_dp_attr_month) && (dales_two_weeks_index <= 14) ) {
-					dales_two_weeks_index++;
-					console.log('logic_day',dales_day_data);
-				}
-				
-			});
-		}, 500);
+		if (dales_two_weeks_once == 1) {
+			var datepicker = jQuery('.datepicker-here').datepicker().data('datepicker');
+			if (datepicker.selectedDates[1])  {
+				return;
+			}
 
+			var currentDay = datepicker.selectedDates[0];
+			var secondDay = new Date();
+			secondDay.setTime(currentDay.getTime());
+			secondDay.setDate(secondDay.getDate() + 14);
+			var dateArr = [currentDay, secondDay];
+
+			setTimeout(function(){
+				datepicker.clear();
+			},10);
+
+			setTimeout(function(){
+				if(datepicker){
+					datepicker.selectDate(dateArr);
+					dales_two_weeks_once++;
+					console.log(dales_two_weeks_once);
+				}
+			},30);
+		}
 
 	});
 
@@ -135,7 +135,6 @@ jQuery(document).ready(function($) {
 					instance.clear();
 					$('.error_message_order_step_three').css('opacity','1');
 					$('.error_message_order_step_three').css('display','flex');
-					// alert('Date range must be more than 2 weeks.');
 					data_range = {};
 				} else {
 					data_range.current_date = date[0];
@@ -178,24 +177,20 @@ jQuery(document).ready(function($) {
             
 
 	        if (cellType == 'day') {
-	            number_of_day++;
 	        	if (staticHolidays && staticHolidays.length && staticHolidays.indexOf(staticDate) != -1) {
 	    			return {
-		                disabled: true,
-		                html: currentDate + '<span class="dales_datepicker_span" number_of_day='+number_of_day+'></span>'
+		                disabled: true
 		            };
 	            }
 	        	if (dynamicHolidays && dynamicHolidays.length && dynamicHolidays.indexOf(dynamicDate) != -1) {
 	    			return {
-		                disabled: true,
-		                html: currentDate + '<span class="dales_datepicker_span" number_of_day='+number_of_day+'></span>'
+		                disabled: true
 		            };
 	            }
 	        	var isDisabled = disabledDays.indexOf(day) != -1;
 
 	            return {
-	                disabled: isDisabled,
-	                html: currentDate + '<span class="dales_datepicker_span" number_of_day='+number_of_day+'></span>'
+	                disabled: isDisabled
 	            };
 
 	        }
@@ -209,6 +204,9 @@ jQuery(document).ready(function($) {
 		date_range_cookie = JSON.parse(date_range_cookie);
 		currentDay = new Date(date_range_cookie.current_date);
 		secondDay = new Date(date_range_cookie.last_date);
+		if(datepicker){
+			datepicker.selectDate([currentDay,secondDay]);
+		}
 	}else{
 		currentDay = new Date();
 		currentDay.setDate(currentDay.getDate()+1);
@@ -216,9 +214,9 @@ jQuery(document).ready(function($) {
 		secondDay = new Date();
 		secondDay.setDate(secondDay.getDate() + 15);
 	}
-	if(datepicker){
-		datepicker.selectDate([currentDay,secondDay]);
-	}
+	// if(datepicker){
+	// 	datepicker.selectDate([currentDay,secondDay]);
+	// }
 
 /*** END DATEPICKER ***/
 	$('.error_message_order_step_three i.fas.fa-times').on('click',function(){

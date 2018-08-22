@@ -1217,25 +1217,23 @@ input#send_credentials_via_email {
 #billing_myfield1c_field label:before {display: block; content: ""; width: 40px; height: 40px; background: #ffffff; border: 3px solid #313841; margin-right: 20px; }
 
 .woocommerce-validated#billing_myfield1c_field label:before {background-image: url(images/checked2.jpg); background-repeat: no-repeat; background-position: center;}
-.dales_checkout_header_info {display: -webkit-box;display: -ms-flexbox;display: flex; -ms-flex-pack: distribute; justify-content: space-around; -webkit-box-align: baseline; -ms-flex-align: baseline; align-items: baseline; text-align: center; max-width: 80%; margin: 0 auto; flex-wrap: wrap;}
+.dales_checkout_header_info {display: -webkit-box;display: -ms-flexbox;display: flex; -ms-flex-pack: distribute; justify-content: space-around; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-align: center; max-width: 80%; margin: 0 auto; flex-wrap: wrap;}
 .dales_checkout_header_info_conteiner {position: relative;}
-.dales_checkout_header_info_col {font-family: 'GothamBold'; font-size: 13px; color: #313841; width: 25%;}
+.dales_checkout_header_info_col {font-family: 'GothamBold'; font-size: 13px; color: #313841; width: 25%; position: relative;}
 .dales_checkout_products {padding-top: 20px; padding-bottom: 20px;}
 .dales_checkout_products img {width: 200px; height: auto;}
 .dales_checkout_header_info_col_total {font-size: 30px; font-family: 'GothamMedium';}
 .dales_checkout_content {background-image: url('./images/bg_order_content.png'); background-repeat: no-repeat; background-position: top; background-size: 100% auto;}
-
+#place_order { background: #ffffff; transition: 0.5s; color: #313841 !important; border: 3px solid #f4c72b; border-radius: 50px; font-family: 'GothamMedium'; font-size: 16px;}
+#place_order:hover { background: #efe735; }
 /* product images */
-.dales_checkout_products div {display: none;}
-.dales_checkout_products div:first-child {display: block;}
 
-/*#billing_myfield1c_field label input {display: none;}
-#billing_myfield2_field, #billing_myfield3_field {display: none;}*/
-.woocommerce-checkout #billing_myfield9_field label {/*display: none*/;}
-.woocommerce-checkout .woocommerce-additional-fields h3 {/*display: none*/;}
-#billing_myfield1_field span.required {/*display: none*/;}
-#billing_myfield1_field span.required {/*display: none*/;}
-#billing_myfield1_checkbox {/*display: none*/;}
+.dales_checkout_products .owl-item {max-height: 190px;}
+.dales_checkout_products .owl-item img {max-height: 110px; width: auto !important; margin: 0 auto;}
+.dales_checkout_products .owl-dot span {width: 13px; height: 13px; display: block; border-radius: 50%; background: #efe735; margin: 0 5px; border: 3px solid #f4c72b; transition: 0.5s;}
+.dales_checkout_products .owl-dot:focus {outline: none !important;}
+.dales_checkout_products .owl-dot span:hover, .dales_checkout_products .owl-dot.active span {background: #f4c72b;}
+
 
 
 .woocommerce-checkout .woocommerce-info::before {display: none;}
@@ -1294,6 +1292,7 @@ input[type="submit"]:hover {background-color: #efe735 !important; color: #313841
 label.label_description_block.product_order .select {border-bottom: solid 4px transparent;}
 label.label_description_block.product_order.active .select {color: #f4c72b; border-bottom: solid 4px #f4c72b !important;}
 label.dales_checked_checkbox span {border-bottom: solid 4px #f4c72b !important; color: #f4c72b;}
+label.dales_checked_checkbox span.required {color: #f4c72b !important;}
 p.price_order_product {white-space: pre-wrap;}
 
 .woocommerce-account h1.entry-title {text-align: center; padding: 50px 20px;}
@@ -1368,6 +1367,16 @@ html:not(.fl-builder-edit) #dales_header_sign_in a {display: block; padding: 0 0
 .dales_my_account_new_order_button {text-align: right; margin: 20px;}
 .dales_my_account_new_order_button a { padding: 10px; border-radius: 50px; color: #313841 !important; border: 4px solid #f4c72b !important; background: transparent; transition: 0.5s;     font-size: 11px !important; font-family: 'GothamMedium'; }
 .dales_my_account_new_order_button a:hover {text-decoration: none; background: #efe735;}
+
+#wppb_form_success_message {background: #f4c72b !important; border: 0 !important;}
+
+
+
+
+
+
+
+
 @media (min-width: 1025px){
     .open_zip_code_search:hover span {display: block;}
 
@@ -1559,6 +1568,7 @@ html:not(.fl-builder-edit) #dales_header_sign_in a {display: block; padding: 0 0
     html:not(.fl-builder-edit) #dales_homepage_banner .fl-row-content-wrap {min-height: 36vw; height: auto; }
     html:not(.fl-builder-edit) #dales_homepage_banner .fl-row-content-wrap {padding-bottom: 40px;}
     html:not(.fl-builder-edit) #dales_homepage_banner_text1 p {padding-top: 40px;}
+    .dales_checkout_header_info_col {width: 70%;}
 }
 @media (max-width: 575px){
     div#dales_bottom_top_row .fl-rich-text {margin-top:  20px;margin-bottom:  20px;}

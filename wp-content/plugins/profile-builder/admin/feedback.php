@@ -41,15 +41,15 @@ function wppb_add_feedback_modal(){
                                 <span class="poll_custom_hidden_detail"><?php _e( "Give us another try! Open a support ticket <a href='https://www.cozmoslabs.com/support/open-ticket/' target='_blank'>here</a>" ) ?></span>
                             </li>
                             <li>
-                                <input name="input_1" type="radio" value="gpoll18cbe0189" id="choice_<?php echo $gf_id; ?>_1_3">
-                                <label for="choice_<?php echo $gf_id; ?>_1_3" id="label_<?php echo $gf_id; ?>_1_3"><?php _e( 'Poor Documentation', 'profile-builder'); ?></label>
-                                <input class="poll_custom_hidden_detail" name="input_5" id="input_<?php echo $gf_id; ?>_5" type="text" value="" placeholder="<?php _e( "Tell us what you couldn't find", 'profile-builder' ); ?>">
-                            </li>
-                            <li>
                                 <input name="input_1" type="radio" value="gpoll1353bb209" id="choice_<?php echo $gf_id; ?>_1_4">
                                 <label for="choice_<?php echo $gf_id; ?>_1_4" id="label_<?php echo $gf_id; ?>_1_4"><?php _e( 'Other', 'profile-builder'); ?></label>
                                 <input class="poll_custom_hidden_detail" name="input_4" id="input_<?php echo $gf_id; ?>_4" type="text" value="" placeholder="<?php _e( 'Please tell us more', 'profile-builder' ); ?>">
                             </li>
+                            <li>
+                                <input name="input_1" type="radio" value="gpoll18cbe0189" id="choice_<?php echo $gf_id; ?>_1_3">
+                                <label for="choice_<?php echo $gf_id; ?>_1_3" id="label_<?php echo $gf_id; ?>_1_3"><?php _e( 'Poor Documentation', 'profile-builder'); ?></label>
+                                <input class="poll_custom_hidden_detail" name="input_5" id="input_<?php echo $gf_id; ?>_5" type="text" value="" placeholder="<?php _e( "Tell us what you couldn't find", 'profile-builder' ); ?>">
+                            </li>                            
                         </ul>
                     </div>
                     <div class="gform_footer">

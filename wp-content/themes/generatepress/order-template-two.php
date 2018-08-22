@@ -24,7 +24,7 @@ $args = array(
 	'tax_query' => array(
                                 array(
                                 'taxonomy' => 'product_cat',
-                                'field' => term_id,
+                                'field' => 'term_id',
                                 'terms' => $dales_cat_id
                                 )
                             )
@@ -86,6 +86,9 @@ $posts = get_posts( $args );
 				$i= 0;
 				$term_by_coockie = get_term_by( 'slug', $_COOKIE['dales_order_zip_code'], 'zip_code');
 				$zip_code_group = get_field('zip_code_group', $term_by_coockie);
+				if(!$zip_code_group){
+					$zip_code_group = 'zip_code_group1';
+				}
 				foreach( $posts as $post ){
 				$product = wc_get_product( $post->ID );
 				$id_product = $product->get_id();
@@ -202,7 +205,7 @@ $posts = get_posts( $args );
 				setCookieDales("dales_order_zip_code", input_value, {"path":"/"});
 				jQuery('.pum-close.popmake-close').click();
 				jQuery('.delivery_text span').html(input_value);
-				// window.location.replace("/order-2/");
+				window.location.reload();
 			} else {
 				jQuery('.search_zip_code_error_container').css('display', 'block');
 			}

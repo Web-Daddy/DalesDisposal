@@ -1,0 +1,15 @@
+2018-08-21T11:00:24+00:00 CRITICAL Uncaught Error: Call to undefined method WC_Order_Item_Product::get_title() in /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/themes/generatepress/woocommerce/order/order-details-item.php:34
+Stack trace:
+#0 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/wc-core-functions.php(210): include()
+#1 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/themes/generatepress/woocommerce/order/order-details.php(63): wc_get_template('order/order-det...', Array)
+#2 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/wc-core-functions.php(210): include('/var/www/wemes/...')
+#3 /var/www/wemes/data/www/dales.wemes.com.ua/wp-content/plugins/woocommerce/includes/wc-template-functions.php(2388): wc_get_template('order/order-det...', Array)
+#4 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/class-wp-hook.php(286): woocommerce_order_details_table(591)
+#5 /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/class-wp-hook.php(310): WP_Hook->apply_f
+
+2018-08-21T15:26:52+00:00 CRITICAL Method Profile_Builder_Form_Creator::__toString() must not throw an exception, caught ArgumentCountError: Too few arguments to function wc_maybe_store_user_agent(), 1 passed in /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/class-wp-hook.php on line 286 and exactly 2 expected
+
+2018-08-21T15:29:42+00:00 CRITICAL Method Profile_Builder_Form_Creator::__toString() must not throw an exception, caught ArgumentCountError: Too few arguments to function wc_maybe_store_user_agent(), 1 passed in /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/class-wp-hook.php on line 286 and exactly 2 expected
+
+2018-08-21T15:36:43+00:00 CRITICAL Method Profile_Builder_Form_Creator::__toString() must not throw an exception, caught ArgumentCountError: Too few arguments to function wc_maybe_store_user_agent(), 1 passed in /var/www/wemes/data/www/dales.wemes.com.ua/wp-includes/class-wp-hook.php on line 286 and exactly 2 expected
+
