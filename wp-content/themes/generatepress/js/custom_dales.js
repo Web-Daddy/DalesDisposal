@@ -131,6 +131,7 @@ jQuery(document).ready(function($) {
 				var lastDateVal = date[1].getTime();
 				var firstDateVal = date[0].getTime();
 				rent_time_range = ( lastDateVal - firstDateVal) / 86400000;
+				if(rent_time_range < 14){ rent_time_range = 14}
 				if (lastDateVal - firstDateVal < 60) {
 					instance.clear();
 					$('.error_message_order_step_three').css('opacity','1');

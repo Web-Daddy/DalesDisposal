@@ -48,6 +48,9 @@ get_header(); ?>
 			<a href="/contact-us/" class="need_help_header_order_content">Need Help? Click here</a>
 			<p class="text_header_order_content">What material will you be depositing into the container? </p>
 		</div>
+		<div class="btn_submit_order btn_submit_order_top">
+			<a href="#" class="btn_submit_order_go first_step">Go to step 2: Select Container</a>
+		</div>
 		<div class="category_order_content">
 			<div class="row">
 			<?php
