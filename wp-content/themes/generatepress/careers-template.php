@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 get_header(); ?>
+
 	<div id="primary" <?php generate_content_class();?>>
 		<main id="main" <?php generate_main_class(); ?>>
 			<?php

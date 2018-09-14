@@ -81,7 +81,6 @@ jQuery(document).ready(function($) {
 
 /*** DATEPICKER *****/
 	var dales_two_weeks_once = 1;
-	console.log(dales_two_weeks_once);
 	jQuery(document).on("click", ".datepicker--cell-day", function (e) {
 		if (dales_two_weeks_once == 1) {
 			var datepicker = jQuery('.datepicker-here').datepicker().data('datepicker');
@@ -103,7 +102,6 @@ jQuery(document).ready(function($) {
 				if(datepicker){
 					datepicker.selectDate(dateArr);
 					dales_two_weeks_once++;
-					console.log(dales_two_weeks_once);
 				}
 			},30);
 		}
@@ -112,6 +110,7 @@ jQuery(document).ready(function($) {
 
 
 	var data_range = {};
+	var date_range = [];
 	var monthArr = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 	var weekArr = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];	
 	var rent_time_range = '';
@@ -138,8 +137,11 @@ jQuery(document).ready(function($) {
 					$('.error_message_order_step_three').css('display','flex');
 					data_range = {};
 				} else {
+					console.log('data', date);
 					data_range.current_date = date[0];
 					data_range.last_date = date[1];
+					date_range[0] = (date[0]);
+					date_range[1] = (date[1]);
 					var count_day_current = date[0].getDate();
 					var count_day_last = date[1].getDate();
 					var number_name_day_current = date[0].getDay();
@@ -211,7 +213,7 @@ jQuery(document).ready(function($) {
 	}else{
 		currentDay = new Date();
 		currentDay.setDate(currentDay.getDate()+1);
-		console.log(currentDay);
+		// console.log(currentDay);
 		secondDay = new Date();
 		secondDay.setDate(secondDay.getDate() + 15);
 	}
@@ -231,10 +233,18 @@ jQuery(document).ready(function($) {
 	$('.btn_submit_order_go.step_3').on('click',function(e){
 		e.preventDefault();
 		if (!$.isEmptyObject(data_range)){
+			data_range_orig = data_range;
 			data_range = JSON.stringify(data_range);
 			$.cookie('date_range', data_range, {path: '/' });
+
+			data_range_orig.current_date = data_range_orig.current_date.toLocaleDateString();
+			data_range_orig.last_date = data_range_orig.last_date.toLocaleDateString();
+			data_range_orig = JSON.stringify(data_range_orig);
+			$.cookie('dales_date_range', data_range_orig, {path: '/' });
+
 			$.cookie('rent_time_range', rent_time_range, {path: '/' });
 			window.location = window.location.origin+'/checkout-dales';
+			// console.log(date_range);
 		}else{
 			$('.error_message_order_step_three').css('opacity','1');
 			$('.error_message_order_step_three').css('display','flex');

@@ -528,8 +528,8 @@ function clearcart (){
 
 
 function cloudways_custom_checkout_fields($fields){
-	if (isset($_COOKIE['date_range'])) {
-		$date = $_COOKIE['date_range'];
+	if (isset($_COOKIE['dales_date_range'])) {
+		$date = $_COOKIE['dales_date_range'];
 		$date = stripcslashes($date);
 		$date = json_decode($date);
 		$dales_current_date = date("m/d/Y", strtotime($date->current_date));
@@ -641,9 +641,9 @@ function cloudways_display_order_data_in_admin( $order ){  ?>
         <h4><?php _e( 'Additional Information', 'woocommerce' ); ?><a href="#" class="edit_address"><?php _e( 'Edit', 'woocommerce' ); ?></a></h4>
         <div class="address">
         <?php
-        	echo '<p><strong>' . __( 'ZIP Code' ) . ':</strong>' . get_post_meta( $order->id, '_dales_zip_code', true ) . '</p>';
-            echo '<p><strong>' . __( 'Deliver on' ) . ':</strong>' . get_post_meta( $order->id, '_dales_current_date', true ) . '</p>';
-            echo '<p><strong>' . __( 'Return on' ) . ':</strong>' . get_post_meta( $order->id, '_dales_last_date', true ) . '</p>'; ?>
+        	echo '<p><strong>' . __( 'ZIP Code' ) . ':</strong>' . get_post_meta( $order->get_id(), '_dales_zip_code', true ) . '</p>';
+            echo '<p><strong>' . __( 'Deliver on' ) . ':</strong>' . get_post_meta( $order->get_id(), '_dales_current_date', true ) . '</p>';
+            echo '<p><strong>' . __( 'Return on' ) . ':</strong>' . get_post_meta( $order->get_id(), '_dales_last_date', true ) . '</p>'; ?>
         </div>
         <div class="edit_address">
         	<?php woocommerce_wp_text_input( array( 'id' => '_dales_zip_code', 'label' => __( 'ZIP Code' ), 'wrapper_class' => '_billing_company_field' ) ); ?>
@@ -666,15 +666,15 @@ add_action( 'woocommerce_process_shop_order_meta', 'cloudways_save_extra_details
 function cloudways_email_order_meta_fields( $fields, $sent_to_admin, $order ) {
     $fields['dales_field1'] = array(
                 'label' => __( 'ZIP Code' ),
-                'value' => get_post_meta( $order->id, '_dales_zip_code', true ),
+                'value' => get_post_meta( $order->get_id(), '_dales_zip_code', true ),
             );
     $fields['dales_field2'] = array(
                 'label' => __( 'Deliver on' ),
-                'value' => get_post_meta( $order->id, '_dales_current_date', true ),
+                'value' => get_post_meta( $order->get_id(), '_dales_current_date', true ),
             );
     $fields['dales_field3'] = array(
                 'label' => __( 'Return on' ),
-                'value' => get_post_meta( $order->id, '_dales_last_date', true ),
+                'value' => get_post_meta( $order->get_id(), '_dales_last_date', true ),
             );
     return $fields;
 }
@@ -691,7 +691,11 @@ add_filter('woocommerce_email_order_meta_fields', 'cloudways_email_order_meta_fi
 //     }
 // }
 // add_action('woocommerce_email_customer_details', 'cloudways_show_email_order_meta', 30, 3 );
+// add_action( 'woocommerce_email', 'my_child_gzd_email_hooks', 100, 1 );
 
+// function my_child_gzd_email_hooks( $mailer ) {
+//     add_action( 'woocommerce_order_status_processing_to_on-hold_notification', array( $mailer->emails[ 'WC_Email_Customer_On_Hold_Order' ], 'trigger' ) );
+// }
 
 function CM_woocommerce_account_menu_items_callback($items) {
     unset( $items['downloads'] );

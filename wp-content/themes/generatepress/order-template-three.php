@@ -15,7 +15,7 @@ if (!isset($_COOKIE['form_data'])) {
 };
 
 parse_str(stripslashes($_COOKIE['form_data']), $form_data);
-
+date_default_timezone_set('UTC');
 global $woocommerce;
 $woocommerce->cart->empty_cart(); 
 foreach ($form_data['product'] as $form_data_post) {

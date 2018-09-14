@@ -24,10 +24,11 @@ if (!isset($_COOKIE['dales_order_complete'])) {
 	    exit;
 	};
 }
-$date = $_COOKIE['date_range'];
+$date = $_COOKIE['dales_date_range'];
 $date = stripcslashes($date);
 $date = json_decode($date);
 $dales_current_date = date("F d", strtotime($date->current_date));
+
 if (isset($_COOKIE['rent_time_range'])) {
     $rent_time = $_COOKIE['rent_time_range'];
     $dales_cart_count_rent = WC()->cart->get_cart_contents_count();
